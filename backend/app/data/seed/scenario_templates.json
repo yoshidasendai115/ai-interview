@@ -1,0 +1,416 @@
+{
+  "templates": [
+    {
+      "id": "standard_45min",
+      "name": "標準面接（45分）",
+      "name_en": "Standard Interview (45 min)",
+      "description": "外国人採用の標準的な面接フロー。過去・現在・未来の時間軸に沿って質問を行う。",
+      "duration_minutes": 45,
+      "jlpt_levels": ["N1", "N2", "N3", "N4", "N5"],
+      "industries": ["all"],
+      "flow": [
+        {
+          "phase": "introduction",
+          "duration_minutes": 5,
+          "question_ids": ["Q01", "Q02", "Q03"],
+          "notes": "リラックスした雰囲気を作る。緊張をほぐす。"
+        },
+        {
+          "phase": "past_experience",
+          "duration_minutes": 10,
+          "question_ids": ["Q06", "Q07", "Q08", "Q09", "Q10"],
+          "notes": "来日理由と職歴を中心に確認。困難への対処能力を見る。"
+        },
+        {
+          "phase": "present_ability",
+          "duration_minutes": 10,
+          "question_ids": ["Q18", "Q19", "Q22", "Q23", "Q24"],
+          "notes": "強み・弱みと日本語学習意欲を確認。"
+        },
+        {
+          "phase": "future_vision",
+          "duration_minutes": 10,
+          "question_ids": ["Q30", "Q31", "Q32", "Q33", "Q39"],
+          "notes": "志望動機とキャリアビジョンを確認。定着意向を見極める。"
+        },
+        {
+          "phase": "conditions",
+          "duration_minutes": 5,
+          "question_ids": ["Q40", "Q43", "Q44", "Q45"],
+          "notes": "勤務条件と資格要件を確認。"
+        },
+        {
+          "phase": "closing",
+          "duration_minutes": 5,
+          "question_ids": ["Q46", "Q48", "Q50"],
+          "notes": "逆質問を受け、今後の流れを説明。"
+        }
+      ]
+    },
+    {
+      "id": "short_30min",
+      "name": "短縮面接（30分）",
+      "name_en": "Short Interview (30 min)",
+      "description": "時間が限られている場合の短縮版面接フロー。",
+      "duration_minutes": 30,
+      "jlpt_levels": ["N1", "N2", "N3", "N4", "N5"],
+      "industries": ["all"],
+      "flow": [
+        {
+          "phase": "introduction",
+          "duration_minutes": 3,
+          "question_ids": ["Q01", "Q03"],
+          "notes": "簡潔にアイスブレイク。"
+        },
+        {
+          "phase": "past_experience",
+          "duration_minutes": 7,
+          "question_ids": ["Q06", "Q09", "Q10"],
+          "notes": "来日理由と困難への対処を中心に。"
+        },
+        {
+          "phase": "present_ability",
+          "duration_minutes": 7,
+          "question_ids": ["Q18", "Q22", "Q23"],
+          "notes": "強みとコミュニケーション能力を確認。"
+        },
+        {
+          "phase": "future_vision",
+          "duration_minutes": 7,
+          "question_ids": ["Q30", "Q32", "Q33"],
+          "notes": "志望動機と定着意向を確認。"
+        },
+        {
+          "phase": "conditions",
+          "duration_minutes": 3,
+          "question_ids": ["Q43", "Q45"],
+          "notes": "入社時期と資格確認。"
+        },
+        {
+          "phase": "closing",
+          "duration_minutes": 3,
+          "question_ids": ["Q46", "Q50"],
+          "notes": "逆質問と締め。"
+        }
+      ]
+    },
+    {
+      "id": "nursing_care_focused",
+      "name": "介護業界特化面接",
+      "name_en": "Nursing Care Focused Interview",
+      "description": "介護業界向けの特化面接フロー。高齢者への配慮、夜勤対応、感情コントロールを重点的に確認。",
+      "duration_minutes": 45,
+      "jlpt_levels": ["N3", "N4", "N5"],
+      "industries": ["nursing_care"],
+      "flow": [
+        {
+          "phase": "introduction",
+          "duration_minutes": 5,
+          "question_ids": ["Q01", "Q03", "Q04"],
+          "notes": "リラックスした雰囲気を作る。"
+        },
+        {
+          "phase": "past_experience",
+          "duration_minutes": 12,
+          "question_ids": ["Q06", "Q07", "Q09", "Q13", "Q14"],
+          "notes": "ストレス対処能力とチームワークを重点的に確認。",
+          "additional_questions": [
+            "高齢者と接した経験はありますか？",
+            "介護の仕事に興味を持った理由は何ですか？"
+          ]
+        },
+        {
+          "phase": "present_ability",
+          "duration_minutes": 10,
+          "question_ids": ["Q18", "Q19", "Q22", "Q23", "Q26"],
+          "notes": "適応力と協調性を確認。",
+          "additional_questions": [
+            "急に利用者様の状態が変わったら、どうしますか？",
+            "認知症の方への対応で気をつけることは何だと思いますか？"
+          ]
+        },
+        {
+          "phase": "future_vision",
+          "duration_minutes": 8,
+          "question_ids": ["Q30", "Q32", "Q34", "Q38"],
+          "notes": "介護福祉士資格取得への意欲を確認。"
+        },
+        {
+          "phase": "conditions",
+          "duration_minutes": 5,
+          "question_ids": ["Q40", "Q41", "Q44", "Q45"],
+          "notes": "夜勤対応を必ず確認。"
+        },
+        {
+          "phase": "closing",
+          "duration_minutes": 5,
+          "question_ids": ["Q46", "Q48", "Q50"],
+          "notes": "逆質問と締め。"
+        }
+      ]
+    },
+    {
+      "id": "food_service_focused",
+      "name": "飲食業界特化面接",
+      "name_en": "Food Service Focused Interview",
+      "description": "飲食業界向けの特化面接フロー。接客経験、衛生意識、チームワークを重点的に確認。",
+      "duration_minutes": 45,
+      "jlpt_levels": ["N3", "N4", "N5"],
+      "industries": ["food_service"],
+      "flow": [
+        {
+          "phase": "introduction",
+          "duration_minutes": 5,
+          "question_ids": ["Q01", "Q03", "Q05"],
+          "notes": "食べ物の話題でリラックスさせる。"
+        },
+        {
+          "phase": "past_experience",
+          "duration_minutes": 10,
+          "question_ids": ["Q06", "Q07", "Q11", "Q14"],
+          "notes": "接客・サービス経験を重点的に確認。",
+          "additional_questions": [
+            "接客で大切にしていることは何ですか？",
+            "忙しい時間帯、どのように対応しますか？"
+          ]
+        },
+        {
+          "phase": "present_ability",
+          "duration_minutes": 10,
+          "question_ids": ["Q18", "Q22", "Q23", "Q26"],
+          "notes": "チームワークと臨機応変さを確認。",
+          "additional_questions": [
+            "お客様からクレームがあったら、どうしますか？",
+            "衛生管理で気をつけていることは何ですか？"
+          ]
+        },
+        {
+          "phase": "future_vision",
+          "duration_minutes": 10,
+          "question_ids": ["Q30", "Q31", "Q32", "Q34"],
+          "notes": "飲食業界でのキャリアビジョンを確認。"
+        },
+        {
+          "phase": "conditions",
+          "duration_minutes": 5,
+          "question_ids": ["Q40", "Q41", "Q43", "Q45"],
+          "notes": "シフト勤務への対応を確認。"
+        },
+        {
+          "phase": "closing",
+          "duration_minutes": 5,
+          "question_ids": ["Q46", "Q48", "Q50"],
+          "notes": "逆質問と締め。"
+        }
+      ]
+    },
+    {
+      "id": "manufacturing_focused",
+      "name": "製造業界特化面接",
+      "name_en": "Manufacturing Focused Interview",
+      "description": "製造業向けの特化面接フロー。正確性、集中力、品質管理意識を重点的に確認。",
+      "duration_minutes": 45,
+      "jlpt_levels": ["N4", "N5"],
+      "industries": ["manufacturing"],
+      "flow": [
+        {
+          "phase": "introduction",
+          "duration_minutes": 5,
+          "question_ids": ["Q01", "Q02", "Q03"],
+          "notes": "リラックスした雰囲気を作る。"
+        },
+        {
+          "phase": "past_experience",
+          "duration_minutes": 10,
+          "question_ids": ["Q06", "Q07", "Q10", "Q14"],
+          "notes": "製造・工場経験を確認。",
+          "additional_questions": [
+            "工場で働いた経験はありますか？",
+            "品質管理で大切なことは何だと思いますか？"
+          ]
+        },
+        {
+          "phase": "present_ability",
+          "duration_minutes": 10,
+          "question_ids": ["Q18", "Q19", "Q22", "Q23"],
+          "notes": "正確性と集中力を確認。",
+          "additional_questions": [
+            "同じ作業を長時間続けることは苦になりませんか？",
+            "ミスを防ぐために気をつけていることは何ですか？"
+          ]
+        },
+        {
+          "phase": "future_vision",
+          "duration_minutes": 10,
+          "question_ids": ["Q30", "Q32", "Q33", "Q37"],
+          "notes": "長期的な定着意向を確認。"
+        },
+        {
+          "phase": "conditions",
+          "duration_minutes": 5,
+          "question_ids": ["Q40", "Q42", "Q43", "Q45"],
+          "notes": "勤務地と残業対応を確認。"
+        },
+        {
+          "phase": "closing",
+          "duration_minutes": 5,
+          "question_ids": ["Q46", "Q48", "Q50"],
+          "notes": "逆質問と締め。"
+        }
+      ]
+    },
+    {
+      "id": "construction_focused",
+      "name": "建設業界特化面接",
+      "name_en": "Construction Focused Interview",
+      "description": "建設業向けの特化面接フロー。体力、安全意識、チームワークを重点的に確認。",
+      "duration_minutes": 45,
+      "jlpt_levels": ["N4", "N5"],
+      "industries": ["construction"],
+      "flow": [
+        {
+          "phase": "introduction",
+          "duration_minutes": 5,
+          "question_ids": ["Q01", "Q02", "Q03"],
+          "notes": "リラックスした雰囲気を作る。"
+        },
+        {
+          "phase": "past_experience",
+          "duration_minutes": 10,
+          "question_ids": ["Q06", "Q07", "Q10", "Q14"],
+          "notes": "建設・体力仕事の経験を確認。",
+          "additional_questions": [
+            "体力に自信はありますか？",
+            "建設現場で働いた経験はありますか？",
+            "安全で気をつけていることは何ですか？"
+          ]
+        },
+        {
+          "phase": "present_ability",
+          "duration_minutes": 10,
+          "question_ids": ["Q18", "Q22", "Q23", "Q28"],
+          "notes": "チームワークと健康管理を確認。",
+          "additional_questions": [
+            "高所での作業は大丈夫ですか？",
+            "危険を感じたときはどうしますか？"
+          ]
+        },
+        {
+          "phase": "future_vision",
+          "duration_minutes": 10,
+          "question_ids": ["Q30", "Q32", "Q33", "Q38"],
+          "notes": "建設関連の資格取得意欲を確認。"
+        },
+        {
+          "phase": "conditions",
+          "duration_minutes": 5,
+          "question_ids": ["Q40", "Q42", "Q43", "Q45"],
+          "notes": "勤務地と残業対応を確認。"
+        },
+        {
+          "phase": "closing",
+          "duration_minutes": 5,
+          "question_ids": ["Q46", "Q48", "Q50"],
+          "notes": "逆質問と締め。"
+        }
+      ]
+    },
+    {
+      "id": "hospitality_focused",
+      "name": "宿泊業界特化面接",
+      "name_en": "Hospitality Focused Interview",
+      "description": "宿泊業向けの特化面接フロー。おもてなし精神、語学力、臨機応変さを重点的に確認。",
+      "duration_minutes": 45,
+      "jlpt_levels": ["N2", "N3"],
+      "industries": ["hospitality"],
+      "flow": [
+        {
+          "phase": "introduction",
+          "duration_minutes": 5,
+          "question_ids": ["Q01", "Q03", "Q04"],
+          "notes": "リラックスした雰囲気を作る。"
+        },
+        {
+          "phase": "past_experience",
+          "duration_minutes": 10,
+          "question_ids": ["Q06", "Q07", "Q09", "Q11"],
+          "notes": "サービス・接客経験を確認。",
+          "additional_questions": [
+            "お客様をもてなすとき、大切にしていることは？",
+            "日本語以外の言語は話せますか？"
+          ]
+        },
+        {
+          "phase": "present_ability",
+          "duration_minutes": 10,
+          "question_ids": ["Q18", "Q20", "Q22", "Q26"],
+          "notes": "コミュニケーション能力と適応力を確認。",
+          "additional_questions": [
+            "クレームがあったら、どう対応しますか？",
+            "外国人のお客様への対応で気をつけることは？"
+          ]
+        },
+        {
+          "phase": "future_vision",
+          "duration_minutes": 10,
+          "question_ids": ["Q30", "Q31", "Q32", "Q34"],
+          "notes": "宿泊業界でのキャリアビジョンを確認。"
+        },
+        {
+          "phase": "conditions",
+          "duration_minutes": 5,
+          "question_ids": ["Q40", "Q41", "Q43", "Q45"],
+          "notes": "シフト勤務への対応を確認。"
+        },
+        {
+          "phase": "closing",
+          "duration_minutes": 5,
+          "question_ids": ["Q46", "Q48", "Q50"],
+          "notes": "逆質問と締め。"
+        }
+      ]
+    }
+  ],
+  "jlpt_adaptations": {
+    "N1": {
+      "description": "ビジネス日本語を使用。敬語も積極的に使う。",
+      "speech_speed": "normal",
+      "use_simplified": false,
+      "follow_up_depth": 3,
+      "notes": "深掘り質問を積極的に行う。論理的な説明を求める。"
+    },
+    "N2": {
+      "description": "標準的なビジネス日本語。丁寧語中心。",
+      "speech_speed": "normal",
+      "use_simplified": false,
+      "follow_up_depth": 2,
+      "notes": "適度な深掘り。理解確認を時々挟む。"
+    },
+    "N3": {
+      "description": "やや簡潔な表現。平易な敬語。",
+      "speech_speed": "slow",
+      "use_simplified": false,
+      "follow_up_depth": 2,
+      "notes": "理解確認を挟みながら進める。必要に応じて言い換え。"
+    },
+    "N4": {
+      "description": "簡単な語彙、短文、やさしい日本語。",
+      "speech_speed": "very_slow",
+      "use_simplified": true,
+      "follow_up_depth": 1,
+      "notes": "言い換え・繰り返しを多用。ジェスチャーも活用。"
+    },
+    "N5": {
+      "description": "最も簡単な表現。基本的な語彙のみ使用。",
+      "speech_speed": "very_slow",
+      "use_simplified": true,
+      "follow_up_depth": 1,
+      "notes": "簡易版の質問を使用。短い文で明確に。"
+    }
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "created_at": "2026-02-01",
+    "updated_at": "2026-02-01"
+  }
+}

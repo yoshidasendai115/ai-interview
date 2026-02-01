@@ -1,0 +1,111 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="mintoku work連携" id="mintoku-connection">
+    <mxGraphModel dx="900" dy="500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="900" pageHeight="400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="mintoku work と AI面接練習プラットフォームの連携" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="20" width="500" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- mintoku work box -->
+        <mxCell id="mintoku-box" value="" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#3F51B5;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="220" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="mintoku-title" value="mintoku work" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#3F51B5;" vertex="1" parent="1">
+          <mxGeometry x="80" y="95" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="mintoku-desc" value="（起点サービス）" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#757575;" vertex="1" parent="1">
+          <mxGeometry x="80" y="125" width="180" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- mintoku work functions -->
+        <mxCell id="mintoku-func1" value="・ユーザー管理" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#424242;" vertex="1" parent="1">
+          <mxGeometry x="85" y="155" width="170" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="mintoku-func2" value="・SSO認証プロバイダー" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#424242;" vertex="1" parent="1">
+          <mxGeometry x="85" y="175" width="170" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="mintoku-func3" value="・評価結果の蓄積・表示" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#424242;" vertex="1" parent="1">
+          <mxGeometry x="85" y="195" width="170" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="mintoku-func4" value="・学習進捗の管理" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#424242;" vertex="1" parent="1">
+          <mxGeometry x="85" y="215" width="170" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- AI Interview Platform box -->
+        <mxCell id="ai-box" value="" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="620" y="80" width="220" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="ai-title" value="AI面接練習&#xa;プラットフォーム" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#1565C0;" vertex="1" parent="1">
+          <mxGeometry x="640" y="90" width="180" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="ai-desc" value="（本システム）" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#757575;" vertex="1" parent="1">
+          <mxGeometry x="640" y="135" width="180" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- AI platform functions -->
+        <mxCell id="ai-func1" value="・AIアバター面接官" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#424242;" vertex="1" parent="1">
+          <mxGeometry x="645" y="165" width="170" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ai-func2" value="・日本語能力評価" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#424242;" vertex="1" parent="1">
+          <mxGeometry x="645" y="185" width="170" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ai-func3" value="・フィードバック生成" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#424242;" vertex="1" parent="1">
+          <mxGeometry x="645" y="205" width="170" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ai-func4" value="・苦手分析" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#424242;" vertex="1" parent="1">
+          <mxGeometry x="645" y="225" width="170" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow 1: User transition (top) -->
+        <mxCell id="arrow1" value="" style="endArrow=block;html=1;rounded=0;strokeWidth=3;strokeColor=#4CAF50;endFill=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="290" y="130" as="sourcePoint" />
+            <mxPoint x="610" y="130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow1-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#4CAF50;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="350" y="100" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow1-label" value="① ユーザー遷移 + SSO認証" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#2E7D32;" vertex="1" parent="1">
+          <mxGeometry x="360" y="105" width="180" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow1-detail" value="user_id, email, name, jlpt_level" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#616161;" vertex="1" parent="1">
+          <mxGeometry x="360" y="125" width="180" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow 2: Evaluation results (bottom) -->
+        <mxCell id="arrow2" value="" style="endArrow=block;html=1;rounded=0;strokeWidth=3;strokeColor=#1565C0;endFill=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="610" y="210" as="sourcePoint" />
+            <mxPoint x="290" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow2-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="350" y="185" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow2-label" value="② 評価結果送信（API）" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#1565C0;" vertex="1" parent="1">
+          <mxGeometry x="360" y="190" width="180" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow2-detail" value="総合スコア, 項目別スコア, 苦手項目" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#616161;" vertex="1" parent="1">
+          <mxGeometry x="360" y="210" width="180" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Flow description -->
+        <mxCell id="flow-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FFC107;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="290" width="780" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="flow-title" value="利用フロー:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#F57C00;" vertex="1" parent="1">
+          <mxGeometry x="75" y="298" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="flow-text" value="mintoku workログイン → 「AI面接練習」クリック → 本システムに自動遷移 → 面接練習実施 → 練習完了 → 評価結果がmintoku workに自動送信・蓄積" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#424242;" vertex="1" parent="1">
+          <mxGeometry x="75" y="318" width="750" height="25" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

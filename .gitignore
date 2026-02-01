@@ -1,0 +1,57 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Build
+.next/
+dist/
+build/
+out/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test
+coverage/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+
+# Cache
+.cache/
+.turbo/
+
+# Serena
+.serena/
+
+# Claude
+.claude/
+
+# Playwright
+.playwright-mcp/
+
+# Temporary
+*.tmp
+*.temp
+
+# VSCode upload config
+.vscode-upload.json

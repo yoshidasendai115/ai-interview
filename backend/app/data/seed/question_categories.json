@@ -1,0 +1,70 @@
+{
+  "categories": [
+    {
+      "id": "introduction",
+      "name": "導入・アイスブレイク",
+      "name_en": "Introduction",
+      "time_axis": null,
+      "duration_minutes": 5,
+      "display_order": 1,
+      "description": "リラックスした雰囲気を作り、面接の流れを説明する",
+      "purpose": "緊張を和らげ、自然な会話ができる状態にする"
+    },
+    {
+      "id": "past_experience",
+      "name": "過去（経験・背景）",
+      "name_en": "Past Experience",
+      "time_axis": "past",
+      "duration_minutes": 10,
+      "display_order": 2,
+      "description": "来日理由、職歴、学歴、困難を乗り越えた経験を確認",
+      "purpose": "候補者の背景と経験から、適性と信頼性を評価する"
+    },
+    {
+      "id": "present_ability",
+      "name": "現在（能力・適性）",
+      "name_en": "Present Ability",
+      "time_axis": "present",
+      "duration_minutes": 10,
+      "display_order": 3,
+      "description": "現在の日本語力、強み・弱み、仕事への価値観を確認",
+      "purpose": "現時点での能力と仕事に対する姿勢を評価する"
+    },
+    {
+      "id": "future_vision",
+      "name": "未来（意欲・ビジョン）",
+      "name_en": "Future Vision",
+      "time_axis": "future",
+      "duration_minutes": 10,
+      "display_order": 4,
+      "description": "志望動機、キャリアプラン、日本での生活設計を確認",
+      "purpose": "長期的な定着意向と成長意欲を評価する"
+    },
+    {
+      "id": "conditions",
+      "name": "条件確認",
+      "name_en": "Conditions Check",
+      "time_axis": null,
+      "duration_minutes": 5,
+      "display_order": 5,
+      "description": "勤務条件、在留資格、家族の同意を確認",
+      "purpose": "実務的な条件のマッチングと法的要件を確認する"
+    },
+    {
+      "id": "closing",
+      "name": "クロージング",
+      "name_en": "Closing",
+      "time_axis": null,
+      "duration_minutes": 5,
+      "display_order": 6,
+      "description": "逆質問、今後の流れ説明、挨拶",
+      "purpose": "面接を円滑に終了し、良い印象を残す"
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "total_duration_minutes": 45,
+    "created_at": "2026-02-01",
+    "updated_at": "2026-02-01"
+  }
+}

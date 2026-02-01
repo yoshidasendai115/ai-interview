@@ -1,0 +1,98 @@
+<mxfile host="app.diagrams.net" modified="2026-02-01T00:00:00.000Z" agent="5.0" etag="integrated-eval" version="21.0.0" type="device">
+  <diagram name="統合評価の構成" id="integrated-eval">
+    <mxGraphModel dx="1200" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="600" pageHeight="400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- タイトル -->
+        <mxCell id="title" value="総合面接評価" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565C0;fontColor=#FFFFFF;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="20" width="300" height="40" as="geometry"/>
+        </mxCell>
+        <!-- 外枠 -->
+        <mxCell id="frame" value="" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#1565C0;strokeWidth=2;fillColor=#FFFFFF;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="70" width="560" height="220" as="geometry"/>
+        </mxCell>
+        <!-- 日本語能力評価ボックス -->
+        <mxCell id="jp-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="90" width="250" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="jp-title" value="日本語能力評価（07）" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1565C0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="95" width="250" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="jp-item1" value="・語彙 (vocabulary)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="125" width="200" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="jp-item2" value="・文法 (grammar)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="148" width="200" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="jp-item3" value="・内容 (content)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="171" width="200" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="jp-item4" value="・敬語 (honorifics)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="194" width="200" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="jp-score" value="スコア: 0-100点" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565C0;fontColor=#FFFFFF;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="220" width="100" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="jp-timing" value="各回答ごと" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90CAF9;fontColor=#1565C0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="170" y="220" width="100" height="25" as="geometry"/>
+        </mxCell>
+        <!-- 採用適性評価ボックス -->
+        <mxCell id="apt-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FFC107;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="310" y="90" width="250" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="apt-title" value="採用適性評価（13）" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#F57C00;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="95" width="250" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="apt-item1" value="・適応力 (adaptability)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="330" y="125" width="200" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="apt-item2" value="・コミュニケーション力" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="330" y="145" width="200" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="apt-item3" value="・主体性 (initiative)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="330" y="165" width="200" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="apt-item4" value="・定着意向 (retention)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="330" y="185" width="200" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="apt-item5" value="・協調性 (cooperation)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="330" y="205" width="200" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="apt-score" value="スコア: 1-5点 (A-F)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFC107;fontColor=#FFFFFF;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="330" y="230" width="100" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="apt-timing" value="セッション終了後" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE082;fontColor=#F57C00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="440" y="230" width="100" height="25" as="geometry"/>
+        </mxCell>
+        <!-- 下部情報 -->
+        <mxCell id="db-jp" value="DB: evaluation_details" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#3F51B5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="300" width="150" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="db-apt" value="DB: aptitude_evaluations" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#3F51B5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="380" y="300" width="150" height="25" as="geometry"/>
+        </mxCell>
+        <!-- 統合矢印 -->
+        <mxCell id="arrow1" value="" style="endArrow=classic;html=1;strokeColor=#424242;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="145" y="335" as="sourcePoint"/>
+            <mxPoint x="260" y="355" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow2" value="" style="endArrow=classic;html=1;strokeColor=#424242;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="455" y="335" as="sourcePoint"/>
+            <mxPoint x="340" y="355" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <!-- 統合スコア計算式 -->
+        <mxCell id="formula-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#4CAF50;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="120" y="355" width="360" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="formula" value="統合スコア = (日本語能力スコア × 0.4) + (採用適性スコア × 20 × 0.6)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="355" width="360" height="35" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,171 @@
+{
+  "industries": [
+    {
+      "id": "nursing_care",
+      "name": "介護",
+      "name_en": "Nursing Care",
+      "specific_skill_category": "介護",
+      "description": "高齢者施設、デイサービス、訪問介護など",
+      "key_requirements": [
+        "高齢者への配慮",
+        "身体介助経験",
+        "夜勤対応可能",
+        "感情コントロール",
+        "チームワーク"
+      ],
+      "priority_evaluation_categories": ["adaptability", "cooperation"],
+      "common_job_titles": ["介護職員", "介護福祉士", "ホームヘルパー"],
+      "physical_demands": "high",
+      "communication_level_required": "N4",
+      "additional_questions": [
+        "高齢者と接した経験はありますか？",
+        "夜勤は対応できますか？",
+        "体を動かす仕事について、どう思いますか？"
+      ]
+    },
+    {
+      "id": "food_service",
+      "name": "飲食",
+      "name_en": "Food Service",
+      "specific_skill_category": "外食業",
+      "description": "レストラン、居酒屋、ファストフード、給食など",
+      "key_requirements": [
+        "接客経験",
+        "衛生意識",
+        "シフト柔軟性",
+        "スピード感",
+        "チームワーク"
+      ],
+      "priority_evaluation_categories": ["communication", "cooperation"],
+      "common_job_titles": ["ホールスタッフ", "キッチンスタッフ", "調理補助"],
+      "physical_demands": "medium",
+      "communication_level_required": "N4",
+      "additional_questions": [
+        "接客の経験はありますか？",
+        "忙しい時間帯でも冷静に対応できますか？",
+        "衛生管理で気をつけていることはありますか？"
+      ]
+    },
+    {
+      "id": "construction",
+      "name": "建設",
+      "name_en": "Construction",
+      "specific_skill_category": "建設",
+      "description": "建築現場、土木工事、内装、電気工事など",
+      "key_requirements": [
+        "体力",
+        "安全意識",
+        "チームワーク",
+        "危険予知能力",
+        "正確性"
+      ],
+      "priority_evaluation_categories": ["initiative", "cooperation"],
+      "common_job_titles": ["建設作業員", "型枠大工", "鉄筋工", "電気工"],
+      "physical_demands": "very_high",
+      "communication_level_required": "N4",
+      "additional_questions": [
+        "体力に自信はありますか？",
+        "高所での作業は大丈夫ですか？",
+        "安全で気をつけていることは何ですか？"
+      ]
+    },
+    {
+      "id": "manufacturing",
+      "name": "製造",
+      "name_en": "Manufacturing",
+      "specific_skill_category": "製造業",
+      "description": "工場、生産ライン、品質管理など",
+      "key_requirements": [
+        "正確性",
+        "集中力",
+        "品質管理意識",
+        "単調作業への耐性",
+        "規則遵守"
+      ],
+      "priority_evaluation_categories": ["initiative", "retention"],
+      "common_job_titles": ["製造オペレーター", "検査員", "組立作業員"],
+      "physical_demands": "medium",
+      "communication_level_required": "N5",
+      "additional_questions": [
+        "細かい作業は得意ですか？",
+        "同じ作業を続けることは苦になりませんか？",
+        "品質で大切にしていることは何ですか？"
+      ]
+    },
+    {
+      "id": "hospitality",
+      "name": "宿泊",
+      "name_en": "Hospitality",
+      "specific_skill_category": "宿泊業",
+      "description": "ホテル、旅館、民泊など",
+      "key_requirements": [
+        "おもてなし精神",
+        "語学力",
+        "臨機応変さ",
+        "身だしなみ",
+        "異文化対応"
+      ],
+      "priority_evaluation_categories": ["communication", "adaptability"],
+      "common_job_titles": ["フロントスタッフ", "客室係", "ベルスタッフ"],
+      "physical_demands": "medium",
+      "communication_level_required": "N3",
+      "additional_questions": [
+        "お客様をもてなすとき、大切にしていることは？",
+        "クレームがあったら、どう対応しますか？",
+        "日本語以外の言語は話せますか？"
+      ]
+    },
+    {
+      "id": "agriculture",
+      "name": "農業",
+      "name_en": "Agriculture",
+      "specific_skill_category": "農業",
+      "description": "農作物栽培、畜産、農業機械操作など",
+      "key_requirements": [
+        "体力",
+        "自然環境への適応",
+        "早起き",
+        "季節労働への対応",
+        "機械操作"
+      ],
+      "priority_evaluation_categories": ["adaptability", "retention"],
+      "common_job_titles": ["農業作業員", "畜産作業員", "農業機械オペレーター"],
+      "physical_demands": "high",
+      "communication_level_required": "N5",
+      "additional_questions": [
+        "農業の経験はありますか？",
+        "早朝からの仕事は大丈夫ですか？",
+        "屋外での仕事について、どう思いますか？"
+      ]
+    },
+    {
+      "id": "building_cleaning",
+      "name": "ビルクリーニング",
+      "name_en": "Building Cleaning",
+      "specific_skill_category": "ビルクリーニング",
+      "description": "オフィスビル、商業施設、病院などの清掃",
+      "key_requirements": [
+        "丁寧さ",
+        "衛生意識",
+        "体力",
+        "時間管理",
+        "自己管理"
+      ],
+      "priority_evaluation_categories": ["initiative", "retention"],
+      "common_job_titles": ["清掃スタッフ", "ビルメンテナンス", "クリーンスタッフ"],
+      "physical_demands": "medium",
+      "communication_level_required": "N5",
+      "additional_questions": [
+        "清掃の経験はありますか？",
+        "細かいところまで気を配れますか？",
+        "一人で黙々と作業することは得意ですか？"
+      ]
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "created_at": "2026-02-01",
+    "updated_at": "2026-02-01",
+    "note": "特定技能14分野のうち、主要7業界を対象としている"
+  }
+}

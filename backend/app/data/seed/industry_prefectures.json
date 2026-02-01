@@ -1,0 +1,45 @@
+{
+  "industry_prefectures": {
+    "nursing_care": {
+      "name": "介護",
+      "prefectures": ["東京都", "神奈川県", "愛知県"],
+      "reason": "高齢化率が高く介護施設が多い都市部"
+    },
+    "food_service": {
+      "name": "飲食",
+      "prefectures": ["東京都", "大阪府", "愛知県"],
+      "reason": "飲食店が集中する大都市圏"
+    },
+    "construction": {
+      "name": "建設",
+      "prefectures": ["東京都", "愛知県", "大阪府"],
+      "reason": "再開発・インフラ整備が活発な地域"
+    },
+    "manufacturing": {
+      "name": "製造",
+      "prefectures": ["愛知県", "静岡県", "大阪府"],
+      "reason": "自動車・機械製造業の集積地"
+    },
+    "hospitality": {
+      "name": "宿泊",
+      "prefectures": ["東京都", "大阪府", "京都府"],
+      "reason": "観光需要が高い主要都市"
+    },
+    "agriculture": {
+      "name": "農業",
+      "prefectures": ["茨城県", "千葉県", "長野県"],
+      "reason": "大規模農業・園芸農業が盛んな地域"
+    },
+    "building_cleaning": {
+      "name": "ビルクリーニング",
+      "prefectures": ["東京都", "大阪府", "神奈川県"],
+      "reason": "オフィスビル・商業施設が多い都市部"
+    }
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "created_at": "2026-02-01",
+    "source": "厚生労働省外国人雇用状況統計を基に作成",
+    "note": "各業界で外国人労働者の需要が高い上位3都道府県"
+  }
+}

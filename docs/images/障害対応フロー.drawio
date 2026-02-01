@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2025-02-01T00:00:00.000Z" agent="Mozilla/5.0" version="21.0.0" type="device">
+  <diagram id="incident-response-flow" name="障害対応フロー">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- タイトル -->
+        <mxCell id="title" value="障害対応フロー" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="500" y="20" width="200" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- 障害検知 -->
+        <mxCell id="detect" value="障害検知&#xa;(CloudWatch Alarm)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="520" y="80" width="160" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- 矢印: 検知 → 通知 -->
+        <mxCell id="arrow1" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#666666" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="140" as="sourcePoint"/>
+            <mxPoint x="600" y="180" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Slack/Email通知 -->
+        <mxCell id="notify" value="Slack/Email通知" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="520" y="180" width="160" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- 矢印: 通知 → 確認 -->
+        <mxCell id="arrow2" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#666666" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="230" as="sourcePoint"/>
+            <mxPoint x="600" y="270" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 担当者確認 -->
+        <mxCell id="check" value="担当者確認" style="rhombus;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="530" y="270" width="140" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- 分岐: 自動復旧済み（左） -->
+        <mxCell id="arrow3" value="自動復旧済み" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#82b366;fontColor=#82b366;fontSize=11" edge="1" parent="1">
+          <mxGeometry x="-0.2" y="10" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="530" y="310" as="sourcePoint"/>
+            <mxPoint x="320" y="310" as="targetPoint"/>
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 原因調査 -->
+        <mxCell id="investigate" value="原因調査" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="200" y="285" width="110" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- 矢印: 原因調査 → 再発防止 -->
+        <mxCell id="arrow4" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#82b366" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="255" y="335" as="sourcePoint"/>
+            <mxPoint x="255" y="370" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 再発防止策 -->
+        <mxCell id="prevent" value="再発防止策" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="200" y="370" width="110" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- 分岐: 継続中（下） -->
+        <mxCell id="arrow5" value="継続中" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#b85450;fontColor=#b85450;fontSize=11" edge="1" parent="1">
+          <mxGeometry x="-0.2" y="10" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="350" as="sourcePoint"/>
+            <mxPoint x="600" y="400" as="targetPoint"/>
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 影響範囲確認 -->
+        <mxCell id="impact" value="影響範囲確認" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="525" y="400" width="150" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- 矢印: 影響範囲 → 一次対応 -->
+        <mxCell id="arrow6" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#666666" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="450" as="sourcePoint"/>
+            <mxPoint x="600" y="490" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 一次対応実施 -->
+        <mxCell id="response" value="一次対応実施" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="520" y="490" width="160" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- 一次対応から左分岐: 復旧 -->
+        <mxCell id="arrow7" value="復旧" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#82b366;fontColor=#82b366;fontSize=11" edge="1" parent="1">
+          <mxGeometry x="-0.2" y="10" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="520" y="515" as="sourcePoint"/>
+            <mxPoint x="410" y="515" as="targetPoint"/>
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 事後分析 -->
+        <mxCell id="postmortem" value="事後分析" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="300" y="490" width="100" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- 矢印: 事後分析 → 改善 -->
+        <mxCell id="arrow8" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#82b366" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="300" y="515" as="sourcePoint"/>
+            <mxPoint x="200" y="515" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 改善 -->
+        <mxCell id="improve" value="改善" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="100" y="490" width="100" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- 一次対応から右分岐: 未復旧 -->
+        <mxCell id="arrow9" value="未復旧" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#b85450;fontColor=#b85450;fontSize=11" edge="1" parent="1">
+          <mxGeometry x="-0.2" y="-10" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="680" y="515" as="sourcePoint"/>
+            <mxPoint x="780" y="515" as="targetPoint"/>
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- エスカレーション -->
+        <mxCell id="escalate" value="エスカレーション" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="790" y="490" width="150" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- 凡例ボックス -->
+        <mxCell id="legend-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999999;strokeWidth=1;dashed=1" vertex="1" parent="1">
+          <mxGeometry x="880" y="80" width="180" height="130" as="geometry"/>
+        </mxCell>
+
+        <!-- 凡例タイトル -->
+        <mxCell id="legend-title" value="凡例" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="940" y="85" width="60" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- 正常系凡例 -->
+        <mxCell id="legend-ok" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="895" y="115" width="30" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend-ok-text" value="正常系" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="935" y="115" width="60" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- 異常系凡例 -->
+        <mxCell id="legend-ng" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="895" y="145" width="30" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend-ng-text" value="異常系/緊急" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="935" y="145" width="80" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- 判断凡例 -->
+        <mxCell id="legend-decision" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="895" y="175" width="30" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend-decision-text" value="判断/確認" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="935" y="175" width="70" height="25" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,126 @@
+<mxfile host="app.diagrams.net" modified="2026-02-01T00:00:00.000Z" agent="5.0" etag="user-flow" version="21.0.0" type="device">
+  <diagram name="ユーザー向け画面遷移図" id="user-flow">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="700" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- タイトル -->
+        <mxCell id="title" value="ユーザー向け画面遷移図（AI面接練習アプリ）" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#1565C0;" vertex="1" parent="1">
+          <mxGeometry x="150" y="10" width="400" height="30" as="geometry"/>
+        </mxCell>
+        <!-- 外部システム: mintoku work -->
+        <mxCell id="mintoku" value="mintoku work" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;strokeWidth=2;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="120" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <!-- SSOログイン -->
+        <mxCell id="sso" value="SSOログイン&#xa;（フォールバック）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="20" y="220" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <!-- ホーム -->
+        <mxCell id="home" value="ホーム" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=#0D47A1;strokeWidth=2;fontColor=#FFFFFF;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="170" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <!-- 面接練習 -->
+        <mxCell id="practice" value="面接練習" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;strokeWidth=2;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="70" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <!-- フィードバック -->
+        <mxCell id="feedback" value="フィードバック" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;strokeWidth=2;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="70" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <!-- 学習進捗 -->
+        <mxCell id="progress" value="学習進捗" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;strokeWidth=2;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="170" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <!-- 過去の結果 -->
+        <mxCell id="history" value="過去の結果" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;strokeWidth=2;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="260" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <!-- 設定 -->
+        <mxCell id="settings" value="設定" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;strokeWidth=2;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="350" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <!-- 矢印: mintoku → ホーム (シームレス遷移) -->
+        <mxCell id="arrow1" value="" style="endArrow=classic;html=1;strokeColor=#FF9800;strokeWidth=2;" edge="1" parent="1" source="mintoku" target="home">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow1-label" value="シームレス遷移" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#FF9800;" vertex="1" parent="1">
+          <mxGeometry x="150" y="120" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <!-- 矢印: SSO → ホーム (直接アクセス時) -->
+        <mxCell id="arrow2" value="" style="endArrow=classic;html=1;strokeColor=#1565C0;strokeWidth=2;dashed=1;" edge="1" parent="1" source="sso" target="home">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow2-label" value="直接アクセス時" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#757575;" vertex="1" parent="1">
+          <mxGeometry x="150" y="220" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <!-- 矢印: ホーム → 面接練習 -->
+        <mxCell id="arrow3" value="" style="endArrow=classic;html=1;strokeColor=#4CAF50;strokeWidth=2;" edge="1" parent="1" source="home" target="practice">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        <!-- 矢印: 面接練習 → フィードバック -->
+        <mxCell id="arrow4" value="" style="endArrow=classic;html=1;strokeColor=#4CAF50;strokeWidth=2;" edge="1" parent="1" source="practice" target="feedback">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow4-label" value="完了" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#4CAF50;" vertex="1" parent="1">
+          <mxGeometry x="545" y="55" width="40" height="20" as="geometry"/>
+        </mxCell>
+        <!-- 矢印: フィードバック → ホーム -->
+        <mxCell id="arrow5" value="" style="endArrow=classic;html=1;strokeColor=#757575;strokeWidth=1;dashed=1;curved=1;" edge="1" parent="1" source="feedback" target="home">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="150"/>
+              <mxPoint x="400" y="150"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- 矢印: ホーム → 学習進捗 -->
+        <mxCell id="arrow6" value="" style="endArrow=classic;startArrow=classic;html=1;strokeColor=#1565C0;strokeWidth=2;" edge="1" parent="1" source="home" target="progress">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        <!-- 矢印: ホーム → 過去の結果 -->
+        <mxCell id="arrow7" value="" style="endArrow=classic;startArrow=classic;html=1;strokeColor=#1565C0;strokeWidth=2;" edge="1" parent="1" source="home" target="history">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        <!-- 矢印: ホーム → 設定 -->
+        <mxCell id="arrow8" value="" style="endArrow=classic;startArrow=classic;html=1;strokeColor=#1565C0;strokeWidth=2;" edge="1" parent="1" source="home" target="settings">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        <!-- 凡例 -->
+        <mxCell id="legend-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#E0E0E0;" vertex="1" parent="1">
+          <mxGeometry x="20" y="320" width="180" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend-title" value="凡例" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="325" width="50" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="30" y="350" width="20" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend1-text" value="外部システム" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="55" y="348" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=#0D47A1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="30" y="370" width="20" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend2-text" value="メイン画面" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="55" y="368" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="30" y="390" width="20" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend3-text" value="面接フロー" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="55" y="388" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend4" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="30" y="410" width="20" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend4-text" value="サブ画面" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="55" y="408" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend5-text" value="--- 直接アクセス時のみ" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#757575;" vertex="1" parent="1">
+          <mxGeometry x="30" y="428" width="130" height="20" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

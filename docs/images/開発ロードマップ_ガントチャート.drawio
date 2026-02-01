@@ -1,0 +1,171 @@
+<mxfile host="app.diagrams.net" modified="2026-02-01T00:00:00.000Z" agent="DrawIO" version="21.0.0">
+  <diagram name="ガントチャート" id="gantt-chart">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- タイトル -->
+        <mxCell id="title" value="開発ロードマップ ガントチャート（14週間）" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="20" width="400" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- ヘッダー行 - フェーズ列 -->
+        <mxCell id="header-phase" value="フェーズ" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="70" width="160" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- ヘッダー行 - 週番号 -->
+        <mxCell id="week1" value="W1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="70" width="60" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="week2" value="W2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="260" y="70" width="60" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="week3" value="W3" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="320" y="70" width="60" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="week4" value="W4" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="380" y="70" width="60" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="week5" value="W5" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="440" y="70" width="60" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="week6" value="W6" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="500" y="70" width="60" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="week7" value="W7" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="560" y="70" width="60" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="week8" value="W8" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="620" y="70" width="60" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="week9" value="W9" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="680" y="70" width="60" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="week10" value="W10" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="740" y="70" width="60" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="week11" value="W11" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="800" y="70" width="60" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="week12" value="W12" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="860" y="70" width="60" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="week13" value="W13" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="920" y="70" width="60" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="week14" value="W14" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="980" y="70" width="60" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Phase 1 行 -->
+        <mxCell id="phase1-label" value="Phase 1&#xa;基盤構築" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="110" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="phase1-bar" value="インフラ・認証・API・画面・結合テスト" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=#1565C0;fontColor=#FFFFFF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="115" width="240" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Phase 2 行 -->
+        <mxCell id="phase2-label" value="Phase 2&#xa;アバター・音声" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="160" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="phase2-bar" value="HeyGen・STT・面接フロー・統合テスト" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#4CAF50;fontColor=#FFFFFF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="440" y="165" width="240" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Phase 3 行 -->
+        <mxCell id="phase3-label" value="Phase 3&#xa;評価・連携" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="210" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="phase3-bar" value="GPT-4o・苦手分析・mintoku・E2E" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF9800;strokeColor=#FF9800;fontColor=#FFFFFF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="680" y="215" width="180" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Phase 4 行 -->
+        <mxCell id="phase4-label" value="Phase 4&#xa;テスト・リリース" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="260" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="phase4-bar" value="セキュリティ・負荷・本番・UAT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E53935;strokeColor=#E53935;fontColor=#FFFFFF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="860" y="265" width="180" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- マイルストーン -->
+        <mxCell id="milestone-label" value="マイルストーン" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="310" width="160" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- マイルストーンダイヤモンド -->
+        <mxCell id="ms1" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#9C27B0;strokeColor=#9C27B0;" vertex="1" parent="1">
+          <mxGeometry x="425" y="318" width="24" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="ms1-label" value="テキスト版完成" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="395" y="342" width="84" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ms2" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#9C27B0;strokeColor=#9C27B0;" vertex="1" parent="1">
+          <mxGeometry x="665" y="318" width="24" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="ms2-label" value="アバター版完成" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="635" y="342" width="84" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ms3" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#9C27B0;strokeColor=#9C27B0;" vertex="1" parent="1">
+          <mxGeometry x="845" y="318" width="24" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="ms3-label" value="全機能完成" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="820" y="342" width="74" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ms4" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#E91E63;strokeColor=#E91E63;" vertex="1" parent="1">
+          <mxGeometry x="1025" y="318" width="24" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="ms4-label" value="本番リリース" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;fontStyle=1;fontColor=#E91E63;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="342" width="74" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- 凡例 -->
+        <mxCell id="legend-title" value="凡例" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="380" width="40" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="legend1-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=#1565C0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="405" width="20" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend1-text" value="Phase 1: 基盤構築（4週間）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="65" y="400" width="160" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="legend2-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#4CAF50;" vertex="1" parent="1">
+          <mxGeometry x="230" y="405" width="20" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend2-text" value="Phase 2: アバター・音声（4週間）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="255" y="400" width="180" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="legend3-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF9800;strokeColor=#FF9800;" vertex="1" parent="1">
+          <mxGeometry x="440" y="405" width="20" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend3-text" value="Phase 3: 評価・連携（3週間）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="465" y="400" width="160" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="legend4-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E53935;strokeColor=#E53935;" vertex="1" parent="1">
+          <mxGeometry x="630" y="405" width="20" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend4-text" value="Phase 4: テスト・リリース（3週間）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="655" y="400" width="180" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="legend5-box" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#9C27B0;strokeColor=#9C27B0;" vertex="1" parent="1">
+          <mxGeometry x="840" y="402" width="18" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend5-text" value="マイルストーン" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="865" y="400" width="100" height="25" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

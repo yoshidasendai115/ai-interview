@@ -1,0 +1,333 @@
+<mxfile host="app.diagrams.net" modified="2026-02-01T00:00:00.000Z" agent="DrawIO" version="21.0.0">
+  <diagram name="CloudWatch Dashboard" id="aws-cloudwatch-dashboard">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="750" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- AWS Console ヘッダー (黒) -->
+        <mxCell id="aws-header" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#232F3E;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="1100" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="aws-logo" value="aws" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#FF9900;" vertex="1" parent="1">
+          <mxGeometry x="20" y="10" width="60" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="service-name" value="CloudWatch" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="80" y="10" width="100" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="breadcrumb" value="&gt; Dashboards &gt; ai-interview-prod" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#AAAAAA;" vertex="1" parent="1">
+          <mxGeometry x="180" y="15" width="250" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="region" value="Tokyo (ap-northeast-1)" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="900" y="15" width="150" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- ダッシュボード名ヘッダー -->
+        <mxCell id="dashboard-header" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#E0E0E0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="0" y="50" width="1100" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="dashboard-title" value="ai-interview-prod-dashboard" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#16191F;" vertex="1" parent="1">
+          <mxGeometry x="20" y="55" width="300" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="time-range" value="Last 3 hours" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#545B64;fontSize=11;fontColor=#16191F;" vertex="1" parent="1">
+          <mxGeometry x="900" y="60" width="100" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="refresh-btn" value="Refresh" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#545B64;fontSize=11;fontColor=#16191F;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="60" width="70" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- メインコンテンツ背景 -->
+        <mxCell id="content-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F2F3F3;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="0" y="95" width="1100" height="655" as="geometry"/>
+        </mxCell>
+
+        <!-- Widget: システム稼働状況 -->
+        <mxCell id="widget1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;strokeWidth=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="115" width="340" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="w1-title" value="システム稼働状況" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#16191F;" vertex="1" parent="1">
+          <mxGeometry x="30" y="120" width="200" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w1-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#E0E0E0;" vertex="1" parent="1">
+          <mxGeometry x="20" y="145" width="340" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="w1-m1-label" value="HealthyHosts" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#545B64;" vertex="1" parent="1">
+          <mxGeometry x="35" y="155" width="120" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w1-m1-val" value="2 / 2" style="text;html=1;strokeColor=none;fillColor=#1D8102;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="260" y="155" width="80" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w1-m2-label" value="リクエスト数/分" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#545B64;" vertex="1" parent="1">
+          <mxGeometry x="35" y="185" width="120" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w1-m2-val" value="1,234" style="text;html=1;strokeColor=none;fillColor=#0073BB;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="260" y="185" width="80" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w1-m3-label" value="可用性 (月間)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#545B64;" vertex="1" parent="1">
+          <mxGeometry x="35" y="215" width="120" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w1-m3-val" value="99.8%" style="text;html=1;strokeColor=none;fillColor=#1D8102;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="260" y="215" width="80" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- Widget: エラー状況 -->
+        <mxCell id="widget2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;strokeWidth=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="115" width="340" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="w2-title" value="エラー状況" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#16191F;" vertex="1" parent="1">
+          <mxGeometry x="390" y="120" width="200" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w2-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#E0E0E0;" vertex="1" parent="1">
+          <mxGeometry x="380" y="145" width="340" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="w2-m1-label" value="5xx エラー/時" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#545B64;" vertex="1" parent="1">
+          <mxGeometry x="395" y="155" width="120" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w2-m1-val" value="3" style="text;html=1;strokeColor=none;fillColor=#1D8102;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="620" y="155" width="80" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w2-m2-label" value="4xx エラー/時" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#545B64;" vertex="1" parent="1">
+          <mxGeometry x="395" y="185" width="120" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w2-m2-val" value="28" style="text;html=1;strokeColor=none;fillColor=#FF9900;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="620" y="185" width="80" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w2-m3-label" value="エラー率" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#545B64;" vertex="1" parent="1">
+          <mxGeometry x="395" y="215" width="120" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w2-m3-val" value="0.2%" style="text;html=1;strokeColor=none;fillColor=#1D8102;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="620" y="215" width="80" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- Widget: レスポンスタイム -->
+        <mxCell id="widget3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;strokeWidth=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="740" y="115" width="340" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="w3-title" value="レスポンスタイム" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#16191F;" vertex="1" parent="1">
+          <mxGeometry x="750" y="120" width="200" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w3-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#E0E0E0;" vertex="1" parent="1">
+          <mxGeometry x="740" y="145" width="340" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="w3-m1-label" value="P50" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#545B64;" vertex="1" parent="1">
+          <mxGeometry x="755" y="155" width="40" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w3-m1-val" value="120ms" style="text;html=1;strokeColor=none;fillColor=#1D8102;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="800" y="155" width="60" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w3-m2-label" value="P95" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#545B64;" vertex="1" parent="1">
+          <mxGeometry x="875" y="155" width="40" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w3-m2-val" value="450ms" style="text;html=1;strokeColor=none;fillColor=#1D8102;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="920" y="155" width="60" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w3-m3-label" value="P99" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#545B64;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="155" width="40" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w3-m3-val" value="890ms" style="text;html=1;strokeColor=none;fillColor=#FF9900;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="155" width="60" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w3-graph" value="[API別レイテンシグラフ]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F7F7;strokeColor=#E0E0E0;strokeWidth=1;fontSize=11;fontColor=#545B64;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="755" y="190" width="310" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Widget: EC2 -->
+        <mxCell id="widget4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;strokeWidth=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="280" width="340" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="w4-icon" value="EC2" style="text;html=1;strokeColor=none;fillColor=#FF9900;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="30" y="285" width="35" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="w4-title" value="EC2 Metrics" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#16191F;" vertex="1" parent="1">
+          <mxGeometry x="70" y="282" width="150" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w4-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#E0E0E0;" vertex="1" parent="1">
+          <mxGeometry x="20" y="310" width="340" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="w4-m1-label" value="CPU使用率" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#545B64;" vertex="1" parent="1">
+          <mxGeometry x="35" y="320" width="100" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w4-m1-val" value="42%" style="text;html=1;strokeColor=none;fillColor=#1D8102;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="260" y="320" width="80" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w4-m2-label" value="メモリ使用率" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#545B64;" vertex="1" parent="1">
+          <mxGeometry x="35" y="350" width="100" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w4-m2-val" value="68%" style="text;html=1;strokeColor=none;fillColor=#FF9900;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="260" y="350" width="80" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w4-m3-label" value="ディスク使用率" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#545B64;" vertex="1" parent="1">
+          <mxGeometry x="35" y="380" width="100" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w4-m3-val" value="35%" style="text;html=1;strokeColor=none;fillColor=#1D8102;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="260" y="380" width="80" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- Widget: RDS -->
+        <mxCell id="widget5" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;strokeWidth=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="280" width="340" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="w5-icon" value="RDS" style="text;html=1;strokeColor=none;fillColor=#3B48CC;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="390" y="285" width="35" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="w5-title" value="RDS Metrics (PostgreSQL)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#16191F;" vertex="1" parent="1">
+          <mxGeometry x="430" y="282" width="200" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w5-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#E0E0E0;" vertex="1" parent="1">
+          <mxGeometry x="380" y="310" width="340" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="w5-m1-label" value="CPU使用率" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#545B64;" vertex="1" parent="1">
+          <mxGeometry x="395" y="320" width="100" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w5-m1-val" value="28%" style="text;html=1;strokeColor=none;fillColor=#1D8102;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="620" y="320" width="80" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w5-m2-label" value="接続数" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#545B64;" vertex="1" parent="1">
+          <mxGeometry x="395" y="350" width="100" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w5-m2-val" value="45/100" style="text;html=1;strokeColor=none;fillColor=#1D8102;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="620" y="350" width="80" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w5-m3-label" value="ストレージ残量" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#545B64;" vertex="1" parent="1">
+          <mxGeometry x="395" y="380" width="100" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w5-m3-val" value="85GB" style="text;html=1;strokeColor=none;fillColor=#1D8102;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="620" y="380" width="80" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- Widget: ElastiCache -->
+        <mxCell id="widget6" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;strokeWidth=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="740" y="280" width="340" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="w6-icon" value="ElastiCache" style="text;html=1;strokeColor=none;fillColor=#C7131F;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=9;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="750" y="285" width="65" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="w6-title" value="ElastiCache (Redis)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#16191F;" vertex="1" parent="1">
+          <mxGeometry x="820" y="282" width="180" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w6-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#E0E0E0;" vertex="1" parent="1">
+          <mxGeometry x="740" y="310" width="340" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="w6-m1-label" value="CPU使用率" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#545B64;" vertex="1" parent="1">
+          <mxGeometry x="755" y="320" width="100" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w6-m1-val" value="15%" style="text;html=1;strokeColor=none;fillColor=#1D8102;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="980" y="320" width="80" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w6-m2-label" value="メモリ使用率" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#545B64;" vertex="1" parent="1">
+          <mxGeometry x="755" y="350" width="100" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w6-m2-val" value="52%" style="text;html=1;strokeColor=none;fillColor=#1D8102;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="980" y="350" width="80" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w6-m3-label" value="キャッシュヒット率" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#545B64;" vertex="1" parent="1">
+          <mxGeometry x="755" y="380" width="120" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w6-m3-val" value="94.2%" style="text;html=1;strokeColor=none;fillColor=#1D8102;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="980" y="380" width="80" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- Widget: ビジネスメトリクス -->
+        <mxCell id="widget7" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;strokeWidth=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="445" width="1060" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="w7-title" value="ビジネスメトリクス (Custom Metrics)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#16191F;" vertex="1" parent="1">
+          <mxGeometry x="30" y="450" width="300" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w7-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#E0E0E0;" vertex="1" parent="1">
+          <mxGeometry x="20" y="475" width="1060" height="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="w7-box1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F7F7;strokeColor=#E0E0E0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="35" y="485" width="240" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="w7-l1" value="面接セッション数/日" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#545B64;" vertex="1" parent="1">
+          <mxGeometry x="45" y="490" width="120" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="w7-v1" value="156" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1;fontColor=#16191F;" vertex="1" parent="1">
+          <mxGeometry x="170" y="495" width="95" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="w7-box2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F7F7;strokeColor=#E0E0E0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="295" y="485" width="240" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="w7-l2" value="完了率" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#545B64;" vertex="1" parent="1">
+          <mxGeometry x="305" y="490" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="w7-v2" value="96.2%" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1;fontColor=#1D8102;" vertex="1" parent="1">
+          <mxGeometry x="430" y="495" width="95" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="w7-box3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F7F7;strokeColor=#E0E0E0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="555" y="485" width="240" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="w7-l3" value="平均評価スコア" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#545B64;" vertex="1" parent="1">
+          <mxGeometry x="565" y="490" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="w7-v3" value="72.8" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1;fontColor=#16191F;" vertex="1" parent="1">
+          <mxGeometry x="690" y="495" width="95" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="w7-box4" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F7F7;strokeColor=#E0E0E0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="815" y="485" width="250" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="w7-l4" value="アクティブユーザー数" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#545B64;" vertex="1" parent="1">
+          <mxGeometry x="825" y="490" width="130" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="w7-v4" value="1,234" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1;fontColor=#16191F;" vertex="1" parent="1">
+          <mxGeometry x="955" y="495" width="100" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Widget: コスト状況 -->
+        <mxCell id="widget8" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;strokeWidth=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="560" width="1060" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="w8-icon" value="Cost" style="text;html=1;strokeColor=none;fillColor=#1D8102;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="30" y="565" width="40" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="w8-title" value="コスト状況 (Cost Explorer)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#16191F;" vertex="1" parent="1">
+          <mxGeometry x="75" y="562" width="250" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="w8-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#E0E0E0;" vertex="1" parent="1">
+          <mxGeometry x="20" y="590" width="1060" height="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="w8-box1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F7F7;strokeColor=#E0E0E0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="35" y="600" width="320" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="w8-l1" value="今月の累計コスト" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#545B64;" vertex="1" parent="1">
+          <mxGeometry x="45" y="605" width="120" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="w8-v1" value="$1,234.56" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1;fontColor=#16191F;" vertex="1" parent="1">
+          <mxGeometry x="220" y="608" width="125" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="w8-box2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F7F7;strokeColor=#E0E0E0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="375" y="600" width="320" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="w8-l2" value="予算消化率" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#545B64;" vertex="1" parent="1">
+          <mxGeometry x="385" y="605" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="w8-v2" value="62%" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1;fontColor=#1D8102;" vertex="1" parent="1">
+          <mxGeometry x="580" y="608" width="105" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="w8-box3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F7F7;strokeColor=#E0E0E0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="715" y="600" width="350" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="w8-l3" value="前月比" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#545B64;" vertex="1" parent="1">
+          <mxGeometry x="725" y="605" width="60" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="w8-v3" value="+8.2%" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1;fontColor=#FF9900;" vertex="1" parent="1">
+          <mxGeometry x="940" y="608" width="115" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- 注釈 -->
+        <mxCell id="note" value="*この図はCloudWatch Dashboardの設計イメージです" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#999999;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="20" y="670" width="300" height="20" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

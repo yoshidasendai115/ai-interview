@@ -1,0 +1,94 @@
+<mxfile host="app.diagrams.net" modified="2026-02-01T00:00:00.000Z" agent="5.0" etag="admin-flow" version="21.0.0" type="device">
+  <diagram name="管理者向け画面遷移図" id="admin-flow">
+    <mxGraphModel dx="1000" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="600" pageHeight="400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- タイトル -->
+        <mxCell id="title" value="管理者向け画面遷移図（mintoku work側で提供）" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#FF9800;" vertex="1" parent="1">
+          <mxGeometry x="100" y="10" width="400" height="30" as="geometry"/>
+        </mxCell>
+        <!-- 注釈 -->
+        <mxCell id="note" value="※ 管理者向け機能はmintoku workの管理画面で提供されます" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#757575;" vertex="1" parent="1">
+          <mxGeometry x="100" y="35" width="400" height="20" as="geometry"/>
+        </mxCell>
+        <!-- mintoku work 管理画面 -->
+        <mxCell id="admin-portal" value="mintoku work&#xa;管理画面" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF9800;strokeColor=#E65100;strokeWidth=2;fontColor=#FFFFFF;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="150" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <!-- ダッシュボード -->
+        <mxCell id="dashboard" value="ダッシュボード&#xa;（KPI表示）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;strokeWidth=2;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="70" width="130" height="50" as="geometry"/>
+        </mxCell>
+        <!-- AI面接結果確認 -->
+        <mxCell id="results" value="AI面接結果確認" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;strokeWidth=2;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="140" width="130" height="50" as="geometry"/>
+        </mxCell>
+        <!-- スクリプト管理 -->
+        <mxCell id="scripts" value="スクリプト管理" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;strokeWidth=2;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="210" width="130" height="50" as="geometry"/>
+        </mxCell>
+        <!-- ユーザー分析 -->
+        <mxCell id="analysis" value="ユーザー分析" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;strokeWidth=2;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="280" width="130" height="50" as="geometry"/>
+        </mxCell>
+        <!-- AI面接練習アプリ（外部） -->
+        <mxCell id="ai-app" value="AI面接練習アプリ&#xa;（本システム）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;strokeWidth=2;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="150" width="130" height="60" as="geometry"/>
+        </mxCell>
+        <!-- 矢印: 管理画面 → ダッシュボード -->
+        <mxCell id="arrow1" value="" style="endArrow=classic;startArrow=classic;html=1;strokeColor=#FF9800;strokeWidth=2;" edge="1" parent="1" source="admin-portal" target="dashboard">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        <!-- 矢印: 管理画面 → AI面接結果確認 -->
+        <mxCell id="arrow2" value="" style="endArrow=classic;startArrow=classic;html=1;strokeColor=#FF9800;strokeWidth=2;" edge="1" parent="1" source="admin-portal" target="results">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        <!-- 矢印: 管理画面 → スクリプト管理 -->
+        <mxCell id="arrow3" value="" style="endArrow=classic;startArrow=classic;html=1;strokeColor=#FF9800;strokeWidth=2;" edge="1" parent="1" source="admin-portal" target="scripts">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        <!-- 矢印: 管理画面 → ユーザー分析 -->
+        <mxCell id="arrow4" value="" style="endArrow=classic;startArrow=classic;html=1;strokeColor=#FF9800;strokeWidth=2;" edge="1" parent="1" source="admin-portal" target="analysis">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        <!-- 矢印: スクリプト管理 → AI面接練習アプリ (API) -->
+        <mxCell id="arrow5" value="" style="endArrow=classic;html=1;strokeColor=#1565C0;strokeWidth=2;dashed=1;" edge="1" parent="1" source="scripts" target="ai-app">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow5-label" value="API連携" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#1565C0;" vertex="1" parent="1">
+          <mxGeometry x="380" y="200" width="60" height="20" as="geometry"/>
+        </mxCell>
+        <!-- 矢印: AI面接練習アプリ → AI面接結果確認 (結果送信) -->
+        <mxCell id="arrow6" value="" style="endArrow=classic;html=1;strokeColor=#4CAF50;strokeWidth=2;dashed=1;" edge="1" parent="1" source="ai-app" target="results">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow6-label" value="結果送信" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#4CAF50;" vertex="1" parent="1">
+          <mxGeometry x="380" y="130" width="60" height="20" as="geometry"/>
+        </mxCell>
+        <!-- 凡例 -->
+        <mxCell id="legend-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#E0E0E0;" vertex="1" parent="1">
+          <mxGeometry x="430" y="260" width="160" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend-title" value="凡例" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="265" width="50" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF9800;strokeColor=#E65100;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="440" y="290" width="20" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend1-text" value="mintoku work画面" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="465" y="288" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="440" y="310" width="20" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend2-text" value="本システム" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="465" y="308" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend3-text" value="--- API連携" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#757575;" vertex="1" parent="1">
+          <mxGeometry x="440" y="330" width="100" height="20" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

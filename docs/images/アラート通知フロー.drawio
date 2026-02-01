@@ -1,0 +1,73 @@
+<mxfile host="65bd71144e">
+    <diagram id="alert-notification-flow" name="アラート通知フロー">
+        <mxGraphModel dx="446" dy="687" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" value="アラート通知フロー" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="250" y="30" width="300" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="cloudwatch" value="CloudWatch Alarm" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="320" y="100" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="arrow1" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#666666" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="400" y="160" as="sourcePoint"/>
+                        <mxPoint x="400" y="200" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="sns" value="通知配信" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="320" y="200" width="160" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="arrow2" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#666666" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="400" y="250" as="sourcePoint"/>
+                        <mxPoint x="400" y="290" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="decision" value="重要度?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="340" y="290" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="arrow-warning" value="Warning" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#666666;exitX=0;exitY=0.5;exitDx=0;exitDy=0;rounded=0;curved=0;" parent="1" source="decision" edge="1">
+                    <mxGeometry x="-0.4286" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="340" y="330" as="sourcePoint"/>
+                        <mxPoint x="220" y="420" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="220" y="330"/>
+                        </Array>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="arrow-critical" value="Critical" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#666666;exitX=1;exitY=0.5;exitDx=0;exitDy=0;jumpSize=0;rounded=0;curved=0;" parent="1" source="decision" edge="1">
+                    <mxGeometry x="-0.4286" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="460" y="330" as="sourcePoint"/>
+                        <mxPoint x="580" y="420" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="580" y="330"/>
+                        </Array>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="arrow-critical-slack" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#666666;entryX=0.5;entryY=0;entryDx=0;entryDy=0;jumpSize=0;rounded=0;curved=0;" parent="1" edge="1" target="slack-critical">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="580" y="330" as="sourcePoint"/>
+                        <mxPoint x="220" y="480" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="580" y="380"/>
+                            <mxPoint x="400" y="380"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="slack-warning" value="Slack&#xa;#alerts-warning" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="140" y="420" width="160" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="slack-critical" value="Slack&#xa;#alerts-critical" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="320" y="420" width="160" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="email-ops" value="Email&#xa;運用チームML" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="500" y="420" width="160" height="50" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
