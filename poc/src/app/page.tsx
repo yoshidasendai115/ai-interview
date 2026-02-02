@@ -1,57 +1,57 @@
 'use client';
 
-import { useState } from 'react';
-import HeyGenAvatar from '@/components/HeyGenAvatar';
-import DIdAvatar from '@/components/DIdAvatar';
-import EvaluationForm from '@/components/EvaluationForm';
+import { useCallback } from 'react';
 import InterviewSession from '@/components/InterviewSession';
 import { MetricsProvider } from '@/context/MetricsContext';
-
-type TabType = 'interview' | 'heygen' | 'd-id' | 'comparison';
+import { useAdaptiveLevel } from '@/hooks/useAdaptiveLevel';
+import type { JLPTLevel, EvaluationResult } from '@/types/interview';
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<TabType>('interview');
+  const adaptiveLevel = useAdaptiveLevel('N3');
+
+  /**
+   * セッション完了時の処理
+   * 評価スコアに基づいてレベルを自動調整
+   */
+  const handleComplete = useCallback(
+    (evaluation: EvaluationResult) => {
+      // セッション結果を記録（レベル調整は内部で自動計算）
+      adaptiveLevel.recordSession(evaluation.totalScore);
+    },
+    [adaptiveLevel]
+  );
+
+  /**
+   * 次のレベルで挑戦する
+   */
+  const handleNextLevel = useCallback(
+    (level: JLPTLevel) => {
+      adaptiveLevel.setLevel(level);
+    },
+    [adaptiveLevel]
+  );
+
+  /**
+   * チャレンジ枠を開始する
+   */
+  const handleStartChallenge = useCallback(() => {
+    adaptiveLevel.startChallengeMode();
+  }, [adaptiveLevel]);
 
   return (
     <MetricsProvider>
-      <div className="container">
-        <h1>AI面接練習プラットフォーム</h1>
-        <p style={{ marginBottom: 24, color: '#666' }}>
-          HeyGenアバターとGoogle STTを活用した面接練習システム
-        </p>
-
-        <div className="tabs">
-          <button
-            className={`tab ${activeTab === 'interview' ? 'active' : ''}`}
-            onClick={() => setActiveTab('interview')}
-          >
-            面接練習
-          </button>
-          <button
-            className={`tab ${activeTab === 'heygen' ? 'active' : ''}`}
-            onClick={() => setActiveTab('heygen')}
-          >
-            HeyGen PoC
-          </button>
-          <button
-            className={`tab ${activeTab === 'd-id' ? 'active' : ''}`}
-            onClick={() => setActiveTab('d-id')}
-          >
-            D-ID PoC
-          </button>
-          <button
-            className={`tab ${activeTab === 'comparison' ? 'active' : ''}`}
-            onClick={() => setActiveTab('comparison')}
-          >
-            評価比較
-          </button>
-        </div>
-
-        {activeTab === 'interview' && <InterviewSession jlptLevel="N3" />}
-        {activeTab === 'heygen' && <HeyGenAvatar />}
-        {activeTab === 'd-id' && <DIdAvatar />}
-        {activeTab === 'comparison' && <EvaluationForm />}
-      </div>
+      <InterviewSession
+        jlptLevel={adaptiveLevel.currentLevel}
+        onComplete={handleComplete}
+        onNextLevel={handleNextLevel}
+        canChallenge={adaptiveLevel.canChallenge}
+        challengeLevel={adaptiveLevel.challengeLevel}
+        isChallengeMode={adaptiveLevel.isChallengeMode}
+        onStartChallenge={handleStartChallenge}
+        levelStats={adaptiveLevel.currentLevelStats}
+        remainingChallenges={adaptiveLevel.remainingChallenges}
+        dailyChallengeLimit={adaptiveLevel.dailyChallengeLimit}
+      />
     </MetricsProvider>
   );
 }

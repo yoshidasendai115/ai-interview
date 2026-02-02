@@ -54,8 +54,14 @@ declare global {
 interface AudioRecorderProps {
   /** 録音可能かどうか */
   isEnabled?: boolean;
+  /** 自動的に録音を開始するかどうか */
+  autoStart?: boolean;
   /** 自動停止までの無音秒数 */
   autoStopSeconds?: number;
+  /** 最低録音時間（秒）- この時間は無音検出を無効化 */
+  minRecordingSeconds?: number;
+  /** 外部から渡されたMediaStream（マイク許可を一度だけにするため） */
+  mediaStream?: MediaStream | null;
   /** 録音完了時のコールバック */
   onRecordingComplete?: (audioBlob: Blob, transcript: string) => void;
   /** スキップ時のコールバック */
@@ -68,7 +74,9 @@ interface AudioRecorderProps {
 
 export default function AudioRecorder({
   isEnabled = true,
+  autoStart = false,
   autoStopSeconds = 5,
+  mediaStream: externalMediaStream,
   onRecordingComplete,
   onSkip,
   onTranscriptUpdate,
@@ -79,17 +87,23 @@ export default function AudioRecorder({
   const [interimTranscript, setInterimTranscript] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [audioLevel, setAudioLevel] = useState(0);
+  const [remainingTime, setRemainingTime] = useState(autoStopSeconds); // 残り時間
+  const [skipCountdown, setSkipCountdown] = useState(5); // スキップボタン有効化までのカウントダウン
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
   const streamRef = useRef<MediaStream | null>(null);
   const websocketRef = useRef<WebSocket | null>(null);
+  const hasAutoStartedRef = useRef(false);
+  const isSkippingRef = useRef(false); // スキップ中フラグ
+  const countdownTimerRef = useRef<NodeJS.Timeout | null>(null); // カウントダウンタイマー
 
   // 無音検出フック
   const silenceDetector = useSilenceDetector({
     threshold: 0.01,
     silenceDuration: autoStopSeconds,
     onSilenceDetected: () => {
+      console.log('[AudioRecorder] Silence detected after', autoStopSeconds, 'seconds, stopping recording');
       if (isRecording) {
         stopRecording();
       }
@@ -98,10 +112,13 @@ export default function AudioRecorder({
 
   // クリーンアップ
   const cleanup = useCallback(() => {
+    console.log('[AudioRecorder] cleanup() called, MediaRecorder state:', mediaRecorderRef.current?.state);
     if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
+      console.log('[AudioRecorder] Stopping MediaRecorder in cleanup');
       mediaRecorderRef.current.stop();
     }
-    if (streamRef.current) {
+    // 外部から渡されたストリームは停止しない（再利用するため）
+    if (streamRef.current && !externalMediaStream) {
       streamRef.current.getTracks().forEach((track) => track.stop());
       streamRef.current = null;
     }
@@ -111,24 +128,48 @@ export default function AudioRecorder({
     }
     silenceDetector.stop();
     audioChunksRef.current = [];
-  }, [silenceDetector]);
+  }, [silenceDetector, externalMediaStream]);
 
   // 録音開始
   const startRecording = useCallback(async () => {
+    console.log('[AudioRecorder] startRecording called');
     try {
       setError(null);
       setTranscript('');
       setInterimTranscript('');
       audioChunksRef.current = [];
 
-      // マイク権限取得
-      const stream = await navigator.mediaDevices.getUserMedia({
-        audio: {
-          echoCancellation: true,
-          noiseSuppression: true,
-          sampleRate: 48000,
-        },
-      });
+      // 外部からのMediaStreamがあればそれを使用、なければ新規取得
+      let stream: MediaStream;
+      if (externalMediaStream) {
+        // 外部ストリームのトラックが有効か確認
+        const audioTracks = externalMediaStream.getAudioTracks();
+        const hasActiveTracks = audioTracks.some(track => track.readyState === 'live');
+
+        if (hasActiveTracks) {
+          stream = externalMediaStream;
+          console.log('[AudioRecorder] Using external MediaStream with active tracks');
+        } else {
+          // トラックが無効な場合は新規取得
+          console.log('[AudioRecorder] External stream tracks inactive, getting new stream');
+          stream = await navigator.mediaDevices.getUserMedia({
+            audio: {
+              echoCancellation: true,
+              noiseSuppression: true,
+              sampleRate: 48000,
+            },
+          });
+        }
+      } else {
+        // マイク権限取得（外部から渡されていない場合のみ）
+        stream = await navigator.mediaDevices.getUserMedia({
+          audio: {
+            echoCancellation: true,
+            noiseSuppression: true,
+            sampleRate: 48000,
+          },
+        });
+      }
       streamRef.current = stream;
 
       // MediaRecorder設定
@@ -153,8 +194,16 @@ export default function AudioRecorder({
       };
 
       mediaRecorder.onstop = () => {
+        console.log('[AudioRecorder] mediaRecorder.onstop fired, isSkipping:', isSkippingRef.current);
+        // スキップ中の場合はonRecordingCompleteを呼ばない
+        if (isSkippingRef.current) {
+          console.log('[AudioRecorder] Skipping onRecordingComplete because skip was pressed');
+          isSkippingRef.current = false;
+          return;
+        }
         const audioBlob = new Blob(audioChunksRef.current, { type: mimeType });
         const finalTranscript = transcript + interimTranscript;
+        console.log('[AudioRecorder] Final transcript:', finalTranscript.slice(0, 50) || '(empty)');
         setTranscript(finalTranscript);
         setInterimTranscript('');
         onRecordingComplete?.(audioBlob, finalTranscript);
@@ -204,14 +253,16 @@ export default function AudioRecorder({
       silenceDetector.start(stream);
 
       // 録音開始
+      console.log('[AudioRecorder] Starting MediaRecorder...');
       mediaRecorder.start(250); // 250msごとにデータを取得
+      console.log('[AudioRecorder] MediaRecorder started, state:', mediaRecorder.state);
       setIsRecording(true);
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : '録音を開始できませんでした';
       setError(errorMessage);
       console.error('Failed to start recording:', err);
     }
-  }, [websocketUrl, silenceDetector, transcript, interimTranscript, onRecordingComplete, onTranscriptUpdate]);
+  }, [websocketUrl, silenceDetector, transcript, interimTranscript, onRecordingComplete, onTranscriptUpdate, externalMediaStream]);
 
   // Web Speech API（フォールバック用）
   const speechRecognitionRef = useRef<WebSpeechRecognition | null>(null);
@@ -273,7 +324,8 @@ export default function AudioRecorder({
     silenceDetector.stop();
     setIsRecording(false);
 
-    if (streamRef.current) {
+    // 外部から渡されたストリームは停止しない（再利用するため）
+    if (streamRef.current && !externalMediaStream) {
       streamRef.current.getTracks().forEach((track) => track.stop());
       streamRef.current = null;
     }
@@ -282,15 +334,82 @@ export default function AudioRecorder({
       websocketRef.current.close();
       websocketRef.current = null;
     }
-  }, [silenceDetector]);
+  }, [silenceDetector, externalMediaStream]);
 
   // スキップ
   const handleSkip = useCallback(() => {
+    isSkippingRef.current = true; // スキップフラグを立てる
     stopRecording();
     setTranscript('');
     setInterimTranscript('');
     onSkip?.();
   }, [stopRecording, onSkip]);
+
+  // autoStart: 自動で録音開始
+  useEffect(() => {
+    if (autoStart && isEnabled && !isRecording && !hasAutoStartedRef.current) {
+      hasAutoStartedRef.current = true;
+      // 少し遅延を入れてUIが安定してから開始
+      const timer = setTimeout(() => {
+        startRecording();
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [autoStart, isEnabled, isRecording, startRecording]);
+
+  // autoStartフラグのリセット（コンポーネントがリマウントされた時用）
+  useEffect(() => {
+    return () => {
+      hasAutoStartedRef.current = false;
+    };
+  }, []);
+
+  // タイムアウト時のスキップ処理
+  const handleTimeoutSkip = useCallback(() => {
+    console.log('[AudioRecorder] Time expired, auto-skipping');
+    isSkippingRef.current = true;
+    stopRecording();
+    setTranscript('');
+    setInterimTranscript('');
+    onSkip?.();
+  }, [stopRecording, onSkip]);
+
+  // カウントダウンタイマー（録音中のみ動作）
+  useEffect(() => {
+    if (isRecording) {
+      // 録音開始時にタイマーをリセット
+      setRemainingTime(autoStopSeconds);
+      setSkipCountdown(5); // スキップボタンカウントダウンをリセット
+
+      let timeLeft = autoStopSeconds;
+
+      countdownTimerRef.current = setInterval(() => {
+        // スキップボタンカウントダウン
+        setSkipCountdown((prev) => Math.max(0, prev - 1));
+
+        // 残り時間カウントダウン
+        timeLeft -= 1;
+        setRemainingTime(timeLeft);
+
+        if (timeLeft <= 0) {
+          // タイマー停止
+          if (countdownTimerRef.current) {
+            clearInterval(countdownTimerRef.current);
+            countdownTimerRef.current = null;
+          }
+          // 時間切れ：自動スキップ
+          handleTimeoutSkip();
+        }
+      }, 1000);
+
+      return () => {
+        if (countdownTimerRef.current) {
+          clearInterval(countdownTimerRef.current);
+          countdownTimerRef.current = null;
+        }
+      };
+    }
+  }, [isRecording, autoStopSeconds, handleTimeoutSkip]);
 
   // 音量レベルの更新
   useEffect(() => {
@@ -299,7 +418,9 @@ export default function AudioRecorder({
 
   // コンポーネントアンマウント時のクリーンアップ
   useEffect(() => {
+    console.log('[AudioRecorder] Cleanup effect setup');
     return () => {
+      console.log('[AudioRecorder] Cleanup effect running (unmount or deps changed)');
       cleanup();
     };
   }, [cleanup]);
@@ -322,6 +443,21 @@ export default function AudioRecorder({
             className="audio-meter-fill"
             style={{ width: `${Math.min(100, audioLevel * 500)}%` }}
           />
+        </div>
+      )}
+
+      {/* カウントダウンタイマー */}
+      {isRecording && (
+        <div className="countdown-timer">
+          <div className="countdown-bar">
+            <div
+              className="countdown-fill"
+              style={{ width: `${(remainingTime / autoStopSeconds) * 100}%` }}
+            />
+          </div>
+          <span className="countdown-text">
+            残り {remainingTime} 秒
+          </span>
         </div>
       )}
 
@@ -349,9 +485,9 @@ export default function AudioRecorder({
         <button
           className="btn-skip"
           onClick={handleSkip}
-          disabled={!isEnabled}
+          disabled={!isEnabled || !isRecording || skipCountdown > 0}
         >
-          スキップ
+          {isRecording && skipCountdown > 0 ? `スキップ (${skipCountdown})` : 'スキップ'}
         </button>
       </div>
 
@@ -373,6 +509,33 @@ export default function AudioRecorder({
           height: 100%;
           background: linear-gradient(90deg, #22c55e, #84cc16);
           transition: width 0.1s ease-out;
+        }
+
+        .countdown-timer {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .countdown-bar {
+          flex: 1;
+          height: 8px;
+          background: #1a1a2e;
+          border-radius: 4px;
+          overflow: hidden;
+        }
+
+        .countdown-fill {
+          height: 100%;
+          background: linear-gradient(90deg, #3b82f6, #60a5fa);
+          transition: width 1s linear;
+        }
+
+        .countdown-text {
+          font-size: 14px;
+          color: #9ca3af;
+          min-width: 80px;
+          text-align: right;
         }
 
         .error-message {

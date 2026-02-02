@@ -1,0 +1,160 @@
+<mxfile host="app.diagrams.net" modified="2026-02-02T00:00:00.000Z" agent="5.0" etag="cicd-pipeline" version="21.0.0" type="device">
+  <diagram name="CI/CDパイプライン" id="cicd-pipeline">
+    <mxGraphModel dx="900" dy="500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="700" pageHeight="350" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- タイトル -->
+        <mxCell id="title" value="CI/CDパイプライン概要" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#424242;" vertex="1" parent="1">
+          <mxGeometry x="250" y="10" width="200" height="30" as="geometry"/>
+        </mxCell>
+        <!-- メインフロー: Commit -->
+        <mxCell id="commit-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="110" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="commit-title" value="Commit" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontStyle=1;fontColor=#1565C0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="62" width="110" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="commit-sub" value="(Push)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#616161;" vertex="1" parent="1">
+          <mxGeometry x="40" y="82" width="110" height="20" as="geometry"/>
+        </mxCell>
+        <!-- 矢印1 -->
+        <mxCell id="arrow1" value="" style="endArrow=classic;html=1;strokeColor=#1565C0;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="150" y="85" as="sourcePoint"/>
+            <mxPoint x="190" y="85" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <!-- メインフロー: Lint/Test -->
+        <mxCell id="lint-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#4CAF50;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="190" y="60" width="110" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="lint-title" value="Lint / Test" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontStyle=1;fontColor=#4CAF50;" vertex="1" parent="1">
+          <mxGeometry x="190" y="62" width="110" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="lint-sub" value="(CI)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#616161;" vertex="1" parent="1">
+          <mxGeometry x="190" y="82" width="110" height="20" as="geometry"/>
+        </mxCell>
+        <!-- 矢印2 -->
+        <mxCell id="arrow2" value="" style="endArrow=classic;html=1;strokeColor=#4CAF50;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="300" y="85" as="sourcePoint"/>
+            <mxPoint x="340" y="85" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <!-- メインフロー: Build -->
+        <mxCell id="build-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="340" y="60" width="110" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="build-title" value="Build" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontStyle=1;fontColor=#FF9800;" vertex="1" parent="1">
+          <mxGeometry x="340" y="62" width="110" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="build-sub" value="(CI)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#616161;" vertex="1" parent="1">
+          <mxGeometry x="340" y="82" width="110" height="20" as="geometry"/>
+        </mxCell>
+        <!-- 矢印3 -->
+        <mxCell id="arrow3" value="" style="endArrow=classic;html=1;strokeColor=#FF9800;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="450" y="85" as="sourcePoint"/>
+            <mxPoint x="490" y="85" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <!-- メインフロー: Deploy -->
+        <mxCell id="deploy-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#9C27B0;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="490" y="60" width="110" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="deploy-title" value="Deploy" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontStyle=1;fontColor=#9C27B0;" vertex="1" parent="1">
+          <mxGeometry x="490" y="62" width="110" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="deploy-sub" value="(CD)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#616161;" vertex="1" parent="1">
+          <mxGeometry x="490" y="82" width="110" height="20" as="geometry"/>
+        </mxCell>
+        <!-- 詳細矢印: Lint/Test -->
+        <mxCell id="lint-arrow" value="" style="endArrow=classic;html=1;strokeColor=#4CAF50;strokeWidth=1;dashed=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="245" y="110" as="sourcePoint"/>
+            <mxPoint x="245" y="140" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <!-- 詳細: Lint/Test -->
+        <mxCell id="lint-detail-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#81C784;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="140" width="110" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="lint-detail1" value="ESLint" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="190" y="145" width="110" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="lint-detail2" value="Prettier" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="190" y="163" width="110" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="lint-detail3" value="pytest" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="190" y="181" width="110" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="lint-detail4" value="Vitest" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="190" y="199" width="110" height="18" as="geometry"/>
+        </mxCell>
+        <!-- 詳細矢印: Build -->
+        <mxCell id="build-arrow" value="" style="endArrow=classic;html=1;strokeColor=#FF9800;strokeWidth=1;dashed=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="395" y="110" as="sourcePoint"/>
+            <mxPoint x="395" y="140" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <!-- 詳細: Build -->
+        <mxCell id="build-detail-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FFB74D;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="140" width="110" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="build-detail1" value="Docker" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="340" y="147" width="110" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="build-detail2" value="Image" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="340" y="163" width="110" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="build-detail3" value="Build" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="340" y="179" width="110" height="18" as="geometry"/>
+        </mxCell>
+        <!-- 詳細矢印: Deploy -->
+        <mxCell id="deploy-arrow" value="" style="endArrow=classic;html=1;strokeColor=#9C27B0;strokeWidth=1;dashed=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="545" y="110" as="sourcePoint"/>
+            <mxPoint x="545" y="140" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <!-- 詳細: Deploy -->
+        <mxCell id="deploy-detail-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#CE93D8;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="490" y="140" width="110" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="deploy-detail1" value="Dev" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="490" y="147" width="110" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="deploy-detail2" value="Staging" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="490" y="163" width="110" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="deploy-detail3" value="Prod" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="490" y="179" width="110" height="18" as="geometry"/>
+        </mxCell>
+        <!-- 凡例 -->
+        <mxCell id="legend-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#E0E0E0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="140" width="120" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend-title" value="凡例" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="143" width="50" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#4CAF50;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="162" width="15" height="12" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend1-text" value="CI（継続的統合）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="70" y="160" width="85" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#9C27B0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="180" width="15" height="12" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend2-text" value="CD（継続的デプロイ）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="70" y="178" width="85" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend3-text" value="--- 詳細内訳" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#757575;" vertex="1" parent="1">
+          <mxGeometry x="50" y="198" width="85" height="15" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -39,6 +39,31 @@ export const JLPT_WEIGHTS: Record<JLPTLevel, JLPTWeights> = {
 };
 
 // ============================================
+// JLPTレベル別設定
+// ============================================
+
+export interface JLPTSettings {
+  speechRate: number;
+  useSimplified: boolean;
+  followUpDepth: number;
+}
+
+/**
+ * JLPTレベル別の話速・フォローアップ深度設定
+ * 設計書: 13_面接シナリオ設計.md 13.3.3節
+ * - voice.rate: HeyGenアバターの話速制御（0.5〜1.5）
+ * - useSimplified: 簡易版質問文の使用
+ * - followUpDepth: フォローアップ質問の最大回数
+ */
+export const JLPT_SETTINGS: Record<JLPTLevel, JLPTSettings> = {
+  N1: { speechRate: 1.0, useSimplified: false, followUpDepth: 3 },
+  N2: { speechRate: 1.0, useSimplified: false, followUpDepth: 2 },
+  N3: { speechRate: 0.75, useSimplified: false, followUpDepth: 2 },
+  N4: { speechRate: 0.5, useSimplified: true, followUpDepth: 1 },
+  N5: { speechRate: 0.5, useSimplified: true, followUpDepth: 1 },
+};
+
+// ============================================
 // 評価カテゴリ
 // ============================================
 
@@ -125,9 +150,32 @@ export const WEAK_POINT_RESOLUTION_SCORE = 80;
 export interface Question {
   id: string;
   order: number;
+  /** 画面表示用テキスト（漢字） */
   text: string;
+  /** HeyGen発話用テキスト（読み仮名）- 省略時はtextを使用 */
+  spokenText?: string;
   expectedDurationSeconds: number;
   evaluationCriteria: string[];
+}
+
+/**
+ * 質問バンクの質問構造
+ * 設計書: 13_面接シナリオ設計.md 13.4.1節
+ */
+export interface QuestionBankItem {
+  id: string;
+  category_id: string;
+  question_ja: string;
+  question_simplified: string;
+  question_reading: string;
+  difficulty: 1 | 2 | 3;
+  industries: string[];
+  evaluation_points: string[];
+  follow_ups: string[];
+  good_answer_indicators: string[];
+  red_flags: string[];
+  is_ice_breaker?: boolean;
+  source?: string;
 }
 
 export interface Answer {
@@ -271,4 +319,129 @@ export interface LogEntry {
   time: string;
   type: 'info' | 'error' | 'success' | 'warning';
   message: string;
+}
+
+// ============================================
+// 企業向け統合評価レポート
+// ============================================
+
+/**
+ * 推定実力レベルの方向
+ */
+export type EstimationDirection = 'higher' | 'same' | 'lower';
+
+/**
+ * 業務適性の判定結果
+ */
+export type JobSuitabilityStatus = 'capable' | 'needs_practice' | 'not_verified';
+
+/**
+ * レベル別パフォーマンスのグレード
+ */
+export type PerformanceGrade = 'excellent' | 'good' | 'pass' | 'fail' | 'not_tested';
+
+/**
+ * レベル別パフォーマンス情報
+ */
+export interface LevelPerformance {
+  level: JLPTLevel;
+  averageScore: number | null;
+  sessionCount: number;
+  grade: PerformanceGrade;
+  /** チャレンジセッションでの受験か */
+  isChallengeSession: boolean;
+}
+
+/**
+ * 業務適性判定
+ */
+export interface JobSuitability {
+  /** 基本接客（N4相当） */
+  basicService: JobSuitabilityStatus;
+  /** 一般業務（N3相当） */
+  generalWork: JobSuitabilityStatus;
+  /** ビジネス敬語（N2相当） */
+  businessHonorifics: JobSuitabilityStatus;
+  /** 高度業務（N1相当） */
+  advancedWork: JobSuitabilityStatus;
+}
+
+/**
+ * 企業向け統合評価レポート
+ * 設計書: 07_評価ロジック.md 7.11節
+ */
+export interface EnterpriseEvaluationReport {
+  /** レポート生成日時 */
+  generatedAt: string;
+
+  // 1. 推定実力レベル
+  /** ユーザーが申告したレベル */
+  declaredLevel: JLPTLevel;
+  /** 推定実力レベル */
+  estimatedLevel: JLPTLevel | 'below_N5';
+  /** 推定方向（申告レベルより上/同じ/下） */
+  estimationDirection: EstimationDirection;
+  /** 判定根拠 */
+  estimationReason: string;
+
+  // 2. レベル別パフォーマンス
+  /** 各レベルでのパフォーマンス履歴 */
+  levelPerformances: LevelPerformance[];
+
+  // 3. 業務適性判定
+  /** 業務レベル別の適性 */
+  jobSuitability: JobSuitability;
+
+  // 4. 詳細スコア
+  /** カテゴリ別スコア（最新セッション） */
+  detailedScores: CategoryScores;
+  /** 苦手項目 */
+  weakPoints: WeakPoint[];
+
+  // 5. セッション履歴サマリー
+  /** 総セッション数 */
+  totalSessions: number;
+  /** 総チャレンジセッション数 */
+  totalChallengeSessions: number;
+}
+
+/**
+ * JSON形式で格納する面談結果データ
+ * 全てのセッション結果を格納する構造
+ */
+export interface InterviewResultData {
+  /** ユーザーID */
+  userId: string;
+  /** 最終更新日時 */
+  lastUpdatedAt: string;
+  /** 申告レベル */
+  declaredLevel: JLPTLevel;
+  /** 全セッション結果 */
+  sessions: InterviewSessionResult[];
+  /** 企業向け統合評価レポート */
+  enterpriseReport: EnterpriseEvaluationReport | null;
+}
+
+/**
+ * 個別セッションの結果データ
+ */
+export interface InterviewSessionResult {
+  /** セッションID */
+  sessionId: string;
+  /** セッション実施日時 */
+  conductedAt: string;
+  /** 面接レベル */
+  level: JLPTLevel;
+  /** チャレンジセッションかどうか */
+  isChallengeSession: boolean;
+  /** 総合スコア */
+  totalScore: number;
+  /** カテゴリ別スコア */
+  categoryScores: CategoryScores;
+  /** カテゴリ別フィードバック */
+  categoryFeedback: CategoryFeedback;
+  /** 苦手項目 */
+  weakPoints: WeakPointDetection[];
+  /** 総評 */
+  overallFeedback: string;
 }

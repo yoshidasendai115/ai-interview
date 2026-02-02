@@ -26,13 +26,16 @@
                     <mxGeometry x="330" y="82" width="120" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="total-card" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=none;arcSize=8;" parent="1" vertex="1">
-                    <mxGeometry x="250" y="130" width="280" height="90" as="geometry"/>
+                    <mxGeometry x="250" y="130" width="280" height="95" as="geometry"/>
                 </mxCell>
                 <mxCell id="total-score" value="総合スコア: 78点" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=24;fontStyle=1;" parent="1" vertex="1">
-                    <mxGeometry x="250" y="140" width="280" height="35" as="geometry"/>
+                    <mxGeometry x="250" y="138" width="280" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="grade" value="グレード: B（優秀）→ 採用を推奨" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=13;" parent="1" vertex="1">
-                    <mxGeometry x="250" y="175" width="280" height="30" as="geometry"/>
+                <mxCell id="grade" value="グレード: B（優秀）" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="168" width="280" height="22" as="geometry"/>
+                </mxCell>
+                <mxCell id="grade-message" value="面接準備が十分です" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#E3F2FD;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="190" width="280" height="22" as="geometry"/>
                 </mxCell>
                 <mxCell id="jp-card" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;arcSize=5;" parent="1" vertex="1">
                     <mxGeometry x="250" y="230" width="280" height="140" as="geometry"/>

@@ -87,10 +87,10 @@
         </mxCell>
         <!-- 統合スコア計算式 -->
         <mxCell id="formula-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#4CAF50;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="120" y="355" width="360" height="35" as="geometry"/>
+          <mxGeometry x="80" y="355" width="440" height="35" as="geometry"/>
         </mxCell>
-        <mxCell id="formula" value="統合スコア = (日本語能力スコア × 0.4) + (採用適性スコア × 20 × 0.6)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="120" y="355" width="360" height="35" as="geometry"/>
+        <mxCell id="formula" value="統合スコア = (日本語能力スコア × 0.4) + ((採用適性スコア - 1) × 25 × 0.6)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="355" width="440" height="35" as="geometry"/>
         </mxCell>
       </root>
     </mxGraphModel>

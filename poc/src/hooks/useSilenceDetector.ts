@@ -144,11 +144,21 @@ export function useSilenceDetector(
     };
   }, [cleanup]);
 
-  return {
+  // 安定したオブジェクト参照を返す（毎レンダリングで新しいオブジェクトを作成しない）
+  const returnValue = useRef<UseSilenceDetectorReturn>({
     start,
     stop,
     silenceSeconds,
     isDetecting,
     audioLevel,
-  };
+  });
+
+  // 値を更新（参照は維持）
+  returnValue.current.start = start;
+  returnValue.current.stop = stop;
+  returnValue.current.silenceSeconds = silenceSeconds;
+  returnValue.current.isDetecting = isDetecting;
+  returnValue.current.audioLevel = audioLevel;
+
+  return returnValue.current;
 }

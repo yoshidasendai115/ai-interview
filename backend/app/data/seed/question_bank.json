@@ -8,10 +8,17 @@
       "question_reading": "ほんじつはおこしいただきありがとうございます。きんちょうしていませんか？",
       "difficulty": 1,
       "industries": ["all"],
-      "evaluation_points": [],
-      "follow_ups": [],
-      "good_answer_indicators": [],
-      "red_flags": [],
+      "evaluation_points": ["communication"],
+      "follow_ups": ["深呼吸してリラックスしてくださいね"],
+      "good_answer_indicators": [
+        "リラックスして話せる",
+        "適度な緊張感がある",
+        "笑顔で応対できる"
+      ],
+      "red_flags": [
+        "極度に緊張して話せない",
+        "無表情で反応がない"
+      ],
       "is_ice_breaker": true,
       "source": "standard"
     },
@@ -53,12 +60,19 @@
       "question_reading": "さいきん、やすみのひはなにをしていますか？",
       "difficulty": 1,
       "industries": ["all"],
-      "evaluation_points": [],
-      "follow_ups": ["それは楽しそうですね。いつから始めましたか？"],
-      "good_answer_indicators": ["リラックスできる趣味がある", "社交的な活動をしている"],
-      "red_flags": [],
+      "evaluation_points": ["adaptability"],
+      "follow_ups": ["それは楽しそうですね。いつから始めましたか？", "日本人の友達はいますか？"],
+      "good_answer_indicators": [
+        "リラックスできる趣味がある",
+        "社交的な活動をしている",
+        "日本での生活を楽しんでいる"
+      ],
+      "red_flags": [
+        "何もしていない・引きこもりがち",
+        "母国のコミュニティとしか交流がない"
+      ],
       "is_ice_breaker": true,
-      "source": "standard"
+      "source": "musubee.co.jp"
     },
     {
       "id": "Q05",
@@ -68,12 +82,15 @@
       "question_reading": "にほんですきなたべものはなんですか？",
       "difficulty": 1,
       "industries": ["all"],
-      "evaluation_points": [],
-      "follow_ups": ["それはどこで食べましたか？"],
-      "good_answer_indicators": [],
+      "evaluation_points": ["adaptability"],
+      "follow_ups": ["それはどこで食べましたか？", "自分で作りますか？"],
+      "good_answer_indicators": [
+        "日本の食文化に興味がある",
+        "具体的な料理名を挙げられる"
+      ],
       "red_flags": [],
       "is_ice_breaker": true,
-      "source": "standard"
+      "source": "musubee.co.jp"
     },
     {
       "id": "Q06",
@@ -84,16 +101,23 @@
       "difficulty": 2,
       "industries": ["all"],
       "evaluation_points": ["initiative", "retention"],
-      "follow_ups": ["日本の何に魅力を感じましたか？", "来日前に日本についてどのように調べましたか？"],
+      "follow_ups": [
+        "日本の何に魅力を感じましたか？",
+        "来日前に日本についてどのように調べましたか？",
+        "日本以外の国は考えましたか？",
+        "いつから日本に興味がありましたか？"
+      ],
       "good_answer_indicators": [
         "具体的な理由がある",
         "日本文化への関心が見える",
-        "長期的なビジョンがある"
+        "長期的なビジョンがある",
+        "来日の経緯に一貫性がある"
       ],
       "red_flags": [
         "お金のことだけ言及",
         "具体性がない",
-        "どの国でもよかった感がある"
+        "どの国でもよかった感がある",
+        "家族や知人に言われたからだけ"
       ],
       "is_ice_breaker": false,
       "source": "jinzaiplus.jp"
@@ -107,14 +131,22 @@
       "difficulty": 2,
       "industries": ["all"],
       "evaluation_points": ["initiative"],
-      "follow_ups": ["具体的にどんな業務でしたか？", "その仕事で学んだことは何ですか？"],
+      "follow_ups": [
+        "具体的にどんな業務でしたか？",
+        "その仕事で学んだことは何ですか？",
+        "チームは何人くらいでしたか？",
+        "その仕事のどこが好きでしたか？"
+      ],
       "good_answer_indicators": [
         "具体的な業務内容を説明できる",
-        "成果や学びを話せる"
+        "成果や学びを話せる",
+        "数字や期間を明確に言える"
       ],
       "red_flags": [
         "職歴に長い空白期間がある",
-        "具体的な説明ができない"
+        "具体的な説明ができない",
+        "仕事内容を覚えていない",
+        "短期間で辞めた理由が曖昧"
       ],
       "is_ice_breaker": false,
       "source": "gaikokujin-senmonka.com"
@@ -195,17 +227,24 @@
       "difficulty": 2,
       "industries": ["all"],
       "evaluation_points": ["initiative"],
-      "follow_ups": ["そのアルバイトで学んだことは？", "どのくらいの期間働きましたか？"],
+      "follow_ups": [
+        "そのアルバイトで学んだことは？",
+        "どのくらいの期間働きましたか？",
+        "週に何時間くらい働いていましたか？",
+        "自分で考えて取り組んだことはありますか？"
+      ],
       "good_answer_indicators": [
         "具体的な業務内容を説明できる",
-        "学びや成長を話せる"
+        "学びや成長を話せる",
+        "主体的に工夫した経験がある"
       ],
       "red_flags": [
         "すぐに辞めている",
-        "学びがない"
+        "学びがない",
+        "週28時間を超えていた（留学生の場合）"
       ],
       "is_ice_breaker": false,
-      "source": "standard"
+      "source": "musubee.co.jp"
     },
     {
       "id": "Q12",
@@ -300,15 +339,19 @@
       "question_reading": "ぼこくのいいところをおしえてください。",
       "difficulty": 1,
       "industries": ["all"],
-      "evaluation_points": [],
-      "follow_ups": ["日本と比べてどうですか？"],
+      "evaluation_points": ["communication"],
+      "follow_ups": ["日本と比べてどうですか？", "母国の文化で大切にしていることは？"],
       "good_answer_indicators": [
         "自国への誇りがある",
-        "具体的に説明できる"
+        "具体的に説明できる",
+        "バランスの取れた視点がある"
       ],
-      "red_flags": [],
+      "red_flags": [
+        "母国について何も話せない",
+        "日本を過度に否定する"
+      ],
       "is_ice_breaker": false,
-      "source": "standard"
+      "source": "jac-skill.or.jp"
     },
     {
       "id": "Q17",
@@ -340,16 +383,23 @@
       "difficulty": 2,
       "industries": ["all"],
       "evaluation_points": ["initiative"],
-      "follow_ups": ["具体的なエピソードを教えてください", "その強みを仕事でどう活かしていますか？"],
+      "follow_ups": [
+        "具体的なエピソードを教えてください",
+        "その強みを仕事でどう活かしていますか？",
+        "その強みを前の仕事でどう活かしましたか？",
+        "友人や家族からどんな人と言われますか？"
+      ],
       "good_answer_indicators": [
         "具体例を挙げられる",
         "仕事との関連性を説明できる",
-        "自己認識が適切"
+        "自己認識が適切",
+        "第三者の評価と一致している"
       ],
       "red_flags": [
         "具体性がない",
         "仕事と無関係",
-        "過大評価している"
+        "過大評価している",
+        "強みが思いつかない"
       ],
       "is_ice_breaker": false,
       "source": "gaikokujin-senmonka.com"
@@ -489,15 +539,20 @@
       "question_reading": "しごととプライベートのバランスについてどうかんがえますか？",
       "difficulty": 2,
       "industries": ["all"],
-      "evaluation_points": [],
-      "follow_ups": [],
+      "evaluation_points": ["retention"],
+      "follow_ups": [
+        "休日はどのように過ごしていますか？",
+        "繁忙期は残業が増えますが大丈夫ですか？"
+      ],
       "good_answer_indicators": [
         "バランスのとれた考えがある",
-        "仕事にも前向き"
+        "仕事にも前向き",
+        "状況に応じて柔軟に対応できる"
       ],
       "red_flags": [
         "プライベート優先すぎる",
-        "残業を完全に拒否"
+        "残業を完全に拒否",
+        "仕事への意欲が感じられない"
       ],
       "is_ice_breaker": false,
       "source": "standard"
@@ -590,15 +645,23 @@
       "difficulty": 3,
       "industries": ["all"],
       "evaluation_points": ["initiative", "retention"],
-      "follow_ups": ["当社のどこに魅力を感じましたか？", "他に受けている会社はありますか？"],
+      "follow_ups": [
+        "当社のどこに魅力を感じましたか？",
+        "他に受けている会社はありますか？",
+        "当社の事業内容で特に興味があるのは？",
+        "当社についてどこで調べましたか？"
+      ],
       "good_answer_indicators": [
         "会社について調べている",
         "具体的な理由がある",
-        "熱意が伝わる"
+        "熱意が伝わる",
+        "事業内容を理解している"
       ],
       "red_flags": [
         "会社のことを知らない",
-        "どこでもいい感がある"
+        "どこでもいい感がある",
+        "給料だけが理由",
+        "会社名を間違える"
       ],
       "is_ice_breaker": false,
       "source": "gaikokujin-senmonka.com"
@@ -695,17 +758,23 @@
       "question_reading": "かいしゃをえらぶとき、いちばんたいせつなじょうけんはなんですか？",
       "difficulty": 2,
       "industries": ["all"],
-      "evaluation_points": [],
-      "follow_ups": ["当社はその条件を満たしていますか？"],
+      "evaluation_points": ["retention", "initiative"],
+      "follow_ups": [
+        "当社はその条件を満たしていますか？",
+        "他に重視していることはありますか？"
+      ],
       "good_answer_indicators": [
         "明確な軸がある",
-        "成長や学びを重視している"
+        "成長や学びを重視している",
+        "長期的な視点がある"
       ],
       "red_flags": [
-        "給料だけが条件"
+        "給料だけが条件",
+        "条件が曖昧",
+        "楽な仕事を求めている"
       ],
       "is_ice_breaker": false,
-      "source": "standard"
+      "source": "musubee.co.jp"
     },
     {
       "id": "Q36",
@@ -1005,17 +1074,297 @@
       "is_ice_breaker": false,
       "is_closing_statement": true,
       "source": "standard"
+    },
+    {
+      "id": "Q51",
+      "category_id": "past_experience",
+      "question_ja": "前職の職場で、良かったことと課題だったことを教えてください。",
+      "question_simplified": "前の仕事で、良かったことと大変だったことは何ですか？",
+      "question_reading": "ぜんしょくのしょくばで、よかったこととかだいだったことをおしえてください。",
+      "difficulty": 3,
+      "industries": ["all"],
+      "evaluation_points": ["adaptability", "communication"],
+      "follow_ups": [
+        "その課題にどう対処しましたか？",
+        "次の職場ではどうしたいですか？"
+      ],
+      "good_answer_indicators": [
+        "良い点と課題の両方をバランスよく話せる",
+        "課題を建設的に捉えている",
+        "学びを得ている"
+      ],
+      "red_flags": [
+        "前職の悪口ばかり言う",
+        "良いところが何もなかったと言う",
+        "他人のせいにする"
+      ],
+      "is_ice_breaker": false,
+      "source": "jinzaiplus.jp"
+    },
+    {
+      "id": "Q52",
+      "category_id": "past_experience",
+      "question_ja": "なぜ転職しようと思いましたか？",
+      "question_simplified": "どうして仕事を変えようと思いましたか？",
+      "question_reading": "なぜてんしょくしようとおもいましたか？",
+      "difficulty": 3,
+      "industries": ["all"],
+      "evaluation_points": ["retention", "initiative"],
+      "follow_ups": [
+        "具体的にどのような点が合わなかったですか？",
+        "転職で何を実現したいですか？"
+      ],
+      "good_answer_indicators": [
+        "前向きな理由がある",
+        "キャリアアップを目指している",
+        "転職理由と志望動機に一貫性がある"
+      ],
+      "red_flags": [
+        "人間関係だけが理由",
+        "給料への不満だけ",
+        "理由が曖昧",
+        "短期間での転職を繰り返している"
+      ],
+      "is_ice_breaker": false,
+      "source": "jinzaiplus.jp"
+    },
+    {
+      "id": "Q53",
+      "category_id": "future_vision",
+      "question_ja": "他にどのような会社の面接を受けていますか？",
+      "question_simplified": "他の会社の面接も受けていますか？",
+      "question_reading": "ほかにどのようなかいしゃのめんせつをうけていますか？",
+      "difficulty": 2,
+      "industries": ["all"],
+      "evaluation_points": ["initiative"],
+      "follow_ups": [
+        "その中で当社を選ぶ理由は何ですか？",
+        "就職活動の軸は何ですか？"
+      ],
+      "good_answer_indicators": [
+        "正直に答えられる",
+        "業界や職種に一貫性がある",
+        "当社への志望度が高いことが伝わる"
+      ],
+      "red_flags": [
+        "一貫性のない就職活動",
+        "どこでもいい感がある",
+        "嘘をついている様子がある"
+      ],
+      "is_ice_breaker": false,
+      "source": "jinzaiplus.jp"
+    },
+    {
+      "id": "Q54",
+      "category_id": "present_ability",
+      "question_ja": "友人や家族からどんな人と言われることが多いですか？",
+      "question_simplified": "友達や家族は、あなたのことを何と言いますか？",
+      "question_reading": "ゆうじんやかぞくからどんなひととわれることがおおいですか？",
+      "difficulty": 2,
+      "industries": ["all"],
+      "evaluation_points": ["communication"],
+      "follow_ups": [
+        "それは自分でも当てはまると思いますか？",
+        "仕事でもその性格が活きていますか？"
+      ],
+      "good_answer_indicators": [
+        "自己認識ができている",
+        "具体的なエピソードがある",
+        "長所と短所を理解している"
+      ],
+      "red_flags": [
+        "全く思いつかない",
+        "過度に自己評価が高い",
+        "周囲との関係が薄い様子"
+      ],
+      "is_ice_breaker": false,
+      "source": "jac-skill.or.jp"
+    },
+    {
+      "id": "Q55",
+      "category_id": "past_experience",
+      "question_ja": "異なる文化や価値観の人と働いた経験はありますか？",
+      "question_simplified": "違う国の人と一緒に働いたことはありますか？",
+      "question_reading": "ことなるぶんかやかちかんのひとはたらいたけいけんはありますか？",
+      "difficulty": 3,
+      "industries": ["all"],
+      "evaluation_points": ["cooperation", "adaptability"],
+      "follow_ups": [
+        "その時に気をつけていたことは何ですか？",
+        "困ったことはありましたか？どう解決しましたか？"
+      ],
+      "good_answer_indicators": [
+        "具体的な経験がある",
+        "相手を尊重する姿勢がある",
+        "コミュニケーションの工夫ができる"
+      ],
+      "red_flags": [
+        "異文化への偏見がある",
+        "自分のやり方だけを押し通す",
+        "協調性がなさそう"
+      ],
+      "is_ice_breaker": false,
+      "source": "digima-japan.com"
+    },
+    {
+      "id": "Q56",
+      "category_id": "present_ability",
+      "question_ja": "日本企業の文化で不安に感じることはありますか？",
+      "question_simplified": "日本の会社で心配なことはありますか？",
+      "question_reading": "にほんきぎょうのぶんかでふあんにかんじることはありますか？",
+      "difficulty": 2,
+      "industries": ["all"],
+      "evaluation_points": ["adaptability"],
+      "follow_ups": [
+        "その不安にどう対処しようと思いますか？",
+        "日本企業で楽しみにしていることは何ですか？"
+      ],
+      "good_answer_indicators": [
+        "正直に不安を話せる",
+        "前向きに対処しようとしている",
+        "日本の働き方を理解しようとしている"
+      ],
+      "red_flags": [
+        "日本企業への理解がない",
+        "適応する意思がない",
+        "過度に否定的"
+      ],
+      "is_ice_breaker": false,
+      "source": "digima-japan.com"
+    },
+    {
+      "id": "Q57",
+      "category_id": "present_ability",
+      "question_ja": "コミュニケーションを円滑にするために気をつけていることは何ですか？",
+      "question_simplified": "人と話すとき、気をつけていることは何ですか？",
+      "question_reading": "コミュニケーションをえんかつにするためにきをつけていることはなんですか？",
+      "difficulty": 2,
+      "industries": ["all"],
+      "evaluation_points": ["communication", "cooperation"],
+      "follow_ups": [
+        "日本語でのコミュニケーションで工夫していることは？",
+        "分からない時はどうしますか？"
+      ],
+      "good_answer_indicators": [
+        "具体的な工夫がある",
+        "相手の立場を考えている",
+        "報連相の重要性を理解している"
+      ],
+      "red_flags": [
+        "特に何も考えていない",
+        "一方的なコミュニケーション",
+        "質問することを避ける"
+      ],
+      "is_ice_breaker": false,
+      "source": "jac-skill.or.jp"
+    },
+    {
+      "id": "Q58",
+      "category_id": "present_ability",
+      "question_ja": "困ったとき、どう対処することが多いですか？",
+      "question_simplified": "困ったとき、どうしますか？",
+      "question_reading": "こまったとき、どうたいしょすることがおおいですか？",
+      "difficulty": 2,
+      "industries": ["all"],
+      "evaluation_points": ["adaptability", "initiative"],
+      "follow_ups": [
+        "実際にそのように対処した経験を教えてください",
+        "誰かに相談しますか？"
+      ],
+      "good_answer_indicators": [
+        "問題解決の姿勢がある",
+        "周囲に助けを求められる",
+        "冷静に対処できる"
+      ],
+      "red_flags": [
+        "問題を放置する",
+        "パニックになる",
+        "誰にも相談しない"
+      ],
+      "is_ice_breaker": false,
+      "source": "digima-japan.com"
+    },
+    {
+      "id": "Q59",
+      "category_id": "past_experience",
+      "question_ja": "日本語を勉強し始めてどれくらいですか？",
+      "question_simplified": "日本語の勉強はいつから始めましたか？",
+      "question_reading": "にほんごをべんきょうしはじめてどれくらいですか？",
+      "difficulty": 1,
+      "industries": ["all"],
+      "evaluation_points": ["initiative"],
+      "follow_ups": [
+        "日本語を勉強しようと思ったきっかけは何ですか？",
+        "どのような方法で勉強していますか？"
+      ],
+      "good_answer_indicators": [
+        "継続的に学習している",
+        "学習のきっかけが明確",
+        "上達への意欲がある"
+      ],
+      "red_flags": [
+        "学習期間と能力が合わない",
+        "学習意欲がない"
+      ],
+      "is_ice_breaker": false,
+      "source": "ecc-japanwork.com"
+    },
+    {
+      "id": "Q60",
+      "category_id": "future_vision",
+      "question_ja": "日本で叶えたい夢や目標はありますか？",
+      "question_simplified": "日本でやりたいことや夢はありますか？",
+      "question_reading": "にほんでかなえたいゆめやもくひょうはありますか？",
+      "difficulty": 2,
+      "industries": ["all"],
+      "evaluation_points": ["retention", "initiative"],
+      "follow_ups": [
+        "その夢に向けて今何をしていますか？",
+        "いつ頃までに実現したいですか？"
+      ],
+      "good_answer_indicators": [
+        "具体的な目標がある",
+        "日本での長期的なビジョンがある",
+        "目標達成への行動を取っている"
+      ],
+      "red_flags": [
+        "何も考えていない",
+        "非現実的な夢ばかり",
+        "すぐに帰国したい"
+      ],
+      "is_ice_breaker": false,
+      "source": "jac-skill.or.jp"
     }
   ],
   "metadata": {
-    "version": "1.0.0",
-    "total_questions": 50,
+    "version": "1.1.0",
+    "total_questions": 60,
     "created_at": "2026-02-01",
-    "updated_at": "2026-02-01",
+    "updated_at": "2026-02-02",
     "sources": [
       "jinzaiplus.jp",
       "gaikokujin-senmonka.com",
+      "musubee.co.jp",
+      "ecc-japanwork.com",
+      "jac-skill.or.jp",
+      "digima-japan.com",
       "standard"
+    ],
+    "changelog": [
+      {
+        "version": "1.1.0",
+        "date": "2026-02-02",
+        "changes": [
+          "新規10問追加（Q51-Q60）",
+          "既存設問の評価指標・フォローアップ改善",
+          "情報ソース追加（musubee.co.jp, ecc-japanwork.com, jac-skill.or.jp, digima-japan.com）"
+        ]
+      },
+      {
+        "version": "1.0.0",
+        "date": "2026-02-01",
+        "changes": ["初版作成（50問）"]
+      }
     ]
   }
 }

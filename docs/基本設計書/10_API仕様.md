@@ -315,10 +315,10 @@ SSO認証コールバック（mintoku workからのリダイレクト後）
 }
 ```
 
-## 10.5 スクリプトAPI（読み取り専用）
+## 10.5 質問API
 
-> **注意**: スクリプトの作成・編集・削除はmintoku workの管理画面で行います。
-> 本システムはスクリプトの読み取りのみ対応します。
+> **注意**: 質問の作成・編集・削除は本システムの管理画面で行います。
+> 管理者向けAPI（10.8節）を参照してください。
 
 ### GET /api/v1/scripts
 スクリプト一覧取得
@@ -450,3 +450,117 @@ SSO認証コールバック（mintoku workからのリダイレクト後）
 | 404 | Not Found - リソース未発見 |
 | 429 | Too Many Requests - レート制限 |
 | 500 | Internal Server Error - サーバーエラー |
+
+## 10.8 管理者向けAPI
+
+### 認証
+
+管理者向けAPIは本システム独自の認証を使用します。
+
+#### POST /api/v1/admin/auth/login
+管理者ログイン
+
+**リクエスト**
+```json
+{
+  "email": "admin@example.com",
+  "password": "********"
+}
+```
+
+**レスポンス（200 OK）**
+```json
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "admin": {
+    "id": "adm_123456",
+    "email": "admin@example.com",
+    "name": "管理者名",
+    "role": "admin"
+  }
+}
+```
+
+### 質問管理
+
+#### GET /api/v1/admin/questions
+質問一覧取得
+
+**クエリパラメータ**
+| パラメータ | 型 | 説明 |
+|-----------|-----|------|
+| category | string | カテゴリ（導入、過去、現在、未来、条件確認、クロージング） |
+| jlpt_level | string | JLPTレベル（N1-N5） |
+| industry | string | 業界 |
+| limit | integer | 取得件数（デフォルト: 20） |
+| offset | integer | オフセット（デフォルト: 0） |
+
+**レスポンス（200 OK）**
+```json
+{
+  "questions": [
+    {
+      "id": "Q01",
+      "category": "introduction",
+      "question_ja": "自己紹介をお願いします。",
+      "question_simplified": "あなたの名前と、どこの国から来たか教えてください。",
+      "difficulty": 1,
+      "industries": ["all"],
+      "created_at": "2025-01-30T10:00:00Z"
+    }
+  ],
+  "total": 50,
+  "limit": 20,
+  "offset": 0
+}
+```
+
+#### POST /api/v1/admin/questions
+質問作成
+
+**リクエスト**
+```json
+{
+  "category_id": "introduction",
+  "question_ja": "新しい質問文",
+  "question_simplified": "簡易版の質問文",
+  "difficulty": 2,
+  "industries": ["nursing_care", "food_service"],
+  "evaluation_points": ["日本語能力", "コミュニケーション力"]
+}
+```
+
+**レスポンス（201 Created）**
+```json
+{
+  "id": "Q51",
+  "category_id": "introduction",
+  "question_ja": "新しい質問文",
+  "created_at": "2025-02-01T10:00:00Z"
+}
+```
+
+#### PUT /api/v1/admin/questions/{question_id}
+質問更新
+
+#### DELETE /api/v1/admin/questions/{question_id}
+質問削除（論理削除）
+
+> **注意**: 回答データとの整合性を保つため、質問は論理削除のみ対応。
+> 詳細は11_データベーススキーマ 11.7節を参照。
+
+## 10.9 セッション管理
+
+### セッションタイムアウト
+
+| 種別 | タイムアウト時間 | 備考 |
+|------|-----------------|------|
+| アクセストークン | 1時間 | リフレッシュトークンで延長可能 |
+| リフレッシュトークン | 30日 | ローテーション方式 |
+| 面接セッション | 60分 | 面接中は自動延長 |
+
+> **面接中のセッション管理**
+> 面接セッション中はアクティビティが継続する限りセッションタイムアウトを自動延長します。
+> 面接時間（最大45分）を考慮し、面接セッションタイムアウトは60分に設定。

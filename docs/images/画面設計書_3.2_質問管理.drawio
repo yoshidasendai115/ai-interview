@@ -1,0 +1,215 @@
+<mxfile host="app.diagrams.net" modified="2026-02-02T00:00:00.000Z" agent="5.0" etag="wf" version="21.0.0" type="device">
+<diagram name="2. 質問管理" id="question-management">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="700" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Browser Frame -->
+        <mxCell id="frame" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="1120" height="600" as="geometry" />
+        </mxCell>
+
+        <!-- Sidebar -->
+        <mxCell id="sidebar" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a2e;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="200" height="600" as="geometry" />
+        </mxCell>
+        <mxCell id="logo" value="AI Interview&#xa;Admin" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="menu1" value="? 質問管理" style="text;html=1;strokeColor=none;fillColor=#1a73e8;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="40" y="140" width="200" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Main Content -->
+        <mxCell id="content" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="240" y="60" width="920" height="600" as="geometry" />
+        </mxCell>
+
+        <!-- Header -->
+        <mxCell id="header" value="質問管理" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="80" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="50件の質問" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="380" y="80" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="add-btn" value="+ 新規登録" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#1a73e8;strokeColor=none;fontColor=#ffffff;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="75" width="100" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Category Stats -->
+        <mxCell id="stat-intro" value="導入&#xa;5" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e0e0e0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="270" y="125" width="80" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="stat-past" value="過去&#xa;12" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e0e0e0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="360" y="125" width="80" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="stat-present" value="現在&#xa;12" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e0e0e0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="450" y="125" width="80" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="stat-future" value="未来&#xa;10" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e0e0e0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="540" y="125" width="80" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="stat-cond" value="条件&#xa;6" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e0e0e0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="630" y="125" width="80" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="stat-close" value="締め&#xa;5" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e0e0e0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="720" y="125" width="80" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Filters -->
+        <mxCell id="filter-box" value="" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e0e0e0;" vertex="1" parent="1">
+          <mxGeometry x="270" y="185" width="860" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="search" value="キーワード検索..." style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#cccccc;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="290" y="195" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="filter-category" value="カテゴリ: 全て" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#cccccc;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="490" y="195" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="filter-difficulty" value="難易度: 全て" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#cccccc;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="630" y="195" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="filter-industry" value="業種: 全て" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#cccccc;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="770" y="195" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="reset-btn" value="リセット" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=none;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="195" width="100" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Table -->
+        <mxCell id="table" value="" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e0e0e0;" vertex="1" parent="1">
+          <mxGeometry x="270" y="250" width="860" height="360" as="geometry" />
+        </mxCell>
+
+        <!-- Table Header -->
+        <mxCell id="th-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="270" y="250" width="860" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="th1" value="ID" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="255" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="th2" value="カテゴリ" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="255" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="th3" value="質問文" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="255" width="350" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="th4" value="難易度" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="820" y="255" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="th5" value="フラグ" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="255" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="th6" value="操作" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="255" width="80" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Table Rows -->
+        <mxCell id="row1-line" value="" style="line;strokeWidth=1;html=1;fillColor=none;strokeColor=#e0e0e0;" vertex="1" parent="1">
+          <mxGeometry x="270" y="290" width="860" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r1c1" value="Q01" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="300" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="r1c2" value="導入" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="350" y="300" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="r1c3" value="本日はお越しいただきありがとうございます..." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="450" y="300" width="350" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="r1c4" value="易しい" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=none;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="820" y="305" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="r1c5" value="Ice" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=none;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="900" y="305" width="35" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="r1-edit" value="編集" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#1a73e8;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="300" width="35" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="r1-del" value="削除" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#f44336;" vertex="1" parent="1">
+          <mxGeometry x="1075" y="300" width="35" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="row2-line" value="" style="line;strokeWidth=1;html=1;fillColor=none;strokeColor=#e0e0e0;" vertex="1" parent="1">
+          <mxGeometry x="270" y="340" width="860" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r2c1" value="Q06" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="350" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="r2c2" value="過去" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="350" y="350" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="r2c3" value="日本に来ようと思った理由を教えてください..." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="450" y="350" width="350" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="r2c4" value="普通" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=none;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="820" y="355" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="r2-edit" value="編集" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#1a73e8;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="350" width="35" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="r2-del" value="削除" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#f44336;" vertex="1" parent="1">
+          <mxGeometry x="1075" y="350" width="35" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="row3-line" value="" style="line;strokeWidth=1;html=1;fillColor=none;strokeColor=#e0e0e0;" vertex="1" parent="1">
+          <mxGeometry x="270" y="390" width="860" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r3c1" value="Q30" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="400" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="r3c2" value="未来" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="350" y="400" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="r3c3" value="当社を志望した理由を教えてください..." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="450" y="400" width="350" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="r3c4" value="難しい" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=none;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="820" y="405" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="r3-edit" value="編集" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#1a73e8;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="400" width="35" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="r3-del" value="削除" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#f44336;" vertex="1" parent="1">
+          <mxGeometry x="1075" y="400" width="35" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="row4-line" value="" style="line;strokeWidth=1;html=1;fillColor=none;strokeColor=#e0e0e0;" vertex="1" parent="1">
+          <mxGeometry x="270" y="440" width="860" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r4c1" value="Q40" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="450" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="r4c2" value="条件" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="350" y="450" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="r4c3" value="残業があっても大丈夫ですか..." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="450" y="450" width="350" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="r4c4" value="易しい" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=none;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="820" y="455" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="r4c5" value="条件" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=none;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="900" y="455" width="35" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="r4-edit" value="編集" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#1a73e8;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="450" width="35" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="r4-del" value="削除" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#f44336;" vertex="1" parent="1">
+          <mxGeometry x="1075" y="450" width="35" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- More rows indicator -->
+        <mxCell id="more-rows" value="..." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="600" y="490" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Screen Title -->
+        <mxCell id="title" value="質問管理画面" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="500" y="20" width="200" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
