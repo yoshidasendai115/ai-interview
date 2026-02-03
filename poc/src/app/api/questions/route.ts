@@ -36,31 +36,35 @@ interface QuestionResponse {
 
 /**
  * カテゴリ別の質問選択数
+ * 注: closingカテゴリはInterviewSessionで別途処理されるため除外
  */
 const CATEGORY_SELECTION: Record<string, number> = {
   introduction: 2,
-  past_experience: 2,
+  past_experience: 3,
   present_ability: 2,
-  future_vision: 2,
-  closing: 2,
+  future_vision: 3,
 };
 
 /**
  * JLPTレベルに応じて簡易版を使用するか判定
  */
-function useSimplifiedText(jlptLevel: JLPTLevel): boolean {
+function shouldUseSimplifiedText(jlptLevel: JLPTLevel): boolean {
   return jlptLevel === 'N4' || jlptLevel === 'N5';
 }
 
 /**
  * カテゴリごとに質問をランダムに選択
+ * アイスブレイク質問は除外（アバターの挨拶で代替されるため）
  */
 function selectQuestionsByCategory(
   questions: QuestionBankItem[],
   categoryId: string,
   count: number
 ): QuestionBankItem[] {
-  const categoryQuestions = questions.filter((q) => q.category_id === categoryId);
+  // アイスブレイク質問を除外（アバターの挨拶で緊張をほぐす役割を担うため）
+  const categoryQuestions = questions.filter(
+    (q) => q.category_id === categoryId && !q.is_ice_breaker
+  );
 
   // シャッフルして指定数を選択
   const shuffled = [...categoryQuestions].sort(() => Math.random() - 0.5);
@@ -74,7 +78,7 @@ function selectAndFormatQuestions(
   questions: QuestionBankItem[],
   jlptLevel: JLPTLevel
 ): QuestionResponse[] {
-  const useSimplified = useSimplifiedText(jlptLevel);
+  const useSimplified = shouldUseSimplifiedText(jlptLevel);
   const selectedQuestions: QuestionBankItem[] = [];
 
   // カテゴリ別に質問を選択

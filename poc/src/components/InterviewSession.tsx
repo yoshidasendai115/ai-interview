@@ -61,14 +61,40 @@ export default function InterviewSession({
   const [isConnecting, setIsConnecting] = useState(false);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [isLoadingQuestions, setIsLoadingQuestions] = useState(false);
+  const [remainingTime, setRemainingTime] = useState<number | null>(null);
+  const [isGreetingInProgress, setIsGreetingInProgress] = useState(false);
+  // アバター発話完了後のバッファ（録音セクション表示を遅延させる）
+  const [isAvatarSpeakingDelayed, setIsAvatarSpeakingDelayed] = useState(false);
+  // 質問発話中フラグ（質問セクションの表示制御用）
+  const [isSpeakingQuestion, setIsSpeakingQuestion] = useState(false);
+  // 質問間の遷移中フラグ（「ありがとうございます」等の発話中）
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  // 結果表示フラグ（結果表示ボタンを押すまでFeedbackDisplayを非表示にする）
+  const [showResults, setShowResults] = useState(false);
 
   const stateMachine = useInterviewStateMachine();
 
-  // 初期状態をログ
+  // 自動接続開始フラグ
+  const hasAutoConnectStarted = useRef(false);
+  // 終了処理中フラグ（録音完了コールバック等がexiting中に実行されないようにする）
+  const isExitingRef = useRef(false);
+  // 面接終了シーケンス中フラグ（最後の質問回答後の挨拶中）
+  const isEndingSequenceRef = useRef(false);
+  // 発話終了後の遅延タイマーID（連続発話時にキャンセルするため）
+  const speakingDelayTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // ログ追加（早い段階で定義）
+  const addLog = useCallback((message: string) => {
+    const time = new Date().toLocaleTimeString('ja-JP');
+    setLogs((prev) => [...prev.slice(-19), `[${time}] ${message}`]);
+  }, []);
+
+  // 初期状態をログ（マウント時のみ実行）
   useEffect(() => {
     console.log('[InterviewSession] Initial state:', stateMachine.state);
     console.log('[InterviewSession] isConnecting:', isConnecting);
     console.log('[InterviewSession] evaluation:', evaluation);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // 状態変更をログ
@@ -76,11 +102,108 @@ export default function InterviewSession({
     console.log('[InterviewSession] State changed to:', stateMachine.state);
   }, [stateMachine.state]);
 
-  // ログ追加
-  const addLog = useCallback((message: string) => {
-    const time = new Date().toLocaleTimeString('ja-JP');
-    setLogs((prev) => [...prev.slice(-19), `[${time}] ${message}`]);
-  }, []);
+
+  // 面接開始ボタン押下時の処理（接続→質問取得→発話開始）
+  const handleStartInterview = useCallback(async () => {
+    console.log('[InterviewSession] Start interview button clicked');
+
+    if (!avatarRef.current) {
+      console.error('[InterviewSession] avatarRef not ready');
+      return;
+    }
+
+    // HeyGen接続開始
+    setIsConnecting(true);
+    stateMachine.initialize();
+    addLog('HeyGenアバターに接続中...');
+
+    try {
+      await avatarRef.current.connect();
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'HeyGen接続に失敗しました';
+      setIsConnecting(false);
+      stateMachine.setError(errorMessage);
+      addLog(`エラー: ${errorMessage}`);
+      return;
+    }
+
+    // 接続成功後、質問取得と面接開始
+    addLog(`面接を開始します（JLPTレベル: ${jlptLevel}）`);
+
+    // 質問をAPIから取得
+    let fetchedQuestions: Question[];
+    try {
+      setIsLoadingQuestions(true);
+      addLog(`質問を取得中（JLPTレベル: ${jlptLevel}）...`);
+
+      const response = await fetch(`/api/questions?jlptLevel=${jlptLevel}`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch questions: ${response.statusText}`);
+      }
+      const data = await response.json();
+      fetchedQuestions = data.questions;
+      setQuestions(fetchedQuestions);
+      addLog(`質問を${fetchedQuestions.length}問取得しました`);
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : '質問の取得に失敗しました';
+      stateMachine.setError(errorMessage);
+      addLog(`エラー: ${errorMessage}`);
+      return;
+    } finally {
+      setIsLoadingQuestions(false);
+    }
+
+    // マイク許可を取得
+    try {
+      addLog('マイク許可を取得中...');
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: {
+          echoCancellation: true,
+          noiseSuppression: true,
+          sampleRate: 48000,
+        },
+      });
+      setMediaStream(stream);
+      addLog('マイク許可取得完了');
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'マイク許可を取得できませんでした';
+      stateMachine.setError(errorMessage);
+      addLog(`エラー: ${errorMessage}`);
+      return;
+    }
+
+    // 挨拶中フラグを先に立てる（質問枠が表示されないように）
+    setIsGreetingInProgress(true);
+
+    stateMachine.startInterview(fetchedQuestions);
+
+    // HeyGenセッションが安定するまで少し待機
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    if (avatarRef.current) {
+      addLog('面接開始の挨拶...');
+      await avatarRef.current.speak('本日はお越しいただき、ありがとうございます。');
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await avatarRef.current.speak('緊張されていませんか？');
+      // ユーザーがリラックスする時間を設ける
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+      await avatarRef.current.speak('リラックスして、普段通りお話しいただければ大丈夫ですよ。');
+      // リラックスの言葉の余韻を残す
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+      await avatarRef.current.speak('それでは、面接を始めさせていただきます。');
+      // 面接開始前に十分な間を空ける
+      await new Promise((resolve) => setTimeout(resolve, 2500));
+    }
+
+    // 最初の質問を発話（質問表示と同時に発話開始）
+    if (avatarRef.current && fetchedQuestions[0]) {
+      setIsGreetingInProgress(false); // 質問表示を有効化
+      setIsSpeakingQuestion(true); // 質問発話中フラグを立てる
+      addLog('最初の質問を発話します...');
+      await avatarRef.current.speakQuestion(fetchedQuestions[0]);
+    } else {
+      setIsGreetingInProgress(false);
+    }
+  }, [stateMachine, addLog, jlptLevel]);
 
   // 状態に応じた説明テキスト
   const getStateDescription = (state: InterviewState): string => {
@@ -104,17 +227,6 @@ export default function InterviewSession({
     }
   };
 
-  // アバター接続
-  const handleConnect = useCallback(async () => {
-    setIsConnecting(true);
-    stateMachine.initialize();
-    addLog('HeyGenアバターに接続中...');
-
-    if (avatarRef.current) {
-      await avatarRef.current.connect();
-    }
-  }, [stateMachine, addLog]);
-
   // アバター接続完了
   const handleConnected = useCallback(
     (sessionId: string) => {
@@ -125,73 +237,16 @@ export default function InterviewSession({
     [stateMachine, addLog]
   );
 
-  // APIから質問を取得
-  const fetchQuestions = useCallback(async (): Promise<Question[]> => {
-    setIsLoadingQuestions(true);
-    addLog(`質問を取得中（JLPTレベル: ${jlptLevel}）...`);
-
-    try {
-      const response = await fetch(`/api/questions?jlptLevel=${jlptLevel}`);
-      if (!response.ok) {
-        throw new Error(`Failed to fetch questions: ${response.statusText}`);
-      }
-      const data = await response.json();
-      const fetchedQuestions: Question[] = data.questions;
-      setQuestions(fetchedQuestions);
-      addLog(`質問を${fetchedQuestions.length}問取得しました`);
-      return fetchedQuestions;
-    } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : '質問の取得に失敗しました';
-      addLog(`エラー: ${errorMessage}`);
-      throw err;
-    } finally {
-      setIsLoadingQuestions(false);
-    }
-  }, [jlptLevel, addLog]);
-
-  // 面接開始
-  const handleStartInterview = useCallback(async () => {
-    addLog(`面接を開始します（JLPTレベル: ${jlptLevel}）`);
-
-    // 質問をAPIから取得
-    let fetchedQuestions: Question[];
-    try {
-      fetchedQuestions = await fetchQuestions();
-    } catch {
-      stateMachine.setError('質問の取得に失敗しました');
-      return;
-    }
-
-    // マイク許可を取得
-    try {
-      addLog('マイク許可を取得中...');
-      const stream = await navigator.mediaDevices.getUserMedia({
-        audio: {
-          echoCancellation: true,
-          noiseSuppression: true,
-          sampleRate: 48000,
-        },
-      });
-      setMediaStream(stream);
-      addLog('マイク許可取得完了');
-    } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'マイク許可を取得できませんでした';
-      stateMachine.setError(errorMessage);
-      addLog(`エラー: ${errorMessage}`);
-      return;
-    }
-
-    stateMachine.startInterview(fetchedQuestions);
-
-    // 最初の質問を発話
-    if (avatarRef.current && fetchedQuestions[0]) {
-      await avatarRef.current.speakQuestion(fetchedQuestions[0]);
-    }
-  }, [stateMachine, addLog, jlptLevel, fetchQuestions]);
-
   // アバター発話開始
   const handleSpeakStart = useCallback(() => {
     console.log('[InterviewSession] handleSpeakStart called, current state:', stateMachine.state);
+    // 前の遅延タイマーをキャンセル（連続発話時に録音が開始されないようにする）
+    if (speakingDelayTimerRef.current) {
+      console.log('[InterviewSession] Cancelling previous speaking delay timer');
+      clearTimeout(speakingDelayTimerRef.current);
+      speakingDelayTimerRef.current = null;
+    }
+    setIsAvatarSpeakingDelayed(true);
     stateMachine.avatarStartSpeaking();
     addLog('アバター発話開始');
   }, [stateMachine, addLog]);
@@ -199,14 +254,27 @@ export default function InterviewSession({
   // アバター発話終了
   const handleSpeakEnd = useCallback(() => {
     console.log('[InterviewSession] handleSpeakEnd called, current state:', stateMachine.state);
-    stateMachine.avatarStopSpeaking();
-    addLog('アバター発話終了 → 録音待機');
-    console.log('[InterviewSession] after avatarStopSpeaking, new state:', stateMachine.state);
+    // スピーカーからの残響が消えるまで少し待機してから録音開始
+    addLog('アバター発話終了 → 録音準備中...');
+    // タイマーIDを保持して、次の発話開始時にキャンセルできるようにする
+    speakingDelayTimerRef.current = setTimeout(() => {
+      speakingDelayTimerRef.current = null;
+      setIsAvatarSpeakingDelayed(false);
+      setIsSpeakingQuestion(false); // 質問発話中フラグを下ろす
+      stateMachine.avatarStopSpeaking();
+      addLog('録音開始');
+      console.log('[InterviewSession] after avatarStopSpeaking, new state:', stateMachine.state);
+    }, 500); // 500ms待機で残響を回避
   }, [stateMachine, addLog]);
 
   // 録音完了
   const handleRecordingComplete = useCallback(
     async (audioBlob: Blob, transcript: string) => {
+      // 終了処理中または終了シーケンス中は何もしない
+      if (isExitingRef.current || isEndingSequenceRef.current) {
+        console.log('[InterviewSession] handleRecordingComplete skipped (exiting or ending sequence)');
+        return;
+      }
       const currentQuestion = stateMachine.currentQuestion;
       if (!currentQuestion) return;
 
@@ -228,8 +296,22 @@ export default function InterviewSession({
         const nextIndex = stateMachine.currentQuestionIndex + 1;
 
         if (nextIndex >= questions.length) {
-          // 面接完了
+          // 面接完了 - 終了シーケンス開始
+          isEndingSequenceRef.current = true;
           addLog('全ての質問が完了しました');
+
+          // 終了の挨拶
+          if (avatarRef.current) {
+            await avatarRef.current.speak('ありがとうございます。');
+            await new Promise((resolve) => setTimeout(resolve, 1000));
+            await avatarRef.current.speak('以上で本日の面接は終了となります。');
+            await new Promise((resolve) => setTimeout(resolve, 1500));
+            await avatarRef.current.speak('本日はお時間をいただき、ありがとうございました。');
+            await new Promise((resolve) => setTimeout(resolve, 1500));
+            await avatarRef.current.speak('結果につきましては、後日ご連絡いたします。');
+            await new Promise((resolve) => setTimeout(resolve, 1000));
+          }
+
           stateMachine.completeSession();
 
           // 評価を生成（モック）
@@ -253,6 +335,18 @@ export default function InterviewSession({
           addLog(`次の質問: Q${nextIndex + 1}`);
 
           if (avatarRef.current && nextQuestion) {
+            // 遷移中フラグを立てる（録音モーダルを非表示にする）
+            setIsTransitioning(true);
+            // お礼を言ってから次の質問へ
+            await avatarRef.current.speak('ありがとうございます。');
+            // お礼の後に間を空ける
+            await new Promise((resolve) => setTimeout(resolve, 1500));
+            await avatarRef.current.speak('では、次の質問に移らせていただきます。');
+            // 次の質問の前に間を空ける
+            await new Promise((resolve) => setTimeout(resolve, 1500));
+            // 遷移中フラグを下ろし、質問発話中フラグを立てる
+            setIsTransitioning(false);
+            setIsSpeakingQuestion(true);
             await avatarRef.current.speakQuestion(nextQuestion);
           }
         }
@@ -263,6 +357,11 @@ export default function InterviewSession({
 
   // スキップ
   const handleSkip = useCallback(async () => {
+    // 終了処理中または終了シーケンス中は何もしない
+    if (isExitingRef.current || isEndingSequenceRef.current) {
+      console.log('[InterviewSession] handleSkip skipped (exiting or ending sequence)');
+      return;
+    }
     addLog('質問をスキップしました');
     stateMachine.skipQuestion();
 
@@ -270,6 +369,16 @@ export default function InterviewSession({
       const nextIndex = stateMachine.currentQuestionIndex + 1;
 
       if (nextIndex >= questions.length) {
+        // 終了シーケンス開始
+        isEndingSequenceRef.current = true;
+        // 終了の挨拶
+        if (avatarRef.current) {
+          await avatarRef.current.speak('以上で本日の面接は終了となります。');
+          await new Promise((resolve) => setTimeout(resolve, 1500));
+          await avatarRef.current.speak('本日はお時間をいただき、ありがとうございました。');
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+        }
+
         stateMachine.completeSession();
 
         const evalResult = generateMockEvaluation(
@@ -284,6 +393,15 @@ export default function InterviewSession({
         const nextQuestion = questions[nextIndex];
 
         if (avatarRef.current && nextQuestion) {
+          // 遷移中フラグを立てる（録音モーダルを非表示にする）
+          setIsTransitioning(true);
+          // 次の質問へ
+          await avatarRef.current.speak('では、次の質問に移らせていただきます。');
+          // 次の質問の前に間を空ける
+          await new Promise((resolve) => setTimeout(resolve, 1500));
+          // 遷移中フラグを下ろし、質問発話中フラグを立てる
+          setIsTransitioning(false);
+          setIsSpeakingQuestion(true);
           await avatarRef.current.speakQuestion(nextQuestion);
         }
       }
@@ -300,6 +418,11 @@ export default function InterviewSession({
     [stateMachine, addLog]
   );
 
+  // 残り時間更新
+  const handleRemainingTimeChange = useCallback((time: number) => {
+    setRemainingTime(time);
+  }, []);
+
   // MediaStreamの解放
   const releaseMediaStream = useCallback(() => {
     if (mediaStream) {
@@ -310,35 +433,60 @@ export default function InterviewSession({
 
   // リトライ
   const handleRetry = useCallback(() => {
+    // 発話遅延タイマーをクリア
+    if (speakingDelayTimerRef.current) {
+      clearTimeout(speakingDelayTimerRef.current);
+      speakingDelayTimerRef.current = null;
+    }
     setIsConnecting(false);
     releaseMediaStream();
     setEvaluation(null);
+    setShowResults(false);
+    setIsAvatarSpeakingDelayed(false);
+    setIsSpeakingQuestion(false);
+    setIsTransitioning(false);
+    isEndingSequenceRef.current = false;
+    isExitingRef.current = false;
     stateMachine.reset();
   }, [stateMachine, releaseMediaStream]);
 
   // 終了処理
   const handleExit = useCallback(async () => {
+    console.log('[InterviewSession] handleExit called');
+    isExitingRef.current = true; // 終了処理中フラグを立てる
     addLog('面接を終了します');
+
+    // 発話遅延タイマーをクリア
+    if (speakingDelayTimerRef.current) {
+      clearTimeout(speakingDelayTimerRef.current);
+      speakingDelayTimerRef.current = null;
+    }
 
     // アバター切断
     if (avatarRef.current) {
+      console.log('[InterviewSession] Disconnecting avatar...');
       await avatarRef.current.disconnect();
+      console.log('[InterviewSession] Avatar disconnected');
     }
 
     // MediaStream解放
     releaseMediaStream();
+
+    // 残り時間リセット
+    setRemainingTime(null);
 
     // 状態リセット
     setIsConnecting(false);
     stateMachine.reset();
 
     addLog('面接を終了しました');
+    console.log('[InterviewSession] Exit complete');
 
     // 終了コールバック
     onExit?.();
   }, [addLog, releaseMediaStream, stateMachine, onExit]);
 
-  // コンポーネントアンマウント時にMediaStreamを解放
+  // MediaStreamの変更時に古いストリームを解放
   useEffect(() => {
     return () => {
       if (mediaStream) {
@@ -347,20 +495,39 @@ export default function InterviewSession({
     };
   }, [mediaStream]);
 
+  // コンポーネントアンマウント時にアバター切断
+  useEffect(() => {
+    return () => {
+      if (avatarRef.current) {
+        avatarRef.current.disconnect();
+      }
+    };
+  }, []);
+
+  // コンポーネントアンマウント時に発話遅延タイマーをクリア
+  useEffect(() => {
+    return () => {
+      if (speakingDelayTimerRef.current) {
+        clearTimeout(speakingDelayTimerRef.current);
+      }
+    };
+  }, []);
+
   // 次のレベルで挑戦する処理
   const handleNextLevel = useCallback(
     (level: JLPTLevel) => {
       setIsConnecting(false);
       releaseMediaStream();
       setEvaluation(null);
+      setShowResults(false);
       stateMachine.reset();
       onNextLevel?.(level);
     },
     [releaseMediaStream, stateMachine, onNextLevel]
   );
 
-  // 評価完了画面
-  if (evaluation) {
+  // 評価完了画面（結果表示ボタン押下後に表示）
+  if (evaluation && showResults) {
     return (
       <FeedbackDisplay
         evaluation={evaluation}
@@ -381,6 +548,7 @@ export default function InterviewSession({
         jlptLevel={jlptLevel}
         fullscreen={true}
         showMetrics={false}
+        isRecording={stateMachine.isListening && !isGreetingInProgress}
         onSpeakStart={handleSpeakStart}
         onSpeakEnd={handleSpeakEnd}
         onConnected={handleConnected}
@@ -392,7 +560,16 @@ export default function InterviewSession({
         {/* ヘッダー */}
         <div className="overlay-header">
           <div className="session-header">
-            <h2>AI面接練習</h2>
+            <div className="header-left">
+              <h2>AI面接練習</h2>
+              <span className={`connection-status ${
+                isConnecting ? 'connecting' :
+                stateMachine.isReady || stateMachine.state !== 'initializing' ? 'connected' : 'disconnected'
+              }`}>
+                {isConnecting ? '接続中...' :
+                 stateMachine.isReady || stateMachine.state !== 'initializing' ? '接続中' : '未接続'}
+              </span>
+            </div>
             <div className="header-controls">
               <span className="jlpt-badge">JLPT {jlptLevel}</span>
               <button className="btn-exit" onClick={handleExit} title="面接を終了">
@@ -402,8 +579,8 @@ export default function InterviewSession({
             </div>
           </div>
 
-          {/* プログレスバー */}
-          {stateMachine.totalQuestions > 0 && (
+          {/* プログレスバー（挨拶中は非表示） */}
+          {stateMachine.totalQuestions > 0 && !isGreetingInProgress && (
             <div className="progress-section">
               <div className="progress-bar">
                 <div
@@ -416,96 +593,97 @@ export default function InterviewSession({
               </span>
             </div>
           )}
-        </div>
 
-        {/* 中央エリア：接続・開始ボタン */}
-        <div className="overlay-center">
-          {/* 接続中ローディング */}
-          {isConnecting && (
-            <div className="connecting-overlay">
-              <div className="connecting-spinner" />
-              <span className="connecting-text">アバターを準備しています...</span>
+          {/* 質問表示（質問発話中または録音中のみ表示） */}
+          {stateMachine.currentQuestion && !isGreetingInProgress && stateMachine.state !== 'completed' && (isSpeakingQuestion || stateMachine.isListening) && (
+            <div className="question-section">
+              <div className="question-header">
+                <div className="question-label">質問 {stateMachine.currentQuestionIndex + 1}</div>
+                <div className={`remaining-time ${stateMachine.isListening && !isAvatarSpeakingDelayed ? 'visible' : 'hidden'}`}>
+                  残り {remainingTime ?? 30} 秒
+                </div>
+              </div>
+              <p className="question-text">{stateMachine.currentQuestion.text}</p>
             </div>
           )}
 
-          {/* 接続ボタン（接続中でない場合のみ表示） */}
-          {stateMachine.state === 'initializing' && !isConnecting && (
-            <button className="btn-connect" onClick={handleConnect}>
-              アバターに接続
+          {/* 挨拶中メッセージ */}
+          {isGreetingInProgress && (
+            <div className="greeting-section">
+              <p className="greeting-text">面接官が挨拶しています...</p>
+            </div>
+          )}
+        </div>
+
+        {/* 中央エリア：開始ボタンまたはローディング */}
+        <div className="overlay-center">
+          {/* 開始ボタン（初期状態で表示） */}
+          {stateMachine.state === 'initializing' && !isConnecting && !isLoadingQuestions && (
+            <button className="btn-start-interview" onClick={handleStartInterview}>
+              面接を開始
             </button>
           )}
 
-          {/* 開始ボタン */}
-          {stateMachine.isReady && (
-            <div className="start-options">
-              <button className="btn-start" onClick={handleStartInterview}>
-                面接を開始
-              </button>
-
-              {/* チャレンジ枠オプション */}
-              {canChallenge && challengeLevel && !isChallengeMode && onStartChallenge && (
-                <div className="challenge-option">
-                  <button className="btn-challenge-mode" onClick={onStartChallenge}>
-                    チャレンジ枠で挑戦（{challengeLevel}）
-                  </button>
-                  <span className="challenge-remaining">
-                    残り{remainingChallenges}/{dailyChallengeLimit}回
-                  </span>
-                </div>
-              )}
-
-              {/* チャレンジ回数制限に達した場合 */}
-              {!canChallenge && challengeLevel && !isChallengeMode && remainingChallenges === 0 && (
-                <div className="challenge-limit-reached">
-                  本日のチャレンジ枠は終了しました（{dailyChallengeLimit}回/日）
-                </div>
-              )}
-
-              {/* チャレンジ枠中の表示 */}
-              {isChallengeMode && (
-                <div className="challenge-mode-badge">
-                  チャレンジ枠で挑戦中
-                </div>
-              )}
+          {/* 接続中・質問取得中ローディング */}
+          {(isConnecting || isLoadingQuestions) && (
+            <div className="connecting-overlay">
+              <div className="connecting-spinner" />
+              <span className="connecting-text">
+                {isLoadingQuestions ? '質問を準備しています...' : 'アバターを準備しています...'}
+              </span>
             </div>
           )}
 
-          {/* 状態説明（接続・開始待ち時のみ表示、接続中は非表示） */}
-          {(stateMachine.state === 'initializing' || stateMachine.state === 'ready') && !isConnecting && (
-            <div className="state-description">
-              {getStateDescription(stateMachine.state)}
+          {/* チャレンジ枠中の表示（面接中に表示） */}
+          {isChallengeMode && stateMachine.currentQuestion && (
+            <div className="challenge-mode-badge">
+              チャレンジ枠で挑戦中
+            </div>
+          )}
+
+          {/* エラー表示（中央に表示） */}
+          {stateMachine.state === 'error' && (
+            <div className="error-overlay">
+              <div className="error-message-box">
+                <p>{stateMachine.error}</p>
+                <button className="btn-retry" onClick={() => window.location.reload()}>
+                  再読み込み
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* 面接完了後の結果表示ボタン */}
+          {evaluation && !showResults && (
+            <div className="result-button-section">
+              <div className="result-button-box">
+                <p className="completion-message">面接お疲れさまでした</p>
+                <button
+                  className="btn-show-results"
+                  onClick={() => setShowResults(true)}
+                >
+                  結果表示
+                </button>
+              </div>
             </div>
           )}
         </div>
 
         {/* 下部エリア */}
         <div className="overlay-bottom">
-          {/* 質問表示 */}
-          {stateMachine.currentQuestion && (
-            <div className="question-section">
-              <div className="question-label">質問 {stateMachine.currentQuestionIndex + 1}</div>
-              <p className="question-text">{stateMachine.currentQuestion.text}</p>
-            </div>
-          )}
-
-          {/* 録音セクション */}
-          {stateMachine.isListening && (
+          {/* 録音セクション（挨拶中・面接完了時・アバター発話中・遷移中は非表示） */}
+          {stateMachine.isListening && !isGreetingInProgress && stateMachine.state !== 'completed' && !isAvatarSpeakingDelayed && !isTransitioning && (
             <div className="recorder-section">
               <AudioRecorder
                 isEnabled={true}
                 autoStart={true}
                 autoStopSeconds={30}
                 mediaStream={mediaStream}
+                questionText={stateMachine.currentQuestion?.text}
                 onRecordingComplete={handleRecordingComplete}
                 onSkip={handleSkip}
+                onRemainingTimeChange={handleRemainingTimeChange}
               />
-            </div>
-          )}
-
-          {/* エラー表示 */}
-          {stateMachine.state === 'error' && (
-            <div className="error-section">
-              {getStateDescription(stateMachine.state)}
             </div>
           )}
         </div>
@@ -550,21 +728,18 @@ export default function InterviewSession({
           pointer-events: auto;
         }
 
-        /* ヘッダーエリア - 臨場感を損なわないよう控えめに */
+        /* ヘッダーエリア - 質問と録音セクションを含む */
         .overlay-header {
           padding: 20px 24px;
           background: linear-gradient(
             to bottom,
             rgba(0, 0, 0, 0.6) 0%,
-            rgba(0, 0, 0, 0.3) 50%,
+            rgba(0, 0, 0, 0.4) 60%,
+            rgba(0, 0, 0, 0.2) 80%,
             rgba(0, 0, 0, 0) 100%
           );
           transition: opacity 0.3s ease;
-        }
-
-        /* 面接中はヘッダーを控えめに */
-        .interview-session:has(.question-section) .overlay-header {
-          opacity: 0.8;
+          padding-bottom: 40px;
         }
 
         .session-header {
@@ -574,11 +749,42 @@ export default function InterviewSession({
           margin-bottom: 12px;
         }
 
+        .header-left {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
         .session-header h2 {
           margin: 0;
           font-size: 20px;
           color: #fff;
           text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .connection-status {
+          padding: 4px 10px;
+          border-radius: 12px;
+          font-size: 11px;
+          font-weight: 500;
+        }
+
+        .connection-status.disconnected {
+          background: rgba(107, 114, 128, 0.4);
+          color: #9ca3af;
+          border: 1px solid rgba(107, 114, 128, 0.5);
+        }
+
+        .connection-status.connecting {
+          background: rgba(251, 191, 36, 0.2);
+          color: #fbbf24;
+          border: 1px solid rgba(251, 191, 36, 0.4);
+        }
+
+        .connection-status.connected {
+          background: rgba(34, 197, 94, 0.2);
+          color: #22c55e;
+          border: 1px solid rgba(34, 197, 94, 0.4);
         }
 
         .header-controls {
@@ -670,6 +876,46 @@ export default function InterviewSession({
           pointer-events: auto;
         }
 
+        .error-overlay {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 16px;
+        }
+
+        .error-message-box {
+          padding: 24px 32px;
+          background: rgba(127, 29, 29, 0.9);
+          border: 1px solid rgba(239, 68, 68, 0.5);
+          border-radius: 16px;
+          backdrop-filter: blur(12px);
+          text-align: center;
+        }
+
+        .error-message-box p {
+          margin: 0 0 16px 0;
+          color: #fca5a5;
+          font-size: 16px;
+        }
+
+        .btn-retry {
+          padding: 12px 32px;
+          border: none;
+          border-radius: 8px;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+          background: #ef4444;
+          color: white;
+          transition: all 0.2s ease;
+        }
+
+        .btn-retry:hover {
+          background: #dc2626;
+          transform: scale(1.02);
+        }
+
         .state-description {
           text-align: center;
           color: rgba(255, 255, 255, 0.85);
@@ -718,7 +964,8 @@ export default function InterviewSession({
         }
 
         .btn-connect,
-        .btn-start {
+        .btn-start,
+        .btn-start-interview {
           padding: 18px 56px;
           border: none;
           border-radius: 16px;
@@ -752,6 +999,18 @@ export default function InterviewSession({
           background: rgba(255, 255, 255, 0.1);
           transform: scale(1.03);
           box-shadow: 0 12px 40px rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-start-interview {
+          background: linear-gradient(135deg, rgba(59, 130, 246, 0.8) 0%, rgba(37, 99, 235, 0.8) 100%);
+          color: white;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-start-interview:hover {
+          background: linear-gradient(135deg, rgba(59, 130, 246, 0.95) 0%, rgba(37, 99, 235, 0.95) 100%);
+          transform: scale(1.03);
+          box-shadow: 0 12px 40px rgba(59, 130, 246, 0.3);
         }
 
         .start-options {
@@ -813,29 +1072,92 @@ export default function InterviewSession({
           backdrop-filter: blur(8px);
         }
 
+        /* 結果表示ボタンセクション */
+        .result-button-section {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .result-button-box {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 24px;
+          padding: 40px 56px;
+          background: rgba(0, 0, 0, 0.7);
+          border-radius: 24px;
+          backdrop-filter: blur(16px);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .completion-message {
+          margin: 0;
+          font-size: 20px;
+          color: rgba(255, 255, 255, 0.9);
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-show-results {
+          padding: 16px 48px;
+          border: none;
+          border-radius: 12px;
+          font-size: 18px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          background: linear-gradient(135deg, rgba(34, 197, 94, 0.9) 0%, rgba(22, 163, 74, 0.9) 100%);
+          color: white;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          box-shadow: 0 4px 16px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-show-results:hover {
+          background: linear-gradient(135deg, rgba(34, 197, 94, 1) 0%, rgba(22, 163, 74, 1) 100%);
+          transform: scale(1.03);
+          box-shadow: 0 8px 24px rgba(34, 197, 94, 0.4);
+        }
+
         /* 下部エリア - アバターに溶け込むグラデーション */
         .overlay-bottom {
           padding: 0 24px 24px;
-          background: linear-gradient(
-            to top,
-            rgba(0, 0, 0, 0.75) 0%,
-            rgba(0, 0, 0, 0.5) 30%,
-            rgba(0, 0, 0, 0.2) 60%,
-            rgba(0, 0, 0, 0) 100%
-          );
           display: flex;
           flex-direction: column;
           gap: 16px;
-          padding-top: 40px;
+        }
+
+        .greeting-section {
+          padding: 16px 20px;
+          background: rgba(10, 10, 20, 0.4);
+          border-radius: 12px;
+          backdrop-filter: blur(8px);
+          text-align: center;
+          margin-top: 12px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .greeting-text {
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 16px;
+          margin: 0;
         }
 
         .question-section {
           padding: 16px 20px;
-          background: rgba(10, 10, 20, 0.75);
+          background: rgba(10, 10, 20, 0.4);
           border-radius: 12px;
-          border-left: 4px solid rgba(59, 130, 246, 0.8);
-          backdrop-filter: blur(12px);
-          box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+          backdrop-filter: blur(8px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          margin-top: 12px;
+        }
+
+        .question-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 8px;
         }
 
         .question-label {
@@ -843,7 +1165,25 @@ export default function InterviewSession({
           color: rgba(255, 255, 255, 0.6);
           text-transform: uppercase;
           letter-spacing: 1px;
-          margin-bottom: 8px;
+        }
+
+        .remaining-time {
+          font-size: 13px;
+          color: #60a5fa;
+          font-weight: 500;
+          padding: 4px 10px;
+          background: rgba(59, 130, 246, 0.15);
+          border-radius: 12px;
+          border: 1px solid rgba(59, 130, 246, 0.3);
+          transition: opacity 0.2s ease;
+        }
+
+        .remaining-time.visible {
+          opacity: 1;
+        }
+
+        .remaining-time.hidden {
+          opacity: 0;
         }
 
         .question-text {
@@ -855,10 +1195,11 @@ export default function InterviewSession({
 
         .recorder-section {
           padding: 16px 20px;
-          background: rgba(10, 10, 20, 0.7);
+          background: rgba(10, 10, 20, 0.4);
           border-radius: 12px;
-          backdrop-filter: blur(12px);
-          box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+          backdrop-filter: blur(8px);
+          box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+          border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .error-section {
@@ -917,6 +1258,7 @@ export default function InterviewSession({
         @media (max-width: 640px) {
           .overlay-header {
             padding: 12px 16px;
+            padding-bottom: 24px;
           }
 
           .session-header h2 {
@@ -925,6 +1267,15 @@ export default function InterviewSession({
 
           .session-header {
             margin-bottom: 8px;
+          }
+
+          .header-left {
+            gap: 8px;
+          }
+
+          .connection-status {
+            padding: 3px 8px;
+            font-size: 10px;
           }
 
           .header-controls {
@@ -946,7 +1297,8 @@ export default function InterviewSession({
           }
 
           .btn-connect,
-          .btn-start {
+          .btn-start,
+          .btn-start-interview {
             padding: 14px 36px;
             font-size: 16px;
             border-radius: 10px;
@@ -1024,12 +1376,27 @@ export default function InterviewSession({
             padding: 4px 10px;
             font-size: 9px;
           }
+
+          .result-button-box {
+            padding: 28px 36px;
+            gap: 20px;
+          }
+
+          .completion-message {
+            font-size: 16px;
+          }
+
+          .btn-show-results {
+            padding: 14px 36px;
+            font-size: 16px;
+          }
         }
 
         /* ===== MD（タブレット）: 641px ~ 1024px ===== */
         @media (min-width: 641px) and (max-width: 1024px) {
           .overlay-header {
             padding: 20px 32px;
+            padding-bottom: 32px;
           }
 
           .session-header h2 {
@@ -1050,7 +1417,8 @@ export default function InterviewSession({
           }
 
           .btn-connect,
-          .btn-start {
+          .btn-start,
+          .btn-start-interview {
             padding: 16px 48px;
             font-size: 18px;
           }
@@ -1097,6 +1465,7 @@ export default function InterviewSession({
         @media (min-width: 1025px) {
           .overlay-header {
             padding: 24px 48px;
+            padding-bottom: 48px;
           }
 
           .session-header h2 {
@@ -1122,7 +1491,8 @@ export default function InterviewSession({
           }
 
           .btn-connect,
-          .btn-start {
+          .btn-start,
+          .btn-start-interview {
             padding: 18px 56px;
             font-size: 20px;
             border-radius: 14px;
@@ -1212,6 +1582,7 @@ export default function InterviewSession({
         @media (max-height: 500px) and (orientation: landscape) {
           .overlay-header {
             padding: 8px 16px;
+            padding-bottom: 16px;
           }
 
           .session-header {
@@ -1220,6 +1591,15 @@ export default function InterviewSession({
 
           .session-header h2 {
             font-size: 14px;
+          }
+
+          .header-left {
+            gap: 6px;
+          }
+
+          .connection-status {
+            padding: 2px 6px;
+            font-size: 9px;
           }
 
           .header-controls {
@@ -1247,7 +1627,8 @@ export default function InterviewSession({
           }
 
           .btn-connect,
-          .btn-start {
+          .btn-start,
+          .btn-start-interview {
             padding: 10px 32px;
             font-size: 14px;
           }
