@@ -6,7 +6,7 @@ import type { ConnectionStatus, Question, HeyGenMetrics, JLPTLevel } from '@/typ
 import { JLPT_SETTINGS } from '@/types/interview';
 
 // カスタムフック: 常に最新のコールバック参照を保持
-function useCallbackRef<T extends (...args: unknown[]) => unknown>(callback: T | undefined): React.RefObject<T | undefined> {
+function useCallbackRef<T extends (...args: never[]) => unknown>(callback: T | undefined): React.RefObject<T | undefined> {
   const callbackRef = useRef<T | undefined>(callback);
   useLayoutEffect(() => {
     callbackRef.current = callback;
@@ -21,6 +21,8 @@ interface InterviewHeyGenAvatarProps {
   fullscreen?: boolean;
   /** デバッグメトリクス表示 */
   showMetrics?: boolean;
+  /** 録音中かどうか（録音中はビデオをミュートしてエコーを防ぐ） */
+  isRecording?: boolean;
   /** 発話開始時のコールバック */
   onSpeakStart?: () => void;
   /** 発話終了時のコールバック */
@@ -50,7 +52,7 @@ export interface InterviewHeyGenAvatarRef {
 
 const InterviewHeyGenAvatar = forwardRef<InterviewHeyGenAvatarRef, InterviewHeyGenAvatarProps>(
   function InterviewHeyGenAvatar(
-    { jlptLevel = 'N3', fullscreen = false, showMetrics = false, onSpeakStart, onSpeakEnd, onConnected, onError, onMetricsUpdate },
+    { jlptLevel = 'N3', fullscreen = false, showMetrics = false, isRecording = false, onSpeakStart, onSpeakEnd, onConnected, onError, onMetricsUpdate },
     ref
   ) {
     const [status, setStatus] = useState<ConnectionStatus>('disconnected');
@@ -66,6 +68,9 @@ const InterviewHeyGenAvatar = forwardRef<InterviewHeyGenAvatarRef, InterviewHeyG
     const initStartTimeRef = useRef<number>(0);
     const speakStartTimeRef = useRef<number>(0);
     const taskTypeRef = useRef<typeof import('@heygen/streaming-avatar').TaskType | null>(null);
+    const taskModeRef = useRef<typeof import('@heygen/streaming-avatar').TaskMode | null>(null);
+    // 発話準備中フラグ（speak()呼び出し前にtrueに設定、AVATAR_START_TALKINGでfalseに）
+    const [isPendingSpeech, setIsPendingSpeech] = useState(false);
 
     // コールバック関数をrefsに保持（stale closure問題を回避）
     const onSpeakStartRef = useCallbackRef(onSpeakStart);
@@ -91,14 +96,37 @@ const InterviewHeyGenAvatar = forwardRef<InterviewHeyGenAvatarRef, InterviewHeyG
       initStartTimeRef.current = performance.now();
 
       try {
-        const { default: StreamingAvatar, AvatarQuality, StreamingEvents, TaskType } = await import(
+        // セッショントークンを取得（APIキーではなくセッショントークンが必要）
+        const tokenResponse = await fetch('https://api.heygen.com/v1/streaming.create_token', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': apiKey,
+          },
+        });
+
+        if (!tokenResponse.ok) {
+          throw new Error(`トークン取得エラー: ${tokenResponse.status}`);
+        }
+
+        const tokenData = await tokenResponse.json();
+        const sessionToken = tokenData.data?.token;
+
+        if (!sessionToken) {
+          throw new Error('セッショントークンが取得できませんでした');
+        }
+
+        console.log('[HeyGen] Session token obtained');
+
+        const { default: StreamingAvatar, AvatarQuality, StreamingEvents, TaskType, TaskMode } = await import(
           '@heygen/streaming-avatar'
         );
 
         taskTypeRef.current = TaskType;
+        taskModeRef.current = TaskMode;
 
         avatarRef.current = new StreamingAvatar({
-          token: apiKey,
+          token: sessionToken,
         });
 
         // イベントリスナー設定
@@ -116,6 +144,7 @@ const InterviewHeyGenAvatar = forwardRef<InterviewHeyGenAvatarRef, InterviewHeyG
           console.log('[HeyGen] AVATAR_START_TALKING event fired');
           const latency = performance.now() - speakStartTimeRef.current;
           setMetrics((prev) => ({ ...prev, speakLatency: Math.round(latency) }));
+          setIsPendingSpeech(false); // 発話準備完了
           setIsSpeaking(true);
           // refから最新のコールバックを取得して呼び出す
           onSpeakStartRef.current?.();
@@ -125,6 +154,7 @@ const InterviewHeyGenAvatar = forwardRef<InterviewHeyGenAvatarRef, InterviewHeyG
           console.log('[HeyGen] AVATAR_STOP_TALKING event fired');
           const totalTime = performance.now() - speakStartTimeRef.current;
           setMetrics((prev) => ({ ...prev, totalSpeakTime: Math.round(totalTime) }));
+          setIsPendingSpeech(false); // 念のためクリア
           setIsSpeaking(false);
           // refから最新のコールバックを取得して呼び出す
           onSpeakEndRef.current?.();
@@ -149,43 +179,69 @@ const InterviewHeyGenAvatar = forwardRef<InterviewHeyGenAvatarRef, InterviewHeyG
       } catch (error) {
         setStatus('disconnected');
         const errorMessage = error instanceof Error ? error.message : '不明なエラー';
+        console.error('[HeyGen] Connection error:', errorMessage);
         onErrorRef.current?.(errorMessage);
+        throw error; // 再スローしてcallerでもキャッチできるようにする
       }
     }, [jlptLevel, onSpeakStartRef, onSpeakEndRef, onConnectedRef, onErrorRef]);
 
     // 切断処理
     const disconnect = useCallback(async () => {
-      if (avatarRef.current) {
-        await avatarRef.current.stopAvatar();
-        avatarRef.current = null;
+      console.log('[HeyGen] disconnect() called');
+      try {
+        if (avatarRef.current) {
+          console.log('[HeyGen] Stopping avatar session...');
+          await avatarRef.current.stopAvatar();
+          console.log('[HeyGen] Avatar session stopped');
+          avatarRef.current = null;
+        }
+      } catch (error) {
+        console.error('[HeyGen] Error stopping avatar:', error);
       }
       if (videoRef.current) {
         videoRef.current.srcObject = null;
       }
       setStatus('disconnected');
       setIsSpeaking(false);
+      console.log('[HeyGen] Disconnected');
     }, []);
 
-    // 発話処理
+    // 発話処理（リトライ付き）
     const speak = useCallback(
-      async (text: string) => {
+      async (text: string, retryCount = 0) => {
+        const maxRetries = 2;
+
         if (!avatarRef.current || status !== 'connected') {
           onErrorRef.current?.('アバターが接続されていません');
           return;
         }
 
-        console.log('[HeyGen] speak() called for:', text.slice(0, 30));
+        console.log('[HeyGen] speak() called for:', text.slice(0, 30), `(attempt ${retryCount + 1})`);
         speakStartTimeRef.current = performance.now();
+
+        // 発話準備中フラグを立てる（ミュート解除のため）
+        setIsPendingSpeech(true);
+        console.log('[HeyGen] isPendingSpeech set to true');
 
         try {
           await avatarRef.current.speak({
             text,
             taskType: taskTypeRef.current?.REPEAT,
+            taskMode: taskModeRef.current?.SYNC, // SYNCモードで発話完了まで待機
           });
-          console.log('[HeyGen] speak() promise resolved for:', text.slice(0, 30));
+          console.log('[HeyGen] speak() promise resolved (speech completed) for:', text.slice(0, 30));
         } catch (error) {
           const errorMessage = error instanceof Error ? error.message : '発話エラー';
           console.error('[HeyGen] speak() error:', errorMessage);
+          setIsPendingSpeech(false); // エラー時もフラグをクリア
+
+          // セッション状態エラーの場合はリトライ
+          if (errorMessage.includes('not in correct state') && retryCount < maxRetries) {
+            console.log('[HeyGen] Retrying after 1 second...');
+            await new Promise((resolve) => setTimeout(resolve, 1000));
+            return speak(text, retryCount + 1);
+          }
+
           onErrorRef.current?.(errorMessage);
         }
       },
@@ -227,19 +283,13 @@ const InterviewHeyGenAvatar = forwardRef<InterviewHeyGenAvatarRef, InterviewHeyG
     return (
       <div className={`interview-avatar ${fullscreen ? 'fullscreen' : ''}`}>
         <div className="video-container">
-          <video ref={videoRef} autoPlay playsInline muted={false} />
+          <video ref={videoRef} autoPlay playsInline muted={!isSpeaking && !isPendingSpeech} />
 
-          {/* ステータスオーバーレイ */}
+          {/* ステータスオーバーレイ（接続中のみ表示） */}
           {status === 'connecting' && (
             <div className="status-overlay">
               <div className="loading-spinner" />
               <span>接続中...</span>
-            </div>
-          )}
-
-          {status === 'disconnected' && (
-            <div className="status-overlay">
-              <span>未接続</span>
             </div>
           )}
 

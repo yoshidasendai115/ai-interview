@@ -258,7 +258,7 @@ export function useInterviewStateMachine(): UseInterviewStateMachineReturn {
   const totalQuestions = machineState.questions.length;
   const currentQuestion = machineState.questions[machineState.currentQuestionIndex] ?? null;
   const progress = totalQuestions > 0
-    ? Math.round((machineState.currentQuestionIndex / totalQuestions) * 100)
+    ? Math.round(((machineState.currentQuestionIndex + 1) / totalQuestions) * 100)
     : 0;
 
   const context: SessionContext = useMemo(() => ({

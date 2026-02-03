@@ -291,24 +291,56 @@ function determinePriority(score: number): 'high' | 'medium' | 'low' {
 
 /**
  * 開発用：モック評価結果生成
+ *
+ * 注意：これは開発用のモック関数です。
+ * 本番環境ではGPT-4o APIを使用した実際の評価を行う必要があります。
  */
 export function generateMockEvaluation(
   questionText: string,
   answerText: string,
   jlptLevel: JLPTLevel
 ): EvaluationResult {
+  // デバッグ用：実際のトランスクリプトをコンソールに出力
+  console.log('[Evaluation] Question:', questionText.slice(0, 50));
+  console.log('[Evaluation] Answer transcript:', answerText || '(empty)');
+  console.log('[Evaluation] Answer length:', answerText.length);
+
   // 回答の長さに基づいて基本スコアを計算
-  const baseScore = Math.min(100, Math.max(30, 40 + answerText.length / 5));
-  const variation = () => Math.floor(Math.random() * 20) - 10;
+  // 空の回答の場合は低スコア、十分な長さがあれば高スコア
+  let baseScore: number;
+  if (answerText.length === 0) {
+    // 回答なし：音声認識が動作していない可能性
+    baseScore = 35;
+  } else if (answerText.length < 20) {
+    // 非常に短い回答
+    baseScore = 50;
+  } else if (answerText.length < 50) {
+    // 短い回答
+    baseScore = 65;
+  } else if (answerText.length < 100) {
+    // 普通の長さ
+    baseScore = 75;
+  } else {
+    // 十分な長さ
+    baseScore = 85;
+  }
+
+  const variation = () => Math.floor(Math.random() * 10) - 5;
 
   const scores: CategoryScores = {
     vocabulary: Math.min(100, Math.max(0, baseScore + variation())),
     grammar: Math.min(100, Math.max(0, baseScore + variation())),
     content: Math.min(100, Math.max(0, baseScore + variation())),
-    honorifics: Math.min(100, Math.max(0, baseScore + variation() - 10)),
+    honorifics: Math.min(100, Math.max(0, baseScore + variation())),
   };
 
-  const feedback: CategoryFeedback = {
+  // 回答が空の場合は特別なフィードバック
+  const feedback: CategoryFeedback = answerText.length === 0 ? {
+    vocabulary: '【デバッグ】音声が認識されませんでした。マイクの設定を確認してください。',
+    grammar: '【デバッグ】トランスクリプトが空です。録音が正しく行われているか確認してください。',
+    content: '【デバッグ】回答が記録されていません。',
+    honorifics: '【デバッグ】評価できません。',
+  } : {
     vocabulary: '適切な語彙を使用しています。より専門的な表現を増やすとさらに良くなります。',
     grammar: '基本的な文法は正確です。複文の構造に注意しましょう。',
     content: '質問の意図を理解した回答ができています。具体例を追加するとより説得力が増します。',
@@ -317,6 +349,11 @@ export function generateMockEvaluation(
 
   const totalScore = calculateTotalScore(scores, jlptLevel);
   const weakPoints = detectWeakPoints(scores, feedback);
+
+  // デバッグ情報を含めた総評
+  const debugInfo = answerText.length === 0
+    ? '\n\n【デバッグ情報】音声認識でトランスクリプトが取得できませんでした。マイクが正しく動作しているか、またはアバターの発話終了を待っているか確認してください。'
+    : `\n\n【デバッグ情報】トランスクリプト長: ${answerText.length}文字`;
 
   return {
     scores,
@@ -329,11 +366,11 @@ export function generateMockEvaluation(
       lastOccurredAt: new Date(),
       resolved: false,
     })),
-    overallFeedback: `全体的に${totalScore >= 70 ? '良い' : '改善が必要な'}回答でした。${
+    overallFeedback: `【モック評価】${totalScore >= 70 ? '良い回答でした。' : '改善が必要な回答でした。'}${
       totalScore >= 70
         ? '引き続き練習を重ねて、さらなる向上を目指しましょう。'
         : '特に敬語の使い方と文法に注意して、繰り返し練習しましょう。'
-    }`,
+    }${debugInfo}`,
     totalScore,
   };
 }

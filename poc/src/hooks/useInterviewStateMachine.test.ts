@@ -261,7 +261,8 @@ describe('useInterviewStateMachine', () => {
       result.current.startInterview(mockQuestions);
     });
 
-    expect(result.current.progress).toBe(0);
+    // 2問中の1問目なので 1/2 = 50%
+    expect(result.current.progress).toBe(50);
 
     act(() => {
       result.current.avatarStopSpeaking();
@@ -276,6 +277,7 @@ describe('useInterviewStateMachine', () => {
       result.current.nextQuestion();
     });
 
-    expect(result.current.progress).toBe(50);
+    // 2問中の2問目なので 2/2 = 100%
+    expect(result.current.progress).toBe(100);
   });
 });

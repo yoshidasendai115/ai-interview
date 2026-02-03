@@ -1,0 +1,121 @@
+<mxfile host="app.diagrams.net" modified="2026-02-03T00:00:00.000Z" agent="5.0" version="21.0.0" type="device">
+  <diagram name="面接練習画面" id="fullscreen-interview">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="360" pageHeight="640" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- スマートフォンフレーム -->
+        <mxCell id="phone-frame" value="" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#999999;strokeWidth=2;fillColor=#1A1A2E;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="320" height="600" as="geometry"/>
+        </mxCell>
+
+        <!-- AIアバター背景（画面全体） -->
+        <mxCell id="avatar-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0D1B2A;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="320" height="600" as="geometry"/>
+        </mxCell>
+
+        <!-- アバター（大きく背景に表示） -->
+        <mxCell id="avatar-body" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1B263B;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="280" height="380" as="geometry"/>
+        </mxCell>
+
+        <!-- アバター顔（上半身を大きく表示） -->
+        <mxCell id="avatar-head" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#E8D5C4;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="100" y="80" width="160" height="160" as="geometry"/>
+        </mxCell>
+
+        <!-- アバターの髪 -->
+        <mxCell id="avatar-hair" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#2C3E50;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="110" y="75" width="140" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- アバターの目 -->
+        <mxCell id="avatar-eye-l" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#2C3E50;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="135" y="150" width="20" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="avatar-eye-r" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#2C3E50;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="205" y="150" width="20" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- アバターの口（話し中） -->
+        <mxCell id="avatar-mouth" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#C0392B;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="155" y="195" width="50" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- アバターのスーツ -->
+        <mxCell id="avatar-suit" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="80" y="245" width="200" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- アバターのシャツ -->
+        <mxCell id="avatar-shirt" value="" style="triangle;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=none;rotation=180;" vertex="1" parent="1">
+          <mxGeometry x="155" y="245" width="50" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- アバターのネクタイ -->
+        <mxCell id="avatar-tie" value="" style="triangle;whiteSpace=wrap;html=1;fillColor=#C0392B;strokeColor=none;rotation=180;" vertex="1" parent="1">
+          <mxGeometry x="170" y="250" width="20" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- ミニマルヘッダー（半透明） -->
+        <mxCell id="mini-header-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=none;opacity=40;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="320" height="44" as="geometry"/>
+        </mxCell>
+
+        <!-- 戻るボタン -->
+        <mxCell id="back-btn" value="←" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="30" y="26" width="40" height="32" as="geometry"/>
+        </mxCell>
+
+        <!-- 質問番号 -->
+        <mxCell id="question-num" value="Q 3/10" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="140" y="28" width="80" height="28" as="geometry"/>
+        </mxCell>
+
+        <!-- 接続ステータス -->
+        <mxCell id="status-dot" value="🟢" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="290" y="28" width="30" height="28" as="geometry"/>
+        </mxCell>
+
+        <!-- 質問表示オーバーレイ（下部） -->
+        <mxCell id="question-overlay" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=none;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="30" y="450" width="300" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="question-text" value="前職ではどのような仕事をしていましたか？" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="35" y="455" width="290" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- 回答表示エリア -->
+        <mxCell id="answer-overlay" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=none;opacity=50;" vertex="1" parent="1">
+          <mxGeometry x="30" y="520" width="300" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="answer-text" value="私は以前、レストランで働いていました..." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#90CAF9;" vertex="1" parent="1">
+          <mxGeometry x="35" y="525" width="290" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- マイクボタン（中央下部に大きく） -->
+        <mxCell id="mic-btn-bg" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#EF5350;strokeColor=#FFFFFF;strokeWidth=3;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="145" y="570" width="70" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="mic-icon" value="🎤" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=28;" vertex="1" parent="1">
+          <mxGeometry x="157" y="585" width="46" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- 録音中リング -->
+        <mxCell id="recording-ring" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;strokeColor=#EF5350;strokeWidth=2;opacity=60;" vertex="1" parent="1">
+          <mxGeometry x="137" y="562" width="86" height="86" as="geometry"/>
+        </mxCell>
+
+        <!-- 注釈 -->
+        <mxCell id="note" value="※ボトムナビゲーションなし（没入型UI）" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#666666;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="70" y="660" width="220" height="20" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

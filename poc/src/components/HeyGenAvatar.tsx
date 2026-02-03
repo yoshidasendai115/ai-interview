@@ -73,6 +73,28 @@ export default function HeyGenAvatar() {
     addLog('info', 'HeyGen アバターを初期化中...');
 
     try {
+      // セッショントークンを取得（APIキーではなくセッショントークンが必要）
+      const tokenResponse = await fetch('https://api.heygen.com/v1/streaming.create_token', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': apiKey,
+        },
+      });
+
+      if (!tokenResponse.ok) {
+        throw new Error(`トークン取得エラー: ${tokenResponse.status}`);
+      }
+
+      const tokenData = await tokenResponse.json();
+      const sessionToken = tokenData.data?.token;
+
+      if (!sessionToken) {
+        throw new Error('セッショントークンが取得できませんでした');
+      }
+
+      addLog('info', 'セッショントークン取得成功');
+
       // Dynamic import to avoid SSR issues
       const { default: StreamingAvatar, AvatarQuality, StreamingEvents, TaskType } = await import(
         '@heygen/streaming-avatar'
@@ -82,7 +104,7 @@ export default function HeyGenAvatar() {
       taskTypeRef.current = TaskType;
 
       avatarRef.current = new StreamingAvatar({
-        token: apiKey,
+        token: sessionToken,
       });
 
       // Event listeners
@@ -112,7 +134,7 @@ export default function HeyGenAvatar() {
 
       await avatarRef.current.createStartAvatar({
         quality: AvatarQuality.High,
-        avatarName: 'Wayne_20240711', // Wayne (アジア系男性、ストリーミング対応)
+        avatarName: 'Wayne_20240711',
         language: 'ja',
       });
 

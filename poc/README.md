@@ -38,9 +38,22 @@ cp .env.example .env.local
 
 ```
 NEXT_PUBLIC_HEYGEN_API_KEY=your_heygen_api_key_here
+NEXT_PUBLIC_HEYGEN_AVATAR_ID=Ann_Therapist_public
 NEXT_PUBLIC_DID_API_KEY=your_did_api_key_here
 NEXT_PUBLIC_DID_AGENT_ID=your_did_agent_id_here
 ```
+
+#### 利用可能なパブリックアバターID
+
+| アバターID | 説明 |
+|------------|------|
+| `Ann_Therapist_public` | セラピスト（女性） - デフォルト |
+| `Shawn_Therapist_public` | セラピスト（男性） |
+| `Bryan_FitnessCoach_public` | フィットネスコーチ |
+| `Dexter_Doctor_Standing2_public` | 医師（立ち姿） |
+| `Elenora_IT_Sitting_public` | IT専門家（着席） |
+
+カスタムアバターを使用する場合は、[HeyGenダッシュボード](https://app.heygen.com/)からアバターIDを取得してください。
 
 ### 3. 依存関係のインストール
 
@@ -107,6 +120,16 @@ poc/
 - API Keyが正しいか確認
 - ブラウザのコンソールでエラーメッセージを確認
 - CORS設定を確認
+
+### HeyGen 400 Bad Request エラー
+
+`POST https://api.heygen.com/v1/streaming.new 400 (Bad Request)` が発生する場合:
+
+1. **アバターIDを確認**: 無効なアバターIDを使用している可能性があります
+   - `NEXT_PUBLIC_HEYGEN_AVATAR_ID` に有効なパブリックアバターIDを設定
+   - 例: `Ann_Therapist_public`
+2. **APIプランを確認**: 一部のアバターは特定のプランでのみ利用可能
+3. **トークン取得を確認**: コンソールに `[HeyGen] Session token obtained` が表示されているか確認
 
 ### D-ID接続エラー
 
