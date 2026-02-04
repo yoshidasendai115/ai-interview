@@ -70,7 +70,8 @@ SSO認証コールバック（mintoku workからのリダイレクト後）
 > **学習計画の自動生成**
 > SSO認証時に `preferred_industry` が含まれる場合、その業界に基づいて学習計画を同期生成します。
 > 既存の学習計画があり、業界が変更されていない場合は新規生成をスキップします。
-> 詳細は 12_面接フロー制御 12.10節 を参照。
+> - 学習計画存在判定ロジック: 12_面接フロー制御 12.10.3節
+> - 学習計画生成ロジック: 12_面接フロー制御 12.10.4節
 
 ### POST /api/v1/auth/refresh
 トークンリフレッシュ
@@ -117,6 +118,15 @@ SSO認証コールバック（mintoku workからのリダイレクト後）
 
 > **注意**: スクリプトには業界情報が含まれているため、`industry_id`の指定は不要です。
 > スクリプト一覧は GET /api/v1/scripts で取得できます（10.5.1節参照）。
+
+#### 用語の対応関係
+
+| API用語 | DB用語 | 説明 |
+|---------|--------|------|
+| script / script_id | scenario_templates / scenario_template_id | 面接シナリオテンプレート。業界・JLPTレベル別の質問セットを定義 |
+
+> **背景**: APIでは「スクリプト」（面接台本）という直感的な用語を使用し、DBでは「シナリオテンプレート」（設計上の正式名称）を使用している。
+> 実装時は `scripts` テーブルを `scenario_templates` テーブルとしてマッピングする。
 
 **レスポンス（201 Created）**
 ```json
@@ -181,6 +191,34 @@ SSO認証コールバック（mintoku workからのリダイレクト後）
 }
 ```
 
+#### 音声ファイル処理フロー
+
+リクエストで受け取った`audio_data`（base64エンコード）は以下のフローで処理される。
+
+```
+1. クライアント → API: base64エンコードされた音声データを送信
+   ↓
+2. API: base64をデコードしてバイナリデータに変換
+   ↓
+3. API → S3: 音声ファイルをアップロード
+   - バケット: {環境}-ai-interview-audio
+   - キー: sessions/{session_id}/answers/{answer_id}.webm
+   - Content-Type: audio/webm
+   ↓
+4. S3: 署名付きURLまたは内部URLを返却
+   ↓
+5. API → DB: session_answers.audio_url にS3 URLを保存
+   ↓
+6. API → クライアント: レスポンス返却
+```
+
+| 項目 | 値 |
+|------|-----|
+| 保存形式 | WebM (Opus codec) |
+| 最大ファイルサイズ | 10MB |
+| 保存期間 | 90日（ライフサイクルポリシー適用） |
+| アクセス制御 | 署名付きURL（有効期限: 1時間） |
+
 ### PUT /api/v1/sessions/{session_id}/complete
 セッション完了（評価実行をトリガー）
 
@@ -193,6 +231,73 @@ SSO認証コールバック（mintoku workからのリダイレクト後）
   "evaluation_id": "eval_123"
 }
 ```
+
+#### 評価処理〜mintoku work同期の非同期フロー
+
+セッション完了時、評価処理とmintoku work同期は以下の非同期フローで実行される。
+
+```
+1. PUT /api/v1/sessions/{id}/complete 受信
+   ↓
+2. interview_sessions.status = 'completed' に更新
+   ↓
+3. evaluations レコード作成
+   - evaluation_status = 'pending'
+   - mintoku_sync_status = 'pending'
+   ↓
+4. APIレスポンス返却（ここでクライアントへの応答完了）
+   ↓
+5. 非同期: 評価処理開始
+   - evaluations.evaluation_status = 'processing'
+   ↓
+6. GPT-4o呼び出し
+   ├─ 成功 → evaluation_status = 'completed'
+   │         evaluated_at = NOW()
+   │         → ステップ7へ
+   │
+   └─ 失敗 → リトライ（最大3回）
+             ├─ リトライ成功 → evaluation_status = 'completed'
+             └─ リトライ失敗 → evaluation_status = 'failed'
+                              last_error = エラーメッセージ
+                              → 処理終了（管理者通知）
+   ↓
+7. mintoku work送信開始
+   ↓
+8. POST https://api.mintoku-work.com/v1/interview-results
+   ├─ 成功（200 OK）
+   │   → mintoku_sync_status = 'synced'
+   │   → mintoku_synced_at = NOW()
+   │
+   └─ 失敗 → リトライ（最大3回、指数バックオフ: 1秒→2秒→4秒）
+             ├─ リトライ成功 → mintoku_sync_status = 'synced'
+             └─ リトライ失敗 → mintoku_sync_status = 'failed'
+                              → 処理終了（管理者通知、手動再送可能）
+```
+
+#### 評価ステータスの状態遷移
+
+> **詳細**: 11_データベーススキーマ 11.3節 evaluationsテーブル参照
+
+| 現在の状態 | イベント | 次の状態 |
+|-----------|---------|---------|
+| pending | 評価処理開始 | processing |
+| processing | GPT-4o評価成功 | completed |
+| processing | GPT-4o評価失敗（リトライ上限到達） | failed |
+| failed | 手動再評価実行 | processing |
+
+#### mintoku work同期ステータスの状態遷移
+
+| 現在の状態 | イベント | 次の状態 |
+|-----------|---------|---------|
+| pending | 評価完了後、同期開始 | synced / failed |
+| failed | 手動再送信実行 | synced / failed |
+
+#### 失敗時の対応
+
+| 失敗種別 | 対応 |
+|---------|------|
+| 評価処理失敗（failed） | 管理者に通知。管理画面から手動で再評価可能。ユーザー画面には「評価処理中にエラーが発生しました。しばらくお待ちください。」と表示 |
+| mintoku work同期失敗（failed） | 管理者に通知。バッチ処理で定期的に再送試行（1時間ごと、最大24時間）。評価結果自体はユーザーに表示可能 |
 
 ### GET /api/v1/sessions/history
 履歴取得
@@ -391,6 +496,38 @@ SSO認証コールバック（mintoku workからのリダイレクト後）
 > - 質問バンク（60問）からカテゴリ別に10問を選択
 > - JLPTレベルに応じてテキストを選択（N1-N3: `question_ja` / N4-N5: `question_simplified`）
 > - 詳細は 12_面接フロー制御 12.3節 を参照
+
+#### API/DBフィールドの対応関係
+
+| APIレスポンス | DBカラム | 説明 |
+|--------------|---------|------|
+| `id` | `question_bank.id` | 質問ID（Q01〜Q60） |
+| `order` | 動的生成 | セッション内での質問順序（1〜10）。DBには保存せず、選択時に付与 |
+| `text` | `question_bank.question_ja` または `question_simplified` | JLPTレベルに応じて選択 |
+| `spokenText` | `question_bank.question_reading` | ふりがな付きテキスト（HeyGen発話用） |
+| `expectedDurationSeconds` | 固定値（60秒） | 想定回答時間 |
+| `evaluationCriteria` | `question_bank.evaluation_points` | 評価ポイント（JSON配列） |
+
+#### データ変換フロー
+
+```
+DB: question_bank
+├─ id: "Q01"
+├─ question_ja: "本日はお越しいただきありがとうございます。緊張していませんか？"
+├─ question_simplified: "今日は来てくれてありがとう。緊張していない？"
+├─ question_reading: "ほんじつはおこしいただきありがとうございます。きんちょうしていませんか？"
+└─ evaluation_points: ["communication"]
+
+        ↓ 変換（JLPTレベル=N3の場合）
+
+API Response:
+├─ id: "Q01"
+├─ order: 1  ← 動的に付与
+├─ text: "本日はお越しいただきありがとうございます。緊張していませんか？"  ← question_ja
+├─ spokenText: "ほんじつはおこしいただきありがとうございます..."  ← question_reading
+├─ expectedDurationSeconds: 60  ← 固定値
+└─ evaluationCriteria: ["communication"]  ← evaluation_points
+```
 
 ### 10.5.1 スクリプトAPI
 
