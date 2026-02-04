@@ -105,17 +105,18 @@ SSO認証コールバック（mintoku workからのリダイレクト後）
 **リクエスト**
 ```json
 {
-  "jlpt_level": "N3",
-  "industry_id": "construction",
-  "is_challenge": false
+  "script_id": "script_uuid",
+  "jlpt_level": "N3"
 }
 ```
 
 | フィールド | 型 | 必須 | 説明 |
 |-----------|-----|------|------|
+| script_id | string | ○ | 使用するスクリプトのUUID（10.5.1節参照） |
 | jlpt_level | string | ○ | 練習時のJLPTレベル（N1-N5） |
-| industry_id | string | △ | 業界ID（ユーザーの希望業界を使用、未指定時は汎用質問） |
-| is_challenge | boolean | × | チャレンジモードかどうか（デフォルト: false） |
+
+> **注意**: スクリプトには業界情報が含まれているため、`industry_id`の指定は不要です。
+> スクリプト一覧は GET /api/v1/scripts で取得できます（10.5.1節参照）。
 
 **レスポンス（201 Created）**
 ```json
@@ -390,6 +391,67 @@ SSO認証コールバック（mintoku workからのリダイレクト後）
 > - 質問バンク（60問）からカテゴリ別に10問を選択
 > - JLPTレベルに応じてテキストを選択（N1-N3: `question_ja` / N4-N5: `question_simplified`）
 > - 詳細は 12_面接フロー制御 12.3節 を参照
+
+### 10.5.1 スクリプトAPI
+
+> **注意**: 実際の面接セッションではスクリプト（事前定義されたシナリオ）を使用します。
+> セッション開始前にスクリプトを選択する必要があります。
+
+#### GET /api/v1/scripts
+スクリプト一覧取得
+
+**クエリパラメータ**
+| パラメータ | 型 | 説明 |
+|-----------|-----|------|
+| industry_id | string | 業界ID（任意、フィルタリング用） |
+
+**レスポンス（200 OK）**
+```json
+{
+  "scripts": [
+    {
+      "id": "script_uuid",
+      "title": "建設業界向け基本面接",
+      "industry_id": "construction",
+      "industry_name": "建設",
+      "question_count": 10,
+      "description": "建設業界で働く外国人向けの基本的な面接練習シナリオです。",
+      "created_at": "2025-01-15T10:00:00Z"
+    }
+  ],
+  "total": 7
+}
+```
+
+#### GET /api/v1/scripts/{script_id}
+スクリプト詳細取得（質問一覧含む）
+
+**レスポンス（200 OK）**
+```json
+{
+  "id": "script_uuid",
+  "title": "建設業界向け基本面接",
+  "industry_id": "construction",
+  "industry_name": "建設",
+  "description": "建設業界で働く外国人向けの基本的な面接練習シナリオです。",
+  "questions": [
+    {
+      "id": "Q01",
+      "order": 1,
+      "text": "自己紹介をお願いします。",
+      "spokenText": "じこしょうかいをおねがいします。",
+      "expectedDurationSeconds": 60,
+      "category": "introduction"
+    }
+  ],
+  "question_count": 10,
+  "created_at": "2025-01-15T10:00:00Z"
+}
+```
+
+> **スクリプトと質問の関係**
+> スクリプトは事前定義された質問セットを持ち、面接の流れが固定されています。
+> 各スクリプトは特定の業界に紐づいており、その業界に関連する質問が含まれます。
 
 ## 10.6 外部API連携（mintoku work）
 
@@ -712,6 +774,115 @@ mintoku workでユーザー情報が更新された際に呼び出される
 
 > **注意**: 回答データとの整合性を保つため、質問は論理削除のみ対応。
 > 詳細は11_データベーススキーマ 11.7節を参照。
+
+### ユーザー管理
+
+#### GET /api/v1/admin/users
+ユーザー一覧取得
+
+**クエリパラメータ**
+| パラメータ | 型 | 説明 |
+|-----------|-----|------|
+| search | string | 名前またはメールアドレスで検索（任意） |
+| limit | integer | 取得件数（デフォルト: 20） |
+| offset | integer | オフセット（デフォルト: 0） |
+
+**レスポンス（200 OK）**
+```json
+{
+  "users": [
+    {
+      "id": "usr_123456",
+      "email": "user@example.com",
+      "name": "山田 太郎",
+      "organization": "ABC日本語学校",
+      "jlpt_level": "N3",
+      "total_sessions": 24,
+      "last_session_at": "2025-01-30T14:30:00Z",
+      "created_at": "2025-01-15T10:00:00Z"
+    }
+  ],
+  "total": 100,
+  "limit": 20,
+  "offset": 0
+}
+```
+
+### セッション管理（管理者向け）
+
+#### GET /api/v1/admin/sessions
+セッション一覧取得（管理者向け）
+
+**クエリパラメータ**
+| パラメータ | 型 | 説明 |
+|-----------|-----|------|
+| user_id | string | ユーザーID（任意） |
+| status | string | ステータス（in_progress, completed, cancelled）（任意） |
+| from_date | string | 開始日（ISO 8601）（任意） |
+| to_date | string | 終了日（ISO 8601）（任意） |
+| limit | integer | 取得件数（デフォルト: 20） |
+| offset | integer | オフセット（デフォルト: 0） |
+
+**レスポンス（200 OK）**
+```json
+{
+  "sessions": [
+    {
+      "session_id": "ses_456",
+      "user_id": "usr_123456",
+      "user_name": "山田 太郎",
+      "script_title": "建設業界向け基本面接",
+      "status": "completed",
+      "total_score": 78,
+      "grade": "B",
+      "started_at": "2025-01-30T14:00:00Z",
+      "completed_at": "2025-01-30T14:30:00Z"
+    }
+  ],
+  "total": 500,
+  "limit": 20,
+  "offset": 0
+}
+```
+
+### 統計情報
+
+#### GET /api/v1/admin/statistics
+プラットフォーム統計情報取得
+
+**クエリパラメータ**
+| パラメータ | 型 | 説明 |
+|-----------|-----|------|
+| from_date | string | 開始日（ISO 8601）（任意） |
+| to_date | string | 終了日（ISO 8601）（任意） |
+
+**レスポンス（200 OK）**
+```json
+{
+  "total_users": 1250,
+  "total_sessions": 8500,
+  "completed_sessions": 7800,
+  "average_score": 72.5,
+  "grade_distribution": {
+    "S": 120,
+    "A": 980,
+    "B": 3200,
+    "C": 2800,
+    "D": 700
+  },
+  "sessions_today": 45,
+  "sessions_this_week": 320,
+  "sessions_this_month": 1200,
+  "active_users_last_7_days": 320,
+  "active_users_last_30_days": 850,
+  "average_session_duration_seconds": 1800,
+  "industry_breakdown": [
+    {"industry_id": "construction", "industry_name": "建設", "session_count": 2500},
+    {"industry_id": "nursing_care", "industry_name": "介護", "session_count": 2100},
+    {"industry_id": "food_service", "industry_name": "飲食", "session_count": 1800}
+  ]
+}
+```
 
 ## 10.9 セッション管理
 

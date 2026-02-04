@@ -1,0 +1,348 @@
+<mxfile host="65bd71144e">
+    <diagram id="security-defense-layers" name="セキュリティ多層防御図">
+        <mxGraphModel dx="384" dy="756" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" value="セキュリティ多層防御アーキテクチャ - 攻撃別ブロックポイント" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#333333;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="15" width="600" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="layer1_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=3;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="60" width="200" height="700" as="geometry"/>
+                </mxCell>
+                <mxCell id="layer1_title" value="Layer 1: エッジ&#xa;CloudFront + WAF" style="text;html=1;strokeColor=none;fillColor=#d6b656;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=13;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="70" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="waf_geo" value="Geo制限" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="120" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="waf_rate" value="レート制限" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="160" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="waf_bot" value="Bot Control" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="200" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="waf_sqli" value="SQLi検知" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="240" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="waf_xss" value="XSS検知" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="280" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="waf_ip" value="IPブロック" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="320" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="layer2_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=3;" parent="1" vertex="1">
+                    <mxGeometry x="420" y="60" width="200" height="700" as="geometry"/>
+                </mxCell>
+                <mxCell id="layer2_title" value="Layer 2: ネットワーク&#xa;ALB / API Gateway" style="text;html=1;strokeColor=none;fillColor=#6c8ebf;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=13;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="430" y="70" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="net_tls" value="TLS 1.3終端" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cce5ff;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="120" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="net_cors" value="CORS検証" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cce5ff;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="160" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="net_header" value="セキュリティヘッダー" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cce5ff;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="200" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="layer3_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=3;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="60" width="200" height="700" as="geometry"/>
+                </mxCell>
+                <mxCell id="layer3_title" value="Layer 3: アプリケーション&#xa;FastAPI" style="text;html=1;strokeColor=none;fillColor=#82b366;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=13;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="650" y="70" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="app_jwt" value="JWT認証" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#82b366;fontSize=11;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="660" y="120" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="app_rbac" value="RBAC（認可）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#82b366;fontSize=11;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="660" y="160" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="app_valid" value="入力バリデーション" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#82b366;fontSize=11;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="660" y="200" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="app_ssrf" value="SSRF対策" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#82b366;fontSize=11;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="660" y="240" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="app_behavior" value="行動分析" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#82b366;fontSize=11;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="660" y="280" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="layer4_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=3;" parent="1" vertex="1">
+                    <mxGeometry x="860" y="60" width="200" height="700" as="geometry"/>
+                </mxCell>
+                <mxCell id="layer4_title" value="Layer 4: データ&#xa;RDS / S3 / Redis" style="text;html=1;strokeColor=none;fillColor=#9673a6;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=13;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="870" y="70" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="data_enc" value="保存時暗号化" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4c4e0;strokeColor=#9673a6;fontSize=11;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="880" y="120" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="data_access" value="アクセス制御" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4c4e0;strokeColor=#9673a6;fontSize=11;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="880" y="160" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="attack1_label" value="DDoS攻撃" style="text;html=1;strokeColor=none;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="410" width="80" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="attack1_arrow" value="" style="endArrow=classic;html=1;strokeColor=#b85450;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="100" y="422" as="sourcePoint"/>
+                        <mxPoint x="220" y="175" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="160" y="422"/>
+                            <mxPoint x="160" y="175"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="block1" value="✖ BLOCK" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=1;fontColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="115" y="160" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="attack2_label" value="SQLインジェクション" style="text;html=1;strokeColor=none;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="445" width="80" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="attack2_arrow" value="" style="endArrow=classic;html=1;strokeColor=#b85450;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="100" y="462" as="sourcePoint"/>
+                        <mxPoint x="220" y="255" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="140" y="462"/>
+                            <mxPoint x="140" y="255"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="block2" value="✖ BLOCK" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=1;fontColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="115" y="240" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="attack3_label" value="XSS攻撃" style="text;html=1;strokeColor=none;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="490" width="80" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="attack3_arrow" value="" style="endArrow=classic;html=1;strokeColor=#b85450;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="100" y="502" as="sourcePoint"/>
+                        <mxPoint x="220" y="295" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="120" y="502"/>
+                            <mxPoint x="120" y="295"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="block3" value="✖ BLOCK" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=1;fontColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="115" y="280" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="attack4_label" value="Bot（スクレイピング）" style="text;html=1;strokeColor=none;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="525" width="80" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="attack4_arrow" value="" style="endArrow=classic;html=1;strokeColor=#b85450;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="100" y="542" as="sourcePoint"/>
+                        <mxPoint x="220" y="215" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="180" y="542"/>
+                            <mxPoint x="180" y="215"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="block4" value="✖ BLOCK" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=1;fontColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="135" y="200" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="attack5_label" value="Bot（認証攻撃）" style="text;html=1;strokeColor=none;fillColor=#ff8000;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="570" width="80" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="attack5_arrow1" value="" style="endArrow=classic;html=1;strokeColor=#ff8000;strokeWidth=2;dashed=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="100" y="587" as="sourcePoint"/>
+                        <mxPoint x="400" y="587" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="attack5_pass1" value="一部通過" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#ff8000;" parent="1" vertex="1">
+                    <mxGeometry x="270" y="570" width="50" height="15" as="geometry"/>
+                </mxCell>
+                <mxCell id="attack5_arrow2" value="" style="endArrow=classic;html=1;strokeColor=#ff8000;strokeWidth=2;dashed=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="400" y="587" as="sourcePoint"/>
+                        <mxPoint x="620" y="587" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="attack5_pass2" value="一部通過" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#ff8000;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="570" width="50" height="15" as="geometry"/>
+                </mxCell>
+                <mxCell id="attack5_arrow3" value="" style="endArrow=classic;html=1;strokeColor=#ff8000;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="620" y="587" as="sourcePoint"/>
+                        <mxPoint x="660" y="295" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="630" y="587"/>
+                            <mxPoint x="630" y="295"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="block5" value="✖ BLOCK" style="text;html=1;strokeColor=#ff8000;fillColor=#ffe6cc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=1;fontColor=#ff8000;" parent="1" vertex="1">
+                    <mxGeometry x="575" y="280" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="attack5_note" value="Layer1で一部検知、&#xa;Layer3で完全ブロック" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#ff8000;" parent="1" vertex="1">
+                    <mxGeometry x="475" y="275" width="90" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="attack6_label" value="不正トークン" style="text;html=1;strokeColor=none;fillColor=#82b366;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="615" width="80" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="attack6_arrow1" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;dashed=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="100" y="627" as="sourcePoint"/>
+                        <mxPoint x="620" y="627" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="attack6_pass" value="通過" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="610" width="30" height="15" as="geometry"/>
+                </mxCell>
+                <mxCell id="attack6_arrow2" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="620" y="627" as="sourcePoint"/>
+                        <mxPoint x="660" y="135" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="650" y="627"/>
+                            <mxPoint x="650" y="135"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="block6" value="✖ BLOCK" style="text;html=1;strokeColor=#82b366;fillColor=#d5e8d4;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=1;fontColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="595" y="120" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="attack7_label" value="SSRF攻撃" style="text;html=1;strokeColor=none;fillColor=#82b366;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="650" width="80" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="attack7_arrow1" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;dashed=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="100" y="662" as="sourcePoint"/>
+                        <mxPoint x="620" y="662" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="attack7_pass" value="通過" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="645" width="30" height="15" as="geometry"/>
+                </mxCell>
+                <mxCell id="attack7_arrow2" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="620" y="662" as="sourcePoint"/>
+                        <mxPoint x="660" y="255" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="610" y="662"/>
+                            <mxPoint x="610" y="255"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="block7" value="✖ BLOCK" style="text;html=1;strokeColor=#82b366;fillColor=#d5e8d4;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=1;fontColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="555" y="240" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="attack8_label" value="中間者攻撃" style="text;html=1;strokeColor=none;fillColor=#6c8ebf;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="685" width="80" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="attack8_arrow" value="" style="endArrow=classic;html=1;strokeColor=#6c8ebf;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="100" y="697" as="sourcePoint"/>
+                        <mxPoint x="440" y="135" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="410" y="697"/>
+                            <mxPoint x="410" y="135"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="block8" value="✖ BLOCK" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=1;fontColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="355" y="120" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="valid_section" value="正規リクエスト" style="text;html=1;strokeColor=none;fillColor=#d5e8d4;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="720" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="valid_flow" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=4;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="100" y="735" as="sourcePoint"/>
+                        <mxPoint x="1060" y="735" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="valid_check1" value="✓" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#82b366;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="290" y="715" width="20" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="valid_check2" value="✓" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#82b366;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="510" y="715" width="20" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="valid_check3" value="✓" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#82b366;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="730" y="715" width="20" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="valid_check4" value="✓ アクセス" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#82b366;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="920" y="715" width="80" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=1;" parent="1" vertex="1">
+                    <mxGeometry x="1080" y="60" width="200" height="320" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_title" value="凡例" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="1150" y="70" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_l1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="1095" y="100" width="20" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_l1_text" value="Layer 1でブロック" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1120" y="100" width="120" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_l2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="1095" y="130" width="20" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_l2_text" value="Layer 2でブロック" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1120" y="130" width="120" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_l3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="1095" y="160" width="20" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_l3_text" value="Layer 3でブロック" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1120" y="160" width="120" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_multi" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#ff8000;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="1095" y="190" width="20" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_multi_text" value="複数レイヤーで防御" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1120" y="190" width="120" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_line1" value="" style="endArrow=classic;html=1;strokeColor=#b85450;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1095" y="235" as="sourcePoint"/>
+                        <mxPoint x="1135" y="235" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="legend_line1_text" value="即座にブロック" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1140" y="225" width="100" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_line2" value="" style="endArrow=classic;html=1;strokeColor=#ff8000;strokeWidth=2;dashed=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1095" y="265" as="sourcePoint"/>
+                        <mxPoint x="1135" y="265" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="legend_line2_text" value="一部通過後ブロック" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1140" y="255" width="120" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_line3" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=4;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1095" y="295" as="sourcePoint"/>
+                        <mxPoint x="1135" y="295" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="legend_line3_text" value="正規リクエスト" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1140" y="285" width="100" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_block" value="✖ BLOCK" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=1;fontColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="1095" y="325" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_block_text" value="ブロックポイント" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1160" y="325" width="100" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="bot_detail_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1;" parent="1" vertex="1">
+                    <mxGeometry x="1080" y="400" width="200" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="bot_detail_title" value="Bot攻撃の防御" style="text;html=1;strokeColor=none;fillColor=#d6b656;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="1100" y="410" width="160" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="bot_detail_content" value="Layer 1 (WAF):&#xa;• Bot Control（検知）&#xa;• レート制限&#xa;• User-Agent検証&#xa;&#xa;Layer 3 (FastAPI):&#xa;• 行動分析&#xa;• CAPTCHA連携&#xa;• セッション監視" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="1090" y="440" width="180" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="attack_section" value="攻撃とブロックポイント" style="text;html=1;strokeColor=none;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="370" width="160" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
