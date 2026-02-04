@@ -51,10 +51,10 @@
         <mxCell id="profile-avatar" value="👤" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=40;" vertex="1" parent="1">
           <mxGeometry x="290" y="200" width="60" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="profile-name" value="Nguyen Linh" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="profile-name" value="グエン・ミン・タン" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="360" y="200" width="150" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="profile-email" value="nguyen.linh@example.com" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#666666;" vertex="1" parent="1">
+        <mxCell id="profile-email" value="nguyen.tan@example.com" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#666666;" vertex="1" parent="1">
           <mxGeometry x="360" y="225" width="180" height="20" as="geometry" />
         </mxCell>
         <mxCell id="profile-level" value="JLPT N3" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=none;fontSize=12;fontStyle=1;" vertex="1" parent="1">

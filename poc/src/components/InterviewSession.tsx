@@ -71,6 +71,8 @@ export default function InterviewSession({
   const [isTransitioning, setIsTransitioning] = useState(false);
   // 結果表示フラグ（結果表示ボタンを押すまでFeedbackDisplayを非表示にする）
   const [showResults, setShowResults] = useState(false);
+  // 面接終了シーケンス中フラグ（最後の質問回答後の挨拶中）- UI表示制御用
+  const [isEndingSequence, setIsEndingSequence] = useState(false);
 
   const stateMachine = useInterviewStateMachine();
 
@@ -196,8 +198,10 @@ export default function InterviewSession({
 
     // 最初の質問を発話（質問表示と同時に発話開始）
     if (avatarRef.current && fetchedQuestions[0]) {
-      setIsGreetingInProgress(false); // 質問表示を有効化
-      setIsSpeakingQuestion(true); // 質問発話中フラグを立てる
+      // 録音モーダルが一瞬表示されないよう、フラグの順序に注意
+      setIsSpeakingQuestion(true); // 質問発話中フラグを先に立てる
+      setIsAvatarSpeakingDelayed(true); // 発話中フラグも立てる
+      setIsGreetingInProgress(false); // その後で挨拶中フラグを下ろす
       addLog('最初の質問を発話します...');
       await avatarRef.current.speakQuestion(fetchedQuestions[0]);
     } else {
@@ -298,6 +302,7 @@ export default function InterviewSession({
         if (nextIndex >= questions.length) {
           // 面接完了 - 終了シーケンス開始
           isEndingSequenceRef.current = true;
+          setIsEndingSequence(true);
           addLog('全ての質問が完了しました');
 
           // 終了の挨拶
@@ -371,6 +376,7 @@ export default function InterviewSession({
       if (nextIndex >= questions.length) {
         // 終了シーケンス開始
         isEndingSequenceRef.current = true;
+        setIsEndingSequence(true);
         // 終了の挨拶
         if (avatarRef.current) {
           await avatarRef.current.speak('以上で本日の面接は終了となります。');
@@ -445,6 +451,7 @@ export default function InterviewSession({
     setIsAvatarSpeakingDelayed(false);
     setIsSpeakingQuestion(false);
     setIsTransitioning(false);
+    setIsEndingSequence(false);
     isEndingSequenceRef.current = false;
     isExitingRef.current = false;
     stateMachine.reset();
@@ -587,15 +594,15 @@ export default function InterviewSession({
                   className="progress-fill"
                   style={{ width: `${stateMachine.progress}%` }}
                 />
+                <span className="progress-text">
+                  {stateMachine.currentQuestionIndex + 1} / {stateMachine.totalQuestions}
+                </span>
               </div>
-              <span className="progress-text">
-                {stateMachine.currentQuestionIndex + 1} / {stateMachine.totalQuestions}
-              </span>
             </div>
           )}
 
-          {/* 質問表示（質問発話中または録音中のみ表示） */}
-          {stateMachine.currentQuestion && !isGreetingInProgress && stateMachine.state !== 'completed' && (isSpeakingQuestion || stateMachine.isListening) && (
+          {/* 質問表示（質問発話中または録音中のみ表示、終了シーケンス中は非表示） */}
+          {stateMachine.currentQuestion && !isGreetingInProgress && !isEndingSequence && stateMachine.state !== 'completed' && (isSpeakingQuestion || stateMachine.isListening) && (
             <div className="question-section">
               <div className="question-header">
                 <div className="question-label">質問 {stateMachine.currentQuestionIndex + 1}</div>
@@ -836,29 +843,40 @@ export default function InterviewSession({
 
         .progress-section {
           display: flex;
-          align-items: center;
-          gap: 12px;
+          justify-content: center;
+          width: 100%;
         }
 
         .progress-bar {
-          flex: 1;
-          height: 6px;
+          position: relative;
+          width: 100%;
+          max-width: 400px;
+          height: 28px;
           background: rgba(255, 255, 255, 0.2);
-          border-radius: 3px;
+          border-radius: 14px;
           overflow: hidden;
         }
 
         .progress-fill {
+          position: absolute;
+          top: 0;
+          left: 0;
           height: 100%;
           background: #3b82f6;
           transition: width 0.3s ease;
+          border-radius: 14px;
         }
 
         .progress-text {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
           font-size: 13px;
-          color: rgba(255, 255, 255, 0.8);
-          min-width: 50px;
-          text-align: right;
+          font-weight: 600;
+          color: #fff;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+          z-index: 1;
         }
 
         /* 中央エリア */
@@ -1151,12 +1169,16 @@ export default function InterviewSession({
           backdrop-filter: blur(8px);
           border: 1px solid rgba(255, 255, 255, 0.1);
           margin-top: 12px;
+          max-width: 600px;
+          margin-left: auto;
+          margin-right: auto;
         }
 
         .question-header {
           display: flex;
-          justify-content: space-between;
+          justify-content: center;
           align-items: center;
+          gap: 16px;
           margin-bottom: 8px;
         }
 
@@ -1191,6 +1213,7 @@ export default function InterviewSession({
           color: #fff;
           line-height: 1.6;
           margin: 0;
+          text-align: center;
         }
 
         .recorder-section {
@@ -1288,12 +1311,17 @@ export default function InterviewSession({
           }
 
           .progress-bar {
-            height: 4px;
+            height: 24px;
+            max-width: 300px;
+            border-radius: 12px;
+          }
+
+          .progress-fill {
+            border-radius: 12px;
           }
 
           .progress-text {
             font-size: 11px;
-            min-width: 40px;
           }
 
           .btn-connect,
@@ -1332,6 +1360,7 @@ export default function InterviewSession({
           .question-section {
             padding: 12px 14px;
             border-radius: 10px;
+            max-width: 100%;
           }
 
           .question-label {
@@ -1413,7 +1442,8 @@ export default function InterviewSession({
           }
 
           .progress-bar {
-            height: 6px;
+            height: 28px;
+            max-width: 350px;
           }
 
           .btn-connect,
@@ -1437,6 +1467,7 @@ export default function InterviewSession({
 
           .question-section {
             padding: 18px 22px;
+            max-width: 550px;
           }
 
           .question-text {
@@ -1482,12 +1513,17 @@ export default function InterviewSession({
           }
 
           .progress-bar {
-            height: 8px;
-            max-width: 600px;
+            height: 32px;
+            max-width: 450px;
+            border-radius: 16px;
           }
 
-          .progress-section {
-            max-width: 700px;
+          .progress-fill {
+            border-radius: 16px;
+          }
+
+          .progress-text {
+            font-size: 14px;
           }
 
           .btn-connect,
@@ -1533,6 +1569,7 @@ export default function InterviewSession({
           .question-section {
             padding: 20px 28px;
             border-radius: 16px;
+            max-width: 650px;
           }
 
           .question-label {
@@ -1619,7 +1656,17 @@ export default function InterviewSession({
           }
 
           .progress-bar {
-            height: 3px;
+            height: 20px;
+            max-width: 250px;
+            border-radius: 10px;
+          }
+
+          .progress-fill {
+            border-radius: 10px;
+          }
+
+          .progress-text {
+            font-size: 10px;
           }
 
           .overlay-center {

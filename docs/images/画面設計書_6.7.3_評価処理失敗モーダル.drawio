@@ -1,0 +1,47 @@
+<mxfile host="app.diagrams.net" modified="2025-02-04T12:00:00.000Z" agent="Mozilla/5.0" etag="evaluation-error-modal" version="21.0.0">
+  <diagram name="評価処理失敗モーダル" id="evaluation-error-modal">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="400" pageHeight="300" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- 背景オーバーレイ -->
+        <mxCell id="overlay" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;fillOpacity=50;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="0" y="0" width="400" height="300" as="geometry"/>
+        </mxCell>
+
+        <!-- モーダルカード -->
+        <mxCell id="modal-card" value="" style="rounded=12;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;strokeWidth=1;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="50" width="320" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- 警告アイコン -->
+        <mxCell id="warning-icon" value="⚠️" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=32;" parent="1" vertex="1">
+          <mxGeometry x="175" y="65" width="50" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- タイトル -->
+        <mxCell id="title" value="評価処理に失敗しました" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=16;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="60" y="105" width="280" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- 説明文 -->
+        <mxCell id="description" value="しばらく時間をおいて再度お試しください。" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#666666;" parent="1" vertex="1">
+          <mxGeometry x="60" y="135" width="280" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- ボタンエリア -->
+        <!-- 再評価ボタン（プライマリ） -->
+        <mxCell id="retry-button" value="再評価を実行" style="rounded=8;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=none;fontColor=#FFFFFF;fontStyle=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="60" y="185" width="130" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- ホームに戻るボタン（セカンダリ） -->
+        <mxCell id="home-button" value="ホームに戻る" style="rounded=8;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#E0E0E0;fontColor=#666666;fontStyle=0;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="210" y="185" width="130" height="45" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

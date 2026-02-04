@@ -59,35 +59,52 @@
           <mxGeometry x="220" y="252" width="110" height="30" as="geometry" />
         </mxCell>
 
+        <!-- 面接表示設定セクション -->
+        <mxCell id="interview-section" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;arcSize=5;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="55" y="305" width="290" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="interview-title" value="面接表示設定" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="70" y="310" width="120" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="interview-label" value="面接官の発言テキスト表示" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="70" y="338" width="180" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="interview-toggle-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=none;arcSize=50;" vertex="1" parent="1">
+          <mxGeometry x="280" y="340" width="50" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="interview-toggle-knob" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=none;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="307" y="343" width="20" height="20" as="geometry" />
+        </mxCell>
+
         <!-- アプリ情報セクション -->
         <mxCell id="app-section" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;arcSize=5;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="55" y="305" width="290" height="100" as="geometry" />
+          <mxGeometry x="55" y="385" width="290" height="100" as="geometry" />
         </mxCell>
         <mxCell id="app-title" value="アプリ情報" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
-          <mxGeometry x="70" y="315" width="100" height="25" as="geometry" />
+          <mxGeometry x="70" y="395" width="100" height="25" as="geometry" />
         </mxCell>
         <mxCell id="version-label" value="バージョン" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
-          <mxGeometry x="70" y="340" width="100" height="20" as="geometry" />
+          <mxGeometry x="70" y="420" width="100" height="20" as="geometry" />
         </mxCell>
         <mxCell id="version-value" value="1.0.0" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#666666;" vertex="1" parent="1">
-          <mxGeometry x="260" y="340" width="70" height="20" as="geometry" />
+          <mxGeometry x="260" y="420" width="70" height="20" as="geometry" />
         </mxCell>
         <mxCell id="terms-link" value="利用規約" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#1565C0;textDecoration=underline;" vertex="1" parent="1">
-          <mxGeometry x="70" y="363" width="100" height="20" as="geometry" />
+          <mxGeometry x="70" y="443" width="100" height="20" as="geometry" />
         </mxCell>
         <mxCell id="terms-arrow" value="›" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#999999;" vertex="1" parent="1">
-          <mxGeometry x="310" y="363" width="20" height="20" as="geometry" />
+          <mxGeometry x="310" y="443" width="20" height="20" as="geometry" />
         </mxCell>
         <mxCell id="privacy-link" value="プライバシーポリシー" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#1565C0;textDecoration=underline;" vertex="1" parent="1">
-          <mxGeometry x="70" y="383" width="180" height="20" as="geometry" />
+          <mxGeometry x="70" y="463" width="180" height="20" as="geometry" />
         </mxCell>
         <mxCell id="privacy-arrow" value="›" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#999999;" vertex="1" parent="1">
-          <mxGeometry x="310" y="383" width="20" height="20" as="geometry" />
+          <mxGeometry x="310" y="463" width="20" height="20" as="geometry" />
         </mxCell>
 
         <!-- ログアウトボタン -->
         <mxCell id="logout-btn" value="ログアウト" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#F44336;fontColor=#F44336;fontSize=14;fontStyle=1;arcSize=8;" vertex="1" parent="1">
-          <mxGeometry x="55" y="425" width="290" height="45" as="geometry" />
+          <mxGeometry x="55" y="505" width="290" height="45" as="geometry" />
         </mxCell>
 
         <!-- ボトムナビゲーション -->

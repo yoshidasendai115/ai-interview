@@ -35,10 +35,42 @@ SSO認証コールバック（mintoku workからのリダイレクト後）
     "email": "user@example.com",
     "name": "山田 太郎",
     "organization": "ABC日本語学校",
-    "jlpt_level": "N3"
+    "jlpt_level": "N3",
+    "preferred_industry": {
+      "industry_id": "construction",
+      "industry_name": "建設"
+    }
+  },
+  "learning_plan": {
+    "id": "lp_789",
+    "industry_id": "construction",
+    "industry_name": "建設業界マスターコース",
+    "status": "active",
+    "progress": {
+      "completed_steps": 2,
+      "total_steps": 6,
+      "percentage": 33
+    },
+    "current_step": {
+      "step_number": 3,
+      "step_type": "practice",
+      "jlpt_level": "N4"
+    }
   }
 }
 ```
+
+#### preferred_industry フィールド説明
+
+| フィールド | 型 | 説明 |
+|-----------|-----|------|
+| industry_id | string | 業界ID（construction, food_service, nursing_care等） |
+| industry_name | string | 業界名（日本語） |
+
+> **学習計画の自動生成**
+> SSO認証時に `preferred_industry` が含まれる場合、その業界に基づいて学習計画を同期生成します。
+> 既存の学習計画があり、業界が変更されていない場合は新規生成をスキップします。
+> 詳細は 12_面接フロー制御 12.10節 を参照。
 
 ### POST /api/v1/auth/refresh
 トークンリフレッシュ
@@ -73,20 +105,26 @@ SSO認証コールバック（mintoku workからのリダイレクト後）
 **リクエスト**
 ```json
 {
-  "script_id": "scr_789",
-  "jlpt_level": "N3"
+  "jlpt_level": "N3",
+  "industry_id": "construction",
+  "is_challenge": false
 }
 ```
+
+| フィールド | 型 | 必須 | 説明 |
+|-----------|-----|------|------|
+| jlpt_level | string | ○ | 練習時のJLPTレベル（N1-N5） |
+| industry_id | string | △ | 業界ID（ユーザーの希望業界を使用、未指定時は汎用質問） |
+| is_challenge | boolean | × | チャレンジモードかどうか（デフォルト: false） |
 
 **レスポンス（201 Created）**
 ```json
 {
   "session_id": "ses_456",
-  "script": {
-    "id": "scr_789",
-    "title": "IT企業向け基本面接",
-    "total_questions": 10
-  },
+  "jlpt_level": "N3",
+  "industry_id": "construction",
+  "industry_name": "建設",
+  "total_questions": 10,
   "heygen_session": {
     "session_token": "heygen_token_xxx",
     "avatar_id": "wayne_asian_male"
@@ -320,63 +358,61 @@ SSO認証コールバック（mintoku workからのリダイレクト後）
 > **注意**: 質問の作成・編集・削除は本システムの管理画面で行います。
 > 管理者向けAPI（10.8節）を参照してください。
 
-### GET /api/v1/scripts
-スクリプト一覧取得
+### GET /api/v1/questions
+質問一覧取得（セッション用）
 
 **クエリパラメータ**
 | パラメータ | 型 | 説明 |
 |-----------|-----|------|
-| jlpt_level | string | JLPTレベル（N1-N5） |
-| industry | string | 業界 |
-| job_type | string | 職種 |
+| jlpt_level | string | JLPTレベル（N1-N5）（必須） |
+| industry_id | string | 業界ID（任意） |
 
 **レスポンス（200 OK）**
 ```json
 {
-  "scripts": [
-    {
-      "id": "scr_789",
-      "title": "IT企業向け基本面接",
-      "industry": "IT",
-      "job_type": "エンジニア",
-      "jlpt_level": "N3",
-      "question_count": 10,
-      "estimated_duration_minutes": 15
-    }
-  ]
-}
-```
-
-### GET /api/v1/scripts/{script_id}
-スクリプト詳細取得
-
-**レスポンス（200 OK）**
-```json
-{
-  "id": "scr_789",
-  "title": "IT企業向け基本面接",
-  "industry": "IT",
-  "job_type": "エンジニア",
-  "jlpt_level": "N3",
+  "jlptLevel": "N3",
+  "industryId": "construction",
+  "totalQuestions": 10,
   "questions": [
     {
-      "id": 1,
+      "id": "Q01",
       "order": 1,
-      "text": "自己紹介をお願いします。",
-      "expected_duration_seconds": 60,
-      "evaluation_criteria": ["明瞭さ", "構成", "敬語"]
+      "text": "本日はお越しいただきありがとうございます。緊張していませんか？",
+      "spokenText": "ほんじつはおこしいただきありがとうございます。きんちょうしていませんか？",
+      "expectedDurationSeconds": 60,
+      "evaluationCriteria": ["communication"]
     }
   ]
 }
 ```
+
+> **質問選択ロジック**
+> - 質問バンク（60問）からカテゴリ別に10問を選択
+> - JLPTレベルに応じてテキストを選択（N1-N3: `question_ja` / N4-N5: `question_simplified`）
+> - 詳細は 12_面接フロー制御 12.3節 を参照
 
 ## 10.6 外部API連携（mintoku work）
 
-### POST https://api.mintoku-work.com/v1/interview-results
+mintoku workとの連携は以下の2種類のAPIで構成されます。
+
+| 連携方向 | API | 説明 |
+|---------|-----|------|
+| 本システム → mintoku work | POST /v1/interview-results | 練習完了時に評価結果を送信 |
+| mintoku work → 本システム | POST /api/v1/webhooks/mintoku/user-update | ユーザー情報更新時に受信 |
+
+### 10.6.1 評価結果送信API（本システム → mintoku work）
+
+#### POST https://api.mintoku-work.com/v1/interview-results
 練習完了時にmintoku workへ結果送信
 
 > **送信データについて**
 > 日本語能力評価（07_評価ロジック）と採用適性評価（13_面接シナリオ設計）の両方を送信する。
+
+**認証**
+| 項目 | 内容 |
+|------|------|
+| 方式 | API Key または OAuth2 Client Credentials |
+| ヘッダー | `Authorization: Bearer <api_key>` |
 
 **リクエスト**
 ```json
@@ -404,15 +440,50 @@ SSO認証コールバック（mintoku workからのリダイレクト後）
     "cooperation": 3.5
   },
   "weak_points": [
-    {"category": "honorifics", "description": "謙譲語の使い方", "priority": "high"},
-    {"category": "grammar", "description": "接続助詞の選択", "priority": "medium"}
+    {"category": "honorifics", "category_type": "japanese_proficiency", "description": "謙譲語の使い方", "priority": "high"},
+    {"category": "grammar", "category_type": "japanese_proficiency", "description": "接続助詞の選択", "priority": "medium"}
   ],
-  "script_type": "IT企業向け基本面接",
+  "learning_plan": {
+    "industry_id": "construction",
+    "industry_name": "建設",
+    "progress": {
+      "completed_steps": 3,
+      "total_steps": 6,
+      "percentage": 50
+    }
+  },
+  "level_mismatch": {
+    "detected": false,
+    "declared_level": "N3",
+    "estimated_level": "N3"
+  },
+  "script_type": "建設業界向け基本面接",
   "jlpt_level": "N3",
   "practice_count": 24,
   "duration_seconds": 420
 }
 ```
+
+#### フィールド説明
+
+| フィールド | 型 | 必須 | 説明 |
+|-----------|-----|------|------|
+| user_id | string | ○ | mintoku work側のユーザーID |
+| session_id | string | ○ | 本システムのセッションID |
+| completed_at | string | ○ | セッション完了日時（ISO 8601） |
+| total_score | number | ○ | 総合スコア（0-100） |
+| grade | string | ○ | グレード（S/A/B/C/D） |
+| grade_label | string | ○ | グレードラベル（「優秀」等） |
+| recommendation | string | ○ | 採用推奨度（「採用を推奨」等） |
+| japanese_proficiency | object | ○ | 日本語能力評価（詳細下記） |
+| aptitude | object | ○ | 採用適性評価（詳細下記） |
+| weak_points | array | ○ | 苦手項目リスト |
+| learning_plan | object | △ | 学習計画進捗（業界設定時のみ） |
+| level_mismatch | object | ○ | JLPTレベル乖離検出結果 |
+| script_type | string | ○ | 使用したスクリプト種別 |
+| jlpt_level | string | ○ | 申告JLPTレベル |
+| practice_count | number | ○ | 累計練習回数 |
+| duration_seconds | number | ○ | セッション所要時間（秒） |
 
 **レスポンス（200 OK）**
 ```json
@@ -421,6 +492,97 @@ SSO認証コールバック（mintoku workからのリダイレクト後）
   "result_id": "mintoku_result_789"
 }
 ```
+
+**エラー時のリトライ**
+| 項目 | 内容 |
+|------|------|
+| リトライ回数 | 最大3回 |
+| リトライ間隔 | 指数バックオフ（1秒、2秒、4秒） |
+| 失敗時 | ログ記録、管理者通知 |
+
+### 10.6.2 ユーザー情報更新Webhook（mintoku work → 本システム）
+
+#### POST /api/v1/webhooks/mintoku/user-update
+mintoku workでユーザー情報が更新された際に呼び出される
+
+**認証**
+| 項目 | 内容 |
+|------|------|
+| 方式 | HMAC署名検証 |
+| ヘッダー | `X-Mintoku-Signature: sha256=<signature>` |
+| シークレット | 環境変数 `MINTOKU_WEBHOOK_SECRET` |
+
+**リクエスト**
+```json
+{
+  "event_type": "user.updated",
+  "event_id": "evt_123456",
+  "timestamp": "2025-01-30T14:00:00Z",
+  "data": {
+    "user_id": "mintoku_user_123",
+    "updated_fields": ["preferred_industry", "jlpt_level"],
+    "user": {
+      "email": "user@example.com",
+      "name": "山田 太郎",
+      "organization": "ABC日本語学校",
+      "jlpt_level": "N3",
+      "preferred_industry": {
+        "industry_id": "construction",
+        "industry_name": "建設"
+      }
+    }
+  }
+}
+```
+
+#### 処理フロー
+
+```
+1. 署名検証
+2. ユーザー存在確認（本システムに登録済みか）
+3. 更新対象フィールドの判定
+4. preferred_industryが更新された場合:
+   - user_preferred_industries テーブル更新
+   - 学習計画の再生成判定（12_面接フロー制御 12.10.3節参照）
+5. jlpt_levelが更新された場合:
+   - users テーブル更新
+```
+
+**レスポンス（200 OK）**
+```json
+{
+  "status": "processed",
+  "actions": [
+    "user_industries_updated",
+    "learning_plan_regenerated"
+  ]
+}
+```
+
+**レスポンス（404 Not Found）** - ユーザーが未登録の場合
+```json
+{
+  "status": "ignored",
+  "reason": "user_not_found"
+}
+```
+
+### 10.6.3 サポートする業界ID
+
+> **※ 業界マスターの正式定義は `backend/app/data/seed/industries.json` を参照**
+
+| industry_id | 業界名（日本語） |
+|-------------|-----------------|
+| nursing_care | 介護 |
+| food_service | 飲食 |
+| construction | 建設 |
+| manufacturing | 製造 |
+| hospitality | 宿泊 |
+| agriculture | 農業 |
+| building_cleaning | ビルクリーニング |
+
+> **業界IDの追加**
+> 新しい業界を追加する場合は、`backend/app/data/seed/industries.json` を更新し、両システムで同期が必要です。
 
 ## 10.7 エラーレスポンス形式
 
@@ -435,8 +597,8 @@ SSO認証コールバック（mintoku workからのリダイレクト後）
   "instance": "/api/v1/sessions",
   "errors": [
     {
-      "field": "script_id",
-      "message": "スクリプトIDは必須です。"
+      "field": "jlpt_level",
+      "message": "JLPTレベルは必須です。"
     }
   ]
 }

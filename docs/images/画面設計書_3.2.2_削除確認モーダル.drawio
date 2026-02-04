@@ -1,0 +1,49 @@
+<mxfile host="app.diagrams.net" modified="2026-02-04T00:00:00.000Z" agent="Claude" version="21.0.0">
+  <diagram name="削除確認モーダル" id="delete-modal">
+    <mxGraphModel dx="600" dy="400" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="500" pageHeight="300" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Backdrop -->
+        <mxCell id="backdrop" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;fillOpacity=40;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="500" height="300" as="geometry"/>
+        </mxCell>
+
+        <!-- Modal -->
+        <mxCell id="modal" value="" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e0e0e0;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="60" width="300" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- Warning Icon -->
+        <mxCell id="warning-icon" value="⚠️" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=32;" vertex="1" parent="1">
+          <mxGeometry x="225" y="70" width="50" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- Title -->
+        <mxCell id="modal-title" value="スクリプトを削除しますか？" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="125" y="110" width="250" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- Script Name -->
+        <mxCell id="script-name" value="「IT企業向け基本面接」" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#1a73e8;" vertex="1" parent="1">
+          <mxGeometry x="125" y="135" width="250" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- Warning Message -->
+        <mxCell id="warning-msg" value="この操作は取り消せません" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#f44336;" vertex="1" parent="1">
+          <mxGeometry x="125" y="158" width="250" height="18" as="geometry"/>
+        </mxCell>
+
+        <!-- Buttons -->
+        <mxCell id="cancel-btn" value="キャンセル" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cccccc;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="130" y="190" width="110" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="delete-btn" value="削除する" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#f44336;strokeColor=none;fontColor=#ffffff;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="190" width="110" height="35" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,89 @@
+<mxfile host="app.diagrams.net" modified="2026-02-04T00:00:00.000Z" agent="Claude" version="21.0.0">
+  <diagram name="対応プラットフォーム" id="platform-architecture">
+    <mxGraphModel dx="800" dy="500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="700" pageHeight="350" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Webアプリケーション（React）-->
+        <mxCell id="webapp" value="" style="rounded=10;whiteSpace=wrap;html=1;fillColor=#1976D2;strokeColor=#0D47A1;strokeWidth=2;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="40" width="460" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="webapp-title" value="Webアプリケーション（React）" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="50" width="460" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="webapp-subtitle" value="モバイル優先レスポンシブ" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#B3E5FC;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="120" y="80" width="460" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- 矢印（上向き）-->
+        <mxCell id="arrow1" value="" style="endArrow=classic;html=1;strokeColor=#1976D2;strokeWidth=3;entryX=0.2;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="200" y="190" as="sourcePoint"/>
+            <mxPoint x="200" y="120" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow2" value="" style="endArrow=classic;html=1;strokeColor=#1976D2;strokeWidth=3;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="190" as="sourcePoint"/>
+            <mxPoint x="350" y="120" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow3" value="" style="endArrow=classic;html=1;strokeColor=#1976D2;strokeWidth=3;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="190" as="sourcePoint"/>
+            <mxPoint x="500" y="120" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ブラウザ -->
+        <mxCell id="browser" value="" style="rounded=10;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;strokeWidth=2;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="200" width="140" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="browser-icon" value="🌐" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry x="165" y="205" width="50" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="browser-title" value="ブラウザ" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1976D2;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="235" width="140" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="browser-sub" value="Chrome / Safari / Edge" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#757575;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="120" y="255" width="140" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- iOSアプリ -->
+        <mxCell id="ios" value="" style="rounded=10;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;strokeWidth=2;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="200" width="140" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="ios-icon" value="📱" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry x="325" y="205" width="50" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="ios-title" value="iOSアプリ" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1976D2;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="235" width="140" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="ios-sub" value="(WebView)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#757575;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="280" y="255" width="140" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- Androidアプリ -->
+        <mxCell id="android" value="" style="rounded=10;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;strokeWidth=2;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="200" width="140" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="android-icon" value="📱" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry x="485" y="205" width="50" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="android-title" value="Androidアプリ" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1976D2;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="235" width="140" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="android-sub" value="(WebView)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#757575;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="440" y="255" width="140" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- 補足説明 -->
+        <mxCell id="note" value="同一のReact WebアプリケーションをすべてのプラットフォームでWebView表示" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="120" y="300" width="460" height="20" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

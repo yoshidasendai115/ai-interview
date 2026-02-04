@@ -1,0 +1,411 @@
+{
+  "templates": [
+    {
+      "id": "generic",
+      "industry_id": null,
+      "name": "汎用学習計画テンプレート",
+      "description": "業界を指定しない場合の標準学習計画。基本的な面接スキルを段階的に習得する。",
+      "steps": [
+        {
+          "step_number": 1,
+          "step_type": "introduction",
+          "jlpt_level": "N5",
+          "required_sessions": 1,
+          "description": "基本面接練習"
+        },
+        {
+          "step_number": 2,
+          "step_type": "practice",
+          "jlpt_level": "N5",
+          "required_sessions": 2,
+          "description": "N5レベル汎用質問"
+        },
+        {
+          "step_number": 3,
+          "step_type": "practice",
+          "jlpt_level": "N4",
+          "required_sessions": 3,
+          "description": "N4レベル汎用質問"
+        },
+        {
+          "step_number": 4,
+          "step_type": "practice",
+          "jlpt_level": "N3",
+          "required_sessions": 3,
+          "description": "N3レベル汎用質問"
+        }
+      ]
+    },
+    {
+      "id": "nursing_care",
+      "industry_id": "nursing_care",
+      "name": "介護業界向け学習計画テンプレート",
+      "description": "介護業界に特化した面接練習。高齢者対応、チームワーク、夜勤対応などを重点評価。",
+      "steps": [
+        {
+          "step_number": 1,
+          "step_type": "introduction",
+          "jlpt_level": "N5",
+          "required_sessions": 1,
+          "description": "基本的な自己紹介練習"
+        },
+        {
+          "step_number": 2,
+          "step_type": "practice",
+          "jlpt_level": "N5",
+          "required_sessions": 2,
+          "description": "N5レベルで介護業界質問に慣れる"
+        },
+        {
+          "step_number": 3,
+          "step_type": "practice",
+          "jlpt_level": "N4",
+          "required_sessions": 3,
+          "description": "N4レベルで実践練習"
+        },
+        {
+          "step_number": 4,
+          "step_type": "challenge",
+          "jlpt_level": "N3",
+          "required_sessions": 1,
+          "description": "チャレンジモードで上位レベル挑戦"
+        },
+        {
+          "step_number": 5,
+          "step_type": "practice",
+          "jlpt_level": "N3",
+          "required_sessions": 3,
+          "description": "N3レベルで深掘り練習"
+        },
+        {
+          "step_number": 6,
+          "step_type": "challenge",
+          "jlpt_level": "N2",
+          "required_sessions": 1,
+          "description": "上位挑戦"
+        }
+      ]
+    },
+    {
+      "id": "food_service",
+      "industry_id": "food_service",
+      "name": "飲食業界向け学習計画テンプレート",
+      "description": "飲食業界に特化した面接練習。接客、衛生意識、チームワークを重点評価。",
+      "steps": [
+        {
+          "step_number": 1,
+          "step_type": "introduction",
+          "jlpt_level": "N5",
+          "required_sessions": 1,
+          "description": "基本的な自己紹介練習"
+        },
+        {
+          "step_number": 2,
+          "step_type": "practice",
+          "jlpt_level": "N5",
+          "required_sessions": 2,
+          "description": "N5レベルで飲食業界質問に慣れる"
+        },
+        {
+          "step_number": 3,
+          "step_type": "practice",
+          "jlpt_level": "N4",
+          "required_sessions": 3,
+          "description": "N4レベルで実践練習"
+        },
+        {
+          "step_number": 4,
+          "step_type": "challenge",
+          "jlpt_level": "N3",
+          "required_sessions": 1,
+          "description": "チャレンジモードで上位レベル挑戦"
+        },
+        {
+          "step_number": 5,
+          "step_type": "practice",
+          "jlpt_level": "N3",
+          "required_sessions": 3,
+          "description": "N3レベルで深掘り練習"
+        },
+        {
+          "step_number": 6,
+          "step_type": "challenge",
+          "jlpt_level": "N2",
+          "required_sessions": 1,
+          "description": "上位挑戦"
+        }
+      ]
+    },
+    {
+      "id": "construction",
+      "industry_id": "construction",
+      "name": "建設業界向け学習計画テンプレート",
+      "description": "建設業界に特化した面接練習。安全意識、体力、チームワークを重点評価。",
+      "steps": [
+        {
+          "step_number": 1,
+          "step_type": "introduction",
+          "jlpt_level": "N5",
+          "required_sessions": 1,
+          "description": "基本的な自己紹介練習"
+        },
+        {
+          "step_number": 2,
+          "step_type": "practice",
+          "jlpt_level": "N5",
+          "required_sessions": 2,
+          "description": "N5レベルで建設業界質問に慣れる"
+        },
+        {
+          "step_number": 3,
+          "step_type": "practice",
+          "jlpt_level": "N4",
+          "required_sessions": 3,
+          "description": "N4レベルで実践練習"
+        },
+        {
+          "step_number": 4,
+          "step_type": "challenge",
+          "jlpt_level": "N3",
+          "required_sessions": 1,
+          "description": "チャレンジモードで上位レベル挑戦"
+        },
+        {
+          "step_number": 5,
+          "step_type": "practice",
+          "jlpt_level": "N3",
+          "required_sessions": 3,
+          "description": "N3レベルで深掘り練習"
+        },
+        {
+          "step_number": 6,
+          "step_type": "challenge",
+          "jlpt_level": "N2",
+          "required_sessions": 1,
+          "description": "上位挑戦"
+        }
+      ]
+    },
+    {
+      "id": "manufacturing",
+      "industry_id": "manufacturing",
+      "name": "製造業界向け学習計画テンプレート",
+      "description": "製造業界に特化した面接練習。正確性、集中力、品質管理意識を重点評価。",
+      "steps": [
+        {
+          "step_number": 1,
+          "step_type": "introduction",
+          "jlpt_level": "N5",
+          "required_sessions": 1,
+          "description": "基本的な自己紹介練習"
+        },
+        {
+          "step_number": 2,
+          "step_type": "practice",
+          "jlpt_level": "N5",
+          "required_sessions": 2,
+          "description": "N5レベルで製造業界質問に慣れる"
+        },
+        {
+          "step_number": 3,
+          "step_type": "practice",
+          "jlpt_level": "N4",
+          "required_sessions": 3,
+          "description": "N4レベルで実践練習"
+        },
+        {
+          "step_number": 4,
+          "step_type": "challenge",
+          "jlpt_level": "N3",
+          "required_sessions": 1,
+          "description": "チャレンジモードで上位レベル挑戦"
+        },
+        {
+          "step_number": 5,
+          "step_type": "practice",
+          "jlpt_level": "N3",
+          "required_sessions": 3,
+          "description": "N3レベルで深掘り練習"
+        },
+        {
+          "step_number": 6,
+          "step_type": "challenge",
+          "jlpt_level": "N2",
+          "required_sessions": 1,
+          "description": "上位挑戦"
+        }
+      ]
+    },
+    {
+      "id": "hospitality",
+      "industry_id": "hospitality",
+      "name": "宿泊業界向け学習計画テンプレート",
+      "description": "宿泊業界に特化した面接練習。おもてなし精神、コミュニケーション力を重点評価。",
+      "steps": [
+        {
+          "step_number": 1,
+          "step_type": "introduction",
+          "jlpt_level": "N5",
+          "required_sessions": 1,
+          "description": "基本的な自己紹介練習"
+        },
+        {
+          "step_number": 2,
+          "step_type": "practice",
+          "jlpt_level": "N5",
+          "required_sessions": 2,
+          "description": "N5レベルで宿泊業界質問に慣れる"
+        },
+        {
+          "step_number": 3,
+          "step_type": "practice",
+          "jlpt_level": "N4",
+          "required_sessions": 3,
+          "description": "N4レベルで実践練習"
+        },
+        {
+          "step_number": 4,
+          "step_type": "challenge",
+          "jlpt_level": "N3",
+          "required_sessions": 1,
+          "description": "チャレンジモードで上位レベル挑戦"
+        },
+        {
+          "step_number": 5,
+          "step_type": "practice",
+          "jlpt_level": "N3",
+          "required_sessions": 3,
+          "description": "N3レベルで深掘り練習"
+        },
+        {
+          "step_number": 6,
+          "step_type": "challenge",
+          "jlpt_level": "N2",
+          "required_sessions": 1,
+          "description": "上位挑戦"
+        }
+      ]
+    },
+    {
+      "id": "agriculture",
+      "industry_id": "agriculture",
+      "name": "農業向け学習計画テンプレート",
+      "description": "農業に特化した面接練習。体力、自然環境への適応、早起きを重点評価。",
+      "steps": [
+        {
+          "step_number": 1,
+          "step_type": "introduction",
+          "jlpt_level": "N5",
+          "required_sessions": 1,
+          "description": "基本的な自己紹介練習"
+        },
+        {
+          "step_number": 2,
+          "step_type": "practice",
+          "jlpt_level": "N5",
+          "required_sessions": 2,
+          "description": "N5レベルで農業質問に慣れる"
+        },
+        {
+          "step_number": 3,
+          "step_type": "practice",
+          "jlpt_level": "N4",
+          "required_sessions": 3,
+          "description": "N4レベルで実践練習"
+        },
+        {
+          "step_number": 4,
+          "step_type": "challenge",
+          "jlpt_level": "N3",
+          "required_sessions": 1,
+          "description": "チャレンジモードで上位レベル挑戦"
+        },
+        {
+          "step_number": 5,
+          "step_type": "practice",
+          "jlpt_level": "N3",
+          "required_sessions": 3,
+          "description": "N3レベルで深掘り練習"
+        },
+        {
+          "step_number": 6,
+          "step_type": "challenge",
+          "jlpt_level": "N2",
+          "required_sessions": 1,
+          "description": "上位挑戦"
+        }
+      ]
+    },
+    {
+      "id": "building_cleaning",
+      "industry_id": "building_cleaning",
+      "name": "ビルクリーニング向け学習計画テンプレート",
+      "description": "ビルクリーニングに特化した面接練習。丁寧さ、衛生意識、時間管理を重点評価。",
+      "steps": [
+        {
+          "step_number": 1,
+          "step_type": "introduction",
+          "jlpt_level": "N5",
+          "required_sessions": 1,
+          "description": "基本的な自己紹介練習"
+        },
+        {
+          "step_number": 2,
+          "step_type": "practice",
+          "jlpt_level": "N5",
+          "required_sessions": 2,
+          "description": "N5レベルでビルクリーニング質問に慣れる"
+        },
+        {
+          "step_number": 3,
+          "step_type": "practice",
+          "jlpt_level": "N4",
+          "required_sessions": 3,
+          "description": "N4レベルで実践練習"
+        },
+        {
+          "step_number": 4,
+          "step_type": "challenge",
+          "jlpt_level": "N3",
+          "required_sessions": 1,
+          "description": "チャレンジモードで上位レベル挑戦"
+        },
+        {
+          "step_number": 5,
+          "step_type": "practice",
+          "jlpt_level": "N3",
+          "required_sessions": 3,
+          "description": "N3レベルで深掘り練習"
+        },
+        {
+          "step_number": 6,
+          "step_type": "challenge",
+          "jlpt_level": "N2",
+          "required_sessions": 1,
+          "description": "上位挑戦"
+        }
+      ]
+    }
+  ],
+  "step_types": {
+    "introduction": {
+      "name": "導入",
+      "description": "基本的な面接の流れを学ぶ導入ステップ"
+    },
+    "practice": {
+      "name": "練習",
+      "description": "指定レベルで繰り返し練習するステップ"
+    },
+    "challenge": {
+      "name": "チャレンジ",
+      "description": "上位レベルに挑戦するステップ"
+    }
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "created_at": "2026-02-04",
+    "updated_at": "2026-02-04",
+    "source": "12_面接フロー制御.md 12.10節",
+    "note": "汎用テンプレート1件 + 業界別テンプレート7件（特定技能14分野のうち主要7業界）"
+  }
+}

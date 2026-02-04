@@ -37,6 +37,7 @@ def add_title_shape(slide, text, top=Inches(0.3), font_size=32):
     shape = slide.shapes.add_textbox(left, top, width, height)
     tf = shape.text_frame
     tf.word_wrap = True
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = text
     p.font.size = Pt(font_size)
@@ -54,6 +55,7 @@ def add_subtitle_shape(slide, text, top=Inches(1.1)):
     shape = slide.shapes.add_textbox(left, top, width, height)
     tf = shape.text_frame
     tf.word_wrap = True
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = text
     p.font.size = Pt(18)
@@ -102,6 +104,7 @@ def add_centered_text(slide, text, top, font_size=24, bold=False, color=(51, 51,
     shape = slide.shapes.add_textbox(left, top, width, height)
     tf = shape.text_frame
     tf.word_wrap = True
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = text
     p.alignment = PP_ALIGN.CENTER
@@ -122,6 +125,7 @@ def add_info_box(slide, title, items, left, top, width=Inches(4), height=Inches(
     # タイトル
     title_box = slide.shapes.add_textbox(left + Inches(0.1), top + Inches(0.1), width - Inches(0.2), Inches(0.4))
     tf = title_box.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = title
     p.font.size = Pt(14)
@@ -132,6 +136,7 @@ def add_info_box(slide, title, items, left, top, width=Inches(4), height=Inches(
     content_box = slide.shapes.add_textbox(left + Inches(0.1), top + Inches(0.5), width - Inches(0.2), height - Inches(0.6))
     tf = content_box.text_frame
     tf.word_wrap = True
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
 
     for i, item in enumerate(items):
         if i == 0:
@@ -181,7 +186,7 @@ def create_presentation():
     subtitle = add_centered_text(slide, "外国人採用の「見極め精度」を飛躍的に向上", Inches(2), 20, False, (220, 240, 255))
 
     # サブ情報
-    add_centered_text(slide, "投資家向け事業説明資料", Inches(4.5), 18, False, (100, 100, 100))
+    add_centered_text(slide, "◯◯向け新サービス説明資料", Inches(4.5), 18, False, (100, 100, 100))
     add_centered_text(slide, "mintoku.com", Inches(5.5), 14, False, (0, 102, 153))
     add_centered_text(slide, "Confidential", Inches(6.5), 14, False, (150, 150, 150))
 
@@ -236,7 +241,7 @@ def create_presentation():
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     add_header_line(slide)
     add_title_shape(slide, "ソリューション概要")
-    add_subtitle_shape(slide, "AIによる面接練習と客観的評価の提供")
+    add_subtitle_shape(slide, "AIによる面接練習とわかりやすい評価")
 
     # 3つの柱
     add_info_box(slide, "① AIアバター面接", [
@@ -246,7 +251,7 @@ def create_presentation():
         "リアルタイム会話"
     ], Inches(0.3), Inches(1.8), Inches(3), Inches(2.8))
 
-    add_info_box(slide, "② 多角的自動評価", [
+    add_info_box(slide, "② AI自動評価", [
         "日本語能力4軸評価",
         "採用適性5軸評価",
         "JLPTレベル乖離検出",
@@ -254,7 +259,7 @@ def create_presentation():
     ], Inches(3.5), Inches(1.8), Inches(3), Inches(2.8))
 
     add_info_box(slide, "③ 企業向けレポート", [
-        "客観的な評価データ",
+        "わかりやすい評価データ",
         "採用判断の根拠提供",
         "比較可能な指標",
         "リスク軽減"
@@ -267,6 +272,7 @@ def create_presentation():
 
     value_text = slide.shapes.add_textbox(Inches(0.5), Inches(5.3), Inches(9), Inches(1))
     tf = value_text.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "採用ミスマッチを削減し、企業の採用コストと離職リスクを低減"
     p.alignment = PP_ALIGN.CENTER
@@ -303,6 +309,7 @@ def create_presentation():
         # フェーズ名（上）
         name_box = slide.shapes.add_textbox(Inches(left), Inches(1.7), Inches(1.5), Inches(0.8))
         tf = name_box.text_frame
+        tf.vertical_anchor = MSO_ANCHOR.MIDDLE
         p = tf.paragraphs[0]
         p.text = name
         p.alignment = PP_ALIGN.CENTER
@@ -313,6 +320,7 @@ def create_presentation():
         # 時間（円の中）
         time_box = slide.shapes.add_textbox(Inches(left + 0.4), Inches(2.65), Inches(0.7), Inches(0.5))
         tf = time_box.text_frame
+        tf.vertical_anchor = MSO_ANCHOR.MIDDLE
         p = tf.paragraphs[0]
         p.text = time
         p.alignment = PP_ALIGN.CENTER
@@ -324,6 +332,7 @@ def create_presentation():
     for x in [1.55, 3.05, 4.55, 6.05, 7.55]:
         arrow = slide.shapes.add_textbox(Inches(x), Inches(2.65), Inches(0.4), Inches(0.5))
         tf = arrow.text_frame
+        tf.vertical_anchor = MSO_ANCHOR.MIDDLE
         p = tf.paragraphs[0]
         p.text = "▶"
         p.font.size = Pt(16)
@@ -332,6 +341,7 @@ def create_presentation():
     # 下部：評価5軸（大きなアイコン風）
     eval_title = slide.shapes.add_textbox(Inches(0.5), Inches(3.8), Inches(9), Inches(0.6))
     tf = eval_title.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "採用適性評価 5軸"
     p.alignment = PP_ALIGN.CENTER
@@ -357,6 +367,7 @@ def create_presentation():
         # 軸名
         name_box = slide.shapes.add_textbox(Inches(left), Inches(5.15), Inches(1.7), Inches(0.7))
         tf = name_box.text_frame
+        tf.vertical_anchor = MSO_ANCHOR.MIDDLE
         p = tf.paragraphs[0]
         p.text = name
         p.alignment = PP_ALIGN.CENTER
@@ -367,6 +378,7 @@ def create_presentation():
     # 注釈
     note = slide.shapes.add_textbox(Inches(0.5), Inches(6.6), Inches(9), Inches(0.5))
     tf = note.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "各フェーズの回答からAIが5軸を総合評価"
     p.alignment = PP_ALIGN.CENTER
@@ -397,6 +409,7 @@ def create_presentation():
         # 番号
         num_text = slide.shapes.add_textbox(Inches(left + 0.35), Inches(2.0), Inches(1.5), Inches(0.7))
         tf = num_text.text_frame
+        tf.vertical_anchor = MSO_ANCHOR.MIDDLE
         p = tf.paragraphs[0]
         p.text = num
         p.alignment = PP_ALIGN.CENTER
@@ -407,6 +420,7 @@ def create_presentation():
         # タイトル
         title_box = slide.shapes.add_textbox(Inches(left), Inches(3.2), Inches(2.2), Inches(0.5))
         tf = title_box.text_frame
+        tf.vertical_anchor = MSO_ANCHOR.MIDDLE
         p = tf.paragraphs[0]
         p.text = title
         p.alignment = PP_ALIGN.CENTER
@@ -418,6 +432,7 @@ def create_presentation():
         desc_box = slide.shapes.add_textbox(Inches(left), Inches(3.7), Inches(2.2), Inches(0.8))
         tf = desc_box.text_frame
         tf.word_wrap = True
+        tf.vertical_anchor = MSO_ANCHOR.MIDDLE
         p = tf.paragraphs[0]
         p.text = desc
         p.alignment = PP_ALIGN.CENTER
@@ -428,6 +443,7 @@ def create_presentation():
         if i < 3:
             arrow = slide.shapes.add_textbox(Inches(left + 2.0), Inches(2.1), Inches(0.5), Inches(0.5))
             tf = arrow.text_frame
+            tf.vertical_anchor = MSO_ANCHOR.MIDDLE
             p = tf.paragraphs[0]
             p.text = "→"
             p.font.size = Pt(28)
@@ -446,6 +462,7 @@ def create_presentation():
 
     ai_label_text = slide.shapes.add_textbox(Inches(0.3), Inches(1.4), Inches(1.2), Inches(0.4))
     tf = ai_label_text.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "AI面接官"
     p.alignment = PP_ALIGN.CENTER
@@ -459,6 +476,7 @@ def create_presentation():
 
     user_label_text = slide.shapes.add_textbox(Inches(8.5), Inches(1.4), Inches(1.2), Inches(0.4))
     tf = user_label_text.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "ユーザー"
     p.alignment = PP_ALIGN.CENTER
@@ -488,20 +506,22 @@ def create_presentation():
             text_box = slide.shapes.add_textbox(Inches(0.5), Inches(y_pos + 0.08), Inches(5.2), Inches(0.4))
             tf = text_box.text_frame
             tf.word_wrap = True
+            tf.vertical_anchor = MSO_ANCHOR.MIDDLE
             p = tf.paragraphs[0]
             p.text = text
             p.font.size = Pt(13)
             p.font.color.rgb = RgbColor(0, 51, 102)
         else:
-            # ユーザー（右側）
-            bubble = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(4.2), Inches(y_pos), Inches(5.5), Inches(0.5))
+            # ユーザー（右側）- 幅を広げて折り返しを防止
+            bubble = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(2.0), Inches(y_pos), Inches(7.7), Inches(0.5))
             set_shape_fill(bubble, 230, 255, 240)
             bubble.line.color.rgb = RgbColor(0, 120, 80)
             bubble.line.width = Pt(2)
 
-            text_box = slide.shapes.add_textbox(Inches(4.4), Inches(y_pos + 0.08), Inches(5.2), Inches(0.4))
+            text_box = slide.shapes.add_textbox(Inches(2.2), Inches(y_pos + 0.08), Inches(7.4), Inches(0.4))
             tf = text_box.text_frame
-            tf.word_wrap = True
+            tf.word_wrap = False
+            tf.vertical_anchor = MSO_ANCHOR.MIDDLE
             p = tf.paragraphs[0]
             p.text = text
             p.font.size = Pt(13)
@@ -517,6 +537,7 @@ def create_presentation():
 
     eval_text = slide.shapes.add_textbox(Inches(0.5), Inches(6.75), Inches(9), Inches(0.4))
     tf = eval_text.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "→ 各回答をAIが自動評価（語彙・文法・内容・敬語）"
     p.alignment = PP_ALIGN.CENTER
@@ -524,7 +545,208 @@ def create_presentation():
     p.font.bold = True
     p.font.color.rgb = RgbColor(180, 100, 30)
 
-    # ========== スライド8: 主な機能 ==========
+    # ========== スライド8: レベルアップチャレンジ ==========
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    add_header_line(slide)
+    add_title_shape(slide, "レベルアップチャレンジ", font_size=36)
+    add_subtitle_shape(slide, "高得点で上位レベルに挑戦")
+
+    # フロー図の設定
+    flow_y = 2.2  # フローの縦位置
+
+    # Step 1: 申告レベル N3
+    step1_circle = slide.shapes.add_shape(MSO_SHAPE.OVAL, Inches(0.5), Inches(flow_y), Inches(1.5), Inches(1.5))
+    set_shape_fill(step1_circle, 0, 82, 147)  # 青系
+    step1_circle.line.fill.background()
+
+    step1_text = slide.shapes.add_textbox(Inches(0.5), Inches(flow_y + 0.3), Inches(1.5), Inches(0.9))
+    tf = step1_text.text_frame
+    tf.word_wrap = True
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+    p = tf.paragraphs[0]
+    p.text = "N3"
+    p.alignment = PP_ALIGN.CENTER
+    p.font.size = Pt(32)
+    p.font.bold = True
+    p.font.color.rgb = RgbColor(255, 255, 255)
+    p = tf.add_paragraph()
+    p.text = "申告レベル"
+    p.alignment = PP_ALIGN.CENTER
+    p.font.size = Pt(12)
+    p.font.color.rgb = RgbColor(220, 240, 255)
+
+    # 矢印1: AI面接実施
+    arrow1 = slide.shapes.add_textbox(Inches(2.1), Inches(flow_y + 0.45), Inches(1.2), Inches(0.6))
+    tf = arrow1.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+    p = tf.paragraphs[0]
+    p.text = "▶"
+    p.alignment = PP_ALIGN.CENTER
+    p.font.size = Pt(28)
+    p.font.color.rgb = RgbColor(150, 150, 150)
+
+    arrow1_label = slide.shapes.add_textbox(Inches(1.9), Inches(flow_y - 0.4), Inches(1.5), Inches(0.4))
+    tf = arrow1_label.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+    p = tf.paragraphs[0]
+    p.text = "AI面接実施"
+    p.alignment = PP_ALIGN.CENTER
+    p.font.size = Pt(12)
+    p.font.color.rgb = RgbColor(100, 100, 100)
+
+    # Step 2: N3面接結果
+    step2_box = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(3.0), Inches(flow_y), Inches(1.8), Inches(1.5))
+    set_shape_fill(step2_box, 0, 150, 100)  # 緑系
+    step2_box.line.fill.background()
+
+    step2_text = slide.shapes.add_textbox(Inches(3.0), Inches(flow_y + 0.2), Inches(1.8), Inches(1.1))
+    tf = step2_text.text_frame
+    tf.word_wrap = True
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+    p = tf.paragraphs[0]
+    p.text = "N3結果"
+    p.alignment = PP_ALIGN.CENTER
+    p.font.size = Pt(16)
+    p.font.bold = True
+    p.font.color.rgb = RgbColor(255, 255, 255)
+    p = tf.add_paragraph()
+    p.text = "70点"
+    p.alignment = PP_ALIGN.CENTER
+    p.font.size = Pt(28)
+    p.font.bold = True
+    p.font.color.rgb = RgbColor(255, 255, 255)
+    p = tf.add_paragraph()
+    p.text = "★高得点"
+    p.alignment = PP_ALIGN.CENTER
+    p.font.size = Pt(12)
+    p.font.color.rgb = RgbColor(255, 255, 150)
+
+    # 矢印2: チャレンジ解放
+    arrow2 = slide.shapes.add_textbox(Inches(4.9), Inches(flow_y + 0.45), Inches(1.2), Inches(0.6))
+    tf = arrow2.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+    p = tf.paragraphs[0]
+    p.text = "▶"
+    p.alignment = PP_ALIGN.CENTER
+    p.font.size = Pt(28)
+    p.font.color.rgb = RgbColor(0, 150, 100)
+
+    arrow2_label = slide.shapes.add_textbox(Inches(4.7), Inches(flow_y - 0.4), Inches(1.6), Inches(0.4))
+    tf = arrow2_label.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+    p = tf.paragraphs[0]
+    p.text = "チャレンジ解放!"
+    p.alignment = PP_ALIGN.CENTER
+    p.font.size = Pt(12)
+    p.font.bold = True
+    p.font.color.rgb = RgbColor(0, 150, 100)
+
+    # Step 3: N2チャレンジ
+    step3_circle = slide.shapes.add_shape(MSO_SHAPE.OVAL, Inches(5.8), Inches(flow_y), Inches(1.5), Inches(1.5))
+    set_shape_fill(step3_circle, 200, 130, 50)  # オレンジ系
+    step3_circle.line.fill.background()
+
+    step3_text = slide.shapes.add_textbox(Inches(5.8), Inches(flow_y + 0.3), Inches(1.5), Inches(0.9))
+    tf = step3_text.text_frame
+    tf.word_wrap = True
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+    p = tf.paragraphs[0]
+    p.text = "N2"
+    p.alignment = PP_ALIGN.CENTER
+    p.font.size = Pt(32)
+    p.font.bold = True
+    p.font.color.rgb = RgbColor(255, 255, 255)
+    p = tf.add_paragraph()
+    p.text = "チャレンジ"
+    p.alignment = PP_ALIGN.CENTER
+    p.font.size = Pt(12)
+    p.font.color.rgb = RgbColor(255, 230, 200)
+
+    # 矢印3: AI面接実施
+    arrow3 = slide.shapes.add_textbox(Inches(7.4), Inches(flow_y + 0.45), Inches(1.0), Inches(0.6))
+    tf = arrow3.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+    p = tf.paragraphs[0]
+    p.text = "▶"
+    p.alignment = PP_ALIGN.CENTER
+    p.font.size = Pt(28)
+    p.font.color.rgb = RgbColor(150, 150, 150)
+
+    arrow3_label = slide.shapes.add_textbox(Inches(7.2), Inches(flow_y - 0.4), Inches(1.5), Inches(0.4))
+    tf = arrow3_label.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+    p = tf.paragraphs[0]
+    p.text = "AI面接実施"
+    p.alignment = PP_ALIGN.CENTER
+    p.font.size = Pt(12)
+    p.font.color.rgb = RgbColor(100, 100, 100)
+
+    # Step 4: N2面接結果
+    step4_box = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.0), Inches(flow_y), Inches(1.5), Inches(1.5))
+    set_shape_fill(step4_box, 150, 80, 150)  # 紫系
+    step4_box.line.fill.background()
+
+    step4_text = slide.shapes.add_textbox(Inches(8.0), Inches(flow_y + 0.2), Inches(1.5), Inches(1.1))
+    tf = step4_text.text_frame
+    tf.word_wrap = True
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+    p = tf.paragraphs[0]
+    p.text = "N2結果"
+    p.alignment = PP_ALIGN.CENTER
+    p.font.size = Pt(16)
+    p.font.bold = True
+    p.font.color.rgb = RgbColor(255, 255, 255)
+    p = tf.add_paragraph()
+    p.text = "50点"
+    p.alignment = PP_ALIGN.CENTER
+    p.font.size = Pt(28)
+    p.font.bold = True
+    p.font.color.rgb = RgbColor(255, 255, 255)
+    p = tf.add_paragraph()
+    p.text = "挑戦中"
+    p.alignment = PP_ALIGN.CENTER
+    p.font.size = Pt(12)
+    p.font.color.rgb = RgbColor(230, 200, 230)
+
+    # 下部説明ボックス
+    explain_box = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.5), Inches(4.3), Inches(9), Inches(2.5))
+    set_shape_fill(explain_box, 255, 250, 240)  # 薄いオレンジ
+    explain_box.line.color.rgb = RgbColor(200, 150, 100)
+    explain_box.line.width = Pt(2)
+
+    # 説明タイトル
+    explain_title = slide.shapes.add_textbox(Inches(0.6), Inches(4.4), Inches(8.8), Inches(0.5))
+    tf = explain_title.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+    p = tf.paragraphs[0]
+    p.text = "レベルアップチャレンジの仕組み"
+    p.font.size = Pt(18)
+    p.font.bold = True
+    p.font.color.rgb = RgbColor(150, 100, 50)
+
+    # 説明内容
+    explain_content = slide.shapes.add_textbox(Inches(0.6), Inches(4.9), Inches(8.8), Inches(1.8))
+    tf = explain_content.text_frame
+    tf.word_wrap = True
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+
+    explanations = [
+        ("💡 高得点基準:", "申告レベルで70点以上を取得すると、上位レベルへのチャレンジが解放されます", (0, 100, 50)),
+        ("💡 実力測定:", "実力を正確に測定し、ユーザーに最適なレベルを特定します", (0, 82, 147)),
+        ("💡 採用時の価値:", "上位レベルでも高得点なら、申告以上の実力があることを証明できます", (150, 80, 150)),
+    ]
+
+    for i, (label, desc, color) in enumerate(explanations):
+        if i == 0:
+            p = tf.paragraphs[0]
+        else:
+            p = tf.add_paragraph()
+        p.text = f"{label} {desc}"
+        p.font.size = Pt(14)
+        p.font.color.rgb = RgbColor(*color)
+        p.space_after = Pt(8)
+
+    # ========== スライド9: 主な機能 ==========
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     add_header_line(slide)
     add_title_shape(slide, "主な機能（できること）")
@@ -535,7 +757,7 @@ def create_presentation():
         ("AIアバター面接", 0),
         ("リップシンク対応のリアルな面接官", 1),
         ("HeyGen APIによる高品質なアバター映像", 1),
-        ("リアルタイムフィードバック", 0),
+        ("その場でアドバイス", 0),
         ("音声認識による即時文字起こし（Google Speech-to-Text）", 1),
         ("回答ごとの評価とアドバイス", 1),
         ("苦手克服ループ", 0),
@@ -548,7 +770,7 @@ def create_presentation():
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     add_header_line(slide)
     add_title_shape(slide, "評価で得られる情報")
-    add_subtitle_shape(slide, "3つの軸による多角的評価")
+    add_subtitle_shape(slide, "3つの視点で評価")
 
     # 日本語能力評価
     add_info_box(slide, "日本語能力評価（4軸）", [
@@ -574,6 +796,7 @@ def create_presentation():
 
     jlpt_title = slide.shapes.add_textbox(Inches(0.6), Inches(4.6), Inches(8.8), Inches(0.4))
     tf = jlpt_title.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "JLPTレベル乖離検出"
     p.font.size = Pt(16)
@@ -583,6 +806,7 @@ def create_presentation():
     jlpt_content = slide.shapes.add_textbox(Inches(0.6), Inches(5.1), Inches(8.8), Inches(1.5))
     tf = jlpt_content.text_frame
     tf.word_wrap = True
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "申告レベルと実力の乖離を自動検出"
     p.font.size = Pt(14)
@@ -599,21 +823,20 @@ def create_presentation():
     # ========== スライド7: 企業向け統合評価レポート ==========
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     add_header_line(slide)
-    add_title_shape(slide, "企業向け統合評価レポート")
-    add_subtitle_shape(slide, "採用判断に必要な客観的データを提供")
+    add_title_shape(slide, "企業向け評価レポート")
+    add_subtitle_shape(slide, "採用判断に必要なデータをわかりやすく")
 
     items = [
         ("推定実力レベル", 0),
         ("申告N3 → 実力N2相当 など、実際の能力を推定", 1),
-        ("レベル別パフォーマンス一覧", 0),
-        ("N1〜N5各レベルでの質問に対する回答品質を可視化", 1),
-        ("業務適性判定", 0),
-        ("基本接客：挨拶・簡単な案内", 1),
-        ("一般業務：報連相・基本的なビジネス会話", 1),
-        ("ビジネス敬語：クレーム対応・交渉", 1),
-        ("高度業務：企画提案・プレゼンテーション", 1),
-        ("総合評価スコア", 0),
-        ("採用判断の参考となる統合指標（0-100点）", 1),
+        ("レベル別の回答品質", 0),
+        ("N1〜N5各レベルでの質問にどれだけ答えられたか", 1),
+        ("どんな仕事ができそうか", 0),
+        ("簡単な挨拶・案内ができる", 1),
+        ("報告・連絡・相談ができる", 1),
+        ("お客様対応・電話対応ができる", 1),
+        ("総合評価スコア（0-100点）", 0),
+        ("採用判断の参考になる点数", 1),
     ]
     add_bullet_points(slide, items, top=Inches(1.5), height=Inches(5.5))
 
@@ -624,10 +847,10 @@ def create_presentation():
 
     # 4つの強み
     strengths = [
-        ("AIアバター面接", "リップシンク対応の\nリアルな面接体験", 0.3, 1.8),
-        ("JLPT全レベル対応", "N1〜N5の評価基準で\n正確なレベル判定", 5.2, 1.8),
-        ("採用適性の定量評価", "5軸による\n多角的な適性判断", 0.3, 4.3),
-        ("苦手克服サイクル", "AIが弱点を特定し\n効率的に改善", 5.2, 4.3),
+        ("AIアバター面接", "本物の面接官のような\nリアルな面接体験", 0.3, 1.8),
+        ("JLPT全レベル対応", "N1〜N5すべてに対応\n正確なレベル判定", 5.2, 1.8),
+        ("5つの視点で評価", "適応力・主体性など\n数値でわかりやすく", 0.3, 4.3),
+        ("苦手を見つけて改善", "AIが弱点を見つけ\n繰り返し練習", 5.2, 4.3),
     ]
 
     for title, desc, left, top in strengths:
@@ -637,6 +860,7 @@ def create_presentation():
 
         title_shape = slide.shapes.add_textbox(Inches(left + 0.2), Inches(top + 0.2), Inches(4.1), Inches(0.5))
         tf = title_shape.text_frame
+        tf.vertical_anchor = MSO_ANCHOR.MIDDLE
         p = tf.paragraphs[0]
         p.text = title
         p.font.size = Pt(18)
@@ -646,6 +870,7 @@ def create_presentation():
         desc_shape = slide.shapes.add_textbox(Inches(left + 0.2), Inches(top + 0.7), Inches(4.1), Inches(1.2))
         tf = desc_shape.text_frame
         tf.word_wrap = True
+        tf.vertical_anchor = MSO_ANCHOR.MIDDLE
         p = tf.paragraphs[0]
         p.text = desc
         p.font.size = Pt(14)
@@ -665,6 +890,7 @@ def create_presentation():
     mintoku_text = slide.shapes.add_textbox(Inches(0.6), Inches(1.7), Inches(8.8), Inches(1.2))
     tf = mintoku_text.text_frame
     tf.word_wrap = True
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "mintoku採用支援サービスの高付加価値オプションとして展開"
     p.alignment = PP_ALIGN.CENTER
@@ -705,6 +931,7 @@ def create_presentation():
 
     cost_title = slide.shapes.add_textbox(Inches(0.6), Inches(5.8), Inches(8.8), Inches(0.4))
     tf = cost_title.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "主要コスト構造（外部API）"
     p.font.size = Pt(14)
@@ -714,6 +941,7 @@ def create_presentation():
     cost_content = slide.shapes.add_textbox(Inches(0.6), Inches(6.2), Inches(8.8), Inches(1))
     tf = cost_content.text_frame
     tf.word_wrap = True
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "HeyGen API（アバター） / Google STT（音声認識） / OpenAI API（評価・質問生成）"
     p.font.size = Pt(12)
@@ -733,6 +961,7 @@ def create_presentation():
     summary_text = slide.shapes.add_textbox(Inches(0.6), Inches(1.75), Inches(8.8), Inches(1))
     tf = summary_text.text_frame
     tf.word_wrap = True
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "総開発期間: 14週間（約3.5ヶ月）  |  総工数: 約11.5人月（230人日）"
     p.alignment = PP_ALIGN.CENTER
@@ -761,6 +990,7 @@ def create_presentation():
         # フェーズ番号と名前
         phase_title = slide.shapes.add_textbox(Inches(left + 0.15), Inches(top + 0.1), Inches(4.2), Inches(0.4))
         tf = phase_title.text_frame
+        tf.vertical_anchor = MSO_ANCHOR.MIDDLE
         p = tf.paragraphs[0]
         p.text = f"{phase_num}: {phase_name}（{duration}）"
         p.font.size = Pt(14)
@@ -771,12 +1001,183 @@ def create_presentation():
         phase_desc = slide.shapes.add_textbox(Inches(left + 0.15), Inches(top + 0.5), Inches(4.2), Inches(1.1))
         tf = phase_desc.text_frame
         tf.word_wrap = True
+        tf.vertical_anchor = MSO_ANCHOR.MIDDLE
         p = tf.paragraphs[0]
         p.text = desc
         p.font.size = Pt(12)
         p.font.color.rgb = RgbColor(80, 80, 80)
 
-    # ========== スライド11: 開発規模 ==========
+    # ========== スライド11: ガントチャート ==========
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    add_header_line(slide)
+    add_title_shape(slide, "開発スケジュール", font_size=36)
+
+    # 週ラベル用の設定
+    chart_left = 2.0  # チャート開始位置
+    chart_width = 7.5  # チャート幅
+    week_width = chart_width / 14  # 1週間あたりの幅
+    bar_height = 0.6  # バーの高さ
+    bar_gap = 0.3  # バー間の隙間
+
+    # 週番号ヘッダー
+    for week in range(1, 15):
+        week_label = slide.shapes.add_textbox(
+            Inches(chart_left + (week - 1) * week_width),
+            Inches(1.4),
+            Inches(week_width),
+            Inches(0.4)
+        )
+        tf = week_label.text_frame
+        tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+        p = tf.paragraphs[0]
+        p.text = str(week)
+        p.alignment = PP_ALIGN.CENTER
+        p.font.size = Pt(10)
+        p.font.color.rgb = RgbColor(100, 100, 100)
+
+    # 週区切り線（縦線）
+    for week in range(0, 15):
+        line = slide.shapes.add_shape(
+            MSO_SHAPE.RECTANGLE,
+            Inches(chart_left + week * week_width),
+            Inches(1.8),
+            Inches(0.01),
+            Inches(4.5)
+        )
+        set_shape_fill(line, 220, 220, 220)
+        line.line.fill.background()
+
+    # フェーズ名ラベル用の幅
+    label_width = 1.8
+
+    # フェーズデータ: (名前, 開始週, 期間週, 色)
+    gantt_phases = [
+        ("Phase 1\n基盤構築", 1, 4, (0, 120, 180)),
+        ("Phase 2\nアバター統合", 5, 4, (0, 150, 100)),
+        ("Phase 3\n評価機能", 9, 3, (200, 130, 50)),
+        ("Phase 4\nリリース準備", 12, 3, (150, 80, 150)),
+    ]
+
+    for i, (name, start_week, duration, color) in enumerate(gantt_phases):
+        y_pos = 2.0 + i * (bar_height + bar_gap)
+
+        # フェーズ名ラベル（左側）
+        label = slide.shapes.add_textbox(
+            Inches(0.2),
+            Inches(y_pos),
+            Inches(label_width),
+            Inches(bar_height)
+        )
+        tf = label.text_frame
+        tf.word_wrap = True
+        tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+        p = tf.paragraphs[0]
+        p.text = name
+        p.font.size = Pt(12)
+        p.font.bold = True
+        p.font.color.rgb = RgbColor(*color)
+
+        # ガントバー
+        bar_left = chart_left + (start_week - 1) * week_width
+        bar_width_val = duration * week_width
+        bar = slide.shapes.add_shape(
+            MSO_SHAPE.ROUNDED_RECTANGLE,
+            Inches(bar_left),
+            Inches(y_pos),
+            Inches(bar_width_val),
+            Inches(bar_height)
+        )
+        set_shape_fill(bar, *color)
+        bar.line.fill.background()
+
+        # バー内の期間テキスト
+        bar_text = slide.shapes.add_textbox(
+            Inches(bar_left),
+            Inches(y_pos),
+            Inches(bar_width_val),
+            Inches(bar_height)
+        )
+        tf = bar_text.text_frame
+        tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+        p = tf.paragraphs[0]
+        p.text = f"{duration}週間"
+        p.alignment = PP_ALIGN.CENTER
+        p.font.size = Pt(12)
+        p.font.bold = True
+        p.font.color.rgb = RgbColor(255, 255, 255)
+
+    # 月ラベル（下部）
+    month_labels = [
+        ("1ヶ月目", 0, 4),
+        ("2ヶ月目", 4, 4),
+        ("3ヶ月目", 8, 4),
+        ("3.5ヶ月目", 12, 2),
+    ]
+
+    for label_text, start_week, weeks in month_labels:
+        month_box = slide.shapes.add_textbox(
+            Inches(chart_left + start_week * week_width),
+            Inches(5.8),
+            Inches(weeks * week_width),
+            Inches(0.4)
+        )
+        tf = month_box.text_frame
+        tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+        p = tf.paragraphs[0]
+        p.text = label_text
+        p.alignment = PP_ALIGN.CENTER
+        p.font.size = Pt(11)
+        p.font.color.rgb = RgbColor(80, 80, 80)
+
+    # 凡例（下部）
+    legend_y = 6.4
+    legend_items = [
+        ("基盤構築", (0, 120, 180)),
+        ("アバター統合", (0, 150, 100)),
+        ("評価機能", (200, 130, 50)),
+        ("リリース準備", (150, 80, 150)),
+    ]
+
+    for i, (legend_text, color) in enumerate(legend_items):
+        x_pos = 0.5 + i * 2.4
+
+        # 凡例の色ボックス
+        legend_box = slide.shapes.add_shape(
+            MSO_SHAPE.ROUNDED_RECTANGLE,
+            Inches(x_pos),
+            Inches(legend_y + 0.1),
+            Inches(0.3),
+            Inches(0.3)
+        )
+        set_shape_fill(legend_box, *color)
+        legend_box.line.fill.background()
+
+        # 凡例テキスト
+        legend_label = slide.shapes.add_textbox(
+            Inches(x_pos + 0.4),
+            Inches(legend_y),
+            Inches(1.8),
+            Inches(0.5)
+        )
+        tf = legend_label.text_frame
+        tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+        p = tf.paragraphs[0]
+        p.text = legend_text
+        p.font.size = Pt(11)
+        p.font.color.rgb = RgbColor(60, 60, 60)
+
+    # 総期間の注釈
+    total_note = slide.shapes.add_textbox(Inches(0.5), Inches(7), Inches(9), Inches(0.4))
+    tf = total_note.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+    p = tf.paragraphs[0]
+    p.text = "総開発期間: 14週間（約3.5ヶ月）"
+    p.alignment = PP_ALIGN.CENTER
+    p.font.size = Pt(14)
+    p.font.bold = True
+    p.font.color.rgb = RgbColor(0, 82, 147)
+
+    # ========== スライド12: 開発規模 ==========
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     add_header_line(slide)
     add_title_shape(slide, "開発規模")
@@ -816,6 +1217,7 @@ def create_presentation():
 
     role_title = slide.shapes.add_textbox(Inches(0.6), Inches(4.8), Inches(8.8), Inches(0.4))
     tf = role_title.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "役割別工数サマリー"
     p.font.size = Pt(14)
@@ -825,6 +1227,7 @@ def create_presentation():
     role_content = slide.shapes.add_textbox(Inches(0.6), Inches(5.3), Inches(8.8), Inches(1.8))
     tf = role_content.text_frame
     tf.word_wrap = True
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     roles = [
         "• フロントエンドエンジニア: 84人日（HeyGen統合・UI実装）",
         "• バックエンドエンジニア: 73人日（API・評価ロジック・外部連携）",
@@ -854,6 +1257,7 @@ def create_presentation():
 
     summary_title = slide.shapes.add_textbox(Inches(0.6), Inches(1.7), Inches(8.8), Inches(0.4))
     tf = summary_title.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "月額コスト試算（1回の面接 = 10分として計算）"
     p.font.size = Pt(14)
@@ -863,6 +1267,7 @@ def create_presentation():
     summary_content = slide.shapes.add_textbox(Inches(0.6), Inches(2.1), Inches(8.8), Inches(1.2))
     tf = summary_content.text_frame
     tf.word_wrap = True
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "Proプラン（50回/月）: 約43,000円/月  |  Scaleプラン（330回/月）: 約83,000円/月"
     p.font.size = Pt(16)
@@ -897,6 +1302,7 @@ def create_presentation():
 
     ent_title = slide.shapes.add_textbox(Inches(6.8), Inches(3.7), Inches(2.8), Inches(0.4))
     tf = ent_title.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "Enterprise（331回以上/月）"
     p.font.size = Pt(12)
@@ -906,6 +1312,7 @@ def create_presentation():
     ent_content = slide.shapes.add_textbox(Inches(6.8), Inches(4.15), Inches(2.8), Inches(1.6))
     tf = ent_content.text_frame
     tf.word_wrap = True
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "• HeyGen: 個別交渉"
     p.font.size = Pt(11)
@@ -930,6 +1337,7 @@ def create_presentation():
     note_text = slide.shapes.add_textbox(Inches(0.5), Inches(6.1), Inches(9), Inches(1))
     tf = note_text.text_frame
     tf.word_wrap = True
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "※ 為替: $1 = 150円で計算"
     p.font.size = Pt(11)
@@ -953,6 +1361,7 @@ def create_presentation():
 
     pro_title = slide.shapes.add_textbox(Inches(0.5), Inches(2), Inches(4.3), Inches(0.6))
     tf = pro_title.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "Proプラン"
     p.alignment = PP_ALIGN.CENTER
@@ -962,6 +1371,7 @@ def create_presentation():
 
     pro_count = slide.shapes.add_textbox(Inches(0.5), Inches(2.6), Inches(4.3), Inches(0.5))
     tf = pro_count.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "600回/年"
     p.alignment = PP_ALIGN.CENTER
@@ -970,6 +1380,7 @@ def create_presentation():
 
     pro_price = slide.shapes.add_textbox(Inches(0.5), Inches(3.3), Inches(4.3), Inches(0.8))
     tf = pro_price.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "約51万円/年"
     p.alignment = PP_ALIGN.CENTER
@@ -984,6 +1395,7 @@ def create_presentation():
 
     scale_title = slide.shapes.add_textbox(Inches(5.2), Inches(2), Inches(4.3), Inches(0.6))
     tf = scale_title.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "Scaleプラン"
     p.alignment = PP_ALIGN.CENTER
@@ -993,6 +1405,7 @@ def create_presentation():
 
     scale_count = slide.shapes.add_textbox(Inches(5.2), Inches(2.6), Inches(4.3), Inches(0.5))
     tf = scale_count.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "3,960回/年"
     p.alignment = PP_ALIGN.CENTER
@@ -1001,6 +1414,7 @@ def create_presentation():
 
     scale_price = slide.shapes.add_textbox(Inches(5.2), Inches(3.3), Inches(4.3), Inches(0.8))
     tf = scale_price.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "約100万円/年"
     p.alignment = PP_ALIGN.CENTER
@@ -1016,6 +1430,7 @@ def create_presentation():
 
     ent_text = slide.shapes.add_textbox(Inches(0.5), Inches(5.4), Inches(9), Inches(0.8))
     tf = ent_text.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "Enterprise（3,960回/年 以上）: 個別見積"
     p.alignment = PP_ALIGN.CENTER
@@ -1026,6 +1441,7 @@ def create_presentation():
     # 注記
     note = slide.shapes.add_textbox(Inches(0.5), Inches(6.6), Inches(9), Inches(0.5))
     tf = note.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "※ 為替: $1 = 150円で計算 | 外部APIはUSD建て（為替変動あり）"
     p.alignment = PP_ALIGN.CENTER
@@ -1050,6 +1466,7 @@ def create_presentation():
 
     demo_text = slide.shapes.add_textbox(Inches(2), Inches(3.3), Inches(6), Inches(0.5))
     tf = demo_text.text_frame
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "デモンストレーションのご案内"
     p.alignment = PP_ALIGN.CENTER
@@ -1060,6 +1477,7 @@ def create_presentation():
     demo_desc = slide.shapes.add_textbox(Inches(2), Inches(4), Inches(6), Inches(0.8))
     tf = demo_desc.text_frame
     tf.word_wrap = True
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = "実際のAI面接体験と評価レポートの\nデモをご覧いただけます"
     p.alignment = PP_ALIGN.CENTER
@@ -1067,7 +1485,7 @@ def create_presentation():
     p.font.color.rgb = RgbColor(100, 100, 100)
 
     # Confidential
-    add_centered_text(slide, "Confidential - For Investor Use Only", Inches(6.5), 12, False, (180, 200, 220))
+    add_centered_text(slide, "Confidential", Inches(6.5), 12, False, (180, 200, 220))
 
     return prs
 

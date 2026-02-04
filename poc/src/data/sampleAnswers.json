@@ -1,0 +1,746 @@
+{
+  "sampleAnswers": [
+    {
+      "questionId": "Q01",
+      "questionText": "本日はお越しいただきありがとうございます。緊張していませんか？",
+      "category": "introduction",
+      "answers": {
+        "good": [
+          {
+            "jlptLevel": "N3",
+            "answer": "はい、少し緊張しています。でも、この面接をとても楽しみにしていたので、頑張りたいと思います。",
+            "expectedScore": {
+              "vocabulary": 75,
+              "grammar": 80,
+              "content": 85,
+              "honorifics": 70
+            },
+            "explanation": "適度な緊張感を正直に伝えつつ、前向きな姿勢を示している"
+          },
+          {
+            "jlptLevel": "N2",
+            "answer": "はい、正直なところ少し緊張しております。ただ、御社で働くことをずっと目標にしてきましたので、精一杯頑張らせていただきます。",
+            "expectedScore": {
+              "vocabulary": 85,
+              "grammar": 85,
+              "content": 90,
+              "honorifics": 85
+            },
+            "explanation": "丁寧な敬語を使いながら、緊張を正直に認めつつ意欲を示している"
+          },
+          {
+            "jlptLevel": "N1",
+            "answer": "お時間をいただきありがとうございます。正直申し上げますと、少々緊張しておりますが、御社で働かせていただく機会を心待ちにしておりましたので、本日は精一杯自分をアピールさせていただきたいと存じます。",
+            "expectedScore": {
+              "vocabulary": 95,
+              "grammar": 95,
+              "content": 90,
+              "honorifics": 95
+            },
+            "explanation": "ビジネスレベルの敬語を適切に使用し、謙虚さと意欲のバランスが取れている"
+          }
+        ],
+        "poor": [
+          {
+            "jlptLevel": "N3",
+            "answer": "緊張...していません。",
+            "expectedScore": {
+              "vocabulary": 40,
+              "grammar": 50,
+              "content": 30,
+              "honorifics": 40
+            },
+            "explanation": "返答が短すぎ、コミュニケーション意欲が感じられない",
+            "redFlags": ["極度に緊張して話せない", "無表情で反応がない"]
+          }
+        ]
+      }
+    },
+    {
+      "questionId": "Q03",
+      "questionText": "日本の生活には慣れましたか？",
+      "category": "introduction",
+      "answers": {
+        "good": [
+          {
+            "jlptLevel": "N4",
+            "answer": "はい、だいたい慣れました。電車の乗り方を覚えるのが大変でしたが、今は一人で出かけられます。日本の食べ物も好きです。",
+            "expectedScore": {
+              "vocabulary": 70,
+              "grammar": 70,
+              "content": 80,
+              "honorifics": 60
+            },
+            "explanation": "簡潔な日本語で具体的なエピソードを挙げ、前向きな姿勢を示している"
+          },
+          {
+            "jlptLevel": "N3",
+            "answer": "はい、だんだん慣れてきました。最初は電車の乗り換えや、ゴミの分別が難しかったですが、近所の方に教えていただいて、今は問題なくできるようになりました。日本の四季も好きです。",
+            "expectedScore": {
+              "vocabulary": 80,
+              "grammar": 80,
+              "content": 85,
+              "honorifics": 75
+            },
+            "explanation": "具体的な困難とその克服を説明し、日本への適応を示している"
+          }
+        ],
+        "poor": [
+          {
+            "jlptLevel": "N3",
+            "answer": "日本の生活は大変です。食べ物が口に合わないし、人が冷たいと思います。早く母国に帰りたいです。",
+            "expectedScore": {
+              "vocabulary": 70,
+              "grammar": 75,
+              "content": 25,
+              "honorifics": 60
+            },
+            "explanation": "日本への不満が強く、適応意欲が感じられない",
+            "redFlags": ["日本の生活に強い不満を示す", "適応に苦労している様子"]
+          }
+        ]
+      }
+    },
+    {
+      "questionId": "Q06",
+      "questionText": "日本に来ようと思った理由を教えてください。",
+      "category": "past_experience",
+      "answers": {
+        "good": [
+          {
+            "jlptLevel": "N4",
+            "answer": "私は子供のとき、日本のアニメが好きでした。それで、日本の文化に興味を持ちました。日本で働いて、日本語をもっと勉強したいと思いました。",
+            "expectedScore": {
+              "vocabulary": 65,
+              "grammar": 65,
+              "content": 75,
+              "honorifics": 55
+            },
+            "explanation": "シンプルな日本語で来日理由を説明し、学習意欲を示している"
+          },
+          {
+            "jlptLevel": "N3",
+            "answer": "大学で日本語を専攻していたとき、日本の技術力の高さと、おもてなしの文化に魅力を感じました。将来は日本で技術を学んで、母国と日本の架け橋になりたいと考えて、来日を決めました。",
+            "expectedScore": {
+              "vocabulary": 80,
+              "grammar": 80,
+              "content": 90,
+              "honorifics": 70
+            },
+            "explanation": "来日理由が具体的で、長期的なビジョンも示されている"
+          },
+          {
+            "jlptLevel": "N2",
+            "answer": "高校生の頃から日本のものづくりの精神に感銘を受けておりました。大学では製造業について学び、日本企業の品質管理の考え方を直接学びたいという思いが強くなりました。来日後は日本語学校で2年間学び、現在のJLPT N2を取得いたしました。将来的には、この経験を活かして母国の製造業の発展に貢献したいと考えております。",
+            "expectedScore": {
+              "vocabulary": 90,
+              "grammar": 90,
+              "content": 95,
+              "honorifics": 85
+            },
+            "explanation": "詳細な経緯と具体的なビジョンが述べられ、一貫性がある"
+          }
+        ],
+        "poor": [
+          {
+            "jlptLevel": "N3",
+            "answer": "日本は給料がいいから来ました。母国より稼げると聞きました。",
+            "expectedScore": {
+              "vocabulary": 60,
+              "grammar": 70,
+              "content": 25,
+              "honorifics": 50
+            },
+            "explanation": "金銭的な理由のみで、日本への興味や長期的なビジョンが感じられない",
+            "redFlags": ["お金のことだけ言及", "具体性がない"]
+          },
+          {
+            "jlptLevel": "N4",
+            "answer": "友達が日本にいるから、来ました。",
+            "expectedScore": {
+              "vocabulary": 50,
+              "grammar": 55,
+              "content": 30,
+              "honorifics": 40
+            },
+            "explanation": "主体性がなく、来日理由が不明確",
+            "redFlags": ["家族や知人に言われたからだけ", "具体性がない"]
+          }
+        ]
+      }
+    },
+    {
+      "questionId": "Q09",
+      "questionText": "日本で困った経験はありますか？どう対処しましたか？",
+      "category": "past_experience",
+      "answers": {
+        "good": [
+          {
+            "jlptLevel": "N3",
+            "answer": "来日したばかりのとき、病院で症状をうまく説明できなくて困りました。でも、スマホの翻訳アプリを使って、先生に伝えることができました。それから、医療に関する日本語を勉強しました。今は病院でも自分で説明できます。",
+            "expectedScore": {
+              "vocabulary": 80,
+              "grammar": 80,
+              "content": 90,
+              "honorifics": 70
+            },
+            "explanation": "具体的なエピソードと解決策、その後の学びが述べられている"
+          },
+          {
+            "jlptLevel": "N2",
+            "answer": "来日して半年ほど経った頃、アルバイト先でお客様からクレームを受けたことがございます。最初は言葉が完全に聞き取れず、とても困りました。まず、落ち着いて謝罪し、先輩に助けを求めました。その後、先輩からクレーム対応の日本語を教えていただき、自分でも接客用語を勉強しました。この経験から、困ったときは一人で抱え込まず、周りに助けを求めることの大切さを学びました。",
+            "expectedScore": {
+              "vocabulary": 90,
+              "grammar": 90,
+              "content": 95,
+              "honorifics": 90
+            },
+            "explanation": "詳細なエピソードと解決プロセス、学びが丁寧に述べられている"
+          }
+        ],
+        "poor": [
+          {
+            "jlptLevel": "N3",
+            "answer": "電車で財布を落としたことがあります。日本人は冷たいから、誰も助けてくれませんでした。",
+            "expectedScore": {
+              "vocabulary": 65,
+              "grammar": 70,
+              "content": 25,
+              "honorifics": 55
+            },
+            "explanation": "問題の対処法が述べられず、他人のせいにしている",
+            "redFlags": ["他人のせいにする", "何も学んでいない"]
+          }
+        ]
+      }
+    },
+    {
+      "questionId": "Q14",
+      "questionText": "チームで何かを達成した経験を教えてください。",
+      "category": "past_experience",
+      "answers": {
+        "good": [
+          {
+            "jlptLevel": "N3",
+            "answer": "日本語学校で、文化祭の実行委員をしました。私はベトナム料理のブースを担当しました。中国、ネパール、ベトナムの学生と協力して、準備をしました。言葉が違うので大変でしたが、みんなで絵を描いて説明したり、LINEグループで連絡したりしました。当日は200食以上売れて、とても嬉しかったです。",
+            "expectedScore": {
+              "vocabulary": 75,
+              "grammar": 80,
+              "content": 90,
+              "honorifics": 65
+            },
+            "explanation": "具体的なエピソードで自分の役割と工夫、成果を説明している"
+          },
+          {
+            "jlptLevel": "N2",
+            "answer": "前職の製造現場で、不良品率を下げるプロジェクトに参加いたしました。私は検査工程を担当しており、チームリーダーに不良品のパターンを報告する役割を担いました。3か月間、毎日記録を取り、原因を分析した結果、特定の工程で問題が発生していることがわかりました。その情報をもとにチーム全体で改善策を実施し、不良品率を5%から2%に削減することができました。",
+            "expectedScore": {
+              "vocabulary": 90,
+              "grammar": 90,
+              "content": 95,
+              "honorifics": 85
+            },
+            "explanation": "数値を用いた具体的な成果と、チーム内での役割が明確に述べられている"
+          }
+        ],
+        "poor": [
+          {
+            "jlptLevel": "N3",
+            "answer": "前の会社で、新しいシステムを導入しました。私が全部やりました。みんなは何もしませんでした。",
+            "expectedScore": {
+              "vocabulary": 60,
+              "grammar": 65,
+              "content": 30,
+              "honorifics": 50
+            },
+            "explanation": "自分だけの手柄にしており、チームワークの姿勢が感じられない",
+            "redFlags": ["自分だけの手柄にしている", "具体性がない"]
+          }
+        ]
+      }
+    },
+    {
+      "questionId": "Q18",
+      "questionText": "あなたの強みは何ですか？",
+      "category": "present_ability",
+      "answers": {
+        "good": [
+          {
+            "jlptLevel": "N4",
+            "answer": "私の強みは、真面目なところです。仕事は最後までやります。前のアルバイトで、店長から「真面目だね」と言われました。",
+            "expectedScore": {
+              "vocabulary": 60,
+              "grammar": 65,
+              "content": 75,
+              "honorifics": 50
+            },
+            "explanation": "シンプルだが具体的な例を挙げている"
+          },
+          {
+            "jlptLevel": "N3",
+            "answer": "私の強みは、コツコツと努力を続けられることです。日本語も、毎日2時間ずつ勉強して、1年でN4からN3に合格しました。仕事でも、難しいことがあっても諦めずに続けることができます。",
+            "expectedScore": {
+              "vocabulary": 80,
+              "grammar": 80,
+              "content": 85,
+              "honorifics": 70
+            },
+            "explanation": "具体的な実績で強みを証明している"
+          },
+          {
+            "jlptLevel": "N2",
+            "answer": "私の強みは、異文化への適応力だと考えております。来日してから3年間、様々な国籍の方と一緒に働いてまいりました。文化や習慣の違いから誤解が生じることもありましたが、相手の立場に立って考え、コミュニケーションを取ることで、良好な関係を築くことができました。この経験は、御社のようなグローバルな環境でも活かせると考えております。",
+            "expectedScore": {
+              "vocabulary": 90,
+              "grammar": 90,
+              "content": 90,
+              "honorifics": 90
+            },
+            "explanation": "強みを具体的な経験で説明し、会社での活用も述べている"
+          }
+        ],
+        "poor": [
+          {
+            "jlptLevel": "N3",
+            "answer": "特にないです。普通だと思います。",
+            "expectedScore": {
+              "vocabulary": 50,
+              "grammar": 55,
+              "content": 20,
+              "honorifics": 45
+            },
+            "explanation": "自己分析ができておらず、アピール意欲がない",
+            "redFlags": ["強みが思いつかない", "具体性がない"]
+          }
+        ]
+      }
+    },
+    {
+      "questionId": "Q23",
+      "questionText": "分からないことがあったとき、どうしますか？",
+      "category": "present_ability",
+      "answers": {
+        "good": [
+          {
+            "jlptLevel": "N4",
+            "answer": "分からないとき、すぐに聞きます。一人で考えて、時間がかかるより、聞いたほうがいいと思います。メモを取って、同じことを聞かないようにします。",
+            "expectedScore": {
+              "vocabulary": 65,
+              "grammar": 70,
+              "content": 85,
+              "honorifics": 55
+            },
+            "explanation": "報連相の姿勢と工夫が伝わる"
+          },
+          {
+            "jlptLevel": "N3",
+            "answer": "まず自分で調べてみます。それでも分からなければ、先輩や上司に質問します。質問するときは、「ここまでは分かったのですが、ここから分からないです」と具体的に聞くようにしています。教えていただいたことはメモを取って、次からは自分でできるように努力します。",
+            "expectedScore": {
+              "vocabulary": 80,
+              "grammar": 85,
+              "content": 90,
+              "honorifics": 75
+            },
+            "explanation": "自主性と報連相のバランスが取れた回答"
+          },
+          {
+            "jlptLevel": "N2",
+            "answer": "業務で分からないことがあった場合、まずは自分で調べてみるようにしております。マニュアルや過去の資料を確認し、それでも解決できない場合は、上司や先輩に相談いたします。その際、「ここまでは理解できましたが、この点が分かりません」と、自分の理解度を明確にした上でお聞きするよう心がけております。また、教えていただいた内容は必ずメモを取り、同じ質問を繰り返さないよう気をつけております。",
+            "expectedScore": {
+              "vocabulary": 90,
+              "grammar": 90,
+              "content": 95,
+              "honorifics": 90
+            },
+            "explanation": "報連相を具体的なプロセスで説明し、ビジネスマナーも示している"
+          }
+        ],
+        "poor": [
+          {
+            "jlptLevel": "N3",
+            "answer": "分からなくても、聞くのは恥ずかしいので、自分で何とかします。",
+            "expectedScore": {
+              "vocabulary": 65,
+              "grammar": 70,
+              "content": 30,
+              "honorifics": 55
+            },
+            "explanation": "報連相の重要性を理解しておらず、問題を一人で抱え込む傾向がある",
+            "redFlags": ["質問することに抵抗がある", "分からないまま放置する"]
+          }
+        ]
+      }
+    },
+    {
+      "questionId": "Q26",
+      "questionText": "急な仕事の変更があった場合、どう対応しますか？",
+      "category": "present_ability",
+      "answers": {
+        "good": [
+          {
+            "jlptLevel": "N3",
+            "answer": "急な変更があっても、できるだけ対応したいと思います。前のアルバイトでも、急に人が足りなくなって、シフトを変わったことがあります。大変でしたが、お店の役に立てて嬉しかったです。",
+            "expectedScore": {
+              "vocabulary": 75,
+              "grammar": 75,
+              "content": 85,
+              "honorifics": 65
+            },
+            "explanation": "柔軟性と貢献意欲を具体例で示している"
+          },
+          {
+            "jlptLevel": "N2",
+            "answer": "急な変更には柔軟に対応したいと考えております。まずは変更の理由や優先順位を確認し、自分の業務を調整いたします。前職でも、急にお客様対応が必要になったことがございましたが、優先順位を考えて対応し、予定していた業務は残業して完了させました。チームのためにできることを考えて行動することが大切だと思っております。",
+            "expectedScore": {
+              "vocabulary": 85,
+              "grammar": 90,
+              "content": 90,
+              "honorifics": 85
+            },
+            "explanation": "柔軟性と具体的な対応プロセスを説明している"
+          }
+        ],
+        "poor": [
+          {
+            "jlptLevel": "N3",
+            "answer": "急に変更されるのは困ります。計画通りにやりたいです。",
+            "expectedScore": {
+              "vocabulary": 60,
+              "grammar": 65,
+              "content": 30,
+              "honorifics": 50
+            },
+            "explanation": "柔軟性がなく、チームワークへの意識が低い",
+            "redFlags": ["変更を嫌がる", "柔軟性がない"]
+          }
+        ]
+      }
+    },
+    {
+      "questionId": "Q30",
+      "questionText": "当社を志望した理由を教えてください。",
+      "category": "future_vision",
+      "answers": {
+        "good": [
+          {
+            "jlptLevel": "N3",
+            "answer": "御社のホームページを見て、外国人を大切にする会社だと思いました。社員インタビューで、ベトナム人の先輩が「成長できる環境」と言っていたのも印象的でした。私も御社で成長して、長く働きたいと思います。",
+            "expectedScore": {
+              "vocabulary": 75,
+              "grammar": 80,
+              "content": 85,
+              "honorifics": 75
+            },
+            "explanation": "会社を調べた上で、具体的な志望理由を述べている"
+          },
+          {
+            "jlptLevel": "N2",
+            "answer": "御社を志望した理由は三つございます。一つ目は、外国人材の育成に力を入れていらっしゃる点です。社員インタビューを拝見し、多くの外国人社員の方が活躍されていることを知りました。二つ目は、御社の品質へのこだわりです。私は前職で品質管理を担当しておりましたので、その経験を活かせると考えております。三つ目は、キャリアアップの機会があることです。入社後も学び続けられる環境で、長く成長していきたいと考えております。",
+            "expectedScore": {
+              "vocabulary": 90,
+              "grammar": 90,
+              "content": 95,
+              "honorifics": 90
+            },
+            "explanation": "会社研究に基づいた具体的な理由を論理的に述べている"
+          }
+        ],
+        "poor": [
+          {
+            "jlptLevel": "N3",
+            "answer": "家から近いからです。あと、給料がいいと聞きました。",
+            "expectedScore": {
+              "vocabulary": 55,
+              "grammar": 60,
+              "content": 20,
+              "honorifics": 45
+            },
+            "explanation": "会社への関心が感じられず、条件面だけの理由",
+            "redFlags": ["会社のことを知らない", "給料だけが理由"]
+          }
+        ]
+      }
+    },
+    {
+      "questionId": "Q32",
+      "questionText": "5年後、どのようになっていたいですか？",
+      "category": "future_vision",
+      "answers": {
+        "good": [
+          {
+            "jlptLevel": "N4",
+            "answer": "5年後は、日本語がもっと上手になりたいです。JLPTのN2を取りたいです。仕事では、後輩を教えられる人になりたいです。",
+            "expectedScore": {
+              "vocabulary": 60,
+              "grammar": 65,
+              "content": 75,
+              "honorifics": 50
+            },
+            "explanation": "シンプルだが具体的な目標がある"
+          },
+          {
+            "jlptLevel": "N3",
+            "answer": "5年後は、現場のリーダーになりたいです。そのために、まず仕事を覚えて、信頼される人になりたいです。日本語もN1を目指して勉強を続けます。将来は、後輩の外国人スタッフの指導もできるようになりたいと思っています。",
+            "expectedScore": {
+              "vocabulary": 80,
+              "grammar": 80,
+              "content": 90,
+              "honorifics": 70
+            },
+            "explanation": "具体的なキャリアビジョンと達成のためのステップが述べられている"
+          },
+          {
+            "jlptLevel": "N2",
+            "answer": "5年後には、御社の中核人材として活躍させていただきたいと考えております。具体的には、入社後2年で業務を一通り習得し、3年目からは後輩の指導も担当させていただきたいと思います。5年目には、チームリーダーとして、日本人スタッフと外国人スタッフの架け橋になりたいと考えております。そのために、日本語能力をN1レベルまで向上させ、マネジメントについても学んでいきたいと存じます。",
+            "expectedScore": {
+              "vocabulary": 90,
+              "grammar": 90,
+              "content": 95,
+              "honorifics": 90
+            },
+            "explanation": "具体的な年次計画と明確なビジョンが述べられている"
+          }
+        ],
+        "poor": [
+          {
+            "jlptLevel": "N3",
+            "answer": "分かりません。5年後のことは考えていません。",
+            "expectedScore": {
+              "vocabulary": 55,
+              "grammar": 60,
+              "content": 20,
+              "honorifics": 50
+            },
+            "explanation": "将来のビジョンがなく、定着意向が感じられない",
+            "redFlags": ["何も考えていない"]
+          },
+          {
+            "jlptLevel": "N3",
+            "answer": "5年後は、母国に帰っていると思います。お金を貯めたら帰ります。",
+            "expectedScore": {
+              "vocabulary": 60,
+              "grammar": 65,
+              "content": 25,
+              "honorifics": 50
+            },
+            "explanation": "短期的な滞在意向しかなく、長期就労の意思がない",
+            "redFlags": ["すぐに帰国したい"]
+          }
+        ]
+      }
+    },
+    {
+      "questionId": "Q40",
+      "questionText": "残業があっても大丈夫ですか？",
+      "category": "conditions",
+      "answers": {
+        "good": [
+          {
+            "jlptLevel": "N4",
+            "answer": "はい、大丈夫です。仕事が忙しいときは、残業します。",
+            "expectedScore": {
+              "vocabulary": 55,
+              "grammar": 60,
+              "content": 75,
+              "honorifics": 45
+            },
+            "explanation": "シンプルだが前向きな姿勢を示している"
+          },
+          {
+            "jlptLevel": "N3",
+            "answer": "はい、残業は大丈夫です。仕事が終わっていないのに帰るのは責任感がないと思います。ただ、普段は効率よく仕事をして、残業を減らすように努力したいと思います。",
+            "expectedScore": {
+              "vocabulary": 80,
+              "grammar": 80,
+              "content": 90,
+              "honorifics": 70
+            },
+            "explanation": "柔軟性と効率への意識のバランスが取れている"
+          }
+        ],
+        "poor": [
+          {
+            "jlptLevel": "N3",
+            "answer": "残業は絶対にしたくないです。プライベートの時間が大事なので。",
+            "expectedScore": {
+              "vocabulary": 65,
+              "grammar": 70,
+              "content": 25,
+              "honorifics": 55
+            },
+            "explanation": "柔軟性がなく、チームへの協力姿勢が感じられない",
+            "redFlags": ["残業を完全に拒否"]
+          }
+        ]
+      }
+    },
+    {
+      "questionId": "Q44",
+      "questionText": "ご家族は日本で働くことに賛成していますか？",
+      "category": "conditions",
+      "answers": {
+        "good": [
+          {
+            "jlptLevel": "N3",
+            "answer": "はい、家族は賛成しています。私が日本で働くことを、ずっと応援してくれています。毎週ビデオ通話で話をしていて、日本での生活を報告しています。",
+            "expectedScore": {
+              "vocabulary": 75,
+              "grammar": 80,
+              "content": 85,
+              "honorifics": 65
+            },
+            "explanation": "家族の同意とサポートを具体的に示している"
+          },
+          {
+            "jlptLevel": "N2",
+            "answer": "はい、家族は全員賛成してくれております。特に父は、私が日本で技術を学ぶことを以前から勧めてくれておりました。現在は月に2回ほどビデオ通話で近況を報告しており、応援してもらっています。将来的には、安定した収入を得られるようになったら、家族を日本に呼びたいとも考えております。",
+            "expectedScore": {
+              "vocabulary": 90,
+              "grammar": 90,
+              "content": 95,
+              "honorifics": 85
+            },
+            "explanation": "家族のサポートと将来の計画も含めた丁寧な回答"
+          }
+        ],
+        "poor": [
+          {
+            "jlptLevel": "N3",
+            "answer": "実は、まだ家族には詳しく話していません。帰ってから説明しようと思います。",
+            "expectedScore": {
+              "vocabulary": 65,
+              "grammar": 70,
+              "content": 30,
+              "honorifics": 55
+            },
+            "explanation": "家族への報告がなく、定着への不安要因となる",
+            "redFlags": ["家族に伝えていない"]
+          }
+        ]
+      }
+    },
+    {
+      "questionId": "Q46",
+      "questionText": "何かご質問はありますか？",
+      "category": "closing",
+      "answers": {
+        "good": [
+          {
+            "jlptLevel": "N3",
+            "answer": "はい、二つ質問があります。一つ目は、入社後の研修について教えていただけますか。二つ目は、外国人社員の方は今何人くらいいらっしゃいますか。",
+            "expectedScore": {
+              "vocabulary": 75,
+              "grammar": 80,
+              "content": 85,
+              "honorifics": 80
+            },
+            "explanation": "仕事内容と職場環境に関する適切な質問をしている"
+          },
+          {
+            "jlptLevel": "N2",
+            "answer": "いくつか質問させていただきたいのですが、よろしいでしょうか。まず、入社後の研修制度について詳しくお聞かせいただけますでしょうか。また、御社で活躍されている外国人社員の方々は、どのようなキャリアパスを歩まれているのか、お聞かせいただければ幸いです。",
+            "expectedScore": {
+              "vocabulary": 90,
+              "grammar": 90,
+              "content": 90,
+              "honorifics": 95
+            },
+            "explanation": "成長機会とキャリアパスに関する意欲的な質問"
+          }
+        ],
+        "poor": [
+          {
+            "jlptLevel": "N3",
+            "answer": "特にありません。",
+            "expectedScore": {
+              "vocabulary": 50,
+              "grammar": 55,
+              "content": 30,
+              "honorifics": 45
+            },
+            "explanation": "会社への関心が感じられない",
+            "redFlags": ["質問がない（関心が低い）"]
+          },
+          {
+            "jlptLevel": "N3",
+            "answer": "給料は手取りでいくらですか。有給休暇は何日ありますか。ボーナスはいつ出ますか。",
+            "expectedScore": {
+              "vocabulary": 65,
+              "grammar": 70,
+              "content": 25,
+              "honorifics": 55
+            },
+            "explanation": "条件面の質問ばかりで、仕事への関心が感じられない",
+            "redFlags": ["給料や休みのことばかり"]
+          }
+        ]
+      }
+    },
+    {
+      "questionId": "Q48",
+      "questionText": "最後に伝えたいことはありますか？",
+      "category": "closing",
+      "answers": {
+        "good": [
+          {
+            "jlptLevel": "N3",
+            "answer": "本日は面接の機会をいただき、ありがとうございました。御社で働くことができましたら、一生懸命頑張ります。どうぞよろしくお願いいたします。",
+            "expectedScore": {
+              "vocabulary": 75,
+              "grammar": 80,
+              "content": 80,
+              "honorifics": 80
+            },
+            "explanation": "感謝の気持ちと熱意を丁寧に伝えている"
+          },
+          {
+            "jlptLevel": "N2",
+            "answer": "本日は貴重なお時間をいただき、誠にありがとうございました。面接を通じて、御社で働くことへの思いがさらに強くなりました。まだまだ至らない点もございますが、日本語も仕事も、常に向上心を持って取り組んでまいります。ぜひ御社の一員として、貢献させていただきたく存じます。本日はありがとうございました。",
+            "expectedScore": {
+              "vocabulary": 90,
+              "grammar": 90,
+              "content": 95,
+              "honorifics": 95
+            },
+            "explanation": "熱意と謙虚さのバランスが取れた印象的な締めくくり"
+          }
+        ],
+        "poor": [
+          {
+            "jlptLevel": "N3",
+            "answer": "特にないです。",
+            "expectedScore": {
+              "vocabulary": 40,
+              "grammar": 50,
+              "content": 20,
+              "honorifics": 35
+            },
+            "explanation": "アピールの機会を活かせず、意欲が感じられない",
+            "redFlags": ["特にないと言う"]
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "totalQuestions": 15,
+    "categories": {
+      "introduction": 2,
+      "past_experience": 3,
+      "present_ability": 3,
+      "future_vision": 2,
+      "conditions": 2,
+      "closing": 2
+    },
+    "jlptLevels": ["N4", "N3", "N2", "N1"],
+    "createdAt": "2025-02-04",
+    "description": "AI面接練習・評価プラットフォームの質問バンクに対する回答事例集。JLPTレベル別の良い回答例と悪い回答例を含む。",
+    "usage": [
+      "GPT-4o評価プロンプトの検証",
+      "評価ロジックのテスト",
+      "ユーザー向け回答例の表示",
+      "評価基準の改善"
+    ]
+  }
+}

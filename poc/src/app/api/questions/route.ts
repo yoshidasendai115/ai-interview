@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 import type { JLPTLevel } from '@/types/interview';
+import { FIXED_QUESTIONS, USE_FIXED_QUESTIONS } from '@/data/fixedQuestionSet';
 
 /**
  * 質問バンクの質問構造
@@ -114,6 +115,16 @@ export async function GET(request: NextRequest) {
         { error: `Invalid JLPT level: ${jlptLevel}. Must be one of: ${validLevels.join(', ')}` },
         { status: 400 }
       );
+    }
+
+    // PoC用固定質問セットを使用する場合
+    if (USE_FIXED_QUESTIONS) {
+      return NextResponse.json({
+        jlptLevel,
+        totalQuestions: FIXED_QUESTIONS.length,
+        questions: FIXED_QUESTIONS,
+        isFixedSet: true, // 固定セット使用を示すフラグ
+      });
     }
 
     // question_bank.json を読み込み

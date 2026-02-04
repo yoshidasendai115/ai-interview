@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2025-02-04T12:00:00.000Z" agent="Mozilla/5.0" version="21.0.0" type="device">
+  <diagram id="learning-plan-progress-card" name="学習計画進捗カード">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="800" pageHeight="450" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- タイトル：業界あり -->
+        <mxCell id="title1" value="業界あり（希望業界）" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="320" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- カード1：建設業界マスターコース -->
+        <mxCell id="card1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=none;shadow=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="320" height="160" as="geometry" />
+        </mxCell>
+
+        <!-- カード1：コース名 -->
+        <mxCell id="card1-title" value="建設業界マスターコース" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="60" y="75" width="280" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- カード1：プログレスバー背景 -->
+        <mxCell id="card1-progress-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fillOpacity=30;strokeColor=none;arcSize=50;" vertex="1" parent="1">
+          <mxGeometry x="60" y="115" width="280" height="12" as="geometry" />
+        </mxCell>
+
+        <!-- カード1：プログレスバー前景（40%） -->
+        <mxCell id="card1-progress-fg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=none;arcSize=50;" vertex="1" parent="1">
+          <mxGeometry x="60" y="115" width="112" height="12" as="geometry" />
+        </mxCell>
+
+        <!-- カード1：進捗率 -->
+        <mxCell id="card1-percent" value="40%" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="280" y="130" width="60" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- カード1：ステップ情報 -->
+        <mxCell id="card1-step" value="ステップ 3/6: N4レベル実践練習" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="60" y="155" width="280" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- カード1：残りセッション -->
+        <mxCell id="card1-remaining" value="あと2回の練習で次のステップへ進めます" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#B3D4FC;" vertex="1" parent="1">
+          <mxGeometry x="60" y="180" width="280" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- タイトル：業界なし -->
+        <mxCell id="title2" value="業界なし（汎用プラン）" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="420" y="20" width="320" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- カード2：汎用面接練習コース -->
+        <mxCell id="card2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=none;shadow=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="420" y="60" width="320" height="160" as="geometry" />
+        </mxCell>
+
+        <!-- カード2：コース名 -->
+        <mxCell id="card2-title" value="汎用面接練習コース" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="440" y="75" width="280" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- カード2：プログレスバー背景 -->
+        <mxCell id="card2-progress-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fillOpacity=30;strokeColor=none;arcSize=50;" vertex="1" parent="1">
+          <mxGeometry x="440" y="115" width="280" height="12" as="geometry" />
+        </mxCell>
+
+        <!-- カード2：プログレスバー前景（25%） -->
+        <mxCell id="card2-progress-fg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=none;arcSize=50;" vertex="1" parent="1">
+          <mxGeometry x="440" y="115" width="70" height="12" as="geometry" />
+        </mxCell>
+
+        <!-- カード2：進捗率 -->
+        <mxCell id="card2-percent" value="25%" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="660" y="130" width="60" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- カード2：ステップ情報 -->
+        <mxCell id="card2-step" value="ステップ 2/4: N4レベル実践練習" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="440" y="155" width="280" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- カード2：残りセッション -->
+        <mxCell id="card2-remaining" value="あと3回の練習で次のステップへ進めます" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#B3D4FC;" vertex="1" parent="1">
+          <mxGeometry x="440" y="180" width="280" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- 状態別表示セクション -->
+        <mxCell id="section-title" value="状態別表示" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="40" y="250" width="200" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- 状態1：学習計画あり（通常） -->
+        <mxCell id="state1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;strokeWidth=2;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="40" y="290" width="220" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="state1-icon" value="📊" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry x="50" y="305" width="40" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="state1-text1" value="進捗バー + ステップ情報" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontStyle=1;fontColor=#1565C0;" vertex="1" parent="1">
+          <mxGeometry x="90" y="300" width="160" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="state1-text2" value="（上記カードの表示）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="90" y="325" width="160" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="state1-label" value="学習計画あり" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="40" y="375" width="220" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- 状態2：学習計画完了 -->
+        <mxCell id="state2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#81C784;strokeWidth=2;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="290" y="290" width="220" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="state2-icon" value="🎉" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry x="300" y="305" width="40" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="state2-text1" value="おめでとうございます！" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontStyle=1;fontColor=#2E7D32;" vertex="1" parent="1">
+          <mxGeometry x="340" y="300" width="160" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="state2-text2" value="コースを完了しました" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#4CAF50;" vertex="1" parent="1">
+          <mxGeometry x="340" y="325" width="160" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="state2-label" value="学習計画完了" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="290" y="375" width="220" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- 注記 -->
+        <mxCell id="note1" value="※ 学習計画は認証時に同期生成されるため「生成中」状態は発生しない" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#666666;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="405" width="450" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="note2" value="※ API連携エラー時はシステム共通のエラー表示を使用" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#666666;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="425" width="400" height="20" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

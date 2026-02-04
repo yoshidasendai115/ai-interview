@@ -1,0 +1,326 @@
+<mxfile host="app.diagrams.net" modified="2026-02-04T00:00:00.000Z" agent="Claude" version="21.0.0">
+  <diagram name="苦手項目詳細画面" id="weakness-detail">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- ========== メインコンテナ ========== -->
+        <mxCell id="main-container" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#E0E0E0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="1100" height="840" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== ヘッダーバー ========== -->
+        <mxCell id="header-bar" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="1100" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="back-btn" value="← 戻る" style="rounded=5;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#FFFFFF;strokeWidth=1;fontColor=#FFFFFF;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="35" y="32" width="60" height="26" as="geometry"/>
+        </mxCell>
+        <mxCell id="header-title" value="苦手項目詳細 - グエン・ミン・タン" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="30" width="300" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="header-logo" value="AI面接管理" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="30" width="100" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== フィルタ・検索エリア ========== -->
+        <mxCell id="filter-card" value="" style="rounded=8;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;strokeWidth=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="90" width="1070" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- カテゴリフィルタ -->
+        <mxCell id="filter-cat-label" value="カテゴリ" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="100" width="60" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="filter-cat-select" value="すべて ▼" style="rounded=5;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#BDBDBD;strokeWidth=1;fontColor=#424242;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="120" width="140" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- 優先度フィルタ -->
+        <mxCell id="filter-priority-label" value="優先度" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="220" y="100" width="60" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="filter-priority-select" value="すべて ▼" style="rounded=5;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#BDBDBD;strokeWidth=1;fontColor=#424242;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="220" y="120" width="140" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- 改善状況フィルタ -->
+        <mxCell id="filter-status-label" value="改善状況" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="380" y="100" width="60" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="filter-status-select" value="すべて ▼" style="rounded=5;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#BDBDBD;strokeWidth=1;fontColor=#424242;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="380" y="120" width="140" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- 並び替え -->
+        <mxCell id="sort-label" value="並び替え" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="540" y="100" width="60" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="sort-select" value="優先度順 ▼" style="rounded=5;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#BDBDBD;strokeWidth=1;fontColor=#424242;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="540" y="120" width="140" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- CSV出力ボタン -->
+        <mxCell id="csv-btn" value="CSV出力" style="rounded=5;whiteSpace=wrap;html=1;fillColor=#43A047;strokeColor=none;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="980" y="115" width="110" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== 件数表示 ========== -->
+        <mxCell id="count-label" value="全 12 件" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="170" width="100" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== テーブルヘッダー ========== -->
+        <mxCell id="table-header" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="1070" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="th-priority" value="優先度" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="210" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="th-category" value="カテゴリ" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="210" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="th-item" value="苦手項目" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="210" width="250" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="th-count" value="検出回数" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="210" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="th-first" value="初回検出" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="210" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="th-last" value="最終検出" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="650" y="210" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="th-status" value="改善状況" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="750" y="210" width="120" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="th-action" value="アクション" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="870" y="210" width="240" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== テーブル行1 ========== -->
+        <mxCell id="row1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFEBEE;strokeColor=#E0E0E0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="240" width="1070" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="r1-priority" value="高" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#D32F2F;strokeColor=none;fontColor=#FFFFFF;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="55" y="253" width="50" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="r1-cat" value="敬語" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#424242;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="120" y="255" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r1-item" value="謙譲語の使い分け（「いたします」と「します」）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#424242;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="230" y="255" width="240" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r1-count" value="8回" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#D32F2F;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="255" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r1-first" value="2024/10/20" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="550" y="255" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r1-last" value="2025/01/13" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="650" y="255" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r1-status" value="改善中" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FB8C00;fontColor=#FB8C00;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="775" y="253" width="70" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="r1-action" value="該当セッションを表示" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1565C0;fontSize=11;textDecoration=underline;" vertex="1" parent="1">
+          <mxGeometry x="870" y="255" width="240" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== テーブル行2 ========== -->
+        <mxCell id="row2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="290" width="1070" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="r2-priority" value="高" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#D32F2F;strokeColor=none;fontColor=#FFFFFF;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="55" y="303" width="50" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="r2-cat" value="敬語" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#424242;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="120" y="305" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r2-item" value="尊敬語の適切な使用（「おっしゃる」「いらっしゃる」）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#424242;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="230" y="305" width="240" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r2-count" value="6回" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#D32F2F;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="305" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r2-first" value="2024/11/05" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="550" y="305" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r2-last" value="2025/01/10" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="650" y="305" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r2-status" value="未改善" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#FFEBEE;strokeColor=#D32F2F;fontColor=#D32F2F;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="775" y="303" width="70" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="r2-action" value="該当セッションを表示" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1565C0;fontSize=11;textDecoration=underline;" vertex="1" parent="1">
+          <mxGeometry x="870" y="305" width="240" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== テーブル行3 ========== -->
+        <mxCell id="row3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#E0E0E0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="340" width="1070" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="r3-priority" value="中" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#FB8C00;strokeColor=none;fontColor=#FFFFFF;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="55" y="353" width="50" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="r3-cat" value="文法" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#424242;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="120" y="355" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r3-item" value="接続詞の使用（「それで」「そのため」の使い分け）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#424242;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="230" y="355" width="240" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r3-count" value="5回" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FB8C00;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="355" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r3-first" value="2024/10/25" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="550" y="355" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r3-last" value="2025/01/05" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="650" y="355" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r3-status" value="改善中" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FB8C00;fontColor=#FB8C00;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="775" y="353" width="70" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="r3-action" value="該当セッションを表示" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1565C0;fontSize=11;textDecoration=underline;" vertex="1" parent="1">
+          <mxGeometry x="870" y="355" width="240" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== テーブル行4 ========== -->
+        <mxCell id="row4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="390" width="1070" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="r4-priority" value="中" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#FB8C00;strokeColor=none;fontColor=#FFFFFF;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="55" y="403" width="50" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="r4-cat" value="文法" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#424242;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="120" y="405" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r4-item" value="助詞の使い分け（「は」と「が」）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#424242;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="230" y="405" width="240" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r4-count" value="4回" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FB8C00;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="405" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r4-first" value="2024/11/10" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="550" y="405" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r4-last" value="2024/12/20" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="650" y="405" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r4-status" value="改善済" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#43A047;fontColor=#43A047;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="775" y="403" width="70" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="r4-action" value="該当セッションを表示" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1565C0;fontSize=11;textDecoration=underline;" vertex="1" parent="1">
+          <mxGeometry x="870" y="405" width="240" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== テーブル行5 ========== -->
+        <mxCell id="row5" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#E0E0E0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="440" width="1070" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="r5-priority" value="低" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#43A047;strokeColor=none;fontColor=#FFFFFF;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="55" y="453" width="50" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="r5-cat" value="内容" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#424242;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="120" y="455" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r5-item" value="具体例の提示（経験談の詳細な説明）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#424242;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="230" y="455" width="240" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r5-count" value="3回" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#43A047;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="455" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r5-first" value="2024/11/15" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="550" y="455" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r5-last" value="2024/12/10" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="650" y="455" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r5-status" value="改善済" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#43A047;fontColor=#43A047;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="775" y="453" width="70" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="r5-action" value="該当セッションを表示" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1565C0;fontSize=11;textDecoration=underline;" vertex="1" parent="1">
+          <mxGeometry x="870" y="455" width="240" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== テーブル行6 ========== -->
+        <mxCell id="row6" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="490" width="1070" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="r6-priority" value="低" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#43A047;strokeColor=none;fontColor=#FFFFFF;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="55" y="503" width="50" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="r6-cat" value="語彙" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#424242;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="120" y="505" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r6-item" value="ビジネス用語の使用（「検討」「確認」の適切な使い分け）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#424242;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="230" y="505" width="240" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r6-count" value="2回" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#43A047;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="505" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r6-first" value="2024/12/01" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="550" y="505" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r6-last" value="2024/12/15" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="650" y="505" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="r6-status" value="改善済" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#43A047;fontColor=#43A047;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="775" y="503" width="70" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="r6-action" value="該当セッションを表示" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1565C0;fontSize=11;textDecoration=underline;" vertex="1" parent="1">
+          <mxGeometry x="870" y="505" width="240" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== ページネーション ========== -->
+        <mxCell id="pagination" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="40" y="560" width="1070" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="page-prev" value="< 前へ" style="rounded=5;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#BDBDBD;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="430" y="570" width="60" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="page-1" value="1" style="rounded=5;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=none;fontColor=#FFFFFF;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="570" width="35" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="page-2" value="2" style="rounded=5;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#BDBDBD;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="545" y="570" width="35" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="page-next" value="次へ >" style="rounded=5;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#BDBDBD;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="590" y="570" width="60" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== 改善状況の判定基準カード ========== -->
+        <mxCell id="legend-card" value="" style="rounded=8;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;strokeWidth=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="630" width="1070" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend-title" value="改善状況の判定基準" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1565C0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="640" width="200" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="legend-1" value="未改善" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#FFEBEE;strokeColor=#D32F2F;fontColor=#D32F2F;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="680" width="70" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend-1-desc" value="直近3回のセッションで継続して検出" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="140" y="680" width="220" height="24" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="legend-2" value="改善中" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FB8C00;fontColor=#FB8C00;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="680" width="70" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend-2-desc" value="直近3回のうち1〜2回で検出" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="480" y="680" width="200" height="24" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="legend-3" value="改善済" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#43A047;fontColor=#43A047;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="680" width="70" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend-3-desc" value="直近3回のセッションで未検出" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="800" y="680" width="200" height="24" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
