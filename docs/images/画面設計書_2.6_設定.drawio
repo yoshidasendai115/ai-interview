@@ -1,0 +1,116 @@
+<mxfile host="app.diagrams.net" modified="2025-02-04T12:00:00.000Z" agent="Claude" version="22.1.0">
+  <diagram name="2.6 設定画面" id="settings">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="400" pageHeight="750" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- タイトル -->
+        <mxCell id="title" value="2.6 設定画面" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="125" y="10" width="150" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- スマートフォンフレーム -->
+        <mxCell id="phone-frame" value="" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#CCCCCC;strokeWidth=3;fillColor=#F5F5F5;arcSize=3;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="50" width="320" height="650" as="geometry" />
+        </mxCell>
+
+        <!-- ステータスバー -->
+        <mxCell id="status-bar" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="45" y="55" width="310" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="status-time" value="9:41" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="175" y="55" width="50" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ヘッダー -->
+        <mxCell id="header-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="45" y="75" width="310" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="header-title" value="設定" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="160" y="85" width="80" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ユーザー情報カード -->
+        <mxCell id="user-card" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;arcSize=5;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="55" y="135" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="user-icon" value="👤" style="text;html=1;strokeColor=none;fillColor=#E3F2FD;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry x="70" y="150" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="user-name" value="山田 太郎" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="130" y="150" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="user-email" value="yamada@example.com" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="130" y="170" width="200" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="user-org" value="ABC日本語学校" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="130" y="188" width="200" height="18" as="geometry" />
+        </mxCell>
+
+        <!-- 表示言語セクション -->
+        <mxCell id="lang-section" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;arcSize=5;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="55" y="235" width="290" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lang-label" value="表示言語" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="70" y="250" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lang-dropdown" value="日本語 ▼" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#E0E0E0;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="220" y="252" width="110" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- アプリ情報セクション -->
+        <mxCell id="app-section" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;arcSize=5;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="55" y="305" width="290" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="app-title" value="アプリ情報" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="70" y="315" width="100" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="version-label" value="バージョン" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="70" y="340" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="version-value" value="1.0.0" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="260" y="340" width="70" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="terms-link" value="利用規約" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#1565C0;textDecoration=underline;" vertex="1" parent="1">
+          <mxGeometry x="70" y="363" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="terms-arrow" value="›" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="310" y="363" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="privacy-link" value="プライバシーポリシー" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#1565C0;textDecoration=underline;" vertex="1" parent="1">
+          <mxGeometry x="70" y="383" width="180" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="privacy-arrow" value="›" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="310" y="383" width="20" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ログアウトボタン -->
+        <mxCell id="logout-btn" value="ログアウト" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#F44336;fontColor=#F44336;fontSize=14;fontStyle=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="55" y="425" width="290" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- ボトムナビゲーション -->
+        <mxCell id="nav-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E8E8E8;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="45" y="650" width="310" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="nav-item-1" value="🏠&#xa;ホーム" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="50" y="655" width="55" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="nav-item-2" value="🎤&#xa;練習" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="108" y="655" width="55" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="nav-item-3" value="📊&#xa;進捗" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="166" y="655" width="55" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="nav-item-4" value="⚙️&#xa;設定" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#1565C0;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="224" y="655" width="55" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="nav-item-5" value="↩️&#xa;mintoku" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#FF9800;" vertex="1" parent="1">
+          <mxGeometry x="282" y="655" width="68" height="40" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

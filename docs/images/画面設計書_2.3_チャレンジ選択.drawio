@@ -62,14 +62,10 @@
           <mxGeometry x="50" y="370" width="260" height="30" as="geometry"/>
         </mxCell>
 
-        <mxCell id="challenge-btn-text2" value="残り: 2/3回" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#BBDEFB;" vertex="1" parent="1">
+        <mxCell id="challenge-btn-text2" value="1つ上のレベルに挑戦！" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#BBDEFB;" vertex="1" parent="1">
           <mxGeometry x="50" y="400" width="260" height="30" as="geometry"/>
         </mxCell>
 
-        <!-- 注意書き -->
-        <mxCell id="notice" value="※チャレンジ枠は1日3回まで" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#999999;" vertex="1" parent="1">
-          <mxGeometry x="80" y="460" width="200" height="24" as="geometry"/>
-        </mxCell>
 
         <!-- アイコン装飾 -->
         <mxCell id="icon-top" value="🎯" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=32;" vertex="1" parent="1">

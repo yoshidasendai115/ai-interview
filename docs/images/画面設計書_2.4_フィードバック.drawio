@@ -133,16 +133,19 @@
           <mxGeometry x="235" y="700" width="310" height="50" as="geometry" />
         </mxCell>
         <mxCell id="nav-item-1" value="🏠&#xa;ホーム" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#999999;" vertex="1" parent="1">
-          <mxGeometry x="260" y="705" width="55" height="40" as="geometry" />
+          <mxGeometry x="240" y="705" width="55" height="40" as="geometry" />
         </mxCell>
         <mxCell id="nav-item-2" value="🎤&#xa;練習" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#999999;" vertex="1" parent="1">
-          <mxGeometry x="335" y="705" width="55" height="40" as="geometry" />
+          <mxGeometry x="298" y="705" width="55" height="40" as="geometry" />
         </mxCell>
         <mxCell id="nav-item-3" value="📊&#xa;進捗" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#1565C0;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="410" y="705" width="55" height="40" as="geometry" />
+          <mxGeometry x="356" y="705" width="55" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="nav-item-4" value="👤&#xa;設定" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#999999;" vertex="1" parent="1">
-          <mxGeometry x="485" y="705" width="55" height="40" as="geometry" />
+        <mxCell id="nav-item-4" value="⚙️&#xa;設定" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="414" y="705" width="55" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="nav-item-5" value="↩️&#xa;mintoku" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#FF9800;" vertex="1" parent="1">
+          <mxGeometry x="472" y="705" width="68" height="40" as="geometry" />
         </mxCell>
 
         <!-- Annotations -->

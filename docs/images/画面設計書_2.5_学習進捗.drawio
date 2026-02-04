@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2025-02-01T00:00:00.000Z" agent="Claude" version="22.1.0">
+<mxfile host="app.diagrams.net" modified="2025-02-04T12:00:00.000Z" agent="Claude" version="22.1.0">
   <diagram name="2.5 学習進捗" id="progress">
-    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="800" pageHeight="900" math="0" shadow="0">
+    <mxGraphModel dx="1200" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="800" pageHeight="1000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -12,7 +12,7 @@
 
         <!-- スマートフォンフレーム -->
         <mxCell id="phone-frame" value="" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#CCCCCC;strokeWidth=3;fillColor=#FFFFFF;arcSize=3;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="230" y="50" width="320" height="700" as="geometry" />
+          <mxGeometry x="230" y="50" width="320" height="800" as="geometry" />
         </mxCell>
 
         <!-- ステータスバー -->
@@ -23,151 +23,217 @@
           <mxGeometry x="365" y="55" width="50" height="20" as="geometry" />
         </mxCell>
 
-        <!-- Header -->
-        <mxCell id="header-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E8E8E8;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="235" y="75" width="310" height="50" as="geometry" />
+        <!-- ヘッダー -->
+        <mxCell id="header-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="235" y="75" width="310" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="header-title" value="学習進捗" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=17;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
-          <mxGeometry x="340" y="85" width="100" height="30" as="geometry" />
+        <mxCell id="header-title" value="学習進捗" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="290" y="82" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="header-course" value="建設業界コース" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0D47A1;strokeColor=none;fontColor=#BBDEFB;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="410" y="86" width="110" height="22" as="geometry" />
         </mxCell>
 
-        <!-- Stats Cards - Blue 2x2 Grid -->
-        <mxCell id="stat1-card" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=none;arcSize=8;" vertex="1" parent="1">
-          <mxGeometry x="255" y="140" width="135" height="70" as="geometry" />
+        <!-- 統計カード2つ -->
+        <mxCell id="stat1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=none;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="250" y="130" width="135" height="65" as="geometry" />
         </mxCell>
-        <mxCell id="stat1-label" value="練習回数" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#FFFFFF;opacity=80;" vertex="1" parent="1">
-          <mxGeometry x="255" y="147" width="135" height="18" as="geometry" />
+        <mxCell id="stat1-label" value="練習回数" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=11;opacity=80;" vertex="1" parent="1">
+          <mxGeometry x="250" y="135" width="135" height="18" as="geometry" />
         </mxCell>
         <mxCell id="stat1-line" value="" style="line;strokeWidth=1;html=1;strokeColor=#64B5F6;" vertex="1" parent="1">
-          <mxGeometry x="280" y="165" width="85" height="1" as="geometry" />
+          <mxGeometry x="275" y="153" width="85" height="1" as="geometry" />
         </mxCell>
-        <mxCell id="stat1-value" value="23" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=28;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
-          <mxGeometry x="255" y="170" width="135" height="35" as="geometry" />
+        <mxCell id="stat1-value" value="24回" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=22;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="155" width="135" height="35" as="geometry" />
         </mxCell>
 
-        <mxCell id="stat2-card" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=none;arcSize=8;" vertex="1" parent="1">
-          <mxGeometry x="400" y="140" width="135" height="70" as="geometry" />
+        <mxCell id="stat2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=none;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="395" y="130" width="135" height="65" as="geometry" />
         </mxCell>
-        <mxCell id="stat2-label" value="平均スコア" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#FFFFFF;opacity=80;" vertex="1" parent="1">
-          <mxGeometry x="400" y="147" width="135" height="18" as="geometry" />
+        <mxCell id="stat2-label" value="総合平均スコア" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=11;opacity=80;" vertex="1" parent="1">
+          <mxGeometry x="395" y="135" width="135" height="18" as="geometry" />
         </mxCell>
         <mxCell id="stat2-line" value="" style="line;strokeWidth=1;html=1;strokeColor=#64B5F6;" vertex="1" parent="1">
-          <mxGeometry x="425" y="165" width="85" height="1" as="geometry" />
+          <mxGeometry x="420" y="153" width="85" height="1" as="geometry" />
         </mxCell>
-        <mxCell id="stat2-value" value="78" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=28;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
-          <mxGeometry x="400" y="170" width="135" height="35" as="geometry" />
-        </mxCell>
-
-        <!-- Chart Card -->
-        <mxCell id="chart-card" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E8E8E8;strokeWidth=1;arcSize=5;" vertex="1" parent="1">
-          <mxGeometry x="255" y="225" width="280" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="chart-title" value="📈 スコア推移" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
-          <mxGeometry x="270" y="233" width="130" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="chart-subtitle" value="過去30日" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#9E9E9E;" vertex="1" parent="1">
-          <mxGeometry x="460" y="233" width="60" height="25" as="geometry" />
+        <mxCell id="stat2-value" value="72点" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=22;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="395" y="155" width="135" height="35" as="geometry" />
         </mxCell>
 
-        <!-- Chart Area -->
-        <mxCell id="chart-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fafafa;strokeColor=#e0e0e0;" vertex="1" parent="1">
-          <mxGeometry x="270" y="265" width="250" height="105" as="geometry" />
+        <!-- スコア推移カード -->
+        <mxCell id="trend-card" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E8E8E8;strokeWidth=1;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="250" y="205" width="280" height="100" as="geometry" />
         </mxCell>
-        <!-- Simple line chart representation -->
-        <mxCell id="chart-line" value="" style="endArrow=none;html=1;strokeColor=#1565C0;strokeWidth=3;curved=1;" edge="1" parent="1">
+        <mxCell id="trend-title" value="スコア推移（過去30日）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#333333;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="210" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="chart-area" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fafafa;strokeColor=#e0e0e0;" vertex="1" parent="1">
+          <mxGeometry x="260" y="232" width="260" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="chart-line1" value="" style="endArrow=none;html=1;strokeColor=#1565C0;strokeWidth=2;curved=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="285" y="345" as="sourcePoint" />
-            <mxPoint x="505" y="285" as="targetPoint" />
+            <mxPoint x="275" y="282" as="sourcePoint" />
+            <mxPoint x="505" y="250" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="325" y="335" />
-              <mxPoint x="365" y="315" />
-              <mxPoint x="405" y="320" />
-              <mxPoint x="455" y="300" />
+              <mxPoint x="315" y="275" />
+              <mxPoint x="355" y="265" />
+              <mxPoint x="395" y="270" />
+              <mxPoint x="435" y="255" />
+              <mxPoint x="475" y="250" />
             </Array>
           </mxGeometry>
         </mxCell>
 
-        <!-- Weak Points Card -->
-        <mxCell id="weak-card" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E8E8E8;strokeWidth=1;arcSize=5;" vertex="1" parent="1">
-          <mxGeometry x="255" y="400" width="280" height="165" as="geometry" />
+        <!-- 日本語能力評価カード（プログレスバー形式） -->
+        <mxCell id="jp-card" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="250" y="315" width="280" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="weak-title" value="⚠️ 苦手項目" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
-          <mxGeometry x="270" y="408" width="130" height="25" as="geometry" />
+        <mxCell id="jp-title" value="【日本語能力評価】" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1565C0;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="320" width="180" height="22" as="geometry" />
         </mxCell>
 
-        <!-- Weak Item 1 -->
+        <!-- 語彙 -->
+        <mxCell id="vocab" value="語彙: 75点" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="265" y="345" width="70" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="vocab-bar-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=none;arcSize=50;" vertex="1" parent="1">
+          <mxGeometry x="340" y="347" width="170" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="vocab-bar" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=none;arcSize=50;" vertex="1" parent="1">
+          <mxGeometry x="340" y="347" width="128" height="12" as="geometry" />
+        </mxCell>
+
+        <!-- 文法 -->
+        <mxCell id="grammar" value="文法: 68点" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="265" y="368" width="70" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="grammar-bar-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=none;arcSize=50;" vertex="1" parent="1">
+          <mxGeometry x="340" y="370" width="170" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="grammar-bar" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#42A5F5;strokeColor=none;arcSize=50;" vertex="1" parent="1">
+          <mxGeometry x="340" y="370" width="116" height="12" as="geometry" />
+        </mxCell>
+
+        <!-- 内容 -->
+        <mxCell id="content" value="内容: 80点" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="265" y="391" width="70" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="content-bar-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=none;arcSize=50;" vertex="1" parent="1">
+          <mxGeometry x="340" y="393" width="170" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="content-bar" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=none;arcSize=50;" vertex="1" parent="1">
+          <mxGeometry x="340" y="393" width="136" height="12" as="geometry" />
+        </mxCell>
+
+        <!-- 敬語 -->
+        <mxCell id="honorifics" value="敬語: 58点" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="265" y="414" width="70" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="honorifics-bar-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=none;arcSize=50;" vertex="1" parent="1">
+          <mxGeometry x="340" y="416" width="170" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="honorifics-bar" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EF5350;strokeColor=none;arcSize=50;" vertex="1" parent="1">
+          <mxGeometry x="340" y="416" width="99" height="12" as="geometry" />
+        </mxCell>
+
+        <!-- 採用適性評価カード（星評価形式） -->
+        <mxCell id="apt-card" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FFC107;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="250" y="455" width="280" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="apt-title" value="【採用適性評価】" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#F57C00;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="460" width="180" height="22" as="geometry" />
+        </mxCell>
+
+        <mxCell id="apt1" value="適応力:             ★★★★☆ (3.9)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="265" y="482" width="250" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="apt2" value="コミュニケーション:   ★★★★☆ (4.2)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="265" y="502" width="250" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="apt3" value="主体性:             ★★★★☆ (3.8)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="265" y="522" width="250" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="apt4" value="定着意向:           ★★★☆☆ (3.6)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="265" y="542" width="250" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="apt5" value="協調性:             ★★★★☆ (3.7)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="265" y="562" width="250" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- 苦手項目カード -->
+        <mxCell id="weak-card" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E8E8E8;strokeWidth=1;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="250" y="605" width="280" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="weak-title" value="【苦手項目】" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#333333;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="610" width="200" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- 苦手項目1（高） -->
         <mxCell id="weak1-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFEBEE;strokeColor=none;arcSize=8;" vertex="1" parent="1">
-          <mxGeometry x="270" y="440" width="250" height="35" as="geometry" />
+          <mxGeometry x="260" y="632" width="260" height="24" as="geometry" />
         </mxCell>
         <mxCell id="weak1-dot" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EF5350;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="282" y="450" width="14" height="14" as="geometry" />
+          <mxGeometry x="268" y="638" width="12" height="12" as="geometry" />
         </mxCell>
-        <mxCell id="weak1-text" value="謙譲語の使い方" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#424242;" vertex="1" parent="1">
-          <mxGeometry x="305" y="444" width="140" height="26" as="geometry" />
+        <mxCell id="weak1-text" value="敬語: 謙譲語の使い方" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="285" y="632" width="150" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="weak1-btn" value="練習 ›" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#1565C0;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="460" y="444" width="50" height="26" as="geometry" />
+        <mxCell id="weak1-btn" value="練習 ›" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#1565C0;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="632" width="45" height="24" as="geometry" />
         </mxCell>
 
-        <!-- Weak Item 2 -->
+        <!-- 苦手項目2（中） -->
         <mxCell id="weak2-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=none;arcSize=8;" vertex="1" parent="1">
-          <mxGeometry x="270" y="482" width="250" height="35" as="geometry" />
+          <mxGeometry x="260" y="659" width="260" height="24" as="geometry" />
         </mxCell>
         <mxCell id="weak2-dot" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FF9800;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="282" y="492" width="14" height="14" as="geometry" />
+          <mxGeometry x="268" y="665" width="12" height="12" as="geometry" />
         </mxCell>
-        <mxCell id="weak2-text" value="逆質問の内容" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#424242;" vertex="1" parent="1">
-          <mxGeometry x="305" y="486" width="140" height="26" as="geometry" />
+        <mxCell id="weak2-text" value="文法: 接続助詞の選択" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="285" y="659" width="150" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="weak2-btn" value="練習 ›" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#1565C0;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="460" y="486" width="50" height="26" as="geometry" />
+        <mxCell id="weak2-btn" value="練習 ›" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#1565C0;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="659" width="45" height="24" as="geometry" />
         </mxCell>
 
-        <!-- Weak Item 3 -->
+        <!-- 苦手項目3（低） -->
         <mxCell id="weak3-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFDE7;strokeColor=none;arcSize=8;" vertex="1" parent="1">
-          <mxGeometry x="270" y="524" width="250" height="35" as="geometry" />
+          <mxGeometry x="260" y="686" width="260" height="24" as="geometry" />
         </mxCell>
         <mxCell id="weak3-dot" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FDD835;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="282" y="534" width="14" height="14" as="geometry" />
+          <mxGeometry x="268" y="692" width="12" height="12" as="geometry" />
         </mxCell>
-        <mxCell id="weak3-text" value="自己PRの構成" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#424242;" vertex="1" parent="1">
-          <mxGeometry x="305" y="528" width="140" height="26" as="geometry" />
+        <mxCell id="weak3-text" value="語彙: 専門用語" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="285" y="686" width="150" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="weak3-btn" value="練習 ›" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#1565C0;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="460" y="528" width="50" height="26" as="geometry" />
-        </mxCell>
-
-        <!-- Practice Button -->
-        <mxCell id="practice-btn" value="🎤 苦手項目を練習する" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=none;fontColor=#FFFFFF;fontSize=14;fontStyle=0;arcSize=8;" vertex="1" parent="1">
-          <mxGeometry x="255" y="580" width="280" height="45" as="geometry" />
+        <mxCell id="weak3-btn" value="練習 ›" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#1565C0;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="686" width="45" height="24" as="geometry" />
         </mxCell>
 
-        <!-- Bottom Navigation -->
+        <!-- 練習ボタン -->
+        <mxCell id="practice-btn" value="苦手項目を練習する" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=none;fontColor=#FFFFFF;fontSize=13;fontStyle=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="250" y="725" width="280" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- ボトムナビゲーション -->
         <mxCell id="nav-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E8E8E8;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="235" y="700" width="310" height="50" as="geometry" />
+          <mxGeometry x="235" y="800" width="310" height="50" as="geometry" />
         </mxCell>
         <mxCell id="nav-item-1" value="🏠&#xa;ホーム" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#999999;" vertex="1" parent="1">
-          <mxGeometry x="260" y="705" width="55" height="40" as="geometry" />
+          <mxGeometry x="240" y="805" width="55" height="40" as="geometry" />
         </mxCell>
         <mxCell id="nav-item-2" value="🎤&#xa;練習" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#999999;" vertex="1" parent="1">
-          <mxGeometry x="335" y="705" width="55" height="40" as="geometry" />
+          <mxGeometry x="298" y="805" width="55" height="40" as="geometry" />
         </mxCell>
         <mxCell id="nav-item-3" value="📊&#xa;進捗" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#1565C0;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="410" y="705" width="55" height="40" as="geometry" />
+          <mxGeometry x="356" y="805" width="55" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="nav-item-4" value="👤&#xa;設定" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#999999;" vertex="1" parent="1">
-          <mxGeometry x="485" y="705" width="55" height="40" as="geometry" />
+        <mxCell id="nav-item-4" value="⚙️&#xa;設定" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="414" y="805" width="55" height="40" as="geometry" />
         </mxCell>
-
-        <!-- Annotations -->
-        <mxCell id="note-line-1" value="" style="endArrow=none;html=1;strokeColor=#CCCCCC;strokeWidth=1;dashed=1;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="540" y="175" as="sourcePoint" />
-            <mxPoint x="600" y="175" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="note-1" value="mintoku study風&#xa;青いステータスカード" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#888888;" vertex="1" parent="1">
-          <mxGeometry x="605" y="160" width="110" height="35" as="geometry" />
+        <mxCell id="nav-item-5" value="↩️&#xa;mintoku" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#FF9800;" vertex="1" parent="1">
+          <mxGeometry x="472" y="805" width="68" height="40" as="geometry" />
         </mxCell>
 
       </root>
