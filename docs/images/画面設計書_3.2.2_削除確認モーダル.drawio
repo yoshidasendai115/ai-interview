@@ -21,7 +21,7 @@
         </mxCell>
 
         <!-- Title -->
-        <mxCell id="modal-title" value="スクリプトを削除しますか？" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="modal-title" value="質問を削除しますか？" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="125" y="110" width="250" height="25" as="geometry"/>
         </mxCell>
 

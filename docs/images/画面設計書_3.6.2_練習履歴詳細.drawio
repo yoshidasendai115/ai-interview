@@ -128,7 +128,7 @@
         <mxCell id="th-level" value="レベル" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="160" y="310" width="80" height="20" as="geometry"/>
         </mxCell>
-        <mxCell id="th-script" value="スクリプト" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="th-script" value="質問セット" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="240" y="310" width="200" height="20" as="geometry"/>
         </mxCell>
         <mxCell id="th-total" value="総合" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">

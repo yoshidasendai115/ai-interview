@@ -1,5 +1,5 @@
 <mxfile host="app.diagrams.net" modified="2026-02-04T00:00:00.000Z" agent="Claude" version="21.0.0">
-  <diagram name="スクリプト編集画面" id="script-edit">
+  <diagram name="質問編集画面" id="script-edit">
     <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="750" math="0" shadow="0">
       <root>
         <mxCell id="0"/>
@@ -20,7 +20,7 @@
         <mxCell id="menu1" value="📊 ダッシュボード" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#cccccc;" vertex="1" parent="1">
           <mxGeometry x="40" y="140" width="200" height="40" as="geometry"/>
         </mxCell>
-        <mxCell id="menu2" value="📝 スクリプト管理" style="text;html=1;strokeColor=none;fillColor=#1a73e8;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#ffffff;" vertex="1" parent="1">
+        <mxCell id="menu2" value="📝 質問管理" style="text;html=1;strokeColor=none;fillColor=#1a73e8;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="40" y="180" width="200" height="40" as="geometry"/>
         </mxCell>
 
@@ -30,10 +30,10 @@
         </mxCell>
 
         <!-- Header -->
-        <mxCell id="header" value="スクリプト編集" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="header" value="質問編集" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="270" y="80" width="200" height="30" as="geometry"/>
         </mxCell>
-        <mxCell id="breadcrumb" value="スクリプト管理 &gt; 編集" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#666666;" vertex="1" parent="1">
+        <mxCell id="breadcrumb" value="質問管理 &gt; 編集" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#666666;" vertex="1" parent="1">
           <mxGeometry x="270" y="105" width="200" height="20" as="geometry"/>
         </mxCell>
 
@@ -46,7 +46,7 @@
         </mxCell>
 
         <!-- Form Fields -->
-        <mxCell id="label1" value="スクリプト名 *" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#333333;" vertex="1" parent="1">
+        <mxCell id="label1" value="質問セット名 *" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#333333;" vertex="1" parent="1">
           <mxGeometry x="290" y="185" width="100" height="20" as="geometry"/>
         </mxCell>
         <mxCell id="input1" value="IT企業向け基本面接" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cccccc;align=left;fontSize=12;" vertex="1" parent="1">
@@ -84,7 +84,7 @@
         <mxCell id="label6" value="説明" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#333333;" vertex="1" parent="1">
           <mxGeometry x="290" y="380" width="100" height="20" as="geometry"/>
         </mxCell>
-        <mxCell id="input6" value="IT企業の新卒採用向け基本的な面接スクリプト" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cccccc;align=left;verticalAlign=top;fontSize=12;" vertex="1" parent="1">
+        <mxCell id="input6" value="IT企業の新卒採用向け基本的な面接質問セット" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cccccc;align=left;verticalAlign=top;fontSize=12;" vertex="1" parent="1">
           <mxGeometry x="290" y="400" width="380" height="45" as="geometry"/>
         </mxCell>
 
@@ -176,7 +176,7 @@
         </mxCell>
 
         <!-- Screen Title -->
-        <mxCell id="title" value="スクリプト編集画面" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="title" value="質問編集画面" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="500" y="20" width="200" height="30" as="geometry"/>
         </mxCell>
 

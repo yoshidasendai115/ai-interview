@@ -34,7 +34,7 @@
                 <mxCell id="fe-admin-title" value="管理者機能" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" parent="1" vertex="1">
                     <mxGeometry x="290" y="385" width="100" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="fe-script" value="スクリプト管理" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;" parent="1" vertex="1">
+                <mxCell id="fe-script" value="質問管理" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;" parent="1" vertex="1">
                     <mxGeometry x="260" y="410" width="160" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="fe-analytics" value="ユーザー分析" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;" parent="1" vertex="1">
@@ -82,7 +82,7 @@
                 <mxCell id="db-postgres" value="PostgreSQL&#xa;(RDS)&#xa;&#xa;- Users&#xa;- Sessions&#xa;- Evaluations&#xa;- Weak Points" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffffff;" parent="1" vertex="1">
                     <mxGeometry x="820" y="160" width="120" height="150" as="geometry"/>
                 </mxCell>
-                <mxCell id="db-s3" value="S3&#xa;&#xa;- 音声データ&#xa;- 動画データ&#xa;- アバター" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffffff;" parent="1" vertex="1">
+                <mxCell id="db-s3" value="S3&#xa;&#xa;- 音声データ" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffffff;" parent="1" vertex="1">
                     <mxGeometry x="820" y="330" width="120" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="db-redis" value="Redis&#xa;(ElastiCache)&#xa;&#xa;- Session&#xa;- Cache" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffffff;" parent="1" vertex="1">
@@ -109,10 +109,10 @@
                 <mxCell id="ext-openai" value="OpenAI&#xa;GPT-4o" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;" parent="1" vertex="1">
                     <mxGeometry x="1035" y="150" width="100" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="ext-google" value="Google Cloud&#xa;STT/TTS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;" parent="1" vertex="1">
+                <mxCell id="ext-google" value="Google Cloud&#xa;STT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;" parent="1" vertex="1">
                     <mxGeometry x="1035" y="200" width="100" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="ext-heygen" value="HeyGen&#xa;D-ID" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;" parent="1" vertex="1">
+                <mxCell id="ext-heygen" value="HeyGen" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;" parent="1" vertex="1">
                     <mxGeometry x="1035" y="250" width="100" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="arr1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="user-foreign" target="frontend-box" edge="1">

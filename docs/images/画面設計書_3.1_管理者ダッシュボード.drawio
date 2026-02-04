@@ -32,7 +32,7 @@
         <mxCell id="menu1" value="ダッシュボード" style="text;html=1;strokeColor=none;fillColor=#1a73e8;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="40" y="170" width="200" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="menu2" value="スクリプト管理" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#cccccc;" vertex="1" parent="1">
+        <mxCell id="menu2" value="質問管理" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#cccccc;" vertex="1" parent="1">
           <mxGeometry x="40" y="210" width="200" height="40" as="geometry" />
         </mxCell>
         <mxCell id="menu3" value="ユーザー分析" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#cccccc;" vertex="1" parent="1">
@@ -162,7 +162,7 @@
           <mxGeometry x="850" y="445" width="60" height="20" as="geometry" />
         </mxCell>
 
-        <mxCell id="act4" value="スクリプト更新: IT業界向け" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="act4" value="質問更新: IT業界向け" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="850" y="475" width="260" height="25" as="geometry" />
         </mxCell>
         <mxCell id="act4-time" value="1時間前" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#999999;" vertex="1" parent="1">
@@ -199,7 +199,7 @@
         <mxCell id="pending-title" value="対応待ち" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#ff9800;" vertex="1" parent="1">
           <mxGeometry x="630" y="555" width="150" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="pending-item1" value="スクリプト承認: 3件" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+        <mxCell id="pending-item1" value="質問承認: 3件" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
           <mxGeometry x="630" y="585" width="200" height="20" as="geometry" />
         </mxCell>
         <mxCell id="pending-item2" value="問い合わせ: 2件" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">

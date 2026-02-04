@@ -29,13 +29,13 @@
           <mxGeometry x="540" y="60" width="70" height="50" as="geometry"/>
         </mxCell>
 
-        <!-- スクリプト管理 -->
-        <mxCell id="scripts" value="スクリプト管理" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;strokeWidth=2;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+        <!-- 質問管理 -->
+        <mxCell id="scripts" value="質問管理" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;strokeWidth=2;fontSize=11;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="380" y="130" width="120" height="50" as="geometry"/>
         </mxCell>
 
-        <!-- スクリプト編集 -->
-        <mxCell id="script-edit" value="スクリプト編集" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1565C0;strokeWidth=1;fontSize=10;" vertex="1" parent="1">
+        <!-- 質問編集 -->
+        <mxCell id="script-edit" value="質問編集" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1565C0;strokeWidth=1;fontSize=10;" vertex="1" parent="1">
           <mxGeometry x="540" y="130" width="70" height="50" as="geometry"/>
         </mxCell>
 
@@ -72,7 +72,7 @@
           <mxGeometry width="50" height="50" relative="1" as="geometry"/>
         </mxCell>
 
-        <!-- 矢印: ダッシュボード → スクリプト管理 -->
+        <!-- 矢印: ダッシュボード → 質問管理 -->
         <mxCell id="arrow3" value="" style="endArrow=classic;startArrow=classic;html=1;strokeColor=#1565C0;strokeWidth=2;" edge="1" parent="1" source="dashboard" target="scripts">
           <mxGeometry width="50" height="50" relative="1" as="geometry"/>
         </mxCell>
@@ -87,7 +87,7 @@
           <mxGeometry width="50" height="50" relative="1" as="geometry"/>
         </mxCell>
 
-        <!-- 矢印: スクリプト管理 → スクリプト編集 -->
+        <!-- 矢印: 質問管理 → 質問編集 -->
         <mxCell id="arrow6" value="" style="endArrow=classic;startArrow=classic;html=1;strokeColor=#90CAF9;strokeWidth=1;" edge="1" parent="1" source="scripts" target="script-edit">
           <mxGeometry width="50" height="50" relative="1" as="geometry"/>
         </mxCell>
