@@ -532,24 +532,15 @@ export default function AudioRecorder({
 
   return (
     <div className="audio-recorder">
-      {/* トランスクリプト表示 */}
+      {/* トランスクリプト表示（音声ゲージ含む） */}
       <TranscriptDisplay
         transcript={transcript}
         interimTranscript={interimTranscript}
         isRecording={isRecording}
         silenceSeconds={silenceDetector.silenceSeconds}
         autoStopSeconds={autoStopSeconds}
+        audioLevel={audioLevel}
       />
-
-      {/* 音量メーター */}
-      {isRecording && (
-        <div className="audio-meter">
-          <div
-            className="audio-meter-fill"
-            style={{ width: `${Math.min(100, audioLevel * 500)}%` }}
-          />
-        </div>
-      )}
 
       {/* エラー表示 */}
       {error && <div className="error-message">{error}</div>}
@@ -590,20 +581,7 @@ export default function AudioRecorder({
         .audio-recorder {
           display: flex;
           flex-direction: column;
-          gap: 16px;
-        }
-
-        .audio-meter {
-          height: 8px;
-          background: #1a1a2e;
-          border-radius: 4px;
-          overflow: hidden;
-        }
-
-        .audio-meter-fill {
-          height: 100%;
-          background: linear-gradient(90deg, #22c55e, #84cc16);
-          transition: width 0.1s ease-out;
+          gap: 0;
         }
 
         .error-message {
@@ -622,6 +600,7 @@ export default function AudioRecorder({
           gap: 12px;
           justify-content: center;
           align-items: center;
+          margin-top: 10px;
         }
 
         .btn-record,

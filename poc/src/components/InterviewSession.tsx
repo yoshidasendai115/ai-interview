@@ -4,6 +4,7 @@ import { useState, useRef, useCallback, useEffect } from 'react';
 import InterviewHeyGenAvatar, { type InterviewHeyGenAvatarRef } from './InterviewHeyGenAvatar';
 import AudioRecorder from './AudioRecorder';
 import FeedbackDisplay from './FeedbackDisplay';
+import WebcamPreview from './WebcamPreview';
 import { useInterviewStateMachine } from '@/hooks/useInterviewStateMachine';
 import { generateMockEvaluation } from '@/services/evaluationService';
 import type {
@@ -58,6 +59,7 @@ export default function InterviewSession({
   const [evaluation, setEvaluation] = useState<EvaluationResult | null>(null);
   const [logs, setLogs] = useState<string[]>([]);
   const [mediaStream, setMediaStream] = useState<MediaStream | null>(null);
+  const [audioOnlyStream, setAudioOnlyStream] = useState<MediaStream | null>(null);
   const [isConnecting, setIsConnecting] = useState(false);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [isLoadingQuestions, setIsLoadingQuestions] = useState(false);
@@ -155,23 +157,47 @@ export default function InterviewSession({
       setIsLoadingQuestions(false);
     }
 
-    // マイク許可を取得
+    // マイク・カメラ許可を取得
     try {
-      addLog('マイク許可を取得中...');
+      addLog('マイク・カメラ許可を取得中...');
       const stream = await navigator.mediaDevices.getUserMedia({
         audio: {
           echoCancellation: true,
           noiseSuppression: true,
           sampleRate: 48000,
         },
+        video: {
+          facingMode: 'user',
+          width: { ideal: 320 },
+          height: { ideal: 240 },
+        },
       });
       setMediaStream(stream);
-      addLog('マイク許可取得完了');
+      // AudioRecorder用に音声トラックのみのストリームを作成
+      const audioTracks = stream.getAudioTracks();
+      const audioStream = new MediaStream(audioTracks);
+      setAudioOnlyStream(audioStream);
+      addLog('マイク・カメラ許可取得完了');
     } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'マイク許可を取得できませんでした';
-      stateMachine.setError(errorMessage);
-      addLog(`エラー: ${errorMessage}`);
-      return;
+      // カメラが利用不可でも音声のみで継続を試みる
+      console.warn('[InterviewSession] Camera unavailable, trying audio only:', err);
+      try {
+        const audioStream = await navigator.mediaDevices.getUserMedia({
+          audio: {
+            echoCancellation: true,
+            noiseSuppression: true,
+            sampleRate: 48000,
+          },
+        });
+        setMediaStream(audioStream);
+        setAudioOnlyStream(audioStream);
+        addLog('マイク許可取得完了（カメラは利用不可）');
+      } catch (audioErr) {
+        const errorMessage = audioErr instanceof Error ? audioErr.message : 'マイク許可を取得できませんでした';
+        stateMachine.setError(errorMessage);
+        addLog(`エラー: ${errorMessage}`);
+        return;
+      }
     }
 
     // 挨拶中フラグを先に立てる（質問枠が表示されないように）
@@ -435,6 +461,8 @@ export default function InterviewSession({
       mediaStream.getTracks().forEach((track) => track.stop());
       setMediaStream(null);
     }
+    // audioOnlyStreamは同じトラックを参照しているため、stopは不要だがstateはリセット
+    setAudioOnlyStream(null);
   }, [mediaStream]);
 
   // リトライ
@@ -562,6 +590,14 @@ export default function InterviewSession({
         onError={handleError}
       />
 
+      {/* インカメラプレビュー */}
+      <WebcamPreview
+        stream={mediaStream}
+        isVisible={!isConnecting && stateMachine.state !== 'initializing' && stateMachine.state !== 'error'}
+        position="bottom-right"
+        initialSize="small"
+      />
+
       {/* オーバーレイUI */}
       <div className="overlay-container">
         {/* ヘッダー */}
@@ -586,16 +622,19 @@ export default function InterviewSession({
             </div>
           </div>
 
-          {/* プログレスバー（挨拶中は非表示） */}
+          {/* ハイブリッドプログレスバー（挨拶中は非表示） */}
           {stateMachine.totalQuestions > 0 && !isGreetingInProgress && (
             <div className="progress-section">
-              <div className="progress-bar">
+              <div className="hybrid-progress-bar">
                 <div
                   className="progress-fill"
                   style={{ width: `${stateMachine.progress}%` }}
                 />
-                <span className="progress-text">
-                  {stateMachine.currentQuestionIndex + 1} / {stateMachine.totalQuestions}
+                <span className="progress-label-left">
+                  質問 {stateMachine.currentQuestionIndex + 1}/{stateMachine.totalQuestions}
+                </span>
+                <span className={`progress-label-right ${stateMachine.isListening && !isAvatarSpeakingDelayed ? 'visible' : 'hidden'}`}>
+                  残り {remainingTime ?? 30}秒
                 </span>
               </div>
             </div>
@@ -604,12 +643,6 @@ export default function InterviewSession({
           {/* 質問表示（質問発話中または録音中のみ表示、終了シーケンス中は非表示） */}
           {stateMachine.currentQuestion && !isGreetingInProgress && !isEndingSequence && stateMachine.state !== 'completed' && (isSpeakingQuestion || stateMachine.isListening) && (
             <div className="question-section">
-              <div className="question-header">
-                <div className="question-label">質問 {stateMachine.currentQuestionIndex + 1}</div>
-                <div className={`remaining-time ${stateMachine.isListening && !isAvatarSpeakingDelayed ? 'visible' : 'hidden'}`}>
-                  残り {remainingTime ?? 30} 秒
-                </div>
-              </div>
               <p className="question-text">{stateMachine.currentQuestion.text}</p>
             </div>
           )}
@@ -685,7 +718,7 @@ export default function InterviewSession({
                 isEnabled={true}
                 autoStart={true}
                 autoStopSeconds={30}
-                mediaStream={mediaStream}
+                mediaStream={audioOnlyStream}
                 questionText={stateMachine.currentQuestion?.text}
                 onRecordingComplete={handleRecordingComplete}
                 onSkip={handleSkip}
@@ -842,41 +875,56 @@ export default function InterviewSession({
         }
 
         .progress-section {
-          display: flex;
-          justify-content: center;
           width: 100%;
         }
 
-        .progress-bar {
+        .hybrid-progress-bar {
           position: relative;
           width: 100%;
-          max-width: 400px;
-          height: 28px;
-          background: rgba(255, 255, 255, 0.2);
-          border-radius: 14px;
+          height: 36px;
+          background: rgba(255, 255, 255, 0.15);
+          border-radius: 0;
           overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 14px;
         }
 
-        .progress-fill {
+        .hybrid-progress-bar .progress-fill {
           position: absolute;
           top: 0;
           left: 0;
           height: 100%;
-          background: #3b82f6;
+          background: linear-gradient(90deg, rgba(59, 130, 246, 0.7) 0%, rgba(37, 99, 235, 0.7) 100%);
           transition: width 0.3s ease;
-          border-radius: 14px;
         }
 
-        .progress-text {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
+        .progress-label-left {
+          position: relative;
+          z-index: 1;
           font-size: 13px;
           font-weight: 600;
           color: #fff;
           text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .progress-label-right {
+          position: relative;
           z-index: 1;
+          font-size: 13px;
+          font-weight: 600;
+          color: #60a5fa;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+          transition: opacity 0.2s ease;
+        }
+
+        .progress-label-right.visible {
+          opacity: 1;
+        }
+
+        .progress-label-right.hidden {
+          opacity: 0;
         }
 
         /* 中央エリア */
@@ -1172,40 +1220,7 @@ export default function InterviewSession({
           max-width: 600px;
           margin-left: auto;
           margin-right: auto;
-        }
-
-        .question-header {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 16px;
-          margin-bottom: 8px;
-        }
-
-        .question-label {
-          font-size: 11px;
-          color: rgba(255, 255, 255, 0.6);
-          text-transform: uppercase;
-          letter-spacing: 1px;
-        }
-
-        .remaining-time {
-          font-size: 13px;
-          color: #60a5fa;
-          font-weight: 500;
-          padding: 4px 10px;
-          background: rgba(59, 130, 246, 0.15);
-          border-radius: 12px;
-          border: 1px solid rgba(59, 130, 246, 0.3);
-          transition: opacity 0.2s ease;
-        }
-
-        .remaining-time.visible {
-          opacity: 1;
-        }
-
-        .remaining-time.hidden {
-          opacity: 0;
+          text-align: center;
         }
 
         .question-text {
@@ -1310,17 +1325,16 @@ export default function InterviewSession({
             font-size: 11px;
           }
 
-          .progress-bar {
-            height: 24px;
-            max-width: 300px;
-            border-radius: 12px;
+          .hybrid-progress-bar {
+            height: 32px;
+            padding: 0 12px;
           }
 
-          .progress-fill {
-            border-radius: 12px;
+          .progress-label-left {
+            font-size: 11px;
           }
 
-          .progress-text {
+          .progress-label-right {
             font-size: 11px;
           }
 
@@ -1361,11 +1375,7 @@ export default function InterviewSession({
             padding: 12px 14px;
             border-radius: 10px;
             max-width: 100%;
-          }
-
-          .question-label {
-            font-size: 10px;
-            margin-bottom: 6px;
+            margin-top: 90px; /* インカメラの下から開始（インカメラ高さ75px + 余白） */
           }
 
           .question-text {
@@ -1374,7 +1384,7 @@ export default function InterviewSession({
           }
 
           .recorder-section {
-            padding: 12px 14px;
+            padding: 12px 14px 8px;
             border-radius: 10px;
           }
 
@@ -1441,9 +1451,8 @@ export default function InterviewSession({
             font-size: 14px;
           }
 
-          .progress-bar {
-            height: 28px;
-            max-width: 350px;
+          .hybrid-progress-bar {
+            height: 34px;
           }
 
           .btn-connect,
@@ -1512,17 +1521,13 @@ export default function InterviewSession({
             font-size: 15px;
           }
 
-          .progress-bar {
-            height: 32px;
-            max-width: 450px;
-            border-radius: 16px;
+          .hybrid-progress-bar {
+            height: 40px;
+            padding: 0 16px;
           }
 
-          .progress-fill {
-            border-radius: 16px;
-          }
-
-          .progress-text {
+          .progress-label-left,
+          .progress-label-right {
             font-size: 14px;
           }
 
@@ -1570,10 +1575,6 @@ export default function InterviewSession({
             padding: 20px 28px;
             border-radius: 16px;
             max-width: 650px;
-          }
-
-          .question-label {
-            font-size: 12px;
           }
 
           .question-text {
@@ -1655,17 +1656,13 @@ export default function InterviewSession({
             display: none;
           }
 
-          .progress-bar {
-            height: 20px;
-            max-width: 250px;
-            border-radius: 10px;
+          .hybrid-progress-bar {
+            height: 26px;
+            padding: 0 10px;
           }
 
-          .progress-fill {
-            border-radius: 10px;
-          }
-
-          .progress-text {
+          .progress-label-left,
+          .progress-label-right {
             font-size: 10px;
           }
 
