@@ -114,7 +114,7 @@
         <mxCell id="out_red_title" value="🚨 Red Flag 検出時" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=1;fontColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="790" y="130" width="140" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="out_red_items" value="✗ 採用推奨: 「不採用を推奨」&#xa;✗ グレード: F（不適合）に固定&#xa;✗ レポート: Red Flag詳細を明記&#xa;✗ mintoku: 即時アラート送信" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#333333;" parent="1" vertex="1">
+        <mxCell id="out_red_items" value="✗ 採用推奨: 「不採用を推奨」&#xa;✗ レポート: Red Flag詳細を明記&#xa;✗ mintoku: 即時アラート送信" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#333333;" parent="1" vertex="1">
           <mxGeometry x="750" y="155" width="220" height="80" as="geometry" />
         </mxCell>
 
@@ -136,7 +136,7 @@
         <mxCell id="out_ok_title" value="✅ リスクなし" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=1;fontColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="810" y="370" width="100" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="out_ok_items" value="○ 通常の評価フローで処理&#xa;○ スコアに基づくグレード判定" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#333333;" parent="1" vertex="1">
+        <mxCell id="out_ok_items" value="○ 通常の評価フローで処理&#xa;○ スコアに基づく評価" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#333333;" parent="1" vertex="1">
           <mxGeometry x="750" y="395" width="220" height="30" as="geometry" />
         </mxCell>
 

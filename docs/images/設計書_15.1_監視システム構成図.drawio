@@ -1,0 +1,166 @@
+<mxfile host="65bd71144e">
+    <diagram id="monitoring-system-overview" name="監視システム構成図">
+        <mxGraphModel dx="700" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="700" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+
+                <!-- タイトル -->
+                <mxCell id="title" value="監視システム構成図" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="350" y="20" width="300" height="40" as="geometry"/>
+                </mxCell>
+
+                <!-- 監視対象リソースセクション -->
+                <mxCell id="resource-section" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;dashed=1" parent="1" vertex="1">
+                    <mxGeometry x="40" y="80" width="920" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="resource-title" value="監視対象リソース" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="50" y="85" width="150" height="20" as="geometry"/>
+                </mxCell>
+
+                <!-- 監視対象 -->
+                <mxCell id="ec2" value="EC2&#xa;(Next.js)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="80" y="115" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="alb" value="ALB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="220" y="115" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="rds" value="RDS&#xa;(PostgreSQL)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="360" y="115" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="elasticache" value="ElastiCache&#xa;(Redis)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="500" y="115" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="cloudfront" value="CloudFront" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="640" y="115" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="s3" value="S3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="780" y="115" width="100" height="60" as="geometry"/>
+                </mxCell>
+
+                <!-- 矢印：リソースからCloudWatch -->
+                <mxCell id="arrow-resources" value="" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#666666" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="500" y="200" as="sourcePoint"/>
+                        <mxPoint x="500" y="250" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="arrow-label-1" value="メトリクス/ログ送信" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+                    <mxGeometry x="510" y="210" width="100" height="20" as="geometry"/>
+                </mxCell>
+
+                <!-- CloudWatchセクション -->
+                <mxCell id="cloudwatch-section" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;dashed=1" parent="1" vertex="1">
+                    <mxGeometry x="120" y="260" width="760" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="cloudwatch-title" value="Amazon CloudWatch" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="130" y="265" width="180" height="20" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="cw-metrics" value="Metrics&#xa;CPU / Memory / Latency&#xa;Connections / Error率" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=0" parent="1" vertex="1">
+                    <mxGeometry x="160" y="295" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="cw-logs" value="Logs&#xa;アプリケーションログ&#xa;アクセスログ / 監査ログ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=0" parent="1" vertex="1">
+                    <mxGeometry x="420" y="295" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="cw-alarms" value="Alarms&#xa;閾値監視&#xa;異常検知" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=0" parent="1" vertex="1">
+                    <mxGeometry x="680" y="295" width="160" height="70" as="geometry"/>
+                </mxCell>
+
+                <!-- 矢印：CloudWatch内部 -->
+                <mxCell id="arrow-metrics-alarms" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#6c8ebf" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="320" y="330" as="sourcePoint"/>
+                        <mxPoint x="680" y="330" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="arrow-logs-alarms" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#6c8ebf" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="580" y="330" as="sourcePoint"/>
+                        <mxPoint x="680" y="330" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+
+                <!-- 矢印：CloudWatchからSNS -->
+                <mxCell id="arrow-cloudwatch-sns" value="" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#666666" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="500" y="380" as="sourcePoint"/>
+                        <mxPoint x="500" y="430" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="arrow-label-2" value="アラート発火" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+                    <mxGeometry x="510" y="395" width="80" height="20" as="geometry"/>
+                </mxCell>
+
+                <!-- SNSセクション -->
+                <mxCell id="sns-section" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;dashed=1" parent="1" vertex="1">
+                    <mxGeometry x="200" y="440" width="600" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="sns-title" value="Amazon SNS" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="210" y="445" width="120" height="20" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="sns-warning" value="Warning Topic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="280" y="470" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="sns-critical" value="Critical Topic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="580" y="470" width="140" height="40" as="geometry"/>
+                </mxCell>
+
+                <!-- 矢印：SNSから通知先 -->
+                <mxCell id="arrow-warning-slack" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#d6b656" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="350" y="520" as="sourcePoint"/>
+                        <mxPoint x="200" y="580" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="arrow-critical-slack" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#b85450" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="620" y="520" as="sourcePoint"/>
+                        <mxPoint x="500" y="580" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="arrow-critical-email" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#b85450" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="680" y="520" as="sourcePoint"/>
+                        <mxPoint x="800" y="580" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+
+                <!-- 通知先 -->
+                <mxCell id="slack-warning" value="Slack&#xa;#alerts-warning" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="100" y="590" width="140" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="slack-critical" value="Slack&#xa;#alerts-critical" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="430" y="590" width="140" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="email" value="Email&#xa;運用チームML" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="730" y="590" width="140" height="50" as="geometry"/>
+                </mxCell>
+
+                <!-- 凡例 -->
+                <mxCell id="legend-box" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999999;strokeWidth=1;dashed=1" parent="1" vertex="1">
+                    <mxGeometry x="40" y="590" width="50" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend-warning" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10" parent="1" vertex="1">
+                    <mxGeometry x="45" y="598" width="15" height="15" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend-warning-text" value="Warning" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9" parent="1" vertex="1">
+                    <mxGeometry x="62" y="595" width="25" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend-critical" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10" parent="1" vertex="1">
+                    <mxGeometry x="45" y="620" width="15" height="15" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend-critical-text" value="Critical" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9" parent="1" vertex="1">
+                    <mxGeometry x="62" y="617" width="25" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend-resource" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10" parent="1" vertex="1">
+                    <mxGeometry x="45" y="642" width="15" height="15" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend-resource-text" value="Resource" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9" parent="1" vertex="1">
+                    <mxGeometry x="62" y="639" width="25" height="20" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

@@ -2,6 +2,12 @@
 
 ## 10.1 API設計方針
 
+### API接続構成図
+
+![API接続構成図](../images/設計書_10.1_API接続構成図.png)
+
+本システムのAPIは、クライアント（ブラウザ）からのリクエストを受け付け、外部サービス（mintoku work、HeyGen、OpenAI GPT-4o）およびデータ層（PostgreSQL、Redis、S3）と連携して処理を行う。
+
 | 項目 | 内容 |
 |------|------|
 | 設計スタイル | RESTful API |
@@ -330,6 +336,63 @@ SSO認証コールバック（mintoku workからのリダイレクト後）
 > **評価体系について**
 > 本システムでは、日本語能力評価（07_評価ロジック）と採用適性評価（13_面接シナリオ設計）の2つの評価を実施する。
 
+### GET /api/v1/evaluations/{session_id}/status
+評価ステータス取得（ポーリング用）
+
+フィードバック画面でリアルタイムに評価処理の進捗を表示するためのポーリングAPI。
+
+**レスポンス（200 OK）**
+```json
+{
+  "session_id": "ses_456",
+  "evaluation_status": "processing",
+  "progress_percentage": 60,
+  "estimated_remaining_seconds": 15
+}
+```
+
+#### フィールド説明
+
+| フィールド | 型 | 説明 |
+|-----------|-----|------|
+| session_id | string | セッションID |
+| evaluation_status | string | 評価ステータス（pending, processing, completed, failed） |
+| progress_percentage | number | 評価処理の進捗率（0-100） |
+| estimated_remaining_seconds | number | 残り推定時間（秒）。completedの場合は0 |
+
+#### evaluation_status の値
+
+| 値 | 説明 |
+|-----|------|
+| pending | 評価処理待ち |
+| processing | 評価処理中（GPT-4o呼び出し中） |
+| completed | 評価完了 |
+| failed | 評価失敗 |
+
+#### クライアント側ポーリング仕様
+
+| 項目 | 値 |
+|------|-----|
+| ポーリング間隔 | 2秒 |
+| タイムアウト | 60秒（評価処理が60秒以内に完了しない場合はエラー表示） |
+| 停止条件 | `evaluation_status` が `completed` または `failed` |
+
+#### ポーリングフロー
+
+```
+1. セッション完了後、フィードバック画面に遷移
+   ↓
+2. GET /api/v1/evaluations/{session_id}/status を2秒間隔でポーリング
+   ↓
+3. evaluation_status を確認
+   ├─ pending/processing → ローディング表示継続、2秒後に再ポーリング
+   ├─ completed → GET /api/v1/evaluations/{session_id} で詳細取得、結果表示
+   └─ failed → エラーモーダル表示
+   ↓
+4. 60秒経過してもcompleted/failedにならない場合
+   → タイムアウトエラーモーダル表示
+```
+
 ### GET /api/v1/evaluations/{session_id}
 評価結果取得
 
@@ -339,8 +402,6 @@ SSO認証コールバック（mintoku workからのリダイレクト後）
   "evaluation_id": "eval_123",
   "session_id": "ses_456",
   "total_score": 78,
-  "grade": "B",
-  "grade_label": "優秀",
   "recommendation": "採用を推奨",
   "japanese_proficiency": {
     "score": 71,
@@ -620,8 +681,6 @@ mintoku workとの連携は以下の2種類のAPIで構成されます。
   "session_id": "ses_456",
   "completed_at": "2025-01-30T14:30:00Z",
   "total_score": 78,
-  "grade": "B",
-  "grade_label": "優秀",
   "recommendation": "採用を推奨",
   "japanese_proficiency": {
     "score": 71,
@@ -671,8 +730,6 @@ mintoku workとの連携は以下の2種類のAPIで構成されます。
 | session_id | string | ○ | 本システムのセッションID |
 | completed_at | string | ○ | セッション完了日時（ISO 8601） |
 | total_score | number | ○ | 総合スコア（0-100） |
-| grade | string | ○ | グレード（S/A/B/C/D） |
-| grade_label | string | ○ | グレードラベル（「優秀」等） |
 | recommendation | string | ○ | 採用推奨度（「採用を推奨」等） |
 | japanese_proficiency | object | ○ | 日本語能力評価（詳細下記） |
 | aptitude | object | ○ | 採用適性評価（詳細下記） |
@@ -768,8 +825,6 @@ mintoku workでユーザー情報が更新された際に呼び出される
 
 ### 10.6.3 サポートする業界ID
 
-> **※ 業界マスターの正式定義は `backend/app/data/seed/industries.json` を参照**
-
 | industry_id | 業界名（日本語） |
 |-------------|-----------------|
 | nursing_care | 介護 |
@@ -779,9 +834,6 @@ mintoku workでユーザー情報が更新された際に呼び出される
 | hospitality | 宿泊 |
 | agriculture | 農業 |
 | building_cleaning | ビルクリーニング |
-
-> **業界IDの追加**
-> 新しい業界を追加する場合は、`backend/app/data/seed/industries.json` を更新し、両システムで同期が必要です。
 
 ## 10.7 エラーレスポンス形式
 
@@ -971,7 +1023,6 @@ mintoku workでユーザー情報が更新された際に呼び出される
       "script_title": "建設業界向け基本面接",
       "status": "completed",
       "total_score": 78,
-      "grade": "B",
       "started_at": "2025-01-30T14:00:00Z",
       "completed_at": "2025-01-30T14:30:00Z"
     }
@@ -1000,12 +1051,12 @@ mintoku workでユーザー情報が更新された際に呼び出される
   "total_sessions": 8500,
   "completed_sessions": 7800,
   "average_score": 72.5,
-  "grade_distribution": {
-    "S": 120,
-    "A": 980,
-    "B": 3200,
-    "C": 2800,
-    "D": 700
+  "score_distribution": {
+    "85_100": 120,
+    "70_84": 980,
+    "55_69": 3200,
+    "40_54": 2800,
+    "0_39": 700
   },
   "sessions_today": 45,
   "sessions_this_week": 320,

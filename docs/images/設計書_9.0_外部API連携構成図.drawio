@@ -1,0 +1,167 @@
+<mxfile host="65bd71144e">
+    <diagram id="external-api-architecture" name="外部API連携構成図">
+        <mxGraphModel dx="900" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="700" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+
+                <!-- タイトル -->
+                <mxCell id="title" value="外部API連携構成図" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="400" y="20" width="300" height="40" as="geometry"/>
+                </mxCell>
+
+                <!-- 本システム（中央） -->
+                <mxCell id="main-system" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=3" parent="1" vertex="1">
+                    <mxGeometry x="400" y="200" width="300" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="main-title" value="AI面接練習システム" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="450" y="210" width="200" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="main-frontend" value="フロントエンド&#xa;(Next.js / React)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11" parent="1" vertex="1">
+                    <mxGeometry x="420" y="245" width="120" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="main-backend" value="バックエンド&#xa;(API Routes)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11" parent="1" vertex="1">
+                    <mxGeometry x="560" y="245" width="120" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="main-db" value="PostgreSQL&#xa;(RDS)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11" parent="1" vertex="1">
+                    <mxGeometry x="420" y="305" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="main-cache" value="Redis&#xa;(ElastiCache)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11" parent="1" vertex="1">
+                    <mxGeometry x="540" y="305" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="main-s3" value="S3&#xa;(音声保存)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11" parent="1" vertex="1">
+                    <mxGeometry x="480" y="355" width="80" height="35" as="geometry"/>
+                </mxCell>
+
+                <!-- mintoku work（左上） -->
+                <mxCell id="mintoku-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2" parent="1" vertex="1">
+                    <mxGeometry x="40" y="80" width="200" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="mintoku-title" value="mintoku work" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="85" y="85" width="110" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="mintoku-desc" value="・SSO認証（OAuth 2.0）&#xa;・ユーザー情報連携&#xa;・評価結果受信&#xa;・学習進捗同期" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+                    <mxGeometry x="55" y="110" width="170" height="80" as="geometry"/>
+                </mxCell>
+
+                <!-- OpenAI GPT-4o（右上） -->
+                <mxCell id="openai-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2" parent="1" vertex="1">
+                    <mxGeometry x="860" y="80" width="200" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="openai-title" value="OpenAI GPT-4o" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="900" y="85" width="120" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="openai-desc" value="・日本語能力評価&#xa;・採用適性評価&#xa;・フィードバック生成&#xa;・苦手分析" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+                    <mxGeometry x="875" y="110" width="170" height="80" as="geometry"/>
+                </mxCell>
+
+                <!-- HeyGen（右下） -->
+                <mxCell id="heygen-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2" parent="1" vertex="1">
+                    <mxGeometry x="860" y="400" width="200" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="heygen-title" value="HeyGen Streaming Avatar" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="865" y="405" width="190" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="heygen-desc" value="・面接官アバター生成&#xa;・日本語TTS（音声合成）&#xa;・リップシンク対応&#xa;・WebRTCストリーミング&#xa;・JLPT別話速制御" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+                    <mxGeometry x="875" y="430" width="170" height="100" as="geometry"/>
+                </mxCell>
+
+                <!-- Google Cloud STT（左下） -->
+                <mxCell id="stt-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2" parent="1" vertex="1">
+                    <mxGeometry x="40" y="400" width="200" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="stt-title" value="Google Cloud STT" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="70" y="405" width="140" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="stt-desc" value="・音声認識（日本語）&#xa;・WebSocketストリーミング&#xa;・リアルタイム文字起こし&#xa;・無音検出" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+                    <mxGeometry x="55" y="430" width="170" height="80" as="geometry"/>
+                </mxCell>
+
+                <!-- 矢印とラベル -->
+                <!-- mintoku → 本システム -->
+                <mxCell id="arrow-mintoku" value="" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=2;strokeColor=#9673a6" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="240" y="140" as="sourcePoint"/>
+                        <mxPoint x="400" y="260" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="label-mintoku" value="認証・同期" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="270" y="175" width="70" height="20" as="geometry"/>
+                </mxCell>
+
+                <!-- 本システム → OpenAI -->
+                <mxCell id="arrow-openai" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#82b366" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="700" y="260" as="sourcePoint"/>
+                        <mxPoint x="860" y="140" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="label-openai" value="評価依頼" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="760" y="175" width="60" height="20" as="geometry"/>
+                </mxCell>
+
+                <!-- 本システム ← → HeyGen -->
+                <mxCell id="arrow-heygen" value="" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=2;strokeColor=#d6b656" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="700" y="350" as="sourcePoint"/>
+                        <mxPoint x="860" y="470" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="label-heygen" value="アバター&#xa;ストリーミング" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="750" y="400" width="70" height="30" as="geometry"/>
+                </mxCell>
+
+                <!-- 本システム ← STT -->
+                <mxCell id="arrow-stt" value="" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=2;strokeColor=#b85450" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="240" y="460" as="sourcePoint"/>
+                        <mxPoint x="400" y="350" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="label-stt" value="音声認識" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="270" y="400" width="60" height="20" as="geometry"/>
+                </mxCell>
+
+                <!-- データフロー説明 -->
+                <mxCell id="flow-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=1;dashed=1" parent="1" vertex="1">
+                    <mxGeometry x="40" y="560" width="1020" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="flow-title" value="データフロー概要" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="50" y="565" width="120" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="flow-desc" value="① mintoku work → 本システム: SSO認証・ユーザー情報連携 → ② HeyGen: アバター生成・質問発話 → ③ Google STT: ユーザー音声を文字起こし → ④ OpenAI GPT-4o: 回答を評価 → ⑤ 本システム → mintoku work: 評価結果を同期" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+                    <mxGeometry x="50" y="590" width="1000" height="40" as="geometry"/>
+                </mxCell>
+
+                <!-- 凡例 -->
+                <mxCell id="legend-title" value="凡例" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="40" y="250" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend-mintoku" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10" parent="1" vertex="1">
+                    <mxGeometry x="40" y="275" width="12" height="12" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend-mintoku-text" value="認証基盤" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9" parent="1" vertex="1">
+                    <mxGeometry x="55" y="272" width="50" height="18" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend-openai" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10" parent="1" vertex="1">
+                    <mxGeometry x="40" y="295" width="12" height="12" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend-openai-text" value="評価AI" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9" parent="1" vertex="1">
+                    <mxGeometry x="55" y="292" width="50" height="18" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend-heygen" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10" parent="1" vertex="1">
+                    <mxGeometry x="40" y="315" width="12" height="12" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend-heygen-text" value="アバター" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9" parent="1" vertex="1">
+                    <mxGeometry x="55" y="312" width="50" height="18" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend-stt" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10" parent="1" vertex="1">
+                    <mxGeometry x="40" y="335" width="12" height="12" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend-stt-text" value="音声認識" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9" parent="1" vertex="1">
+                    <mxGeometry x="55" y="332" width="50" height="18" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

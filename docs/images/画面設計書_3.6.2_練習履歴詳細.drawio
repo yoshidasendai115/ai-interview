@@ -140,9 +140,6 @@
         <mxCell id="th-aptitude" value="適性" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="560" y="310" width="60" height="20" as="geometry"/>
         </mxCell>
-        <mxCell id="th-grade" value="判定" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="620" y="310" width="80" height="20" as="geometry"/>
-        </mxCell>
         <mxCell id="th-duration" value="所要時間" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="700" y="310" width="80" height="20" as="geometry"/>
         </mxCell>
@@ -171,9 +168,6 @@
         </mxCell>
         <mxCell id="r1-aptitude" value="74" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#424242;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="560" y="352" width="60" height="20" as="geometry"/>
-        </mxCell>
-        <mxCell id="r1-grade" value="B 合格" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#43A047;fontColor=#43A047;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="630" y="350" width="60" height="24" as="geometry"/>
         </mxCell>
         <mxCell id="r1-duration" value="8分12秒" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="700" y="352" width="80" height="20" as="geometry"/>
@@ -210,9 +204,6 @@
         <mxCell id="r2-aptitude" value="88" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#424242;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="560" y="397" width="60" height="20" as="geometry"/>
         </mxCell>
-        <mxCell id="r2-grade" value="A 優秀" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;fontColor=#1565C0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="630" y="395" width="60" height="24" as="geometry"/>
-        </mxCell>
         <mxCell id="r2-duration" value="7分45秒" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="700" y="397" width="80" height="20" as="geometry"/>
         </mxCell>
@@ -247,9 +238,6 @@
         </mxCell>
         <mxCell id="r3-aptitude" value="81" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#424242;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="560" y="442" width="60" height="20" as="geometry"/>
-        </mxCell>
-        <mxCell id="r3-grade" value="B 合格" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#43A047;fontColor=#43A047;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="630" y="440" width="60" height="24" as="geometry"/>
         </mxCell>
         <mxCell id="r3-duration" value="9分30秒" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="700" y="442" width="80" height="20" as="geometry"/>
@@ -286,9 +274,6 @@
         <mxCell id="r4-aptitude" value="61" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#424242;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="560" y="487" width="60" height="20" as="geometry"/>
         </mxCell>
-        <mxCell id="r4-grade" value="D 不合格" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#FFEBEE;strokeColor=#D32F2F;fontColor=#D32F2F;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="625" y="485" width="70" height="24" as="geometry"/>
-        </mxCell>
         <mxCell id="r4-duration" value="6分15秒" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="700" y="487" width="80" height="20" as="geometry"/>
         </mxCell>
@@ -323,9 +308,6 @@
         </mxCell>
         <mxCell id="r5-aptitude" value="82" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#424242;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="560" y="532" width="60" height="20" as="geometry"/>
-        </mxCell>
-        <mxCell id="r5-grade" value="B 合格" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#43A047;fontColor=#43A047;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="630" y="530" width="60" height="24" as="geometry"/>
         </mxCell>
         <mxCell id="r5-duration" value="8分50秒" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="700" y="532" width="80" height="20" as="geometry"/>
@@ -366,54 +348,54 @@
           <mxGeometry x="685" y="590" width="60" height="30" as="geometry"/>
         </mxCell>
 
-        <!-- ========== 判定の凡例 ========== -->
+        <!-- ========== スコアの凡例 ========== -->
         <mxCell id="legend-card" value="" style="rounded=8;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;strokeWidth=1;shadow=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="650" width="1070" height="80" as="geometry"/>
         </mxCell>
-        <mxCell id="legend-title" value="判定の凡例" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1565C0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="60" y="660" width="100" height="25" as="geometry"/>
+        <mxCell id="legend-title" value="スコアの凡例" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1565C0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="660" width="120" height="25" as="geometry"/>
         </mxCell>
 
-        <mxCell id="legend-s" value="S 最優秀" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#3F51B5;fontColor=#3F51B5;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="legend-high" value="85-100点" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#3F51B5;fontColor=#3F51B5;fontSize=10;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="60" y="695" width="70" height="24" as="geometry"/>
         </mxCell>
-        <mxCell id="legend-s-desc" value="90点以上" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="140" y="695" width="70" height="24" as="geometry"/>
+        <mxCell id="legend-high-desc" value="面接準備万全" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="140" y="695" width="90" height="24" as="geometry"/>
         </mxCell>
 
-        <mxCell id="legend-a" value="A 優秀" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;fontColor=#1565C0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="230" y="695" width="60" height="24" as="geometry"/>
+        <mxCell id="legend-good" value="70-84点" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;fontColor=#1565C0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="695" width="60" height="24" as="geometry"/>
         </mxCell>
-        <mxCell id="legend-a-desc" value="80-89点" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="300" y="695" width="60" height="24" as="geometry"/>
-        </mxCell>
-
-        <mxCell id="legend-b" value="B 合格" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#43A047;fontColor=#43A047;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="380" y="695" width="60" height="24" as="geometry"/>
-        </mxCell>
-        <mxCell id="legend-b-desc" value="70-79点" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="450" y="695" width="60" height="24" as="geometry"/>
+        <mxCell id="legend-good-desc" value="面接準備十分" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="320" y="695" width="90" height="24" as="geometry"/>
         </mxCell>
 
-        <mxCell id="legend-c" value="C 条件付" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FB8C00;fontColor=#FB8C00;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="530" y="695" width="70" height="24" as="geometry"/>
+        <mxCell id="legend-mid" value="55-69点" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#43A047;fontColor=#43A047;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="695" width="60" height="24" as="geometry"/>
         </mxCell>
-        <mxCell id="legend-c-desc" value="60-69点" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="610" y="695" width="60" height="24" as="geometry"/>
+        <mxCell id="legend-mid-desc" value="良い調子" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="500" y="695" width="70" height="24" as="geometry"/>
         </mxCell>
 
-        <mxCell id="legend-d" value="D 不合格" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#FFEBEE;strokeColor=#D32F2F;fontColor=#D32F2F;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="690" y="695" width="70" height="24" as="geometry"/>
+        <mxCell id="legend-low" value="40-54点" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FB8C00;fontColor=#FB8C00;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="590" y="695" width="60" height="24" as="geometry"/>
         </mxCell>
-        <mxCell id="legend-d-desc" value="60点未満" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="770" y="695" width="70" height="24" as="geometry"/>
+        <mxCell id="legend-low-desc" value="基礎はできている" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="660" y="695" width="110" height="24" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="legend-need" value="0-39点" style="rounded=15;whiteSpace=wrap;html=1;fillColor=#FFEBEE;strokeColor=#D32F2F;fontColor=#D32F2F;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="790" y="695" width="55" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend-need-desc" value="練習継続" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="855" y="695" width="70" height="24" as="geometry"/>
         </mxCell>
 
         <mxCell id="legend-challenge" value="⚡ チャレンジ" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FB8C00;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="880" y="695" width="100" height="24" as="geometry"/>
+          <mxGeometry x="940" y="695" width="90" height="24" as="geometry"/>
         </mxCell>
-        <mxCell id="legend-challenge-desc" value="上位レベルへの挑戦" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="980" y="695" width="120" height="24" as="geometry"/>
+        <mxCell id="legend-challenge-desc" value="上位レベル挑戦" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#616161;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="695" width="90" height="24" as="geometry"/>
         </mxCell>
 
       </root>
