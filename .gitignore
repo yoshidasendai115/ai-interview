@@ -36,6 +36,14 @@ coverage/
 *.tfstate.backup
 *.tfvars
 
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.eggs/
+
 # Cache
 .cache/
 .turbo/
