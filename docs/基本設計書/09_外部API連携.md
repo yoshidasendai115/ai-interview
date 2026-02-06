@@ -2,7 +2,7 @@
 
 ## 9.0 外部API連携構成図
 
-![外部API連携構成図](../images/設計書_9.0_外部API連携構成図.png)
+![外部API連携構成図](./images/設計書_9.0_外部API連携構成図.png)
 
 本システムは4つの外部サービスと連携する。mintoku workとはSSO認証および評価結果の同期を行い、HeyGenはアバター生成・音声合成を担当、Google Cloud STTは音声認識を担当、OpenAI GPT-4oは回答の評価を担当する。
 
@@ -104,7 +104,7 @@
 
 ### システム間の関係
 
-![mintoku work連携図](../images/設計書_8.4_mintoku_work連携.png)
+![mintoku work連携図](./images/設計書_8.4_mintoku_work連携.png)
 
 ### 受信（mintoku work → 本システム）
 

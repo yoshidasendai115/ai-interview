@@ -1,168 +1,218 @@
-<mxfile host="app.diagrams.net" modified="2026-02-01T00:00:00.000Z" agent="DrawIO" version="21.0.0">
+<mxfile host="app.diagrams.net" modified="2026-02-05T00:00:00.000Z" agent="DrawIO" version="21.0.0">
   <diagram name="ガントチャート" id="gantt-chart">
-    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="600" math="0" shadow="0">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="700" math="0" shadow="0">
       <root>
         <mxCell id="0"/>
         <mxCell id="1" parent="0"/>
 
         <!-- タイトル -->
-        <mxCell id="title" value="開発ロードマップ ガントチャート（14週間）" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="400" y="20" width="400" height="30" as="geometry"/>
+        <mxCell id="title" value="開発ロードマップ（16週間）" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="20" width="350" height="30" as="geometry"/>
         </mxCell>
 
         <!-- ヘッダー行 - フェーズ列 -->
-        <mxCell id="header-phase" value="フェーズ" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="header-phase" value="フェーズ / タスク" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="40" y="70" width="160" height="30" as="geometry"/>
         </mxCell>
 
-        <!-- ヘッダー行 - 週番号 -->
+        <!-- ヘッダー行 - 週番号 (W1-W16) -->
         <mxCell id="week1" value="W1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="200" y="70" width="60" height="30" as="geometry"/>
+          <mxGeometry x="200" y="70" width="55" height="30" as="geometry"/>
         </mxCell>
         <mxCell id="week2" value="W2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="260" y="70" width="60" height="30" as="geometry"/>
+          <mxGeometry x="255" y="70" width="55" height="30" as="geometry"/>
         </mxCell>
         <mxCell id="week3" value="W3" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="320" y="70" width="60" height="30" as="geometry"/>
+          <mxGeometry x="310" y="70" width="55" height="30" as="geometry"/>
         </mxCell>
         <mxCell id="week4" value="W4" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="380" y="70" width="60" height="30" as="geometry"/>
+          <mxGeometry x="365" y="70" width="55" height="30" as="geometry"/>
         </mxCell>
         <mxCell id="week5" value="W5" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="440" y="70" width="60" height="30" as="geometry"/>
+          <mxGeometry x="420" y="70" width="55" height="30" as="geometry"/>
         </mxCell>
         <mxCell id="week6" value="W6" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="500" y="70" width="60" height="30" as="geometry"/>
+          <mxGeometry x="475" y="70" width="55" height="30" as="geometry"/>
         </mxCell>
         <mxCell id="week7" value="W7" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="560" y="70" width="60" height="30" as="geometry"/>
+          <mxGeometry x="530" y="70" width="55" height="30" as="geometry"/>
         </mxCell>
         <mxCell id="week8" value="W8" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="620" y="70" width="60" height="30" as="geometry"/>
+          <mxGeometry x="585" y="70" width="55" height="30" as="geometry"/>
         </mxCell>
         <mxCell id="week9" value="W9" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="680" y="70" width="60" height="30" as="geometry"/>
+          <mxGeometry x="640" y="70" width="55" height="30" as="geometry"/>
         </mxCell>
         <mxCell id="week10" value="W10" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="740" y="70" width="60" height="30" as="geometry"/>
+          <mxGeometry x="695" y="70" width="55" height="30" as="geometry"/>
         </mxCell>
         <mxCell id="week11" value="W11" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="800" y="70" width="60" height="30" as="geometry"/>
+          <mxGeometry x="750" y="70" width="55" height="30" as="geometry"/>
         </mxCell>
         <mxCell id="week12" value="W12" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="860" y="70" width="60" height="30" as="geometry"/>
+          <mxGeometry x="805" y="70" width="55" height="30" as="geometry"/>
         </mxCell>
         <mxCell id="week13" value="W13" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="920" y="70" width="60" height="30" as="geometry"/>
+          <mxGeometry x="860" y="70" width="55" height="30" as="geometry"/>
         </mxCell>
         <mxCell id="week14" value="W14" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="980" y="70" width="60" height="30" as="geometry"/>
+          <mxGeometry x="915" y="70" width="55" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="week15" value="W15" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="970" y="70" width="55" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="week16" value="W16" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1025" y="70" width="55" height="30" as="geometry"/>
         </mxCell>
 
-        <!-- Phase 1 行 -->
-        <mxCell id="phase1-label" value="Phase 1&#xa;基盤構築" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="40" y="110" width="160" height="40" as="geometry"/>
+        <!-- Phase 1: 基盤構築 (Week 1-4) -->
+        <mxCell id="phase1-label" value="Phase 1: 基盤構築" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="110" width="160" height="30" as="geometry"/>
         </mxCell>
-        <mxCell id="phase1-bar" value="インフラ・認証・API・画面・結合テスト" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=#1565C0;fontColor=#FFFFFF;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="200" y="115" width="240" height="30" as="geometry"/>
-        </mxCell>
-
-        <!-- Phase 2 行 -->
-        <mxCell id="phase2-label" value="Phase 2&#xa;アバター・音声" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="40" y="160" width="160" height="40" as="geometry"/>
-        </mxCell>
-        <mxCell id="phase2-bar" value="HeyGen・STT・面接フロー・統合テスト" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#4CAF50;fontColor=#FFFFFF;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="440" y="165" width="240" height="30" as="geometry"/>
+        <mxCell id="phase1-bar" value="4週間" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=#1565C0;fontColor=#FFFFFF;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="112" width="220" height="26" as="geometry"/>
         </mxCell>
 
-        <!-- Phase 3 行 -->
-        <mxCell id="phase3-label" value="Phase 3&#xa;評価・連携" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="40" y="210" width="160" height="40" as="geometry"/>
+        <mxCell id="t1-1" value="　インフラ・認証基盤" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=9;align=left;" vertex="1" parent="1">
+          <mxGeometry x="40" y="145" width="160" height="22" as="geometry"/>
         </mxCell>
-        <mxCell id="phase3-bar" value="GPT-4o・苦手分析・mintoku・E2E" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF9800;strokeColor=#FF9800;fontColor=#FFFFFF;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="680" y="215" width="180" height="30" as="geometry"/>
+        <mxCell id="t1-1-bar" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#64b5f6;strokeColor=#1976d2;" vertex="1" parent="1">
+          <mxGeometry x="200" y="147" width="110" height="18" as="geometry"/>
         </mxCell>
 
-        <!-- Phase 4 行 -->
-        <mxCell id="phase4-label" value="Phase 4&#xa;テスト・リリース" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="40" y="260" width="160" height="40" as="geometry"/>
+        <mxCell id="t1-2" value="　バックエンドAPI・画面" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=9;align=left;" vertex="1" parent="1">
+          <mxGeometry x="40" y="170" width="160" height="22" as="geometry"/>
         </mxCell>
-        <mxCell id="phase4-bar" value="セキュリティ・負荷・本番・UAT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E53935;strokeColor=#E53935;fontColor=#FFFFFF;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="860" y="265" width="180" height="30" as="geometry"/>
+        <mxCell id="t1-2-bar" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#64b5f6;strokeColor=#1976d2;" vertex="1" parent="1">
+          <mxGeometry x="255" y="172" width="165" height="18" as="geometry"/>
+        </mxCell>
+
+        <!-- Phase 2: HeyGen・音声・学習計画 (Week 5-9) -->
+        <mxCell id="phase2-label" value="Phase 2: HeyGen・音声・学習計画" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="160" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="phase2-bar" value="5週間" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#4CAF50;fontColor=#FFFFFF;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="202" width="275" height="26" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="t2-1" value="　HeyGen・STT統合" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=9;align=left;" vertex="1" parent="1">
+          <mxGeometry x="40" y="235" width="160" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="t2-1-bar" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#388e3c;" vertex="1" parent="1">
+          <mxGeometry x="420" y="237" width="165" height="18" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="t2-2" value="　面接フロー・学習計画" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=9;align=left;" vertex="1" parent="1">
+          <mxGeometry x="40" y="260" width="160" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="t2-2-bar" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#388e3c;" vertex="1" parent="1">
+          <mxGeometry x="530" y="262" width="165" height="18" as="geometry"/>
+        </mxCell>
+
+        <!-- Phase 3: 評価・管理・連携 (Week 10-13) -->
+        <mxCell id="phase3-label" value="Phase 3: 評価・管理・連携" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="290" width="160" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="phase3-bar" value="4週間" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF9800;strokeColor=#FF9800;fontColor=#FFFFFF;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="695" y="292" width="220" height="26" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="t3-1" value="　GPT-4o評価・苦手分析" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=9;align=left;" vertex="1" parent="1">
+          <mxGeometry x="40" y="325" width="160" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="t3-1-bar" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffb74d;strokeColor=#f57c00;" vertex="1" parent="1">
+          <mxGeometry x="695" y="327" width="110" height="18" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="t3-2" value="　管理者画面・mintoku連携" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=9;align=left;" vertex="1" parent="1">
+          <mxGeometry x="40" y="350" width="160" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="t3-2-bar" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffb74d;strokeColor=#f57c00;" vertex="1" parent="1">
+          <mxGeometry x="750" y="352" width="165" height="18" as="geometry"/>
+        </mxCell>
+
+        <!-- Phase 4: テスト・リリース (Week 14-16) -->
+        <mxCell id="phase4-label" value="Phase 4: テスト・リリース" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="380" width="160" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="phase4-bar" value="3週間" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E53935;strokeColor=#E53935;fontColor=#FFFFFF;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="915" y="382" width="165" height="26" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="t4-1" value="　セキュリティ・負荷テスト" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=9;align=left;" vertex="1" parent="1">
+          <mxGeometry x="40" y="415" width="160" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="t4-1-bar" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ef9a9a;strokeColor=#c62828;" vertex="1" parent="1">
+          <mxGeometry x="915" y="417" width="110" height="18" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="t4-2" value="　本番環境・リリース" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=9;align=left;" vertex="1" parent="1">
+          <mxGeometry x="40" y="440" width="160" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="t4-2-bar" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ef9a9a;strokeColor=#c62828;" vertex="1" parent="1">
+          <mxGeometry x="970" y="442" width="110" height="18" as="geometry"/>
         </mxCell>
 
         <!-- マイルストーン -->
-        <mxCell id="milestone-label" value="マイルストーン" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="40" y="310" width="160" height="40" as="geometry"/>
+        <mxCell id="ms1" value="◆" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#1565c0;" vertex="1" parent="1">
+          <mxGeometry x="400" y="107" width="20" height="20" as="geometry"/>
         </mxCell>
-
-        <!-- マイルストーンダイヤモンド -->
-        <mxCell id="ms1" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#9C27B0;strokeColor=#9C27B0;" vertex="1" parent="1">
-          <mxGeometry x="425" y="318" width="24" height="24" as="geometry"/>
+        <mxCell id="ms2" value="◆" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#2e7d32;" vertex="1" parent="1">
+          <mxGeometry x="675" y="197" width="20" height="20" as="geometry"/>
         </mxCell>
-        <mxCell id="ms1-label" value="テキスト版完成" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="1">
-          <mxGeometry x="395" y="342" width="84" height="20" as="geometry"/>
+        <mxCell id="ms3" value="◆" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#ef6c00;" vertex="1" parent="1">
+          <mxGeometry x="895" y="287" width="20" height="20" as="geometry"/>
         </mxCell>
-
-        <mxCell id="ms2" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#9C27B0;strokeColor=#9C27B0;" vertex="1" parent="1">
-          <mxGeometry x="665" y="318" width="24" height="24" as="geometry"/>
+        <mxCell id="ms4" value="★" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#c62828;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="377" width="20" height="20" as="geometry"/>
         </mxCell>
-        <mxCell id="ms2-label" value="アバター版完成" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="1">
-          <mxGeometry x="635" y="342" width="84" height="20" as="geometry"/>
-        </mxCell>
-
-        <mxCell id="ms3" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#9C27B0;strokeColor=#9C27B0;" vertex="1" parent="1">
-          <mxGeometry x="845" y="318" width="24" height="24" as="geometry"/>
-        </mxCell>
-        <mxCell id="ms3-label" value="全機能完成" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="1">
-          <mxGeometry x="820" y="342" width="74" height="20" as="geometry"/>
-        </mxCell>
-
-        <mxCell id="ms4" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#E91E63;strokeColor=#E91E63;" vertex="1" parent="1">
-          <mxGeometry x="1025" y="318" width="24" height="24" as="geometry"/>
-        </mxCell>
-        <mxCell id="ms4-label" value="本番リリース" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;fontStyle=1;fontColor=#E91E63;" vertex="1" parent="1">
-          <mxGeometry x="1000" y="342" width="74" height="20" as="geometry"/>
+        <mxCell id="ms4-label" value="リリース" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#c62828;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="395" width="50" height="15" as="geometry"/>
         </mxCell>
 
         <!-- 凡例 -->
         <mxCell id="legend-title" value="凡例" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="40" y="380" width="40" height="20" as="geometry"/>
+          <mxGeometry x="40" y="480" width="40" height="20" as="geometry"/>
         </mxCell>
 
         <mxCell id="legend1-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=#1565C0;" vertex="1" parent="1">
-          <mxGeometry x="40" y="405" width="20" height="15" as="geometry"/>
+          <mxGeometry x="40" y="505" width="20" height="15" as="geometry"/>
         </mxCell>
-        <mxCell id="legend1-text" value="Phase 1: 基盤構築（4週間）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="65" y="400" width="160" height="25" as="geometry"/>
+        <mxCell id="legend1-text" value="Phase 1（4週間）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="65" y="500" width="100" height="25" as="geometry"/>
         </mxCell>
 
         <mxCell id="legend2-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#4CAF50;" vertex="1" parent="1">
-          <mxGeometry x="230" y="405" width="20" height="15" as="geometry"/>
+          <mxGeometry x="170" y="505" width="20" height="15" as="geometry"/>
         </mxCell>
-        <mxCell id="legend2-text" value="Phase 2: アバター・音声（4週間）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="255" y="400" width="180" height="25" as="geometry"/>
+        <mxCell id="legend2-text" value="Phase 2（5週間）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="195" y="500" width="100" height="25" as="geometry"/>
         </mxCell>
 
         <mxCell id="legend3-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF9800;strokeColor=#FF9800;" vertex="1" parent="1">
-          <mxGeometry x="440" y="405" width="20" height="15" as="geometry"/>
+          <mxGeometry x="300" y="505" width="20" height="15" as="geometry"/>
         </mxCell>
-        <mxCell id="legend3-text" value="Phase 3: 評価・連携（3週間）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="465" y="400" width="160" height="25" as="geometry"/>
+        <mxCell id="legend3-text" value="Phase 3（4週間）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="325" y="500" width="100" height="25" as="geometry"/>
         </mxCell>
 
         <mxCell id="legend4-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E53935;strokeColor=#E53935;" vertex="1" parent="1">
-          <mxGeometry x="630" y="405" width="20" height="15" as="geometry"/>
+          <mxGeometry x="430" y="505" width="20" height="15" as="geometry"/>
         </mxCell>
-        <mxCell id="legend4-text" value="Phase 4: テスト・リリース（3週間）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="655" y="400" width="180" height="25" as="geometry"/>
+        <mxCell id="legend4-text" value="Phase 4（3週間）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="455" y="500" width="100" height="25" as="geometry"/>
         </mxCell>
 
-        <mxCell id="legend5-box" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#9C27B0;strokeColor=#9C27B0;" vertex="1" parent="1">
-          <mxGeometry x="840" y="402" width="18" height="18" as="geometry"/>
+        <mxCell id="legend5-box" value="◆" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="560" y="502" width="20" height="20" as="geometry"/>
         </mxCell>
         <mxCell id="legend5-text" value="マイルストーン" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="865" y="400" width="100" height="25" as="geometry"/>
+          <mxGeometry x="580" y="500" width="80" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- 合計 -->
+        <mxCell id="total" value="合計: 16週間（約4ヶ月）" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="900" y="500" width="180" height="25" as="geometry"/>
         </mxCell>
 
       </root>

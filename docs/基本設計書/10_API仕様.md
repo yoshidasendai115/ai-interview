@@ -4,7 +4,7 @@
 
 ### API接続構成図
 
-![API接続構成図](../images/設計書_10.1_API接続構成図.png)
+![API接続構成図](./images/設計書_10.1_API接続構成図.png)
 
 本システムのAPIは、クライアント（ブラウザ）からのリクエストを受け付け、外部サービス（mintoku work、HeyGen、OpenAI GPT-4o）およびデータ層（PostgreSQL、Redis、S3）と連携して処理を行う。
 
