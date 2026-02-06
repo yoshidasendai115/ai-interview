@@ -61,5 +61,8 @@ venv/
 *.tmp
 *.temp
 
+# Archives
+*.zip
+
 # VSCode upload config
 .vscode-upload.json
