@@ -1072,7 +1072,165 @@ mintoku workでユーザー情報が更新された際に呼び出される
 }
 ```
 
-## 10.9 セッション管理
+## 10.9 顔分析API
+
+面接中のユーザーの表情をリアルタイムで分析し、緊張度や感情状態をフィードバックするためのAPI。
+
+### POST /api/v1/face/analyze
+顔分析実行
+
+**リクエスト**
+```json
+{
+  "image_base64": "/9j/4AAQSkZJRgABAQEASABIAAD..."
+}
+```
+
+| フィールド | 型 | 必須 | 説明 |
+|-----------|-----|------|------|
+| image_base64 | string | ○ | Base64エンコード画像（JPEG推奨、最大幅320px） |
+
+**レスポンス（200 OK - 顔検出成功）**
+```json
+{
+  "success": true,
+  "face_detected": true,
+  "face_region": {
+    "x": 100,
+    "y": 50,
+    "w": 200,
+    "h": 200
+  },
+  "emotions": {
+    "angry": 0.5,
+    "disgust": 0.1,
+    "fear": 15.3,
+    "happy": 10.2,
+    "sad": 3.1,
+    "surprise": 2.5,
+    "neutral": 68.3
+  },
+  "tension": {
+    "tension_level": 0.25,
+    "relax_level": 0.75,
+    "dominant_emotion": "neutral",
+    "feedback_message": "リラックスして話せていますね",
+    "feedback_type": "positive"
+  },
+  "image_quality": {
+    "average_brightness": 128.5,
+    "brightness_status": "ok",
+    "is_too_dark": false,
+    "is_too_bright": false
+  },
+  "head_pose": {
+    "yaw": -5.2,
+    "pitch": 3.1,
+    "roll": 1.5,
+    "is_looking_at_camera": true,
+    "face_direction": "center",
+    "feedback_message": "カメラをしっかり見ていますね"
+  }
+}
+```
+
+**レスポンス（200 OK - 顔未検出）**
+```json
+{
+  "success": true,
+  "face_detected": false,
+  "image_quality": {
+    "average_brightness": 35.2,
+    "brightness_status": "too_dark",
+    "is_too_dark": true,
+    "is_too_bright": false
+  },
+  "error_message": "照明が暗すぎて顔を検出できません。明るい場所に移動してください"
+}
+```
+
+#### レスポンスフィールド説明
+
+| フィールド | 型 | 説明 |
+|-----------|-----|------|
+| success | boolean | API処理成功フラグ |
+| face_detected | boolean | 顔検出成功フラグ |
+| face_region | object | 検出された顔の領域座標 |
+| emotions | object | 7種類の感情スコア（0-100） |
+| tension | object | 緊張度分析結果 |
+| image_quality | object | 画像品質情報 |
+| head_pose | object | 顔の向き情報 |
+| error_message | string | エラーメッセージ（顔未検出時等） |
+
+#### emotions フィールド詳細
+
+| フィールド | 型 | 説明 |
+|-----------|-----|------|
+| angry | float | 怒りのスコア（0-100） |
+| disgust | float | 嫌悪のスコア（0-100） |
+| fear | float | 恐怖・不安のスコア（0-100） |
+| happy | float | 喜びのスコア（0-100） |
+| sad | float | 悲しみのスコア（0-100） |
+| surprise | float | 驚きのスコア（0-100） |
+| neutral | float | 平静のスコア（0-100） |
+
+#### tension フィールド詳細
+
+| フィールド | 型 | 説明 |
+|-----------|-----|------|
+| tension_level | float | 緊張度（0.0=リラックス〜1.0=緊張） |
+| relax_level | float | リラックス度（0.0=緊張〜1.0=リラックス） |
+| dominant_emotion | string | 最も強い感情（angry/disgust/fear/happy/sad/surprise/neutral） |
+| feedback_message | string | ユーザーへのフィードバックメッセージ |
+| feedback_type | string | フィードバックの種類（positive/neutral/negative） |
+
+#### 緊張度算出ロジック
+
+```
+緊張度 = min(1.0, fear×1.5 + angry×0.8 + sad×0.5 + (1-neutral)×0.3)
+リラックス度 = min(1.0, neutral×0.7 + happy×0.3)
+```
+
+#### image_quality フィールド詳細
+
+| フィールド | 型 | 説明 |
+|-----------|-----|------|
+| average_brightness | float | 平均明るさ（0=黒〜255=白） |
+| brightness_status | string | 明るさ状態（ok/too_dark/too_bright/unknown） |
+| is_too_dark | boolean | 暗すぎるかどうか（閾値: 50未満） |
+| is_too_bright | boolean | 明るすぎるかどうか（閾値: 220超過） |
+
+#### head_pose フィールド詳細
+
+| フィールド | 型 | 説明 |
+|-----------|-----|------|
+| yaw | float | 左右の向き（度）: 負=左, 0=正面, 正=右 |
+| pitch | float | 上下の向き（度）: 負=下, 0=正面, 正=上 |
+| roll | float | 首の傾き（度）: 負=左傾き, 0=正面, 正=右傾き |
+| is_looking_at_camera | boolean | カメラを見ているか（yaw/pitchが±15度以内） |
+| face_direction | string | 顔の向き（center/left/right/up/down/away） |
+| feedback_message | string | ユーザーへのフィードバック |
+
+#### 使用技術
+
+| 機能 | 技術 | 説明 |
+|------|------|------|
+| 感情認識 | DeepFace | 7種類の感情を検出 |
+| 顔の向き検出 | MediaPipe Face Mesh | 3D座標からEuler角を算出 |
+| 画像品質分析 | OpenCV/PIL | グレースケール変換後の平均輝度を計算 |
+
+#### クライアント側の実装仕様
+
+| 項目 | 値 |
+|------|-----|
+| 分析間隔 | 2秒ごと |
+| 画像フォーマット | JPEG（品質80%） |
+| 最大画像サイズ | 幅320px（パフォーマンスのため縮小推奨） |
+| タイムアウト | 5秒 |
+
+---
+
+## 10.10 セッション管理
 
 ### セッションタイムアウト
 
