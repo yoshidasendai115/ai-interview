@@ -5,6 +5,9 @@ import InterviewHeyGenAvatar, { type InterviewHeyGenAvatarRef } from './Intervie
 import AudioRecorder from './AudioRecorder';
 import FeedbackDisplay from './FeedbackDisplay';
 import WebcamPreview from './WebcamPreview';
+import TensionFeedback from './TensionFeedback';
+import { useFaceAnalysis } from '@/hooks/useFaceAnalysis';
+import type { FaceAnalysisResult } from '@/types/faceAnalysis';
 import { useInterviewStateMachine } from '@/hooks/useInterviewStateMachine';
 import { generateMockEvaluation } from '@/services/evaluationService';
 import type {
@@ -75,8 +78,66 @@ export default function InterviewSession({
   const [showResults, setShowResults] = useState(false);
   // 面接終了シーケンス中フラグ（最後の質問回答後の挨拶中）- UI表示制御用
   const [isEndingSequence, setIsEndingSequence] = useState(false);
+  // 顔分析結果
+  const [faceAnalysisResult, setFaceAnalysisResult] = useState<FaceAnalysisResult | null>(null);
 
   const stateMachine = useInterviewStateMachine();
+
+  // 顔分析結果のコールバック（コンソールログ付き）
+  const handleFaceAnalysisResult = useCallback((result: FaceAnalysisResult) => {
+    setFaceAnalysisResult(result);
+
+    // DeepFace分析結果をコンソールに表示
+    if (result.success && result.faceDetected && result.tension) {
+      console.log('[DeepFace] 分析結果:', {
+        緊張度: `${Math.round(result.tension.tensionLevel * 100)}%`,
+        リラックス度: `${Math.round(result.tension.relaxLevel * 100)}%`,
+        感情: result.tension.dominantEmotion,
+        フィードバック: result.tension.feedbackMessage,
+        感情スコア: result.emotions,
+        画像品質: result.imageQuality ? {
+          平均明るさ: Math.round(result.imageQuality.averageBrightness),
+          状態: result.imageQuality.brightnessStatus,
+        } : null,
+        顔の向き: result.headPose ? {
+          左右: `${result.headPose.yaw}°`,
+          上下: `${result.headPose.pitch}°`,
+          傾き: `${result.headPose.roll}°`,
+          向き: result.headPose.faceDirection,
+          カメラ注視: result.headPose.isLookingAtCamera ? '✓' : '✗',
+          フィードバック: result.headPose.feedbackMessage,
+        } : null,
+      });
+
+      // カメラを見ていない場合は警告
+      if (result.headPose && !result.headPose.isLookingAtCamera) {
+        console.warn('[DeepFace] ⚠️ カメラを見ていません:', result.headPose.feedbackMessage);
+      }
+    } else if (!result.faceDetected) {
+      // 顔が検出されなかった理由を詳細に表示
+      const reason = result.imageQuality?.isTooDark
+        ? '照明が暗すぎます'
+        : result.imageQuality?.isTooBright
+        ? '照明が明るすぎます'
+        : '顔がカメラに映っていない可能性があります';
+      console.warn('[DeepFace] 顔が検出されませんでした:', {
+        理由: reason,
+        エラーメッセージ: result.errorMessage,
+        画像品質: result.imageQuality ? {
+          平均明るさ: Math.round(result.imageQuality.averageBrightness),
+          状態: result.imageQuality.brightnessStatus,
+        } : null,
+      });
+    }
+  }, []);
+
+  // 顔分析フック
+  const faceAnalysis = useFaceAnalysis({
+    stream: mediaStream,
+    intervalMs: 2000,
+    initialEnabled: false,
+    onResult: handleFaceAnalysisResult,
+  });
 
   // 自動接続開始フラグ
   const hasAutoConnectStarted = useRef(false);
@@ -158,6 +219,8 @@ export default function InterviewSession({
     }
 
     // マイク・カメラ許可を取得
+    let obtainedStream: MediaStream | null = null;
+    let hasVideoTrack = false;
     try {
       addLog('マイク・カメラ許可を取得中...');
       const stream = await navigator.mediaDevices.getUserMedia({
@@ -172,6 +235,8 @@ export default function InterviewSession({
           height: { ideal: 240 },
         },
       });
+      obtainedStream = stream;
+      hasVideoTrack = stream.getVideoTracks().length > 0;
       setMediaStream(stream);
       // AudioRecorder用に音声トラックのみのストリームを作成
       const audioTracks = stream.getAudioTracks();
@@ -189,6 +254,8 @@ export default function InterviewSession({
             sampleRate: 48000,
           },
         });
+        obtainedStream = audioStream;
+        hasVideoTrack = false;
         setMediaStream(audioStream);
         setAudioOnlyStream(audioStream);
         addLog('マイク許可取得完了（カメラは利用不可）');
@@ -205,8 +272,14 @@ export default function InterviewSession({
 
     stateMachine.startInterview(fetchedQuestions);
 
-    // HeyGenセッションが安定するまで少し待機
+    // HeyGenセッションが安定するまで＆video要素がDOMにマウントされるまで待機
     await new Promise((resolve) => setTimeout(resolve, 500));
+
+    // 顔分析を開始（カメラが利用可能な場合）- video要素がDOMにマウントされた後
+    if (hasVideoTrack) {
+      faceAnalysis.startAnalysis();
+      addLog('顔分析を開始しました');
+    }
     if (avatarRef.current) {
       addLog('面接開始の挨拶...');
       await avatarRef.current.speak('本日はお越しいただき、ありがとうございます。');
@@ -233,7 +306,7 @@ export default function InterviewSession({
     } else {
       setIsGreetingInProgress(false);
     }
-  }, [stateMachine, addLog, jlptLevel]);
+  }, [stateMachine, addLog, jlptLevel, faceAnalysis, mediaStream]);
 
   // 状態に応じた説明テキスト
   const getStateDescription = (state: InterviewState): string => {
@@ -269,7 +342,12 @@ export default function InterviewSession({
 
   // アバター発話開始
   const handleSpeakStart = useCallback(() => {
-    console.log('[InterviewSession] handleSpeakStart called, current state:', stateMachine.state);
+    console.log('[InterviewSession] handleSpeakStart called, current state:', stateMachine.state, 'isGreetingInProgress:', isGreetingInProgress);
+    // listening状態での遅延イベントは無視（録音中にアバターイベントが遅れて発火する問題を回避）
+    if (stateMachine.state === 'listening') {
+      console.log('[InterviewSession] Ignoring AVATAR_START_TALKING during listening state');
+      return;
+    }
     // 前の遅延タイマーをキャンセル（連続発話時に録音が開始されないようにする）
     if (speakingDelayTimerRef.current) {
       console.log('[InterviewSession] Cancelling previous speaking delay timer');
@@ -279,11 +357,21 @@ export default function InterviewSession({
     setIsAvatarSpeakingDelayed(true);
     stateMachine.avatarStartSpeaking();
     addLog('アバター発話開始');
-  }, [stateMachine, addLog]);
+  }, [stateMachine, addLog, isGreetingInProgress]);
 
   // アバター発話終了
   const handleSpeakEnd = useCallback(() => {
-    console.log('[InterviewSession] handleSpeakEnd called, current state:', stateMachine.state);
+    console.log('[InterviewSession] handleSpeakEnd called, current state:', stateMachine.state, 'isGreetingInProgress:', isGreetingInProgress);
+    // listening状態での遅延イベントは無視（録音中にアバターイベントが遅れて発火する問題を回避）
+    if (stateMachine.state === 'listening') {
+      console.log('[InterviewSession] Ignoring AVATAR_STOP_TALKING during listening state');
+      return;
+    }
+    // 挨拶中は状態遷移しない（挨拶の連続発話中に誤ってlisteningに遷移しないようにする）
+    if (isGreetingInProgress) {
+      console.log('[InterviewSession] Ignoring AVATAR_STOP_TALKING during greeting sequence');
+      return;
+    }
     // スピーカーからの残響が消えるまで少し待機してから録音開始
     addLog('アバター発話終了 → 録音準備中...');
     // タイマーIDを保持して、次の発話開始時にキャンセルできるようにする
@@ -295,7 +383,7 @@ export default function InterviewSession({
       addLog('録音開始');
       console.log('[InterviewSession] after avatarStopSpeaking, new state:', stateMachine.state);
     }, 500); // 500ms待機で残響を回避
-  }, [stateMachine, addLog]);
+  }, [stateMachine, addLog, isGreetingInProgress]);
 
   // 録音完了
   const handleRecordingComplete = useCallback(
@@ -472,6 +560,9 @@ export default function InterviewSession({
       clearTimeout(speakingDelayTimerRef.current);
       speakingDelayTimerRef.current = null;
     }
+    // 顔分析を停止
+    faceAnalysis.stopAnalysis();
+    setFaceAnalysisResult(null);
     setIsConnecting(false);
     releaseMediaStream();
     setEvaluation(null);
@@ -483,7 +574,7 @@ export default function InterviewSession({
     isEndingSequenceRef.current = false;
     isExitingRef.current = false;
     stateMachine.reset();
-  }, [stateMachine, releaseMediaStream]);
+  }, [stateMachine, releaseMediaStream, faceAnalysis]);
 
   // 終了処理
   const handleExit = useCallback(async () => {
@@ -496,6 +587,9 @@ export default function InterviewSession({
       clearTimeout(speakingDelayTimerRef.current);
       speakingDelayTimerRef.current = null;
     }
+
+    // 顔分析を停止
+    faceAnalysis.stopAnalysis();
 
     // アバター切断
     if (avatarRef.current) {
@@ -519,7 +613,7 @@ export default function InterviewSession({
 
     // 終了コールバック
     onExit?.();
-  }, [addLog, releaseMediaStream, stateMachine, onExit]);
+  }, [addLog, releaseMediaStream, stateMachine, onExit, faceAnalysis]);
 
   // MediaStreamの変更時に古いストリームを解放
   useEffect(() => {
@@ -598,6 +692,18 @@ export default function InterviewSession({
         initialSize="small"
       />
 
+      {/* 緊張度フィードバック（インカメラと同じサイズ・左側配置） */}
+      <TensionFeedback
+        analysisResult={faceAnalysisResult}
+        isVisible={
+          faceAnalysis.isEnabled &&
+          !isConnecting &&
+          stateMachine.state !== 'initializing' &&
+          stateMachine.state !== 'error' &&
+          stateMachine.state !== 'completed'
+        }
+      />
+
       {/* オーバーレイUI */}
       <div className="overlay-container">
         {/* ヘッダー */}
@@ -647,16 +753,17 @@ export default function InterviewSession({
             </div>
           )}
 
+        </div>
+
+        {/* 中央エリア：開始ボタンまたはローディング */}
+        <div className="overlay-center">
           {/* 挨拶中メッセージ */}
           {isGreetingInProgress && (
             <div className="greeting-section">
               <p className="greeting-text">面接官が挨拶しています...</p>
             </div>
           )}
-        </div>
 
-        {/* 中央エリア：開始ボタンまたはローディング */}
-        <div className="overlay-center">
           {/* 開始ボタン（初期状態で表示） */}
           {stateMachine.state === 'initializing' && !isConnecting && !isLoadingQuestions && (
             <button className="btn-start-interview" onClick={handleStartInterview}>
@@ -1195,19 +1302,26 @@ export default function InterviewSession({
         }
 
         .greeting-section {
-          padding: 16px 20px;
-          background: rgba(10, 10, 20, 0.4);
-          border-radius: 12px;
-          backdrop-filter: blur(8px);
+          position: absolute;
+          bottom: 15%;
+          left: 50%;
+          transform: translateX(-50%);
+          padding: 24px 48px;
+          background: rgba(10, 10, 20, 0.6);
+          border-radius: 16px;
+          backdrop-filter: blur(12px);
           text-align: center;
-          margin-top: 12px;
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
         .greeting-text {
-          color: rgba(255, 255, 255, 0.8);
-          font-size: 16px;
+          color: rgba(255, 255, 255, 0.9);
+          font-size: 18px;
+          font-weight: 500;
           margin: 0;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+          white-space: nowrap;
         }
 
         .question-section {

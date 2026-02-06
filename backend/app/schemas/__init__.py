@@ -32,6 +32,13 @@ from app.schemas.session import (
     SessionResponse,
 )
 from app.schemas.user import UserCreate, UserResponse
+from app.schemas.face_analysis import (
+    EmotionScores,
+    FaceAnalysisRequest,
+    FaceAnalysisResponse,
+    FaceRegion,
+    TensionAnalysis,
+)
 
 __all__ = [
     # Auth
@@ -67,4 +74,10 @@ __all__ = [
     # User
     "UserCreate",
     "UserResponse",
+    # Face Analysis
+    "EmotionScores",
+    "FaceAnalysisRequest",
+    "FaceAnalysisResponse",
+    "FaceRegion",
+    "TensionAnalysis",
 ]

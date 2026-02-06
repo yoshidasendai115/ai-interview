@@ -26,3 +26,6 @@ export type {
   AdaptiveLevelState,
   LevelStats,
 } from './useAdaptiveLevel';
+
+export { useFaceAnalysis } from './useFaceAnalysis';
+export type { UseFaceAnalysisReturn } from '@/types/faceAnalysis';

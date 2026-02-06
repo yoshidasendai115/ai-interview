@@ -269,6 +269,7 @@ export default function WebcamPreview({
         }
 
         /* ===== MD（タブレット）: 641px ~ 1024px ===== */
+        /* 右端上下中央、TensionFeedbackの下に配置 */
         @media (min-width: 641px) and (max-width: 1024px) {
           .webcam-preview.small {
             width: 120px;
@@ -281,8 +282,10 @@ export default function WebcamPreview({
           }
 
           .webcam-preview.bottom-right {
-            bottom: 14px;
+            top: 50%;
+            bottom: auto;
             right: 14px;
+            transform: translateY(calc(-50% + 49px)); /* 中央から下に: (90px + 8px gap) / 2 */
           }
 
           .webcam-preview.bottom-left {
@@ -292,6 +295,7 @@ export default function WebcamPreview({
         }
 
         /* ===== PC（デスクトップ）: 1025px~ ===== */
+        /* 右端上下中央、TensionFeedbackの下に配置 */
         @media (min-width: 1025px) {
           .webcam-preview.small {
             width: 160px;
@@ -304,8 +308,10 @@ export default function WebcamPreview({
           }
 
           .webcam-preview.bottom-right {
-            bottom: 16px;
+            top: 50%;
+            bottom: auto;
             right: 16px;
+            transform: translateY(calc(-50% + 64px)); /* 中央から下に: (120px + 8px gap) / 2 */
           }
 
           .webcam-preview.bottom-left {
