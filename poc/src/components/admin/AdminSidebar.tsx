@@ -15,6 +15,7 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { href: '/admin/questions', label: '質問管理', icon: '?' },
+  { href: '/admin/config', label: '評価設定', icon: 'S' },
 ];
 
 export default function AdminSidebar() {

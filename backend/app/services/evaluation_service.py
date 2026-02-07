@@ -5,6 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
 from app.models.evaluation import AptitudeEvaluation, Evaluation, EvaluationDetail
+from app.models.evaluation_config import EvaluationConfig
 from app.models.interview import InterviewSession
 from app.models.user import User, WeakPoint
 from app.schemas.evaluation import (
@@ -22,6 +23,15 @@ from app.schemas.evaluation import (
     WeakPointResponse,
     WeakPointSummary,
 )
+
+# Default grade thresholds (used as fallback when DB config is unavailable)
+DEFAULT_GRADE_THRESHOLDS = [
+    {"grade": "S", "label": "優秀", "minScore": 90, "recommendation": "積極的に採用を推奨"},
+    {"grade": "A", "label": "非常に良い", "minScore": 80, "recommendation": "採用を推奨"},
+    {"grade": "B", "label": "良い", "minScore": 70, "recommendation": "採用を検討"},
+    {"grade": "C", "label": "普通", "minScore": 60, "recommendation": "追加面接を推奨"},
+    {"grade": "D", "label": "要改善", "minScore": 0, "recommendation": "現時点では採用非推奨"},
+]
 
 
 class EvaluationService:
@@ -105,7 +115,7 @@ class EvaluationService:
         )
 
         # Determine grade
-        grade, grade_label, recommendation = self._calculate_grade(evaluation.total_score)
+        grade, grade_label, recommendation = await self._calculate_grade(evaluation.total_score)
 
         # Get weak points for user
         weak_points_stmt = (
@@ -143,18 +153,32 @@ class EvaluationService:
             evaluated_at=evaluation.evaluated_at,
         )
 
-    def _calculate_grade(self, total_score: int) -> tuple[str, str, str]:
-        """Calculate grade from total score."""
-        if total_score >= 90:
-            return "S", "優秀", "積極的に採用を推奨"
-        elif total_score >= 80:
-            return "A", "非常に良い", "採用を推奨"
-        elif total_score >= 70:
-            return "B", "良い", "採用を検討"
-        elif total_score >= 60:
-            return "C", "普通", "追加面接を推奨"
-        else:
-            return "D", "要改善", "現時点では採用非推奨"
+    async def _load_grade_thresholds(self) -> list[dict]:
+        """Load grade thresholds from DB config, falling back to defaults."""
+        stmt = select(EvaluationConfig).where(
+            EvaluationConfig.config_key == "scoring_config"
+        )
+        result = await self.db.execute(stmt)
+        config = result.scalar_one_or_none()
+
+        if config is not None:
+            config_value = config.config_value
+            if isinstance(config_value, dict) and "gradeThresholds" in config_value:
+                return config_value["gradeThresholds"]
+
+        return DEFAULT_GRADE_THRESHOLDS
+
+    async def _calculate_grade(self, total_score: int) -> tuple[str, str, str]:
+        """Calculate grade from total score using DB-driven thresholds."""
+        thresholds = await self._load_grade_thresholds()
+
+        for entry in thresholds:
+            if total_score >= entry["minScore"]:
+                return entry["grade"], entry["label"], entry["recommendation"]
+
+        # Fallback to last entry
+        last = thresholds[-1]
+        return last["grade"], last["label"], last["recommendation"]
 
     async def get_summary(self, user_id: str) -> EvaluationSummaryResponse:
         """Get evaluation summary for learning progress."""

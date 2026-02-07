@@ -2,7 +2,7 @@
 
 from fastapi import APIRouter
 
-from app.api.routes import admin, auth, evaluations, face_analysis, health, questions, sessions
+from app.api.routes import admin, auth, config, evaluations, face_analysis, health, questions, sessions
 
 api_router = APIRouter()
 
@@ -16,6 +16,9 @@ api_router.include_router(auth.router, prefix="/auth", tags=["authentication"])
 api_router.include_router(sessions.router, prefix="/sessions", tags=["sessions"])
 api_router.include_router(evaluations.router, prefix="/evaluations", tags=["evaluations"])
 api_router.include_router(questions.router, prefix="/scripts", tags=["scripts"])
+
+# Configuration APIs
+api_router.include_router(config.router, prefix="/config", tags=["config"])
 
 # Admin APIs
 api_router.include_router(admin.router, prefix="/admin", tags=["admin"])

@@ -9,17 +9,15 @@ import type {
   WeakPointPriority,
   EvaluationCategory,
   CategoryScores,
-  WEAK_POINT_THRESHOLD,
-  WEAK_POINT_TAG_THRESHOLD,
-  WEAK_POINT_RESOLUTION_COUNT,
-  WEAK_POINT_RESOLUTION_SCORE,
 } from '@/types/interview';
+import { DEFAULT_WEAK_POINT_CONFIG } from '@/data/defaultEvaluationConfig';
+import type { WeakPointConfig } from '@/types/evaluationConfig';
 
-// 定数を再定義（importの問題を回避）
-const THRESHOLD = 70;
-const TAG_THRESHOLD = 3;
-const RESOLUTION_COUNT = 3;
-const RESOLUTION_SCORE = 80;
+// デフォルト定数（フォールバック用）
+const THRESHOLD = DEFAULT_WEAK_POINT_CONFIG.threshold;
+const TAG_THRESHOLD = DEFAULT_WEAK_POINT_CONFIG.tagThreshold;
+const RESOLUTION_COUNT = DEFAULT_WEAK_POINT_CONFIG.resolutionCount;
+const RESOLUTION_SCORE = DEFAULT_WEAK_POINT_CONFIG.resolutionScore;
 
 /**
  * 苦手項目の永続化用インターフェース
@@ -41,43 +39,58 @@ export interface WeakPointRecord {
 /**
  * 優先度スコア計算
  *
- * 優先度スコア = (発生回数 × 10) + (30 - 最終発生からの日数)
+ * 優先度スコア = (発生回数 × multiplier) + max(0, windowDays - 最終発生からの日数)
  *
- * 優先度判定:
- * - high: 優先度スコア >= 50
- * - medium: 優先度スコア >= 25
- * - low: 優先度スコア < 25
+ * @param occurrenceCount 発生回数
+ * @param lastOccurredAt 最終発生日時
+ * @param config オプション: 弱点設定。未指定時はデフォルト値使用
  */
 export function calculatePriorityScore(
   occurrenceCount: number,
-  lastOccurredAt: Date
+  lastOccurredAt: Date,
+  config?: WeakPointConfig
 ): number {
+  const multiplier = config ? config.priority.occurrenceMultiplier : DEFAULT_WEAK_POINT_CONFIG.priority.occurrenceMultiplier;
+  const windowDays = config ? config.priority.recencyWindowDays : DEFAULT_WEAK_POINT_CONFIG.priority.recencyWindowDays;
+
   const now = new Date();
   const daysSinceLastOccurrence = Math.floor(
     (now.getTime() - lastOccurredAt.getTime()) / (1000 * 60 * 60 * 24)
   );
 
-  const score = (occurrenceCount * 10) + Math.max(0, 30 - daysSinceLastOccurrence);
+  const score = (occurrenceCount * multiplier) + Math.max(0, windowDays - daysSinceLastOccurrence);
   return score;
 }
 
 /**
  * 優先度スコアから優先度レベルを判定
+ * @param priorityScore 優先度スコア
+ * @param config オプション: 弱点設定。未指定時はデフォルト値使用
  */
-export function determinePriorityLevel(priorityScore: number): WeakPointPriority {
-  if (priorityScore >= 50) return 'high';
-  if (priorityScore >= 25) return 'medium';
+export function determinePriorityLevel(
+  priorityScore: number,
+  config?: WeakPointConfig
+): WeakPointPriority {
+  const highThreshold = config ? config.priority.highThreshold : DEFAULT_WEAK_POINT_CONFIG.priority.highThreshold;
+  const mediumThreshold = config ? config.priority.mediumThreshold : DEFAULT_WEAK_POINT_CONFIG.priority.mediumThreshold;
+
+  if (priorityScore >= highThreshold) return 'high';
+  if (priorityScore >= mediumThreshold) return 'medium';
   return 'low';
 }
 
 /**
  * スコアから苦手候補を検出
+ * @param scores カテゴリ別スコア
+ * @param config オプション: 弱点設定。未指定時はデフォルト値使用
  */
 export function detectWeakPointCandidates(
-  scores: CategoryScores
+  scores: CategoryScores,
+  config?: WeakPointConfig
 ): EvaluationCategory[] {
+  const threshold = config ? config.threshold : THRESHOLD;
   const categories: EvaluationCategory[] = ['vocabulary', 'grammar', 'content', 'honorifics'];
-  return categories.filter((category) => scores[category] < THRESHOLD);
+  return categories.filter((category) => scores[category] < threshold);
 }
 
 /**
@@ -86,14 +99,23 @@ export function detectWeakPointCandidates(
  * - 新しい苦手候補が既存リストにあれば発生回数を増加
  * - なければ新規追加（ただしTAG_THRESHOLD回未満は候補のまま）
  * - 高スコアが連続したら解消判定
+ *
+ * @param existingWeakPoints 既存の弱点レコード
+ * @param scores カテゴリ別スコア
+ * @param userId ユーザーID
+ * @param config オプション: 弱点設定。未指定時はデフォルト値使用
  */
 export function updateWeakPoints(
   existingWeakPoints: WeakPointRecord[],
   scores: CategoryScores,
-  userId: string
+  userId: string,
+  config?: WeakPointConfig
 ): WeakPointRecord[] {
+  const resolutionScore = config ? config.resolutionScore : RESOLUTION_SCORE;
+  const resolutionCount = config ? config.resolutionCount : RESOLUTION_COUNT;
+
   const now = new Date();
-  const candidates = detectWeakPointCandidates(scores);
+  const candidates = detectWeakPointCandidates(scores, config);
   const categories: EvaluationCategory[] = ['vocabulary', 'grammar', 'content', 'honorifics'];
 
   const updatedWeakPoints = existingWeakPoints.map((wp) => {
@@ -107,18 +129,19 @@ export function updateWeakPoints(
         lastOccurredAt: now,
         consecutiveHighScores: 0,
         priority: determinePriorityLevel(
-          calculatePriorityScore(wp.occurrenceCount + 1, now)
+          calculatePriorityScore(wp.occurrenceCount + 1, now, config),
+          config
         ),
         updatedAt: now,
       };
     }
 
     // 高スコアを取得した場合
-    if (score >= RESOLUTION_SCORE) {
+    if (score >= resolutionScore) {
       const newConsecutiveHighScores = wp.consecutiveHighScores + 1;
 
       // 解消条件を満たした場合
-      if (newConsecutiveHighScores >= RESOLUTION_COUNT) {
+      if (newConsecutiveHighScores >= resolutionCount) {
         return {
           ...wp,
           consecutiveHighScores: newConsecutiveHighScores,
@@ -184,22 +207,31 @@ function getDefaultDescription(category: EvaluationCategory): string {
 
 /**
  * 苦手項目を苦手タグとして確定すべきか判定
+ * @param record 弱点レコード
+ * @param config オプション: 弱点設定。未指定時はデフォルト値使用
  */
-export function shouldRegisterAsTag(record: WeakPointRecord): boolean {
-  return record.occurrenceCount >= TAG_THRESHOLD && !record.resolved;
+export function shouldRegisterAsTag(
+  record: WeakPointRecord,
+  config?: WeakPointConfig
+): boolean {
+  const tagThreshold = config ? config.tagThreshold : TAG_THRESHOLD;
+  return record.occurrenceCount >= tagThreshold && !record.resolved;
 }
 
 /**
  * 未解決の苦手項目を優先度順にソート
+ * @param weakPoints 弱点レコード一覧
+ * @param config オプション: 弱点設定。未指定時はデフォルト値使用
  */
 export function sortWeakPointsByPriority(
-  weakPoints: WeakPointRecord[]
+  weakPoints: WeakPointRecord[],
+  config?: WeakPointConfig
 ): WeakPointRecord[] {
   return [...weakPoints]
     .filter((wp) => !wp.resolved)
     .sort((a, b) => {
-      const scoreA = calculatePriorityScore(a.occurrenceCount, a.lastOccurredAt);
-      const scoreB = calculatePriorityScore(b.occurrenceCount, b.lastOccurredAt);
+      const scoreA = calculatePriorityScore(a.occurrenceCount, a.lastOccurredAt, config);
+      const scoreB = calculatePriorityScore(b.occurrenceCount, b.lastOccurredAt, config);
       return scoreB - scoreA; // 降順
     });
 }

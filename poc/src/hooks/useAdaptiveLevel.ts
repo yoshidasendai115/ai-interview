@@ -22,19 +22,24 @@ import type {
   InterviewResultData,
   InterviewSessionResult,
 } from '@/types/interview';
+import {
+  DEFAULT_SCORING_CONFIG,
+  DEFAULT_JLPT_CONFIG,
+} from '@/data/defaultEvaluationConfig';
+import type { ScoringConfig, JLPTConfig } from '@/types/evaluationConfig';
 
 // JLPT レベルの順序（低→高）
 const JLPT_LEVELS: JLPTLevel[] = ['N5', 'N4', 'N3', 'N2', 'N1'];
 
-// スコア閾値
-const SCORE_THRESHOLD_HIGH = 70;
-const SCORE_THRESHOLD_LOW = 30;
+// デフォルトのスコア閾値（フォールバック用）
+const SCORE_THRESHOLD_HIGH = DEFAULT_SCORING_CONFIG.levelAdjustment.highThreshold;
+const SCORE_THRESHOLD_LOW = DEFAULT_SCORING_CONFIG.levelAdjustment.lowThreshold;
 
 // LocalStorage キー
 const STORAGE_KEY = 'ai-interview-adaptive-level';
 
-// 1日あたりのチャレンジ回数制限
-const DAILY_CHALLENGE_LIMIT = 3;
+// デフォルトの1日あたりのチャレンジ回数制限
+const DAILY_CHALLENGE_LIMIT = DEFAULT_SCORING_CONFIG.levelAdjustment.dailyChallengeLimit;
 
 /**
  * セッション結果
@@ -118,18 +123,23 @@ interface StoredState {
  * 次のJLPTレベルを計算する
  * @param currentLevel 現在のレベル
  * @param score 評価スコア（0-100）
+ * @param scoringConfig オプション: スコア設定。未指定時はデフォルト値使用
  * @returns 次のレベルと調整方向
  */
 export function calculateNextLevel(
   currentLevel: JLPTLevel,
-  score: number
+  score: number,
+  scoringConfig?: ScoringConfig
 ): NextLevelResult {
+  const highThreshold = scoringConfig ? scoringConfig.levelAdjustment.highThreshold : SCORE_THRESHOLD_HIGH;
+  const lowThreshold = scoringConfig ? scoringConfig.levelAdjustment.lowThreshold : SCORE_THRESHOLD_LOW;
+
   const currentIndex = JLPT_LEVELS.indexOf(currentLevel);
   const canGoHigher = currentIndex < JLPT_LEVELS.length - 1;
   const canGoLower = currentIndex > 0;
 
-  // 70点以上: レベルを上げる
-  if (score >= SCORE_THRESHOLD_HIGH && canGoHigher) {
+  // highThreshold点以上: レベルを上げる
+  if (score >= highThreshold && canGoHigher) {
     return {
       nextLevel: JLPT_LEVELS[currentIndex + 1],
       direction: 'up',
@@ -138,8 +148,8 @@ export function calculateNextLevel(
     };
   }
 
-  // 30点以下: レベルを下げる
-  if (score <= SCORE_THRESHOLD_LOW && canGoLower) {
+  // lowThreshold点以下: レベルを下げる
+  if (score <= lowThreshold && canGoLower) {
     return {
       nextLevel: JLPT_LEVELS[currentIndex - 1],
       direction: 'down',
@@ -148,7 +158,7 @@ export function calculateNextLevel(
     };
   }
 
-  // 31〜69点 または 上限/下限に達している場合: 同じレベル
+  // それ以外 または 上限/下限に達している場合: 同じレベル
   return {
     nextLevel: currentLevel,
     direction: 'stable',
@@ -199,14 +209,20 @@ export function isLowestLevel(level: JLPTLevel): boolean {
 
 /**
  * スコアに基づくボタン表示タイプを取得
+ * @param score スコア
+ * @param scoringConfig オプション: スコア設定。未指定時はデフォルト値使用
  */
 export function getButtonType(
-  score: number
+  score: number,
+  scoringConfig?: ScoringConfig
 ): 'level_up' | 'stable_with_option' | 'level_down' {
-  if (score >= SCORE_THRESHOLD_HIGH) {
+  const highThreshold = scoringConfig ? scoringConfig.levelAdjustment.highThreshold : SCORE_THRESHOLD_HIGH;
+  const lowThreshold = scoringConfig ? scoringConfig.levelAdjustment.lowThreshold : SCORE_THRESHOLD_LOW;
+
+  if (score >= highThreshold) {
     return 'level_up';
   }
-  if (score <= SCORE_THRESHOLD_LOW) {
+  if (score <= lowThreshold) {
     return 'level_down';
   }
   return 'stable_with_option';
@@ -561,24 +577,39 @@ export type UseAdaptiveLevelReturn = ReturnType<typeof useAdaptiveLevel>;
 /**
  * スコアから推定JLPTレベルを算出
  * 設計書: 07_評価ロジック.md 7.9.5節
+ * @param score スコア
+ * @param jlptConfig オプション: JLPT設定（estimationRanges使用）。未指定時はデフォルト値使用
  */
-export function estimateLevelFromScore(score: number): JLPTLevel | 'below_N5' {
-  if (score >= 80) return 'N1';
-  if (score >= 70) return 'N2';
-  if (score >= 60) return 'N3';
-  if (score >= 50) return 'N4';
-  if (score >= 40) return 'N5';
+export function estimateLevelFromScore(
+  score: number,
+  jlptConfig?: JLPTConfig
+): JLPTLevel | 'below_N5' {
+  const ranges = jlptConfig ? jlptConfig.estimationRanges : DEFAULT_JLPT_CONFIG.estimationRanges;
+
+  if (score >= ranges.N1) return 'N1';
+  if (score >= ranges.N2) return 'N2';
+  if (score >= ranges.N3) return 'N3';
+  if (score >= ranges.N4) return 'N4';
+  if (score >= ranges.N5) return 'N5';
   return 'below_N5';
 }
 
 /**
  * パフォーマンスグレードを算出
+ * @param score スコア
+ * @param scoringConfig オプション: スコア設定。未指定時はデフォルト値使用
  */
-export function calculatePerformanceGrade(score: number | null): PerformanceGrade {
+export function calculatePerformanceGrade(
+  score: number | null,
+  scoringConfig?: ScoringConfig
+): PerformanceGrade {
   if (score === null) return 'not_tested';
-  if (score >= 90) return 'excellent';
-  if (score >= 80) return 'good';
-  if (score >= 70) return 'pass';
+
+  const grades = scoringConfig ? scoringConfig.performanceGrades : DEFAULT_SCORING_CONFIG.performanceGrades;
+
+  if (score >= grades.excellentMin) return 'excellent';
+  if (score >= grades.goodMin) return 'good';
+  if (score >= grades.passMin) return 'pass';
   return 'fail';
 }
 
@@ -600,10 +631,17 @@ function getEstimationDirection(
 
 /**
  * 業務適性を判定
+ * @param levelPerformances レベル別パフォーマンス
+ * @param scoringConfig オプション: スコア設定。未指定時はデフォルト値使用
  */
 export function calculateJobSuitability(
-  levelPerformances: LevelPerformance[]
+  levelPerformances: LevelPerformance[],
+  scoringConfig?: ScoringConfig
 ): JobSuitability {
+  const suitabilityConfig = scoringConfig
+    ? scoringConfig.jobSuitability
+    : DEFAULT_SCORING_CONFIG.jobSuitability;
+
   const getStatus = (
     requiredLevel: JLPTLevel,
     minScore: number
@@ -629,10 +667,22 @@ export function calculateJobSuitability(
   };
 
   return {
-    basicService: getStatus('N4', 70),
-    generalWork: getStatus('N3', 70),
-    businessHonorifics: getStatus('N2', 70),
-    advancedWork: getStatus('N1', 70),
+    basicService: getStatus(
+      suitabilityConfig.basicService.requiredLevel as JLPTLevel,
+      suitabilityConfig.basicService.minScore
+    ),
+    generalWork: getStatus(
+      suitabilityConfig.generalWork.requiredLevel as JLPTLevel,
+      suitabilityConfig.generalWork.minScore
+    ),
+    businessHonorifics: getStatus(
+      suitabilityConfig.businessHonorifics.requiredLevel as JLPTLevel,
+      suitabilityConfig.businessHonorifics.minScore
+    ),
+    advancedWork: getStatus(
+      suitabilityConfig.advancedWork.requiredLevel as JLPTLevel,
+      suitabilityConfig.advancedWork.minScore
+    ),
   };
 }
 

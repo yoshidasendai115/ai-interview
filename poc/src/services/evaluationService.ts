@@ -12,20 +12,15 @@ import type {
   GPTEvaluationRequest,
   GPTEvaluationResponse,
   WeakPointDetection,
-  JLPT_WEIGHTS,
 } from '@/types/interview';
+import { DEFAULT_JLPT_CONFIG, DEFAULT_WEAK_POINT_CONFIG } from '@/data/defaultEvaluationConfig';
+import type { JLPTConfig, WeakPointConfig } from '@/types/evaluationConfig';
 
-// JLPTレベル別重み付けを再定義（importの問題を回避）
-const JLPT_LEVEL_WEIGHTS: Record<JLPTLevel, JLPTWeights> = {
-  N1: { vocabulary: 0.20, grammar: 0.20, content: 0.25, honorifics: 0.35 },
-  N2: { vocabulary: 0.20, grammar: 0.25, content: 0.25, honorifics: 0.30 },
-  N3: { vocabulary: 0.25, grammar: 0.30, content: 0.25, honorifics: 0.20 },
-  N4: { vocabulary: 0.30, grammar: 0.35, content: 0.25, honorifics: 0.10 },
-  N5: { vocabulary: 0.35, grammar: 0.40, content: 0.20, honorifics: 0.05 },
-};
+// デフォルトのJLPTレベル別重み（フォールバック用）
+const JLPT_LEVEL_WEIGHTS: Record<JLPTLevel, JLPTWeights> = DEFAULT_JLPT_CONFIG.weights;
 
-// カテゴリ別苦手検出閾値
-const WEAK_POINT_THRESHOLD = 70;
+// デフォルトの苦手検出閾値（フォールバック用）
+const DEFAULT_THRESHOLD = DEFAULT_WEAK_POINT_CONFIG.threshold;
 
 /**
  * GPT-4o評価用システムプロンプト生成
@@ -121,12 +116,17 @@ ${criteriaText}
 
 /**
  * 総合スコア計算（JLPTレベル別重み付け適用）
+ * @param scores カテゴリ別スコア
+ * @param jlptLevel JLPTレベル
+ * @param jlptConfig オプション: 外部設定。未指定時はデフォルト値使用
  */
 export function calculateTotalScore(
   scores: CategoryScores,
-  jlptLevel: JLPTLevel
+  jlptLevel: JLPTLevel,
+  jlptConfig?: JLPTConfig
 ): number {
-  const weights = JLPT_LEVEL_WEIGHTS[jlptLevel];
+  const weightsMap = jlptConfig ? jlptConfig.weights : JLPT_LEVEL_WEIGHTS;
+  const weights = weightsMap[jlptLevel];
 
   const total =
     scores.vocabulary * weights.vocabulary +
@@ -139,16 +139,21 @@ export function calculateTotalScore(
 
 /**
  * 苦手項目検出
+ * @param scores カテゴリ別スコア
+ * @param feedback カテゴリ別フィードバック
+ * @param weakPointConfig オプション: 外部設定。未指定時はデフォルト値使用
  */
 export function detectWeakPoints(
   scores: CategoryScores,
-  feedback: CategoryFeedback
+  feedback: CategoryFeedback,
+  weakPointConfig?: WeakPointConfig
 ): WeakPointDetection[] {
+  const threshold = weakPointConfig ? weakPointConfig.threshold : DEFAULT_THRESHOLD;
   const weakPoints: WeakPointDetection[] = [];
   const categories: EvaluationCategory[] = ['vocabulary', 'grammar', 'content', 'honorifics'];
 
   for (const category of categories) {
-    if (scores[category] < WEAK_POINT_THRESHOLD) {
+    if (scores[category] < threshold) {
       weakPoints.push({
         category,
         description: getWeakPointDescription(category, scores[category]),
@@ -234,13 +239,19 @@ export function parseGPTResponse(responseText: string): GPTEvaluationResponse | 
 
 /**
  * 評価結果の整形
+ * @param gptResponse GPT-4oのレスポンス
+ * @param jlptLevel JLPTレベル
+ * @param jlptConfig オプション: JLPT設定
+ * @param weakPointConfig オプション: 弱点検出設定
  */
 export function formatEvaluationResult(
   gptResponse: GPTEvaluationResponse,
-  jlptLevel: JLPTLevel
+  jlptLevel: JLPTLevel,
+  jlptConfig?: JLPTConfig,
+  weakPointConfig?: WeakPointConfig
 ): EvaluationResult {
-  const totalScore = calculateTotalScore(gptResponse.scores, jlptLevel);
-  const detectedWeakPoints = detectWeakPoints(gptResponse.scores, gptResponse.feedback);
+  const totalScore = calculateTotalScore(gptResponse.scores, jlptLevel, jlptConfig);
+  const detectedWeakPoints = detectWeakPoints(gptResponse.scores, gptResponse.feedback, weakPointConfig);
 
   // GPTからのweak_pointsとdetectedWeakPointsをマージ
   const weakPoints = [
@@ -298,7 +309,9 @@ function determinePriority(score: number): 'high' | 'medium' | 'low' {
 export function generateMockEvaluation(
   questionText: string,
   answerText: string,
-  jlptLevel: JLPTLevel
+  jlptLevel: JLPTLevel,
+  jlptConfig?: JLPTConfig,
+  weakPointConfig?: WeakPointConfig
 ): EvaluationResult {
   // デバッグ用：実際のトランスクリプトをコンソールに出力
   console.log('[Evaluation] Question:', questionText.slice(0, 50));
@@ -347,8 +360,8 @@ export function generateMockEvaluation(
     honorifics: '丁寧語は適切に使用できています。謙譲語と尊敬語の区別を意識しましょう。',
   };
 
-  const totalScore = calculateTotalScore(scores, jlptLevel);
-  const weakPoints = detectWeakPoints(scores, feedback);
+  const totalScore = calculateTotalScore(scores, jlptLevel, jlptConfig);
+  const weakPoints = detectWeakPoints(scores, feedback, weakPointConfig);
 
   // デバッグ情報を含めた総評
   const debugInfo = answerText.length === 0

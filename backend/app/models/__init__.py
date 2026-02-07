@@ -2,6 +2,7 @@
 
 from app.models.admin import Admin
 from app.models.evaluation import AptitudeEvaluation, Evaluation, EvaluationDetail
+from app.models.evaluation_config import EvaluationConfig, EvaluationConfigHistory
 from app.models.interview import InterviewSession, SessionAnswer
 from app.models.question import (
     Industry,
@@ -18,6 +19,8 @@ __all__ = [
     "Admin",
     "AptitudeEvaluation",
     "Evaluation",
+    "EvaluationConfig",
+    "EvaluationConfigHistory",
     "EvaluationDetail",
     "Industry",
     "InterviewSession",

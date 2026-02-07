@@ -17,6 +17,13 @@ from app.schemas.evaluation import (
     ScoreTrend,
     WeakPointResponse,
 )
+from app.schemas.evaluation_config import (
+    ConfigHistoryListResponse,
+    ConfigHistoryResponse,
+    EvaluationConfigListResponse,
+    EvaluationConfigResponse,
+    EvaluationConfigUpdateRequest,
+)
 from app.schemas.question import (
     QuestionBankCreate,
     QuestionBankResponse,
@@ -59,6 +66,12 @@ __all__ = [
     "LevelMismatch",
     "ScoreTrend",
     "WeakPointResponse",
+    # Evaluation Config
+    "ConfigHistoryListResponse",
+    "ConfigHistoryResponse",
+    "EvaluationConfigListResponse",
+    "EvaluationConfigResponse",
+    "EvaluationConfigUpdateRequest",
     # Question
     "QuestionBankCreate",
     "QuestionBankResponse",

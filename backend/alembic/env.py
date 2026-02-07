@@ -13,6 +13,8 @@ from app.models import (  # noqa: F401
     Admin,
     AptitudeEvaluation,
     Evaluation,
+    EvaluationConfig,
+    EvaluationConfigHistory,
     EvaluationDetail,
     Industry,
     InterviewSession,
