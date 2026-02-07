@@ -1,0 +1,226 @@
+<mxfile host="65bd71144e">
+    <diagram name="SSO Industry Sync Flow" id="sso-industry-sync">
+        <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+
+                <!-- Title -->
+                <mxCell id="title" value="SSO認証 + 業界同期フロー" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="400" y="20" width="400" height="40" as="geometry"/>
+                </mxCell>
+
+                <!-- Participants -->
+                <mxCell id="p-user" value="User&#xa;(mintoku work)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="60" y="90" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="p-user-line" style="endArrow=none;dashed=1;html=1;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="120" y="130" as="sourcePoint"/>
+                        <mxPoint x="120" y="900" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+
+                <mxCell id="p-backend" value="AI Interview&#xa;Backend" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="330" y="90" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="p-backend-line" style="endArrow=none;dashed=1;html=1;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="390" y="130" as="sourcePoint"/>
+                        <mxPoint x="390" y="900" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+
+                <mxCell id="p-mintoku-api" value="mintoku work&#xa;API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="600" y="90" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="p-mintoku-api-line" style="endArrow=none;dashed=1;html=1;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="660" y="130" as="sourcePoint"/>
+                        <mxPoint x="660" y="900" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+
+                <mxCell id="p-db" value="Database" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="870" y="90" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="p-db-line" style="endArrow=none;dashed=1;html=1;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="920" y="130" as="sourcePoint"/>
+                        <mxPoint x="920" y="900" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+
+                <!-- Step 1: Profile setup on mintoku work -->
+                <mxCell id="step1-label" value="1. mintoku work でプロフィール設定（希望業界を1つ登録）" style="text;html=1;strokeColor=none;fillColor=#d5e8d4;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=0" parent="1" vertex="1">
+                    <mxGeometry x="40" y="160" width="170" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="step1-act" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="110" y="160" width="20" height="40" as="geometry"/>
+                </mxCell>
+
+                <!-- Step 2: SSO Login -->
+                <mxCell id="step2-msg" value="2. SSO認証でログイン" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="120" y="240" as="sourcePoint"/>
+                        <mxPoint x="390" y="240" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+
+                <!-- Step 3: Auth callback -->
+                <mxCell id="step3-label" value="3. POST /api/v1/auth/callback&#xa;   認証処理" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10" parent="1" vertex="1">
+                    <mxGeometry x="200" y="260" width="180" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="step3-act" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="380" y="260" width="20" height="40" as="geometry"/>
+                </mxCell>
+
+                <!-- Step 4: Fetch industry from mintoku API -->
+                <mxCell id="step4-msg" value="4. GET /v1/users/{user_id}/preferences&#xa;   希望業界情報を取得" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="390" y="330" as="sourcePoint"/>
+                        <mxPoint x="660" y="330" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="step4-resp" value="業界情報レスポンス" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeWidth=2;dashed=1;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="660" y="370" as="sourcePoint"/>
+                        <mxPoint x="390" y="370" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+
+                <!-- API Detail Box -->
+                <mxCell id="api-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="1080" y="290" width="350" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="api-box-title" value="mintoku work API" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1100" y="300" width="200" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="api-box-content" value="GET https://api.mintoku-work.com&#xa;  /v1/users/{user_id}/preferences&#xa;&#xa;Response: { industry: &quot;construction&quot; }" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Courier New" parent="1" vertex="1">
+                    <mxGeometry x="1100" y="325" width="310" height="60" as="geometry"/>
+                </mxCell>
+
+                <!-- Step 5: Update users table -->
+                <mxCell id="step5-msg" value="5. UPDATE users SET industry_synced_at = NOW()" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="390" y="430" as="sourcePoint"/>
+                        <mxPoint x="920" y="430" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="step5-resp" value="OK" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeWidth=2;dashed=1;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="920" y="460" as="sourcePoint"/>
+                        <mxPoint x="390" y="460" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+
+                <!-- DB Detail Box for Step 5 -->
+                <mxCell id="db-box1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="1080" y="410" width="350" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="db-box1-title" value="users テーブル更新" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1100" y="415" width="200" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="db-box1-content" value="UPDATE users&#xa;SET industry_synced_at = NOW()&#xa;WHERE id = :user_id" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Courier New" parent="1" vertex="1">
+                    <mxGeometry x="1100" y="440" width="310" height="40" as="geometry"/>
+                </mxCell>
+
+                <!-- Step 6: Sync user_preferred_industries -->
+                <mxCell id="step6-group" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;opacity=20;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="500" width="610" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="step6-title" value="6. user_preferred_industries テーブル同期" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="360" y="500" width="320" height="20" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="step6a-msg" value="6a. DELETE FROM user_preferred_industries&#xa;     WHERE user_id = :user_id" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#CC0000;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="390" y="545" as="sourcePoint"/>
+                        <mxPoint x="920" y="545" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="step6a-resp" value="Deleted" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeWidth=2;dashed=1;strokeColor=#CC0000;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="920" y="565" as="sourcePoint"/>
+                        <mxPoint x="390" y="565" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+
+                <mxCell id="step6b-msg" value="6b. INSERT INTO user_preferred_industries&#xa;     (user_id, industry_id) VALUES (:user_id, 'construction')" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#006600;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="390" y="600" as="sourcePoint"/>
+                        <mxPoint x="920" y="600" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="step6b-resp" value="Inserted (1件)" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeWidth=2;dashed=1;strokeColor=#006600;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="920" y="620" as="sourcePoint"/>
+                        <mxPoint x="390" y="620" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+
+                <!-- DB Detail Box for Step 6 -->
+                <mxCell id="db-box2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="1080" y="500" width="350" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="db-box2-title" value="user_preferred_industries 同期" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1100" y="505" width="300" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="db-box2-content" value="-- 既存データ削除&#xa;DELETE FROM user_preferred_industries&#xa;WHERE user_id = :user_id;&#xa;&#xa;-- 新規連携データ挿入（1件のみ）&#xa;INSERT INTO user_preferred_industries&#xa;  (user_id, industry_id)&#xa;VALUES (:user_id, 'construction');" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Courier New" parent="1" vertex="1">
+                    <mxGeometry x="1100" y="530" width="310" height="95" as="geometry"/>
+                </mxCell>
+
+                <!-- Step 7: Learning plan check -->
+                <mxCell id="step7-msg" value="7. 学習計画存在判定&#xa;   SELECT * FROM learning_plans&#xa;   WHERE user_id = :user_id AND status = 'active'" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="390" y="680" as="sourcePoint"/>
+                        <mxPoint x="920" y="680" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="step7-resp" value="判定結果" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeWidth=2;dashed=1;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="920" y="710" as="sourcePoint"/>
+                        <mxPoint x="390" y="710" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+
+                <!-- Decision diamond for step 7 -->
+                <mxCell id="step7-decision" value="active プラン&#xa;あり？" style="rhombus;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="340" y="740" width="100" height="80" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="step7-yes" value="あり" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="340" y="780" as="sourcePoint"/>
+                        <mxPoint x="200" y="780" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="step7-yes-box" value="ホーム画面へ遷移&#xa;（学習計画を表示）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="760" width="120" height="40" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="step7-no" value="なし" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="390" y="820" as="sourcePoint"/>
+                        <mxPoint x="390" y="860" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="step7-no-box" value="学習計画作成フローへ遷移&#xa;（12.10.3 参照）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="310" y="860" width="160" height="40" as="geometry"/>
+                </mxCell>
+
+                <!-- Reference note -->
+                <mxCell id="ref-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="1080" y="660" width="350" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="ref-title" value="学習計画存在判定（12.10.3）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1100" y="665" width="250" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ref-content" value="既存の active プランを検索し、&#xa;判定結果に応じて処理を分岐:&#xa;  - あり → ホーム画面（学習計画表示）&#xa;  - なし → 学習計画作成フロー" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+                    <mxGeometry x="1100" y="690" width="310" height="65" as="geometry"/>
+                </mxCell>
+
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

@@ -1,0 +1,193 @@
+<mxfile host="65bd71144e">
+    <diagram name="challengeState Recovery Flow" id="challenge-state-recovery">
+        <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+
+                <!-- Title -->
+                <mxCell id="title" value="challengeState 復旧フロー" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="400" y="20" width="400" height="40" as="geometry"/>
+                </mxCell>
+
+                <!-- Participants -->
+                <mxCell id="p-frontend" value="Frontend&#xa;(面接練習画面)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="60" y="90" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="p-frontend-line" style="endArrow=none;dashed=1;html=1;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="125" y="130" as="sourcePoint"/>
+                        <mxPoint x="125" y="870" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+
+                <mxCell id="p-ls" value="LocalStorage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="310" y="90" width="110" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="p-ls-line" style="endArrow=none;dashed=1;html=1;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="365" y="130" as="sourcePoint"/>
+                        <mxPoint x="365" y="870" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+
+                <mxCell id="p-api" value="Backend&#xa;API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="570" y="90" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="p-api-line" style="endArrow=none;dashed=1;html=1;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="620" y="130" as="sourcePoint"/>
+                        <mxPoint x="620" y="870" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+
+                <!-- Step 1: Access interview screen -->
+                <mxCell id="step1-label" value="1. 面接練習画面アクセス時" style="text;html=1;strokeColor=none;fillColor=#dae8fc;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="30" y="160" width="200" height="25" as="geometry"/>
+                </mxCell>
+
+                <!-- Step 2: Check LocalStorage -->
+                <mxCell id="step2-msg" value="2. challengeState の存在確認" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="125" y="210" as="sourcePoint"/>
+                        <mxPoint x="365" y="210" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+
+                <!-- Decision: exists? -->
+                <mxCell id="decision" value="challengeState&#xa;存在？" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="85" y="240" width="120" height="70" as="geometry"/>
+                </mxCell>
+
+                <!-- Branch: exists → normal flow -->
+                <mxCell id="branch-yes-edge" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="85" y="275" as="sourcePoint"/>
+                        <mxPoint x="30" y="275" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="branch-yes-label" value="存在する" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10" parent="1" vertex="1">
+                    <mxGeometry x="30" y="258" width="55" height="15" as="geometry"/>
+                </mxCell>
+                <mxCell id="branch-yes-box" value="通常フローへ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="800" y="255" width="120" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="branch-yes-arrow" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="205" y="275" as="sourcePoint"/>
+                        <mxPoint x="800" y="275" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="branch-yes-label2" value="存在する" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10" parent="1" vertex="1">
+                    <mxGeometry x="210" y="258" width="55" height="15" as="geometry"/>
+                </mxCell>
+
+                <!-- Branch: not exists → recovery flow -->
+                <mxCell id="branch-no-label" value="存在しない（復旧フロー）" style="text;html=1;strokeColor=none;fillColor=#f8cecc;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="30" y="325" width="190" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="branch-no-edge" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="145" y="310" as="sourcePoint"/>
+                        <mxPoint x="145" y="360" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+
+                <!-- Step 3: GET /api/v1/users/me -->
+                <mxCell id="step3-msg" value="3. GET /api/v1/users/me&#xa;   ユーザー情報取得" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="125" y="380" as="sourcePoint"/>
+                        <mxPoint x="620" y="380" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="step3-resp" value="{ jlpt_level: &quot;N3&quot;, ... }" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeWidth=2;dashed=1;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="620" y="410" as="sourcePoint"/>
+                        <mxPoint x="125" y="410" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+
+                <!-- Step 3 detail box -->
+                <mxCell id="step3-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="360" width="300" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="step3-box-title" value="ユーザー情報取得" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="810" y="365" width="150" height="18" as="geometry"/>
+                </mxCell>
+                <mxCell id="step3-box-content" value="GET /api/v1/users/me&#xa;→ jlpt_level を取得" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Courier New" parent="1" vertex="1">
+                    <mxGeometry x="810" y="385" width="280" height="30" as="geometry"/>
+                </mxCell>
+
+                <!-- Step 4: GET sessions for today -->
+                <mxCell id="step4-msg" value="4. GET /api/v1/sessions?date=today&amp;is_challenge=true&#xa;   当日チャレンジ履歴取得" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="125" y="470" as="sourcePoint"/>
+                        <mxPoint x="620" y="470" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="step4-resp" value="[{ is_challenge: true }, ...]  (count: 1)" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeWidth=2;dashed=1;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="620" y="500" as="sourcePoint"/>
+                        <mxPoint x="125" y="500" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+
+                <!-- Step 4 detail box -->
+                <mxCell id="step4-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="450" width="300" height="65" as="geometry"/>
+                </mxCell>
+                <mxCell id="step4-box-title" value="チャレンジ履歴取得" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="810" y="455" width="150" height="18" as="geometry"/>
+                </mxCell>
+                <mxCell id="step4-box-content" value="GET /api/v1/sessions&#xa;  ?date=today&amp;is_challenge=true&#xa;→ 当日のチャレンジセッション数をカウント" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Courier New" parent="1" vertex="1">
+                    <mxGeometry x="810" y="475" width="280" height="40" as="geometry"/>
+                </mxCell>
+
+                <!-- Step 5: Reconstruct challengeState -->
+                <mxCell id="step5-act" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="115" y="550" width="20" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="step5-label" value="5. challengeState を再構築" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="145" y="555" width="200" height="20" as="geometry"/>
+                </mxCell>
+
+                <!-- Step 5 detail box -->
+                <mxCell id="step5-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="545" width="300" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="step5-box-title" value="challengeState 再構築" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="810" y="550" width="200" height="18" as="geometry"/>
+                </mxCell>
+                <mxCell id="step5-box-content" value="{&#xa;  declaredLevel: users.jlpt_level,&#xa;  challengeCount: 当日チャレンジ数,&#xa;  lastResetDate: 当日日付&#xa;                 (YYYY-MM-DD)&#xa;}" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Courier New" parent="1" vertex="1">
+                    <mxGeometry x="810" y="570" width="280" height="75" as="geometry"/>
+                </mxCell>
+
+                <!-- Step 6: Save to LocalStorage -->
+                <mxCell id="step6-msg" value="6. challengeState を保存" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="125" y="690" as="sourcePoint"/>
+                        <mxPoint x="365" y="690" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="step6-resp" value="保存完了" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeWidth=2;dashed=1;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="365" y="720" as="sourcePoint"/>
+                        <mxPoint x="125" y="720" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+
+                <!-- Step 7: Navigate to challenge selection -->
+                <mxCell id="step7-box" value="7. チャレンジ選択画面へ遷移" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="55" y="770" width="200" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="step7-edge" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="125" y="740" as="sourcePoint"/>
+                        <mxPoint x="125" y="770" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
