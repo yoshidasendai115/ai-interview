@@ -1,12 +1,12 @@
-<mxfile host="app.diagrams.net" modified="2026-02-01T00:00:00.000Z" agent="5.0" etag="user-flow" version="21.0.0" type="device">
+<mxfile host="app.diagrams.net" modified="2026-02-07T00:00:00.000Z" agent="5.0" etag="user-flow" version="21.0.0" type="device">
   <diagram name="ユーザー向け画面遷移図" id="user-flow">
-    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="920" pageHeight="500" math="0" shadow="0">
+    <mxGraphModel dx="1300" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="500" math="0" shadow="0">
       <root>
         <mxCell id="0"/>
         <mxCell id="1" parent="0"/>
         <!-- タイトル -->
         <mxCell id="title" value="ユーザー向け画面遷移図（AI面接練習アプリ）" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#1565C0;" vertex="1" parent="1">
-          <mxGeometry x="150" y="10" width="400" height="30" as="geometry"/>
+          <mxGeometry x="250" y="10" width="400" height="30" as="geometry"/>
         </mxCell>
         <!-- 外部システム: mintoku work -->
         <mxCell id="mintoku" value="mintoku work" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;strokeWidth=2;fontSize=12;fontStyle=1;" vertex="1" parent="1">
@@ -17,69 +17,94 @@
           <mxGeometry x="20" y="220" width="120" height="50" as="geometry"/>
         </mxCell>
         <!-- ホーム -->
-        <mxCell id="home" value="ホーム" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=#0D47A1;strokeWidth=2;fontColor=#FFFFFF;fontSize=14;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="240" y="170" width="120" height="60" as="geometry"/>
+        <mxCell id="home" value="ホーム&#xa;(6.2.2)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=#0D47A1;strokeWidth=2;fontColor=#FFFFFF;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="170" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <!-- 練習モード選択 -->
+        <mxCell id="mode-select" value="練習モード選択&#xa;(6.2.3)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;strokeWidth=2;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="70" width="130" height="50" as="geometry"/>
         </mxCell>
         <!-- チャレンジ選択 -->
-        <mxCell id="challenge" value="チャレンジ選択" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;strokeWidth=2;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="440" y="70" width="120" height="50" as="geometry"/>
+        <mxCell id="challenge" value="チャレンジ選択&#xa;(6.2.3.2)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;strokeWidth=2;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="70" width="130" height="50" as="geometry"/>
         </mxCell>
         <!-- 面接練習 -->
-        <mxCell id="practice" value="面接練習" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;strokeWidth=2;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="600" y="70" width="120" height="50" as="geometry"/>
+        <mxCell id="practice" value="面接練習&#xa;(6.2.4)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;strokeWidth=2;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="740" y="70" width="120" height="50" as="geometry"/>
         </mxCell>
         <!-- フィードバック -->
-        <mxCell id="feedback" value="フィードバック" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;strokeWidth=2;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="760" y="70" width="120" height="50" as="geometry"/>
+        <mxCell id="feedback" value="フィードバック&#xa;(6.2.5)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;strokeWidth=2;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="70" width="130" height="50" as="geometry"/>
         </mxCell>
         <!-- 学習進捗 -->
-        <mxCell id="progress" value="学習進捗" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;strokeWidth=2;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="440" y="170" width="120" height="50" as="geometry"/>
+        <mxCell id="progress" value="学習進捗&#xa;(6.2.6)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;strokeWidth=2;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="200" width="120" height="50" as="geometry"/>
         </mxCell>
         <!-- 設定 -->
-        <mxCell id="settings" value="設定" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;strokeWidth=2;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="440" y="350" width="120" height="50" as="geometry"/>
+        <mxCell id="settings" value="設定&#xa;(6.2.7)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;strokeWidth=2;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="350" width="120" height="50" as="geometry"/>
         </mxCell>
         <!-- 矢印: mintoku → ホーム (シームレス遷移) -->
         <mxCell id="arrow1" value="" style="endArrow=classic;html=1;strokeColor=#FF9800;strokeWidth=2;" edge="1" parent="1" source="mintoku" target="home">
           <mxGeometry width="50" height="50" relative="1" as="geometry"/>
         </mxCell>
         <mxCell id="arrow1-label" value="シームレス遷移" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#FF9800;" vertex="1" parent="1">
-          <mxGeometry x="150" y="120" width="80" height="20" as="geometry"/>
+          <mxGeometry x="140" y="120" width="80" height="20" as="geometry"/>
         </mxCell>
         <!-- 矢印: SSO → ホーム (直接アクセス時) -->
         <mxCell id="arrow2" value="" style="endArrow=classic;html=1;strokeColor=#1565C0;strokeWidth=2;dashed=1;" edge="1" parent="1" source="sso" target="home">
           <mxGeometry width="50" height="50" relative="1" as="geometry"/>
         </mxCell>
         <mxCell id="arrow2-label" value="直接アクセス時" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#757575;" vertex="1" parent="1">
-          <mxGeometry x="150" y="220" width="80" height="20" as="geometry"/>
+          <mxGeometry x="140" y="220" width="80" height="20" as="geometry"/>
         </mxCell>
-        <!-- 矢印: ホーム → チャレンジ選択 -->
-        <mxCell id="arrow3" value="" style="endArrow=classic;html=1;strokeColor=#4CAF50;strokeWidth=2;" edge="1" parent="1" source="home" target="challenge">
+        <!-- 矢印: ホーム → 練習モード選択 -->
+        <mxCell id="arrow3" value="" style="endArrow=classic;html=1;strokeColor=#4CAF50;strokeWidth=2;" edge="1" parent="1" source="home" target="mode-select">
           <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow3-label" value="練習開始" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#4CAF50;" vertex="1" parent="1">
+          <mxGeometry x="340" y="100" width="60" height="20" as="geometry"/>
+        </mxCell>
+        <!-- 矢印: 練習モード選択 → チャレンジ選択 -->
+        <mxCell id="arrow3a" value="" style="endArrow=classic;html=1;strokeColor=#4CAF50;strokeWidth=2;" edge="1" parent="1" source="mode-select" target="challenge">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow3a-label" value="モード選択" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#4CAF50;" vertex="1" parent="1">
+          <mxGeometry x="530" y="55" width="60" height="20" as="geometry"/>
         </mxCell>
         <!-- 矢印: チャレンジ選択 → 面接練習 -->
         <mxCell id="arrow3b" value="" style="endArrow=classic;html=1;strokeColor=#4CAF50;strokeWidth=2;" edge="1" parent="1" source="challenge" target="practice">
           <mxGeometry width="50" height="50" relative="1" as="geometry"/>
         </mxCell>
         <mxCell id="arrow3b-label" value="開始" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#4CAF50;" vertex="1" parent="1">
-          <mxGeometry x="545" y="55" width="40" height="20" as="geometry"/>
+          <mxGeometry x="700" y="55" width="40" height="20" as="geometry"/>
         </mxCell>
         <!-- 矢印: 面接練習 → フィードバック -->
         <mxCell id="arrow4" value="" style="endArrow=classic;html=1;strokeColor=#4CAF50;strokeWidth=2;" edge="1" parent="1" source="practice" target="feedback">
           <mxGeometry width="50" height="50" relative="1" as="geometry"/>
         </mxCell>
         <mxCell id="arrow4-label" value="完了" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#4CAF50;" vertex="1" parent="1">
-          <mxGeometry x="705" y="55" width="40" height="20" as="geometry"/>
+          <mxGeometry x="850" y="55" width="40" height="20" as="geometry"/>
         </mxCell>
         <!-- 矢印: フィードバック → ホーム -->
         <mxCell id="arrow5" value="" style="endArrow=classic;html=1;strokeColor=#757575;strokeWidth=1;dashed=1;curved=1;" edge="1" parent="1" source="feedback" target="home">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="820" y="150"/>
+              <mxPoint x="965" y="150"/>
               <mxPoint x="400" y="150"/>
             </Array>
           </mxGeometry>
+        </mxCell>
+        <!-- 矢印: 学習進捗 → チャレンジ選択 (苦手項目練習) -->
+        <mxCell id="arrow-progress-challenge" value="" style="endArrow=classic;html=1;strokeColor=#4CAF50;strokeWidth=2;" edge="1" parent="1" source="progress" target="challenge">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="200"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow-progress-challenge-label" value="苦手項目練習" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=1;fontColor=#4CAF50;" vertex="1" parent="1">
+          <mxGeometry x="570" y="185" width="90" height="20" as="geometry"/>
         </mxCell>
         <!-- 矢印: ホーム → 学習進捗 -->
         <mxCell id="arrow6" value="" style="endArrow=classic;startArrow=classic;html=1;strokeColor=#1565C0;strokeWidth=2;" edge="1" parent="1" source="home" target="progress">

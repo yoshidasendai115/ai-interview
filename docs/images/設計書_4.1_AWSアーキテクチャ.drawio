@@ -105,7 +105,7 @@
           <mxGeometry x="940" y="530" width="160" height="30" as="geometry" />
         </mxCell>
 
-        <mxCell id="heygen" value="HeyGen / D-ID" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="heygen" value="HeyGen" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
           <mxGeometry x="940" y="570" width="160" height="30" as="geometry" />
         </mxCell>
 
